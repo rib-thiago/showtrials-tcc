@@ -12,7 +12,8 @@ from ui.console import (
     mensagem_sucesso,
     mensagem_erro,
     mensagem_aviso,
-    criar_tabela_documentos
+    criar_tabela_documentos,
+    mostrar_status_traducao  # <--- FALTAVA ESTA LINHA!
 )
 
 __all__ = [
@@ -28,5 +29,6 @@ __all__ = [
     'mensagem_sucesso',
     'mensagem_erro',
     'mensagem_aviso',
-    'criar_tabela_documentos'
+    'criar_tabela_documentos',
+    'mostrar_status_traducao'  # <--- E AQUI TAMBÉM!
 ]

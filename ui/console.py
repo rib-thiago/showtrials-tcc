@@ -18,6 +18,10 @@ console = Console()
 def limpar_tela():
     """Limpa o terminal de forma cross-platform"""
     os.system('cls' if os.name == 'nt' else 'clear')
+    # ADICIONE ESTAS 2 LINHAS ABAIXO:
+    if os.name != 'nt':  # Linux/Mac
+        print('\033[3J', end='')  # Limpa histórico de rolagem
+        print('\033[H', end='')   # Posiciona cursor no topo
 
 def cabecalho(titulo):
     """Exibe cabeçalho padronizado"""
@@ -225,3 +229,29 @@ def mensagem_erro(texto):
 def mensagem_aviso(texto):
     """Exibe mensagem de aviso"""
     console.print(f"[bold yellow]⚠[/bold yellow] {texto}")
+
+# ui/console.py - Adicione esta função nova
+
+def mostrar_status_traducao(documento_id: int):
+    """
+    Exibe badge de status de tradução para um documento.
+    """
+    from db import listar_traducoes_documento
+    
+    traducoes = listar_traducoes_documento(documento_id)
+    
+    if not traducoes:
+        return "[dim]📭 Sem traduções[/dim]"
+    
+    badges = []
+    for t in traducoes:
+        if t['idioma'] == 'en':
+            badges.append("[bold green]🇺🇸 EN[/bold green]")
+        elif t['idioma'] == 'pt':
+            badges.append("[bold green]🇧🇷 PT[/bold green]")
+        elif t['idioma'] == 'es':
+            badges.append("[bold green]🇪🇸 ES[/bold green]")
+        else:
+            badges.append(f"[bold green]{t['idioma'].upper()}[/bold green]")
+    
+    return " ".join(badges)
