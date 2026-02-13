@@ -90,6 +90,8 @@ def visualizar(doc_id):
     print(f"URL: {doc[4]}")
     print("-" * 80)
     print(doc[5])
+    print("=" * 80)
+    input("Enter para voltar...")
 
 
 
