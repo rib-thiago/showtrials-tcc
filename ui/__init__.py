@@ -13,7 +13,10 @@ from ui.console import (
     mensagem_erro,
     mensagem_aviso,
     criar_tabela_documentos,
-    mostrar_status_traducao  # <--- FALTAVA ESTA LINHA!
+    mostrar_status_traducao,
+    badge_tipo_documento,      # <-- ADICIONAR
+    badge_idioma,             # <-- ADICIONAR
+    mostrar_metadados_completos  # <-- ADICIONAR
 )
 
 __all__ = [
@@ -30,5 +33,8 @@ __all__ = [
     'mensagem_erro',
     'mensagem_aviso',
     'criar_tabela_documentos',
-    'mostrar_status_traducao'  # <--- E AQUI TAMBÉM!
+    'mostrar_status_traducao',
+    'badge_tipo_documento',      # <-- ADICIONAR
+    'badge_idioma',             # <-- ADICIONAR
+    'mostrar_metadados_completos'  # <-- ADICIONAR
 ]

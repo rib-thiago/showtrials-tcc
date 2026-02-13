@@ -15,7 +15,8 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 from ui import (
     console, limpar_tela, cabecalho, menu_principal,
-    mensagem_sucesso, mensagem_erro, mensagem_aviso, spinner_processo
+    mensagem_sucesso, mensagem_erro, mensagem_aviso, spinner_processo,
+    badge_idioma
 )
 from db import contar
 from nav_ui import (
@@ -31,116 +32,235 @@ import time
 # app.py - Substitua a função mostrar_estatisticas INTEIRA por esta:
 
 def mostrar_estatisticas():
-    """Wrapper para exibir estatísticas completas do acervo"""
+    """Exibe estatísticas completas do acervo com metadados enriquecidos"""
     try:
-        from db import estatisticas_completas
+        from db import conectar
+        from translators.nomes import transliterar_nome, traduzir_tipo_documento
+        from ui import badge_tipo_documento
+        import sqlite3
         
-        # Buscar estatísticas completas do banco
-        stats = estatisticas_completas()
+        conn = conectar()
+        cursor = conn.cursor()
         
         limpar_tela()
         cabecalho("📊 ESTATÍSTICAS DO ACERVO")
         
-        # CARD PRINCIPAL
+        # =========================================
+        # 1. VISÃO GERAL
+        # =========================================
+        cursor.execute("SELECT COUNT(*) FROM documentos")
+        total_docs = cursor.fetchone()[0]
+        
+        cursor.execute("SELECT COUNT(*) FROM traducoes")
+        total_traducoes = cursor.fetchone()[0]
+        
         console.print(Panel.fit(
-            f"[bold cyan]📚 TOTAL DE DOCUMENTOS: {stats['total_docs']}[/bold cyan]\n"
-            f"[bold green]🌐 TOTAL DE TRADUÇÕES: {stats['total_traducoes']}[/bold green]",
+            f"[bold cyan]📚 TOTAL DE DOCUMENTOS: {total_docs}[/bold cyan]\n"
+            f"[bold green]🌐 TOTAL DE TRADUÇÕES: {total_traducoes}[/bold green]",
             border_style="bright_blue",
             padding=(1, 4)
         ))
         console.print()
         
-        # GRID DE ESTATÍSTICAS
-        from rich.table import Table
-        from rich import box
+        # =========================================
+        # 2. DOCUMENTOS POR CENTRO
+        # =========================================
+        cursor.execute("SELECT centro, COUNT(*) FROM documentos GROUP BY centro")
+        centros = cursor.fetchall()
         
-        # Documentos por centro
-        if stats['docs_por_centro']:
-            console.print("[bold cyan]🏛️ DOCUMENTOS POR CENTRO:[/bold cyan]")
+        if centros:
+            console.print("[bold cyan]🏛️  DOCUMENTOS POR CENTRO:[/bold cyan]")
             table_centro = Table(box=box.SIMPLE, header_style="bold yellow")
             table_centro.add_column("Centro", style="yellow")
             table_centro.add_column("Quantidade", justify="right", style="cyan")
+            table_centro.add_column("Percentual", justify="right", style="green")
             
-            for centro, count in stats['docs_por_centro'].items():
-                nome_centro = "Leningrad Center" if centro == "lencenter" else "Moscow Center"
-                table_centro.add_row(nome_centro, str(count))
+            for centro, count in centros:
+                nome_centro = "Leningrad" if centro == "lencenter" else "Moscow" if centro == "moscenter" else centro
+                percentual = (count / total_docs * 100) if total_docs > 0 else 0
+                table_centro.add_row(
+                    nome_centro, 
+                    str(count),
+                    f"{percentual:.1f}%"
+                )
             
             console.print(table_centro)
             console.print()
         
-        # Traduções por idioma
-        if stats['traducoes_por_idioma']:
-            console.print("[bold green]🌐 TRADUÇÕES POR IDIOMA:[/bold green]")
-            table_idioma = Table(box=box.SIMPLE, header_style="bold green")
-            table_idioma.add_column("Idioma", style="green")
-            table_idioma.add_column("Quantidade", justify="right", style="cyan")
-            table_idioma.add_column("Custo Total", justify="right", style="yellow")
+        # =========================================
+        # 3. DISTRIBUIÇÃO POR TIPO DE DOCUMENTO
+        # =========================================
+        cursor.execute("""
+            SELECT 
+                tipo_documento,
+                tipo_descricao,
+                COUNT(*) as total
+            FROM documentos
+            WHERE tipo_documento IS NOT NULL 
+                AND tipo_documento != ''
+                AND tipo_documento != 'desconhecido'
+            GROUP BY tipo_documento
+            ORDER BY total DESC
+        """)
+        
+        tipos = cursor.fetchall()
+        
+        if tipos:
+            console.print("[bold magenta]📋 DISTRIBUIÇÃO POR TIPO:[/bold magenta]")
+            table_tipos = Table(box=box.SIMPLE, header_style="bold magenta")
+            table_tipos.add_column("Tipo", style="white")
+            table_tipos.add_column("Quantidade", justify="right", style="cyan")
+            table_tipos.add_column("Percentual", justify="right", style="green")
             
-            idiomas_nomes = {
-                'en': 'Inglês 🇺🇸',
-                'pt': 'Português 🇧🇷', 
-                'es': 'Espanhol 🇪🇸',
-                'fr': 'Francês 🇫🇷'
-            }
-            
-            for idioma, count in stats['traducoes_por_idioma'].items():
-                nome = idiomas_nomes.get(idioma, idioma.upper())
-                # Calcular custo aproximado por idioma
-                custo_idioma = 0
-                if stats.get('custo_total'):
-                    # Distribuição proporcional simples
-                    custo_idioma = (count / stats['total_traducoes']) * stats['custo_total']
-                
-                table_idioma.add_row(
-                    nome, 
+            for tipo, descricao, count in tipos:
+                percentual = (count / total_docs * 100) if total_docs > 0 else 0
+                badge = badge_tipo_documento(tipo)
+                table_tipos.add_row(
+                    f"{badge} {descricao}",
                     str(count),
-                    f"${custo_idioma:.4f}"
+                    f"{percentual:.1f}%"
                 )
             
-            console.print(table_idioma)
+            console.print(table_tipos)
             console.print()
         
-        # MÉTRICAS DE TRADUÇÃO
-        console.print("[bold magenta]📈 MÉTRICAS DE TRADUÇÃO:[/bold magenta]")
+        # =========================================
+        # 4. PESSOAS MAIS FREQUENTES
+        # =========================================
+        cursor.execute("""
+            SELECT 
+                pessoa_principal,
+                COUNT(*) as total
+            FROM documentos
+            WHERE pessoa_principal IS NOT NULL 
+                AND pessoa_principal != ''
+            GROUP BY pessoa_principal
+            ORDER BY total DESC
+            LIMIT 15
+        """)
         
-        metrics_table = Table(box=box.SIMPLE, header_style="bold magenta")
-        metrics_table.add_column("Métrica", style="white")
-        metrics_table.add_column("Valor", justify="right", style="cyan")
+        pessoas = cursor.fetchall()
         
-        # Documentos traduzidos (pelo menos 1 tradução)
-        percentual = (stats['docs_com_traducao'] / stats['total_docs'] * 100) if stats['total_docs'] > 0 else 0
-        metrics_table.add_row(
-            "📄 Documentos com tradução",
-            f"{stats['docs_com_traducao']} ({percentual:.1f}%)"
-        )
-        
-        # Média de traduções por documento traduzido
-        if stats['docs_com_traducao'] > 0:
-            media = stats['total_traducoes'] / stats['docs_com_traducao']
-            metrics_table.add_row(
-                "🔄 Média de traduções por documento",
-                f"{media:.1f}"
-            )
-        
-        # Custo total
-        metrics_table.add_row(
-            "💰 Custo total estimado",
-            f"${stats['custo_total']:.4f} USD"
-        )
-        
-        console.print(metrics_table)
-        console.print()
-        
-        # TAGS (placeholder para versão futura)
-        if stats.get('tags_mais_usadas'):
-            console.print("[bold yellow]🏷️ TAGS MAIS UTILIZADAS:[/bold yellow]")
-            tags_text = " • ".join([f"#{tag}" for tag, _ in stats['tags_mais_usadas'][:5]])
-            console.print(Panel(tags_text, border_style="yellow", padding=(1, 2)))
+        if pessoas:
+            console.print("[bold yellow]👤 PESSOAS MAIS FREQUENTES:[/bold yellow]")
+            table_pessoas = Table(box=box.SIMPLE, header_style="bold yellow")
+            table_pessoas.add_column("Nome (Russo)", style="white")
+            table_pessoas.add_column("Nome (Traduzido)", style="dim white")
+            table_pessoas.add_column("Documentos", justify="right", style="cyan")
+            
+            for pessoa, count in pessoas:
+                nome_traduzido = transliterar_nome(pessoa)
+                table_pessoas.add_row(
+                    pessoa[:30] + "…" if len(pessoa) > 30 else pessoa,
+                    nome_traduzido[:30] if nome_traduzido else "",
+                    str(count)
+                )
+            
+            console.print(table_pessoas)
             console.print()
         
-        # RODAPÉ
+        # =========================================
+        # 5. CORRESPONDÊNCIAS E ATOS
+        # =========================================
+        cursor.execute("""
+            SELECT 
+                SUM(CASE WHEN tipo_documento = 'carta' THEN 1 ELSE 0 END) as cartas,
+                SUM(CASE WHEN tipo_documento = 'declaracao' THEN 1 ELSE 0 END) as declaracoes,
+                SUM(CASE WHEN tipo_documento = 'relatorio' THEN 1 ELSE 0 END) as relatorios,
+                SUM(CASE WHEN tipo_documento = 'acareacao' THEN 1 ELSE 0 END) as acareacoes,
+                SUM(CASE WHEN tipo_documento = 'acusacao' THEN 1 ELSE 0 END) as acusacoes,
+                SUM(CASE WHEN tipo_documento = 'laudo' THEN 1 ELSE 0 END) as laudos
+            FROM documentos
+        """)
+        
+        stats = cursor.fetchone()
+        
+        if stats and any(stats):
+            console.print("[bold green]✉️  CORRESPONDÊNCIAS E ATOS ESPECIAIS:[/bold green]")
+            table_especiais = Table(box=box.SIMPLE, header_style="bold green")
+            table_especiais.add_column("Tipo", style="white")
+            table_especiais.add_column("Quantidade", justify="right", style="cyan")
+            table_especiais.add_column("Percentual", justify="right", style="dim")
+            
+            tipos_especiais = [
+                ("✉️ Cartas", stats[0]),
+                ("📝 Declarações", stats[1]),
+                ("📋 Relatórios NKVD", stats[2]),
+                ("⚖️ Acareações", stats[3]),
+                ("📜 Acusações", stats[4]),
+                ("🏥 Laudos", stats[5])
+            ]
+            
+            for nome, valor in tipos_especiais:
+                if valor and valor > 0:
+                    percentual = (valor / total_docs * 100) if total_docs > 0 else 0
+                    table_especiais.add_row(
+                        nome,
+                        str(valor),
+                        f"({percentual:.1f}%)"
+                    )
+            
+            console.print(table_especiais)
+            console.print()
+        
+        # =========================================
+        # 6. DOCUMENTOS COM ANEXOS
+        # =========================================
+        cursor.execute("SELECT COUNT(*) FROM documentos WHERE tem_anexos = 1")
+        total_anexos = cursor.fetchone()[0]
+        
+        if total_anexos > 0:
+            console.print(f"[bold blue]📎 DOCUMENTOS COM ANEXOS: [cyan]{total_anexos}[/cyan] ({total_anexos/total_docs*100:.1f}%)[/bold blue]")
+            console.print()
+        
+        # =========================================
+        # 7. TRADUÇÕES POR IDIOMA
+        # =========================================
+        if total_traducoes > 0:
+            cursor.execute("""
+                SELECT idioma, COUNT(*) 
+                FROM traducoes 
+                GROUP BY idioma
+                ORDER BY COUNT(*) DESC
+            """)
+            
+            traducoes_idioma = cursor.fetchall()
+            
+            if traducoes_idioma:
+                console.print("[bold cyan]🌐 TRADUÇÕES POR IDIOMA:[/bold cyan]")
+                table_trad = Table(box=box.SIMPLE, header_style="bold cyan")
+                table_trad.add_column("Idioma", style="white")
+                table_trad.add_column("Quantidade", justify="right", style="cyan")
+                table_trad.add_column("Percentual", justify="right", style="green")
+                
+                for idioma, count in traducoes_idioma:
+                    percentual = (count / total_traducoes * 100) if total_traducoes > 0 else 0
+                    badge = badge_idioma(idioma)
+                    table_trad.add_row(
+                        badge,
+                        str(count),
+                        f"{percentual:.1f}%"
+                    )
+                
+                console.print(table_trad)
+                console.print()
+        
+        # =========================================
+        # 8. CUSTO TOTAL DE TRADUÇÕES
+        # =========================================
+        cursor.execute("SELECT SUM(custo) FROM traducoes")
+        custo_total = cursor.fetchone()[0] or 0.0
+        
+        if custo_total > 0:
+            console.print(f"[bold yellow]💰 CUSTO TOTAL DE TRADUÇÕES: [white]${custo_total:.4f} USD[/white][/bold yellow]")
+            console.print()
+        
+        conn.close()
+        
+        # Rodapé
         console.print("[dim]─────────────────────────────────────────────────[/dim]")
         console.print("[bold cyan]📊 Estatísticas atualizadas em tempo real[/bold cyan]")
+        console.print("[dim]• Baseado em metadados enriquecidos[/dim]")
         console.print()
         
         input("[bold cyan]Pressione Enter para voltar ao menu...[/bold cyan]")
@@ -150,6 +270,7 @@ def mostrar_estatisticas():
         import traceback
         traceback.print_exc()
         time.sleep(3)
+
 
 def main():
     """Função principal da aplicação"""

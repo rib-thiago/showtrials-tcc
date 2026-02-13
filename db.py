@@ -366,3 +366,95 @@ def estatisticas_completas():
     
     conn.close()
     return stats
+
+    # db.py - ADICIONE ESTAS FUNÇÕES
+
+# db.py - ADICIONE ESTA FUNÇÃO
+
+def listar_paginado_com_filtros(offset=0, limite=20, centro=None, tipo=None):
+    """
+    Lista documentos com filtros opcionais de centro E tipo.
+    Usada pela UI com filtros avançados.
+    """
+    conn = conectar()
+    cursor = conn.cursor()
+    
+    query = """
+        SELECT 
+            id, centro, titulo, data_original, url, 
+            LENGTH(texto) as tamanho,
+            tipo_documento, pessoa_principal, remetente,
+            destinatario, destinatario_orgao, envolvidos, tem_anexos
+        FROM documentos
+        WHERE 1=1
+    """
+    params = []
+    
+    if centro:
+        query += " AND centro = ?"
+        params.append(centro)
+    
+    if tipo:
+        query += " AND tipo_documento = ?"
+        params.append(tipo)
+    
+    query += " ORDER BY id LIMIT ? OFFSET ?"
+    params.extend([limite, offset])
+    
+    cursor.execute(query, params)
+    dados = cursor.fetchall()
+    conn.close()
+    return dados
+
+
+# 1. Já mostrada acima: listar_paginado_com_filtros()
+
+# 2. Contar por tipo
+def contar_por_tipo(tipo_documento):
+    conn = conectar()
+    cursor = conn.cursor()
+    cursor.execute(
+        "SELECT COUNT(*) FROM documentos WHERE tipo_documento = ?",
+        (tipo_documento,)
+    )
+    total = cursor.fetchone()[0]
+    conn.close()
+    return total
+
+# 3. Contar por centro + tipo
+def contar_por_filtro(centro, tipo_documento):
+    conn = conectar()
+    cursor = conn.cursor()
+    cursor.execute(
+        "SELECT COUNT(*) FROM documentos WHERE centro = ? AND tipo_documento = ?",
+        (centro, tipo_documento)
+    )
+    total = cursor.fetchone()[0]
+    conn.close()
+    return total
+
+# 4. Listar tipos disponíveis (opcional, mas útil)
+def listar_tipos_documento(centro=None):
+    conn = conectar()
+    cursor = conn.cursor()
+    
+    if centro:
+        cursor.execute("""
+            SELECT tipo_documento, COUNT(*) 
+            FROM documentos 
+            WHERE centro = ? AND tipo_documento IS NOT NULL 
+            GROUP BY tipo_documento 
+            ORDER BY COUNT(*) DESC
+        """, (centro,))
+    else:
+        cursor.execute("""
+            SELECT tipo_documento, COUNT(*) 
+            FROM documentos 
+            WHERE tipo_documento IS NOT NULL 
+            GROUP BY tipo_documento 
+            ORDER BY COUNT(*) DESC
+        """)
+    
+    resultados = cursor.fetchall()
+    conn.close()
+    return resultados

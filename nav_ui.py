@@ -1,25 +1,51 @@
 # nav_ui.py
 from pathlib import Path
-from db import listar_paginado, contar, obter_documento, atualizar_texto
-from db import obter_traducao, listar_traducoes_documento
+from db import (
+    listar_paginado, contar, obter_documento, atualizar_texto,
+    obter_traducao, listar_traducoes_documento,
+    listar_paginado_com_filtros,  # <-- ADICIONAR
+    contar_por_tipo,              # <-- ADICIONAR
+    contar_por_filtro,           # <-- ADICIONAR
+    listar_tipos_documento       # <-- ADICIONAR
+)
+from db import DB_PATH  # <-- ADICIONAR
+import sqlite3          # <-- ADICIONAR
 from ui import (
     console, limpar_tela, cabecalho, mostrar_tabela_documentos,
     mostrar_documento, menu_navegacao, mensagem_sucesso, mensagem_erro,
-    mensagem_aviso, spinner_processo, mostrar_status_traducao
+    mensagem_aviso, spinner_processo, mostrar_status_traducao,
+    badge_tipo_documento,      # <-- AQUI!
+    badge_idioma,             # <-- AQUI!
+    mostrar_metadados_completos  # <-- AQUI!
 )
+from translators.nomes import transliterar_nome, traduzir_tipo_documento
 from rich.prompt import IntPrompt, Prompt
 from rich.table import Table
 from rich.panel import Panel
+from rich import box
 from rich.text import Text
 import time
 
-# nav_ui.py - Substitua a função navegar_lista INTEIRA por esta:
+# nav_ui.py - SUBSTITUA a função navegar_lista
 
-def navegar_lista(centro=None):
-    """Navegação paginada com status de tradução"""
-    limite = 10  # Reduzido de 20 para 10
+def navegar_lista(centro=None, filtro_tipo=None):
+    """Navegação paginada com FILTROS POR TIPO e BADGES DE TRADUÇÃO"""
+    limite = 15
     pagina = 0
-    total = contar(centro)
+    
+    # Montar query com filtros
+    if centro and filtro_tipo:
+        total = contar_por_filtro(centro, filtro_tipo)
+        titulo = f"📋 {centro.upper()} - {traduzir_tipo_documento(filtro_tipo, 'pt')}"
+    elif centro:
+        total = contar(centro)
+        titulo = f"📋 {centro.upper()}"
+    elif filtro_tipo:
+        total = contar_por_tipo(filtro_tipo)
+        titulo = f"📋 {traduzir_tipo_documento(filtro_tipo, 'pt')}"
+    else:
+        total = contar()
+        titulo = "📋 TODOS OS DOCUMENTOS"
     
     if total == 0:
         console.print("[yellow]⚠ Nenhum documento encontrado.[/yellow]")
@@ -28,69 +54,73 @@ def navegar_lista(centro=None):
     
     while True:
         limpar_tela()
-        titulo = f"📋 Documentos - {centro.upper() if centro else 'Todos os centros'}"
         cabecalho(titulo)
         
         offset = pagina * limite
-        docs = listar_paginado(offset=offset, limite=limite, centro=centro)
+        docs = listar_paginado_com_filtros(
+            offset=offset, 
+            limite=limite, 
+            centro=centro,
+            tipo=filtro_tipo
+        )
         
-        # Verificar se há traduções para mostrar status
+        # Verificar se há traduções para mostrar coluna
         tem_traducao = False
         for doc in docs[:5]:
             if listar_traducoes_documento(doc[0]):
                 tem_traducao = True
                 break
         
-        # CRIAR TABELA MANUALMENTE (em vez de usar a função existente)
-        from rich.table import Table
-        from rich import box
-        
+        # Criar tabela enriquecida
         table = Table(
-            title=f"[bold]📚 ACERVO DE DOCUMENTOS[/bold]\n[dim]Total: {total} documentos | Página {pagina + 1}[/dim]",
+            title=f"[bold]📚 {titulo}[/bold]\n[dim]Total: {total} documentos | Página {pagina + 1}[/dim]",
             box=box.ROUNDED,
             header_style="bold cyan",
-            border_style="bright_blue",
-            padding=(0, 1)
+            border_style="bright_blue"
         )
         
         # Colunas fixas
-        table.add_column("ID", style="dim white", width=6, justify="right")
-        table.add_column("🏛️ Centro", style="yellow", width=12)
-        table.add_column("📅 Data", style="green", width=12)
-        table.add_column("📄 Título", style="white", width=50)
-        table.add_column("📊 Tamanho", style="blue", width=10, justify="right")
+        table.add_column("ID", style="dim white", width=4, justify="right")
+        table.add_column("Tipo", width=20)
+        table.add_column("Data", width=12)
+        table.add_column("Pessoa", width=25)
+        table.add_column("Título", width=40)
         
-        # Coluna de status APENAS se houver traduções
+        # COLUNA DE TRADUÇÃO (só se houver alguma)
         if tem_traducao:
-            table.add_column("🌐 Traduções", style="bold green", width=15)
+            table.add_column("🌐", width=12, justify="center")
         
         # Adicionar linhas
         for doc in docs:
-            # Formatar título
-            titulo_doc = doc[2][:47] + "…" if len(doc[2]) > 48 else doc[2]
+            # Badge do tipo
+            badge = badge_tipo_documento(doc[6]) if len(doc) > 6 else badge_tipo_documento('desconhecido')
             
-            # Formatar tamanho
-            tamanho = int(doc[5])
-            if tamanho < 1000:
-                tamanho_str = f"{tamanho}c"
-            elif tamanho < 1000000:
-                tamanho_str = f"{tamanho/1000:.1f}K"
-            else:
-                tamanho_str = f"{tamanho/1000000:.1f}M"
+            # Pessoa principal (traduzida)
+            pessoa = ""
+            if len(doc) > 7 and doc[7]:
+                try:
+                    pessoa = transliterar_nome(doc[7]).split()[-1]  # Só sobrenome
+                except:
+                    pessoa = doc[7][:20]
+            elif len(doc) > 8 and doc[8]:  # remetente
+                try:
+                    pessoa = f"📨 {transliterar_nome(doc[8]).split()[-1]}"
+                except:
+                    pessoa = f"📨 {doc[8][:15]}"
             
-            # Centro em maiúsculo
-            centro_doc = doc[1].upper() if doc[1] else "N/A"
+            # Título truncado
+            titulo_doc = doc[2][:37] + "…" if len(doc[2]) > 38 else doc[2]
             
-            # Montar linha
+            # Montar linha base
             linha = [
                 str(doc[0]),
-                centro_doc,
+                badge,
                 doc[3] or "N/D",
-                titulo_doc,
-                tamanho_str
+                pessoa[:23],
+                titulo_doc
             ]
             
-            # Adicionar status de tradução se houver coluna
+            # Adicionar badge de tradução se houver coluna
             if tem_traducao:
                 status = mostrar_status_traducao(doc[0])
                 linha.append(status)
@@ -99,56 +129,106 @@ def navegar_lista(centro=None):
         
         console.print(table)
         
-        # Barra de navegação
-        total_paginas = (total + limite - 1) // limite
-        nav_bar = Panel(
-            f"[bold cyan]📌 Página {pagina + 1} de {total_paginas} • Total: {total} documentos[/bold cyan]\n"
-            f"[dim]Comandos: [n] Próxima | [p] Anterior | [número] Ver documento | [m] Menu[/dim]",
-            border_style="bright_blue",
-            padding=(1, 2)
-        )
-        console.print(nav_bar)
+        # Menu de navegação
+        console.print("\n[dim]─────────────────────────────────────────────────[/dim]")
+        console.print("[bold cyan]COMANDOS[/bold cyan]")
+        console.print("  [green]→[/green] [bold]n[/bold] Próxima página")
+        console.print("  [green]→[/green] [bold]p[/bold] Página anterior")
+        console.print("  [green]→[/green] [bold][número][/bold] Ver documento")
+        console.print("  [green]→[/green] [bold]f[/bold] Filtrar por tipo")
+        console.print("  [green]→[/green] [bold]m[/bold] Menu principal")
+        console.print()
         
-        escolha = menu_navegacao()
+        escolha = input("[bold cyan]Comando[/bold cyan] ").strip().lower()
         
         if escolha == 'n':
             if (pagina + 1) * limite < total:
                 pagina += 1
             else:
-                mensagem_erro("Você já está na última página!")
+                mensagem_erro("Última página!")
                 time.sleep(1)
-        
         elif escolha == 'p':
             if pagina > 0:
                 pagina -= 1
             else:
-                mensagem_erro("Você já está na primeira página!")
+                mensagem_erro("Primeira página!")
                 time.sleep(1)
-        
+        elif escolha == 'f':
+            menu_filtro_tipo(centro)
+            break
         elif escolha == 'm':
             break
-        
         elif escolha.isdigit():
             visualizar_documento_ui(int(escolha))
-        
         else:
             mensagem_erro("Comando inválido!")
             time.sleep(1)
 
-# nav_ui.py - Substitua a função visualizar_documento_ui INTEIRA por esta:
+
+def menu_filtro_tipo(centro=None):
+    """Menu de filtros por tipo de documento"""
+    limpar_tela()
+    cabecalho("🔍 FILTRAR POR TIPO DE DOCUMENTO")
+    
+    console.print("\n[bold cyan]Tipos disponíveis:[/bold cyan]\n")
+    
+    # Buscar tipos existentes no banco
+    from db import listar_tipos_documento
+    tipos = listar_tipos_documento(centro)
+    
+    opcoes = {}
+    for i, (tipo, count) in enumerate(tipos, 1):
+        badge = badge_tipo_documento(tipo)
+        nome_pt = traduzir_tipo_documento(tipo, 'pt')
+        console.print(f"  [{i}] {badge} - {nome_pt} [dim]({count})[/dim]")
+        opcoes[str(i)] = tipo
+    
+    console.print(f"  [0] 🔄 Limpar filtro")
+    console.print()
+    
+    escolha = input("[bold cyan]Escolha o tipo[/bold cyan] ").strip()
+    
+    if escolha == '0':
+        navegar_lista(centro=centro, filtro_tipo=None)
+    elif escolha in opcoes:
+        navegar_lista(centro=centro, filtro_tipo=opcoes[escolha])
+    else:
+        mensagem_erro("Opção inválida!")
+        time.sleep(1)
+        navegar_lista(centro=centro)
+
+
+# nav_ui.py - ATUALIZE a função visualizar_documento_ui
 
 def visualizar_documento_ui(doc_id):
-    """Visualização de documento com ABAS de tradução"""
-    doc = spinner_processo(
-        "Carregando documento...",
-        obter_documento,
-        doc_id
-    )
+    """Visualização de documento com METADADOS COMPLETOS e TRADUÇÕES"""
+    # Buscar documento
+    doc = obter_documento(doc_id)
     
     if not doc:
         mensagem_erro("Documento não encontrado!")
         time.sleep(1.5)
         return
+    
+    # Buscar metadados adicionais
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute("""
+        SELECT 
+            tipo_documento, pessoa_principal, remetente,
+            destinatario, destinatario_orgao, envolvidos, tem_anexos
+        FROM documentos 
+        WHERE id = ?
+    """, (doc_id,))
+    
+    metadados = cursor.fetchone()
+    conn.close()
+    
+    # Combinar doc + metadados
+    if metadados:
+        doc_completo = list(doc) + list(metadados)
+    else:
+        doc_completo = list(doc) + [None] * 7
     
     # Buscar traduções disponíveis
     traducoes = listar_traducoes_documento(doc_id)
@@ -160,47 +240,38 @@ def visualizar_documento_ui(doc_id):
     while True:  # Loop para alternar entre original/traduções
         limpar_tela()
         
-        # Cabeçalho
-        titulo_texto = Text()
-        titulo_texto.append("📄 ", style="bold white")
-        titulo_texto.append(doc[2], style="bold yellow")
-        
-        # Badge de idioma atual
+        # Buscar idioma atual
         idioma_atual = visualizar_documento_ui.idioma_atual
+        
+        # Definir qual texto mostrar
         if idioma_atual == 'original':
-            badge = "[bold blue]📄 ORIGINAL (Russo)[/bold blue]"
-            texto_exibir = doc[5]
+            texto_exibir = doc_completo[5]
+            badge_idioma_atual = "[bold blue]📄 ORIGINAL (Russo)[/bold blue]"
         else:
             traducao = obter_traducao(doc_id, idioma_atual)
             if traducao:
-                badge = f"[bold green]🌐 TRADUÇÃO ({idioma_atual.upper()})[/bold green]"
                 texto_exibir = traducao['texto']
+                badge_idioma_atual = f"[bold green]🌐 TRADUÇÃO ({idioma_atual.upper()})[/bold green]"
             else:
-                # Se a tradução não existir mais, volta para original
+                # Se a tradução não existir, volta para original
                 visualizar_documento_ui.idioma_atual = 'original'
-                badge = "[bold blue]📄 ORIGINAL (Russo)[/bold blue]"
-                texto_exibir = doc[5]
+                idioma_atual = 'original'
+                texto_exibir = doc_completo[5]
+                badge_idioma_atual = "[bold blue]📄 ORIGINAL (Russo)[/bold blue]"
         
-        header_panel = Panel(
-            f"{titulo_texto}\n\n{badge}",
-            border_style="bright_green",
-            padding=(1, 2),
-            subtitle=f"ID: {doc[0]}",
-            subtitle_align="right"
-        )
-        console.print(header_panel)
-        console.print()
+        # Título com badge
+        titulo_badge = f"{badge_tipo_documento(doc_completo[6])} [bold yellow]{doc_completo[2]}[/bold yellow]\n\n{badge_idioma_atual}"
+        console.print(Panel(titulo_badge, border_style="bright_green", padding=(1, 2)))
         
-        # Metadados
-        console.print("[bold cyan]📋 METADADOS[/bold cyan]")
-        console.print(f"  🏛️  Centro: [yellow]{doc[1].upper()}[/yellow]")
-        console.print(f"  📅 Data original: [green]{doc[3] or 'Não informada'}[/green]")
-        console.print(f"  🔗 URL: [blue]{doc[4]}[/blue]")
-        console.print(f"  📊 Tamanho: [cyan]{len(texto_exibir):,} caracteres[/cyan]")
+        # METADADOS COMPLETOS
+        try:
+            mostrar_metadados_completos(doc_completo)
+        except Exception as e:
+            console.print(f"[red]Erro ao mostrar metadados: {e}[/red]")
         
-        # Mostrar traduções disponíveis
+        # MOSTRAR TRADUÇÕES DISPONÍVEIS
         if traducoes:
-            console.print("\n[bold green]🌐 TRADUÇÕES DISPONÍVEIS:[/bold green]")
+            console.print("\n[bold cyan]🌐 TRADUÇÕES DISPONÍVEIS:[/bold cyan]")
             for t in traducoes:
                 idioma_nome = {
                     'en': 'Inglês 🇺🇸',
@@ -215,20 +286,17 @@ def visualizar_documento_ui(doc_id):
                 else:
                     console.print(f"    [{t['idioma']}] {idioma_nome}: {t['data_traducao'][:10]}")
         
-        console.print()
-        
         # Conteúdo
-        console.print("[bold white]📄 CONTEÚDO[/bold white]")
+        console.print("\n[bold white]📄 CONTEÚDO[/bold white]")
         console.print("─" * 80)
         
-        # Truncar se muito longo
         if len(texto_exibir) > 2000:
-            texto_exibir = texto_exibir[:2000] + "\n\n[dim]... (texto truncado, use exportar para ver completo)[/dim]"
+            texto_exibir = texto_exibir[:2000] + "\n\n[dim]... (texto truncado)[/dim]"
         
         console.print(texto_exibir)
         console.print("─" * 80)
         
-        # Rodapé com comandos
+        # COMANDOS
         console.print("\n[dim]COMANDOS:[/dim]")
         console.print("  [green]⏎ Enter[/green] - Voltar à listagem")
         console.print("  [yellow]e[/yellow] - Exportar texto atual")
@@ -248,11 +316,10 @@ def visualizar_documento_ui(doc_id):
         if cmd == '':
             # Resetar idioma ao sair
             visualizar_documento_ui.idioma_atual = 'original'
-            break  # Voltar à listagem
+            break
         
         elif cmd == 'e':
             exportar_documento_ui(doc_id)
-            # Continuar no mesmo documento
             continue
         
         elif cmd == 't' and traducoes:
@@ -263,7 +330,7 @@ def visualizar_documento_ui(doc_id):
             else:
                 # Volta para original
                 visualizar_documento_ui.idioma_atual = 'original'
-            continue  # Recarregar com novo idioma
+            continue
         
         elif cmd == 'n':
             # Nova tradução
@@ -277,6 +344,7 @@ def visualizar_documento_ui(doc_id):
             mensagem_erro("Comando inválido!")
             time.sleep(1)
             continue
+
 
 # Inicializar idioma atual como original
 visualizar_documento_ui.idioma_atual = 'original'
