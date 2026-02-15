@@ -1,0 +1,43 @@
+.
+├── app.py
+├── coleta.py
+├── data
+│   └── showtrials.db
+├── db.py
+├── estrutura_atual.txt
+├── exportados
+│   ├── 172_Протокол допроса БЛ Браво.txt
+│   ├── 1_Протокол допроса ЛВ Николаева_traducao_en.txt
+│   ├── 1_Протокол допроса ЛВ Николаева.txt
+│   ├── 2_Протокол допроса ЛВ Николаева_original.txt
+│   ├── 2_Протокол допроса ЛВ Николаева_traducao_en.txt
+│   └── 2_Протокол_допроса_Л.В._Николаева.txt
+├── extractor.py
+├── nav_ui.py
+├── poetry.lock
+├── __pycache__
+│   ├── app.cpython-312.pyc
+│   ├── db.cpython-312.pyc
+│   ├── extractor.cpython-312.pyc
+│   ├── nav_ui.cpython-312.pyc
+│   └── translator.cpython-312.pyc
+├── pyproject.toml
+├── README.md
+├── reprocessar_metadados.py
+├── showtrials.db
+├── test_tradutor.py
+├── titulos_com_ids.txt
+├── translator.py
+├── translators
+│   ├── nomes.py
+│   └── __pycache__
+│       └── nomes.cpython-312.pyc
+└── ui
+    ├── console.py
+    ├── __init__.py
+    ├── __pycache__
+    │   ├── console.cpython-312.pyc
+    │   └── __init__.cpython-312.pyc
+    └── theme.py
+
+8 directories, 33 files
