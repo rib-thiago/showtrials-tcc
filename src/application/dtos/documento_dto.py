@@ -1,0 +1,126 @@
+# src/application/dtos/documento_dto.py
+"""
+Data Transfer Objects para Documento.
+Separamos o que vai para UI do que fica no domínio.
+"""
+
+from dataclasses import dataclass, field
+from typing import Optional, List, Dict
+from datetime import datetime
+from src.domain.value_objects.tipo_documento import TipoDocumento
+from src.domain.value_objects.nome_russo import NomeRusso
+
+
+@dataclass
+class DocumentoDTO:
+    """
+    DTO completo para exibição de um documento.
+    Contém apenas dados necessários para a UI.
+    """
+    
+    id: Optional[int]
+    centro: str
+    titulo: str
+    data_original: Optional[str]
+    url: str
+    texto: str
+    data_coleta: str  # ISO format
+    
+    # Metadados enriquecidos
+    tipo: Optional[str]
+    tipo_descricao: Optional[str]
+    tipo_icone: Optional[str]
+    pessoa_principal: Optional[str]
+    pessoa_principal_en: Optional[str]
+    remetente: Optional[str]
+    destinatario: Optional[str]
+    envolvidos: List[str] = field(default_factory=list)
+    tem_anexos: bool = False
+    
+    # Métricas
+    tamanho_caracteres: int = 0
+    tamanho_palavras: int = 0
+    
+    @classmethod
+    def from_domain(cls, documento, tradutor_nomes=None):
+        """
+        Converte entidade Documento para DTO.
+        
+        Args:
+            documento: Entidade Documento do domínio
+            tradutor_nomes: Função opcional para traduzir nomes
+        """
+        # Traduzir pessoa principal se houver tradutor
+        pessoa_en = None
+        if tradutor_nomes and documento.pessoa_principal:
+            try:
+                nome = NomeRusso(documento.pessoa_principal)
+                pessoa_en = nome.transliterar()
+            except:
+                pessoa_en = documento.pessoa_principal
+        
+        return cls(
+            id=documento.id,
+            centro=documento.centro,
+            titulo=documento.titulo,
+            data_original=documento.data_original,
+            url=documento.url,
+            texto=documento.texto,
+            data_coleta=documento.data_coleta.isoformat() if documento.data_coleta else None,
+            tipo=documento.tipo,
+            tipo_descricao=documento.tipo_descricao,
+            tipo_icone=TipoDocumento(documento.tipo).icone if documento.tipo else "📄",
+            pessoa_principal=documento.pessoa_principal,
+            pessoa_principal_en=pessoa_en,
+            remetente=documento.remetente,
+            destinatario=documento.destinatario,
+            envolvidos=documento.envolvidos or [],
+            tem_anexos=documento.tem_anexos,
+            tamanho_caracteres=documento.tamanho_caracteres,
+            tamanho_palavras=documento.tamanho_palavras
+        )
+
+
+@dataclass
+class DocumentoListaDTO:
+    """
+    DTO resumido para listagens.
+    Mais leve que o DTO completo.
+    """
+    
+    id: int
+    centro: str
+    titulo: str
+    data_original: Optional[str]
+    tipo: Optional[str]
+    tipo_icone: str
+    tipo_descricao: Optional[str]
+    pessoa_principal: Optional[str]
+    pessoa_principal_en: Optional[str]
+    tem_traducao: bool = False
+    tamanho: int = 0
+    
+    @classmethod
+    def from_domain(cls, documento, tem_traducao=False, tradutor_nomes=None):
+        """Converte entidade para DTO de listagem."""
+        pessoa_en = None
+        if tradutor_nomes and documento.pessoa_principal:
+            try:
+                nome = NomeRusso(documento.pessoa_principal)
+                pessoa_en = nome.transliterar()
+            except:
+                pessoa_en = documento.pessoa_principal
+        
+        return cls(
+            id=documento.id,
+            centro=documento.centro,
+            titulo=documento.titulo,
+            data_original=documento.data_original,
+            tipo=documento.tipo,
+            tipo_icone=TipoDocumento(documento.tipo).icone if documento.tipo else "📄",
+            tipo_descricao=documento.tipo_descricao,
+            pessoa_principal=documento.pessoa_principal,
+            pessoa_principal_en=pessoa_en,
+            tem_traducao=tem_traducao,
+            tamanho=documento.tamanho_caracteres
+        )
