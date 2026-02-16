@@ -32,6 +32,8 @@ from src.infrastructure.translation.google_translator import (
 from src.application.use_cases.traduzir_documento import TraduzirDocumento
 from src.application.use_cases.listar_traducoes import ListarTraducoes
 from src.interface.cli.commands_traducao import ComandoTraduzir, ComandoAlternarIdioma
+from src.application.use_cases.exportar_documento import ExportarDocumento
+from src.interface.cli.commands_export import ComandoExportar
 
 class ShowTrialsApp:
     """
@@ -61,6 +63,11 @@ class ShowTrialsApp:
             self.tradutor_service
         )
         self.listar_traducoes_use_case = ListarTraducoes(self.repo_traducao)
+        self.exportar_use_case = ExportarDocumento(
+            self.repo,
+            self.repo_traducao
+        )
+        self.cmd_exportar = ComandoExportar(self.exportar_use_case)
         
         # 3. Comandos
         self.cmd_listar = ComandoListar(self.listar_use_case)
@@ -227,9 +234,9 @@ class ShowTrialsApp:
                     mostrar_erro(f"Erro durante tradução: {e}")
                     
             elif cmd == 'e':
-                # Exportar (placeholder para FASE 6)
-                console.print("[yellow]📥 Exportação será implementada na FASE 6[/yellow]")
-                input("Pressione Enter para continuar...")
+                # Exportar documento
+                self.cmd_exportar.executar(doc_id)
+                input("\nPressione Enter para continuar...")
                 
             else:
                 mostrar_erro("Comando inválido!")
