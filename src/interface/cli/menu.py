@@ -32,8 +32,9 @@ class MenuPrincipal:
         console.print("  [2] 🏛️  Listar por centro")
         console.print("  [3] 👁️  Visualizar documento")
         console.print("  [4] 📊 Estatísticas")
-        console.print("  [5] 📈 Relatórios avançados")  # <-- NOVO
-        console.print("  [6] 🔄 Sair")
+        console.print("  [5] 📈 Relatórios avançados")
+        console.print("  [6] 🔍 Análise de texto")  # <-- NOVO
+        console.print("  [7] 🔄 Sair")
         console.print()
         
         escolha = input("Escolha: ").strip()  # Sem cor no input

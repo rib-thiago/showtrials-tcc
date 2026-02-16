@@ -7,7 +7,7 @@ readme = "README.md"
 packages = [{include = "src"}]  # <-- ADICIONAR ESTA LINHA!
 
 [tool.poetry.dependencies]
-python = ">=3.12"
+python = ">=3.12,<3.14"
 requests = ">=2.32.5"
 beautifulsoup4 = ">=4.14.3"
 lxml = ">=6.0.2"

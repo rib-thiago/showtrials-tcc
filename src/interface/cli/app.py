@@ -22,6 +22,7 @@ from src.interface.console import (
     mostrar_erro,
     mostrar_sucesso,
     mostrar_aviso,
+    cabecalho,
     spinner
 )
 from src.infrastructure.persistence.sqlite_traducao_repository import SQLiteTraducaoRepository
@@ -36,6 +37,10 @@ from src.application.use_cases.exportar_documento import ExportarDocumento
 from src.interface.cli.commands_export import ComandoExportar
 from src.application.use_cases.gerar_relatorio import GerarRelatorio
 from src.interface.cli.commands_relatorio import ComandoRelatorio
+# NOVOS IMPORTS
+from src.application.use_cases.analisar_texto import AnalisarDocumento
+from src.application.use_cases.analisar_acervo import AnalisarAcervo
+from src.interface.cli.commands_analise import ComandoAnalisarDocumento, ComandoAnalisarAcervo
 
 class ShowTrialsApp:
     """
@@ -74,7 +79,13 @@ class ShowTrialsApp:
             self.repo,
             self.repo_traducao
         )
-        self.cmd_relatorio = ComandoRelatorio(self.relatorio_use_case)
+        # Análise de texto
+        self.analisar_documento_use_case = AnalisarDocumento(
+            self.repo,
+            self.repo_traducao
+        )
+        self.analisar_acervo_use_case = AnalisarAcervo(self.repo)
+        
         
         # 3. Comandos
         self.cmd_listar = ComandoListar(self.listar_use_case)
@@ -88,6 +99,10 @@ class ShowTrialsApp:
             self.listar_traducoes_use_case,
             self.obter_use_case
         )
+        self.cmd_relatorio = ComandoRelatorio(self.relatorio_use_case)
+        # Comandos de análise
+        self.cmd_analisar_doc = ComandoAnalisarDocumento(self.analisar_documento_use_case)
+        self.cmd_analisar_acervo = ComandoAnalisarAcervo(self.analisar_acervo_use_case)
         
         # 4. Menus
         self.menu_principal = MenuPrincipal(self)
@@ -106,7 +121,7 @@ class ShowTrialsApp:
         while True:
             escolha = self.menu_principal.mostrar()
             
-            if escolha == '6':
+            if escolha == '7':
                 console.print("\n[green]Até logo![/green]")
                 break
             
@@ -139,8 +154,45 @@ class ShowTrialsApp:
             elif escolha == '5':
                 # Relatórios avançados
                 self.cmd_relatorio.executar()
-            
 
+            elif escolha == '6':
+                # Análise de texto
+                self._menu_analise()
+            
+    def _menu_analise(self):
+        """Menu de análise de texto."""
+        while True:
+            limpar_tela()
+            cabecalho("🔍 ANÁLISE DE TEXTO")
+            
+            console.print("[bold cyan]Opções:[/bold cyan]")
+            console.print("  [1] Analisar documento específico")
+            console.print("  [2] Análise global do acervo")
+            console.print("  [3] Nuvem de palavras do acervo")
+            console.print("  [0] Voltar")
+            
+            opcao = input("\nEscolha: ").strip()
+            
+            if opcao == '0':
+                break
+            elif opcao == '1':
+                try:
+                    doc_id = int(input("ID do documento: "))
+                    self.cmd_analisar_doc.executar(doc_id)
+                except ValueError:
+                    mostrar_erro("ID inválido!")
+            elif opcao == '2':
+                self.cmd_analisar_acervo.executar()
+            elif opcao == '3':
+                console.print("[yellow]Gerando nuvem de palavras do acervo...[/yellow]")
+                try:
+                    caminho = self.analisar_acervo_use_case.gerar_wordcloud_geral()
+                    mostrar_sucesso(f"Nuvem gerada em: {caminho}")
+                except Exception as e:
+                    mostrar_erro(f"Erro: {e}")
+                input("\nPressione Enter...")
+            else:
+                mostrar_erro("Opção inválida!")
     
 # src/interface/cli/app.py (SUBSTITUIR O MÉTODO _visualizar_e_aguardar)
     def _visualizar_e_aguardar(self, doc_id: int):
