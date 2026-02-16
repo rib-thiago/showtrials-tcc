@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}Início{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12 text-center mb-5">
+        <h1 class="display-4">📚 ShowTrials</h1>
+        <p class="lead">Sistema de gestão de documentos históricos dos processos de Moscou e Leningrado</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title">📋 Documentos</h5>
+                <p class="display-4">{{ total_docs }}</p>
+                <p class="card-text">documentos no acervo</p>
+                <a href="/documentos/" class="btn btn-primary">Ver todos</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title">🌐 Traduções</h5>
+                <p class="display-4">{{ total_trad }}</p>
+                <p class="card-text">traduções realizadas</p>
+                <a href="/analise/acervo" class="btn btn-success">Análises</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title">📊 Estatísticas</h5>
+                <p class="display-4">🔍</p>
+                <p class="card-text">métricas do acervo</p>
+                <a href="/estatisticas/" class="btn btn-info">Ver gráficos</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                Últimos documentos
+            </div>
+            <div class="card-body">
+                <p>Em breve...</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                Pessoas mais citadas
+            </div>
+            <div class="card-body">
+                <p>Em breve...</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

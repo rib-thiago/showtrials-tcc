@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+
+{% block title %}Documento {{ doc.id }}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Início</a></li>
+                <li class="breadcrumb-item"><a href="/documentos/">Documentos</a></li>
+                <li class="breadcrumb-item active">Documento {{ doc.id }}</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h3>{{ doc.titulo }}</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>📋 Metadados</h5>
+                        <table class="table table-sm">
+                            <tr>
+                                <th>ID:</th>
+                                <td>{{ doc.id }}</td>
+                            </tr>
+                            <tr>
+                                <th>Centro:</th>
+                                <td>
+                                    {% if doc.centro == 'lencenter' %}
+                                    🏛️ Leningrad Center
+                                    {% else %}
+                                    🏛️ Moscow Center
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Data original:</th>
+                                <td>{{ doc.data_original or 'Não informada' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Tipo:</th>
+                                <td>
+                                    {% if doc.tipo == 'interrogatorio' %}🔍
+                                    {% elif doc.tipo == 'carta' %}✉️
+                                    {% elif doc.tipo == 'acareacao' %}⚖️
+                                    {% elif doc.tipo == 'acusacao' %}📜
+                                    {% elif doc.tipo == 'relatorio' %}📋
+                                    {% elif doc.tipo == 'declaracao' %}📝
+                                    {% elif doc.tipo == 'laudo' %}🏥
+                                    {% else %}📄{% endif %}
+                                    {{ doc.tipo_descricao or 'Desconhecido' }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Tamanho:</th>
+                                <td>{{ doc.tamanho_caracteres }} caracteres ({{ doc.tamanho_palavras }} palavras)</td>
+                            </tr>
+                            <tr>
+                                <th>URL:</th>
+                                <td><a href="{{ doc.url }}" target="_blank">{{ doc.url[:50] }}...</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>👤 Pessoas envolvidas</h5>
+                        <table class="table table-sm">
+                            {% if doc.pessoa_principal %}
+                            <tr>
+                                <th>Pessoa principal:</th>
+                                <td>
+                                    {{ doc.pessoa_principal }}
+                                    {% if doc.pessoa_principal_en %}
+                                    <br><small class="text-muted">{{ doc.pessoa_principal_en }}</small>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endif %}
+                            {% if doc.remetente %}
+                            <tr>
+                                <th>Remetente:</th>
+                                <td>{{ doc.remetente }}</td>
+                            </tr>
+                            {% endif %}
+                            {% if doc.destinatario %}
+                            <tr>
+                                <th>Destinatário:</th>
+                                <td>{{ doc.destinatario }}</td>
+                            </tr>
+                            {% endif %}
+                            {% if doc.envolvidos %}
+                            <tr>
+                                <th>Envolvidos:</th>
+                                <td>{{ doc.envolvidos|join(', ') }}</td>
+                            </tr>
+                            {% endif %}
+                            {% if doc.tem_anexos %}
+                            <tr>
+                                <th>Anexos:</th>
+                                <td><span class="badge bg-success">Possui anexos</span></td>
+                            </tr>
+                            {% endif %}
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <h5>📄 Conteúdo</h5>
+                        <div class="card bg-light">
+                            <div class="card-body" style="max-height: 500px; overflow-y: auto;">
+                                <pre style="white-space: pre-wrap; font-family: inherit;">{{ doc.texto }}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <h5>🌐 Traduções disponíveis</h5>
+                        {% if doc.traducoes and doc.traducoes|length > 0 %}
+                        <ul class="list-group">
+                            {% for trad in doc.traducoes %}
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span>
+                                    {% if trad.idioma == 'en' %}🇺🇸 Inglês
+                                    {% elif trad.idioma == 'pt' %}🇧🇷 Português
+                                    {% elif trad.idioma == 'es' %}🇪🇸 Espanhol
+                                    {% elif trad.idioma == 'fr' %}🇫🇷 Francês
+                                    {% else %}{{ trad.idioma }}{% endif %}
+                                </span>
+                                <span class="text-muted">{{ trad.data_traducao[:10] if trad.data_traducao else ''
+                                    }}</span>
+                                <a href="/traducoes/documento/{{ doc.id }}/{{ trad.idioma }}"
+                                    class="btn btn-sm btn-outline-primary">Ver</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        {% else %}
+                        <p class="text-muted">Nenhuma tradução disponível.</p>
+                        {% endif %}
+                        <a href="/traducoes/documento/{{ doc.id }}" class="btn btn-sm btn-info mt-2">Ver todas as
+                            traduções</a>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <a href="/documentos/" class="btn btn-secondary">← Voltar</a>
+                        <a href="/analise/documento/{{ doc.id }}" class="btn btn-success">🔍 Analisar texto</a>
+                        <a href="/documentos/{{ doc.id }}/json" class="btn btn-info" target="_blank">📋 JSON</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

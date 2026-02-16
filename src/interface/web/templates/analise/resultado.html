@@ -1,0 +1,187 @@
+{% extends "base.html" %}
+
+{% block title %}Resultado da Análise{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Início</a></li>
+                <li class="breadcrumb-item"><a href="/documentos/">Documentos</a></li>
+                <li class="breadcrumb-item"><a href="/documentos/{{ documento_id }}">Documento {{ documento_id }}</a></li>
+                <li class="breadcrumb-item active">Resultado da Análise</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h3>🔍 Resultado da Análise - Documento {{ documento_id }}</h3>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-info">
+                    <strong>Idioma analisado:</strong> 
+                    {% if analise.idioma == 'ru' %}🇷🇺 Russo
+                    {% elif analise.idioma == 'en' %}🇺🇸 Inglês
+                    {% elif analise.idioma == 'pt' %}🇧🇷 Português
+                    {% else %}{{ analise.idioma }}{% endif %}
+                    <br>
+                    <strong>Data da análise:</strong> {{ analise.data_analise.strftime('%d/%m/%Y %H:%M') }}
+                    <br>
+                    <strong>Tempo de processamento:</strong> {{ "%.2f"|format(analise.tempo_processamento) }} segundos
+                </div>
+
+                <!-- Estatísticas do Texto -->
+                <h4 class="mt-4">📊 Estatísticas do Texto</h4>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="metric-card">
+                            <h3>{{ "{:,}".format(analise.estatisticas.total_caracteres) }}</h3>
+                            <p>Caracteres</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="metric-card" style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%);">
+                            <h3>{{ "{:,}".format(analise.estatisticas.total_palavras) }}</h3>
+                            <p>Palavras</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="metric-card" style="background: linear-gradient(135deg, #fd7e14 0%, #ffc107 100%);">
+                            <h3>{{ analise.estatisticas.total_frases }}</h3>
+                            <p>Frases</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="metric-card" style="background: linear-gradient(135deg, #6f42c1 0%, #e83e8c 100%);">
+                            <h3>{{ "%.2f"|format(analise.estatisticas.densidade_lexica) }}</h3>
+                            <p>Densidade Léxica</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">📏 Outras métricas</h5>
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <span>Palavras únicas:</span>
+                                        <strong>{{ "{:,}".format(analise.estatisticas.palavras_unicas) }}</strong>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <span>Tamanho médio da palavra:</span>
+                                        <strong>{{ "%.1f"|format(analise.estatisticas.tamanho_medio_palavra) }}</strong>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <span>Tamanho médio da frase:</span>
+                                        <strong>{{ "%.1f"|format(analise.estatisticas.tamanho_medio_frase) }}</strong>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <span>Total de parágrafos:</span>
+                                        <strong>{{ analise.estatisticas.total_paragrafos }}</strong>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Análise de Sentimento -->
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">😊 Análise de Sentimento</h5>
+                                {% set sentimento = analise.sentimento %}
+                                {% if sentimento.classificacao == 'positivo' %}
+                                    <div class="alert alert-success text-center">
+                                        <h2>😊 POSITIVO</h2>
+                                    </div>
+                                {% elif sentimento.classificacao == 'negativo' %}
+                                    <div class="alert alert-danger text-center">
+                                        <h2>😠 NEGATIVO</h2>
+                                    </div>
+                                {% else %}
+                                    <div class="alert alert-secondary text-center">
+                                        <h2>😐 NEUTRO</h2>
+                                    </div>
+                                {% endif %}
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <span>Polaridade:</span>
+                                        <strong>{{ "%.2f"|format(sentimento.polaridade) }}</strong>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <span>Subjetividade:</span>
+                                        <strong>{{ "%.2f"|format(sentimento.subjetividade) }}</strong>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Palavras mais frequentes -->
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">📈 Palavras mais frequentes</h5>
+                                <ol class="list-group list-group-numbered">
+                                    {% for palavra, freq in analise.palavras_frequentes[:10] %}
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <span>{{ palavra }}</span>
+                                        <span class="badge bg-primary">{{ freq }}</span>
+                                    </li>
+                                    {% endfor %}
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Entidades Encontradas -->
+                <h4 class="mt-4">🏷️ Entidades Encontradas</h4>
+                <div class="row">
+                    {% for tipo, entidades in analise.entidades_por_tipo.items() %}
+                    <div class="col-md-4">
+                        <div class="card mb-3">
+                            <div class="card-header bg-info text-white">
+                                {{ tipo }}
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group">
+                                    {% for entidade in entidades[:10] %}
+                                    <li class="list-group-item">{{ entidade }}</li>
+                                    {% endfor %}
+                                    {% if entidades|length > 10 %}
+                                    <li class="list-group-item text-muted">... e mais {{ entidades|length - 10 }}</li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Nuvem de palavras (se gerada) -->
+                {% if analise.wordcloud_path %}
+                <h4 class="mt-4">🖼️ Nuvem de Palavras</h4>
+                <div class="text-center">
+                    <img src="/{{ analise.wordcloud_path }}" class="img-fluid" alt="Nuvem de palavras">
+                </div>
+                {% endif %}
+
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <a href="/documentos/{{ documento_id }}" class="btn btn-secondary">← Voltar ao documento</a>
+                        <a href="/analise/documento/{{ documento_id }}" class="btn btn-primary">🔍 Nova análise</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

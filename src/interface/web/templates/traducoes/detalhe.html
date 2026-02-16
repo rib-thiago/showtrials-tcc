@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}Tradução {{ idioma|upper }} - Documento {{ documento.id }}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Início</a></li>
+                <li class="breadcrumb-item"><a href="/documentos/">Documentos</a></li>
+                <li class="breadcrumb-item"><a href="/documentos/{{ documento.id }}">Documento {{ documento.id }}</a></li>
+                <li class="breadcrumb-item"><a href="/traducoes/documento/{{ documento.id }}">Traduções</a></li>
+                <li class="breadcrumb-item active">{{ idioma|upper }}</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header 
+                {% if idioma == 'en' %}bg-info
+                {% elif idioma == 'pt' %}bg-success
+                {% elif idioma == 'es' %}bg-warning
+                {% elif idioma == 'fr' %}bg-danger
+                {% else %}bg-secondary{% endif %} text-white">
+                <h3>
+                    {% if idioma == 'en' %}🇺🇸 Tradução para Inglês
+                    {% elif idioma == 'pt' %}🇧🇷 Tradução para Português
+                    {% elif idioma == 'es' %}🇪🇸 Tradução para Espanhol
+                    {% elif idioma == 'fr' %}🇫🇷 Tradução para Francês
+                    {% else %}Tradução para {{ idioma|upper }}{% endif %}
+                </h3>
+                <h5 class="mt-2">{{ documento.titulo[:100] }}{% if documento.titulo|length > 100 %}...{% endif %}</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-info">
+                            <strong>📅 Data da tradução:</strong> {{ traducao.data_traducao.strftime('%d/%m/%Y %H:%M') }}<br>
+                            <strong>🤖 Modelo:</strong> {{ traducao.modelo or 'N/A' }}<br>
+                            <strong>💰 Custo:</strong> ${{ "%.4f"|format(traducao.custo) }}<br>
+                            <strong>📊 Tamanho:</strong> {{ traducao.texto_traduzido|length }} caracteres
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <h5>📄 Conteúdo Traduzido</h5>
+                        <div class="card bg-light">
+                            <div class="card-body" style="max-height: 600px; overflow-y: auto;">
+                                <pre style="white-space: pre-wrap; font-family: inherit;">{{ traducao.texto_traduzido }}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <a href="/traducoes/documento/{{ documento.id }}" class="btn btn-secondary">← Voltar às traduções</a>
+                        <a href="/documentos/{{ documento.id }}" class="btn btn-info">📄 Ver original</a>
+                        <a href="/analise/documento/{{ documento.id }}?idioma={{ idioma }}" class="btn btn-success">
+                            🔍 Analisar esta tradução
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

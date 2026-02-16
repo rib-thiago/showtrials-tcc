@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}Traduções do Documento {{ documento_id }}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Início</a></li>
+                <li class="breadcrumb-item"><a href="/documentos/">Documentos</a></li>
+                <li class="breadcrumb-item"><a href="/documentos/{{ documento_id }}">Documento {{ documento_id }}</a>
+                </li>
+                <li class="breadcrumb-item active">Traduções</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h3>🌐 Traduções do Documento {{ documento_id }}</h3>
+                <h5 class="mt-2">{{ documento_titulo[:100] }}{% if documento_titulo|length > 100 %}...{% endif %}</h5>
+            </div>
+            <div class="card-body">
+                {% if traducoes and traducoes|length > 0 %}
+                <div class="row">
+                    {% for trad in traducoes %}
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100">
+                            <div class="card-header 
+                                    {% if trad.idioma == 'en' %}bg-info
+                                    {% elif trad.idioma == 'pt' %}bg-success
+                                    {% elif trad.idioma == 'es' %}bg-warning
+                                    {% elif trad.idioma == 'fr' %}bg-danger
+                                    {% else %}bg-secondary{% endif %} text-white">
+                                <h5>
+                                    {% if trad.idioma == 'en' %}🇺🇸 Inglês
+                                    {% elif trad.idioma == 'pt' %}🇧🇷 Português
+                                    {% elif trad.idioma == 'es' %}🇪🇸 Espanhol
+                                    {% elif trad.idioma == 'fr' %}🇫🇷 Francês
+                                    {% else %}{{ trad.idioma|upper }}{% endif %}
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Data:</strong>
+                                    {% if trad.data_traducao %}
+                                    {{ trad.data_traducao[:10] if trad.data_traducao is string else
+                                    trad.data_traducao.strftime('%d/%m/%Y') }}
+                                    {% else %}
+                                    Não informada
+                                    {% endif %}
+                                </p>
+                                <p><strong>Modelo:</strong> {{ trad.modelo or 'N/A' }}</p>
+                                <p><strong>Custo:</strong> ${{ "%.4f"|format(trad.custo) if trad.custo else '0.0000' }}
+                                </p>
+                                <p><strong>Tamanho:</strong> {{ trad.texto_traduzido|length if trad.texto_traduzido else
+                                    0 }} caracteres</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="/traducoes/documento/{{ documento_id }}/{{ trad.idioma }}"
+                                    class="btn btn-sm btn-primary">
+                                    👁️ Visualizar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    Nenhuma tradução disponível para este documento.
+                </div>
+                {% endif %}
+
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <a href="/documentos/{{ documento_id }}" class="btn btn-secondary">← Voltar ao Documento</a>
+                        <a href="/analise/documento/{{ documento_id }}" class="btn btn-success">🔍 Analisar texto</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

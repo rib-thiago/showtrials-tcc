@@ -1,0 +1,225 @@
+{% extends "base.html" %}
+
+{% block title %}Análise do Acervo{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Início</a></li>
+                <li class="breadcrumb-item active">Análise do Acervo</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h3>📊 Análise Global do Acervo</h3>
+            </div>
+            <div class="card-body">
+                <!-- Cards de métricas -->
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="metric-card">
+                            <h3>{{ stats.total_docs }}</h3>
+                            <p>Documentos</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="metric-card" style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%);">
+                            <h3>{{ stats.total_palavras }}</h3>
+                            <p>Total de Palavras</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="metric-card" style="background: linear-gradient(135deg, #fd7e14 0%, #ffc107 100%);">
+                            <h3>{{ "%.1f"|format(stats.media_palavras_por_doc) }}</h3>
+                            <p>Média de palavras/doc</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="metric-card" style="background: linear-gradient(135deg, #6f42c1 0%, #e83e8c 100%);">
+                            <h3>{{ stats.documentos_por_tamanho['pequeno (<1000 palavras)'] }}</h3>
+                            <p>Documentos pequenos</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Distribuição por tamanho -->
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                📏 Distribuição por Tamanho
+                            </div>
+                            <div class="card-body">
+                                <canvas id="graficoTamanho"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                🏷️ Top Pessoas Mais Citadas
+                            </div>
+                            <div class="card-body">
+                                {% if stats.pessoas_mais_citadas and stats.pessoas_mais_citadas|length > 0 %}
+                                <ol class="list-group list-group-numbered">
+                                    {% for item in stats.pessoas_mais_citadas %}
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <span>
+                                            {% if item is string %}
+                                                {{ item }}
+                                            {% elif item is iterable and item|length > 1 %}
+                                                {{ item[1] if item[1] else item[0] }}
+                                                <br><small class="text-muted">{{ item[0] }}</small>
+                                            {% else %}
+                                                {{ item }}
+                                            {% endif %}
+                                        </span>
+                                        <span class="badge bg-primary">
+                                            {% if item is iterable and item|length > 1 %}
+                                                {{ item[1] if item[1] is number else item[1] }}
+                                            {% else %}
+                                                1
+                                            {% endif %}
+                                        </span>
+                                    </li>
+                                    {% endfor %}
+                                </ol>
+                                {% else %}
+                                <p class="text-muted">Nenhuma pessoa identificada ainda.</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top locais e organizações -->
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                📍 Locais Mais Citados
+                            </div>
+                            <div class="card-body">
+                                {% if stats.top_locais and stats.top_locais|length > 0 %}
+                                <ol class="list-group list-group-numbered">
+                                    {% for local in stats.top_locais %}
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <span>
+                                            {% if local is string %}
+                                                {{ local }}
+                                            {% elif local is iterable and local|length > 1 %}
+                                                {{ local[0] }}
+                                            {% else %}
+                                                {{ local }}
+                                            {% endif %}
+                                        </span>
+                                        <span class="badge bg-primary">
+                                            {% if local is iterable and local|length > 1 %}
+                                                {{ local[1] }}
+                                            {% else %}
+                                                1
+                                            {% endif %}
+                                        </span>
+                                    </li>
+                                    {% endfor %}
+                                </ol>
+                                {% else %}
+                                <p class="text-muted">Nenhum local identificado ainda.</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                🏢 Organizações Mais Citadas
+                            </div>
+                            <div class="card-body">
+                                {% if stats.top_organizacoes and stats.top_organizacoes|length > 0 %}
+                                <ol class="list-group list-group-numbered">
+                                    {% for org in stats.top_organizacoes %}
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <span>
+                                            {% if org is string %}
+                                                {{ org }}
+                                            {% elif org is iterable and org|length > 1 %}
+                                                {{ org[0] }}
+                                            {% else %}
+                                                {{ org }}
+                                            {% endif %}
+                                        </span>
+                                        <span class="badge bg-primary">
+                                            {% if org is iterable and org|length > 1 %}
+                                                {{ org[1] }}
+                                            {% else %}
+                                                1
+                                            {% endif %}
+                                        </span>
+                                    </li>
+                                    {% endfor %}
+                                </ol>
+                                {% else %}
+                                <p class="text-muted">Nenhuma organização identificada ainda.</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <a href="/analise/acervo/wordcloud" class="btn btn-primary" target="_blank">
+                            🖼️ Gerar Nuvem de Palavras do Acervo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Valores do servidor
+    const valores = [
+        {{ stats.documentos_por_tamanho['pequeno (<1000 palavras)'] }},
+        {{ stats.documentos_por_tamanho['médio (1000-5000 palavras)'] }},
+        {{ stats.documentos_por_tamanho['grande (>5000 palavras)'] }}
+    ];
+    
+    console.log("Valores recebidos:", valores);
+    
+    const ctx = document.getElementById('graficoTamanho').getContext('2d');
+    
+    if (valores[0] === 0 && valores[1] === 0 && valores[2] === 0) {
+        document.getElementById('graficoTamanho').parentNode.innerHTML = '<p class="text-muted">Sem dados suficientes para gerar gráfico.</p>';
+    } else {
+        new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Pequeno (<1000)', 'Médio (1000-5000)', 'Grande (>5000)'],
+                datasets: [{
+                    data: valores,
+                    backgroundColor: ['#28a745', '#ffc107', '#dc3545']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    }
+});
+</script>
+{% endblock %}

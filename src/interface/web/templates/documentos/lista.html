@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}Documentos{% endblock %}
+
+{% block content %}
+<h2>📋 Documentos</h2>
+
+<div class="row mb-3">
+    <div class="col-md-6">
+        <div class="btn-group">
+            <a href="/documentos/?centro=lencenter" class="btn btn-outline-primary {% if centro == 'lencenter' %}active{% endif %}">
+                Leningrad
+            </a>
+            <a href="/documentos/?centro=moscenter" class="btn btn-outline-primary {% if centro == 'moscenter' %}active{% endif %}">
+                Moscow
+            </a>
+            <a href="/documentos/" class="btn btn-outline-secondary {% if not centro %}active{% endif %}">
+                Todos
+            </a>
+        </div>
+    </div>
+</div>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Tipo</th>
+            <th>Data</th>
+            <th>Pessoa</th>
+            <th>Título</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for doc in documentos %}
+        <tr>
+            <td>{{ doc.id }}</td>
+            <td>
+                {% if doc.tipo == 'interrogatorio' %}🔍
+                {% elif doc.tipo == 'carta' %}✉️
+                {% elif doc.tipo == 'acareacao' %}⚖️
+                {% elif doc.tipo == 'acusacao' %}📜
+                {% else %}📄{% endif %}
+                {{ doc.tipo_descricao or 'Desconhecido' }}
+            </td>
+            <td>{{ doc.data_original or 'N/D' }}</td>
+            <td>{{ doc.pessoa_principal_en or doc.pessoa_principal or '' }}</td>
+            <td>{{ doc.titulo[:50] }}...</td>
+            <td>
+                <a href="/documentos/{{ doc.id }}" class="btn btn-sm btn-info">Ver</a>
+                <a href="/analise/documento/{{ doc.id }}" class="btn btn-sm btn-success">Analisar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<nav aria-label="Paginação">
+    <ul class="pagination">
+        {% for p in range(1, total_paginas + 1) %}
+        <li class="page-item {% if p == pagina %}active{% endif %}">
+            <a class="page-link" href="/documentos/?pagina={{ p }}{% if centro %}&centro={{ centro }}{% endif %}">
+                {{ p }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</nav>
+{% endblock %}

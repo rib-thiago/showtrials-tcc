@@ -1,0 +1,228 @@
+{% extends "base.html" %}
+
+{% block title %}Estatísticas{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Início</a></li>
+                <li class="breadcrumb-item active">Estatísticas</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                <h3>📊 Estatísticas do Acervo</h3>
+            </div>
+            <div class="card-body">
+                <!-- Cards principais -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="metric-card">
+                            <h3>{{ stats.total_documentos }}</h3>
+                            <p>Total de Documentos</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="metric-card" style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%);">
+                            <h3>{{ stats.total_traducoes }}</h3>
+                            <p>Total de Traduções</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="metric-card" style="background: linear-gradient(135deg, #fd7e14 0%, #ffc107 100%);">
+                            <h3>{{ "%.1f"|format(stats.percentual_traduzido) }}%</h3>
+                            <p>Traduzido</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gráficos -->
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                🏛️ Documentos por Centro
+                            </div>
+                            <div class="card-body">
+                                <canvas id="graficoCentro"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                📋 Documentos por Tipo
+                            </div>
+                            <div class="card-body">
+                                <canvas id="graficoTipo"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabelas -->
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                👤 Pessoas Mais Frequentes
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Nome (Russo)</th>
+                                            <th>Nome (Traduzido)</th>
+                                            <th>Frequência</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for nome_ru, count, nome_en in stats.pessoas_frequentes[:10] %}
+                                        <tr>
+                                            <td>{{ loop.index }}</td>
+                                            <td>{{ nome_ru[:30] }}{% if nome_ru|length > 30 %}...{% endif %}</td>
+                                            <td>{{ nome_en[:30] }}{% if nome_en|length > 30 %}...{% endif %}</td>
+                                            <td><span class="badge bg-primary">{{ count }}</span></td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                ✉️ Documentos Especiais
+                            </div>
+                            <div class="card-body">
+                                <table class="table">
+                                    <tr>
+                                        <td>Cartas</td>
+                                        <td class="text-end"><span class="badge bg-primary">{{ stats.cartas }}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Declarações</td>
+                                        <td class="text-end"><span class="badge bg-primary">{{ stats.declaracoes }}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Relatórios NKVD</td>
+                                        <td class="text-end"><span class="badge bg-primary">{{ stats.relatorios }}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Acareações</td>
+                                        <td class="text-end"><span class="badge bg-primary">{{ stats.acareacoes }}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Acusações</td>
+                                        <td class="text-end"><span class="badge bg-primary">{{ stats.acusacoes }}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Laudos</td>
+                                        <td class="text-end"><span class="badge bg-primary">{{ stats.laudos }}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Com anexos</td>
+                                        <td class="text-end"><span class="badge bg-primary">{{ stats.documentos_com_anexos }}</span></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Traduções por idioma -->
+                {% if stats.traducoes_por_idioma %}
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                🌐 Traduções por Idioma
+                            </div>
+                            <div class="card-body">
+                                <canvas id="graficoIdiomas"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Custo total -->
+                {% if stats.custo_total_traducoes > 0 %}
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <div class="alert alert-info">
+                            <strong>💰 Custo total de traduções:</strong> ${{ "%.4f"|format(stats.custo_total_traducoes) }} USD
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Gráfico de centros
+    const ctxCentro = document.getElementById('graficoCentro').getContext('2d');
+    new Chart(ctxCentro, {
+        type: 'doughnut',
+        data: {
+            labels: ['Leningrad', 'Moscow'],
+            datasets: [{
+                data: [
+                    {{ stats.documentos_por_centro.get('lencenter', 0) }},
+                    {{ stats.documentos_por_centro.get('moscenter', 0) }}
+                ],
+                backgroundColor: ['#17a2b8', '#6f42c1']
+            }]
+        }
+    });
+
+    // Gráfico de tipos
+    const ctxTipo = document.getElementById('graficoTipo').getContext('2d');
+    new Chart(ctxTipo, {
+        type: 'bar',
+        data: {
+            labels: [{% for tipo, count in stats.documentos_por_tipo.items() %}'{{ tipo }}',{% endfor %}],
+            datasets: [{
+                label: 'Quantidade',
+                data: [{% for tipo, count in stats.documentos_por_tipo.items() %}{{ count }},{% endfor %}],
+                backgroundColor: '#28a745'
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    {% if stats.traducoes_por_idioma %}
+    // Gráfico de idiomas
+    const ctxIdiomas = document.getElementById('graficoIdiomas').getContext('2d');
+    new Chart(ctxIdiomas, {
+        type: 'pie',
+        data: {
+            labels: [{% for idioma, count in stats.traducoes_por_idioma.items() %}'{{ idioma }}',{% endfor %}],
+            datasets: [{
+                data: [{% for idioma, count in stats.traducoes_por_idioma.items() %}{{ count }},{% endfor %}],
+                backgroundColor: ['#17a2b8', '#28a745', '#ffc107', '#dc3545']
+            }]
+        }
+    });
+    {% endif %}
+});
+</script>
+{% endblock %}
