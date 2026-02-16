@@ -34,6 +34,8 @@ from src.application.use_cases.listar_traducoes import ListarTraducoes
 from src.interface.cli.commands_traducao import ComandoTraduzir, ComandoAlternarIdioma
 from src.application.use_cases.exportar_documento import ExportarDocumento
 from src.interface.cli.commands_export import ComandoExportar
+from src.application.use_cases.gerar_relatorio import GerarRelatorio
+from src.interface.cli.commands_relatorio import ComandoRelatorio
 
 class ShowTrialsApp:
     """
@@ -68,6 +70,11 @@ class ShowTrialsApp:
             self.repo_traducao
         )
         self.cmd_exportar = ComandoExportar(self.exportar_use_case)
+        self.relatorio_use_case = GerarRelatorio(
+            self.repo,
+            self.repo_traducao
+        )
+        self.cmd_relatorio = ComandoRelatorio(self.relatorio_use_case)
         
         # 3. Comandos
         self.cmd_listar = ComandoListar(self.listar_use_case)
@@ -99,7 +106,7 @@ class ShowTrialsApp:
         while True:
             escolha = self.menu_principal.mostrar()
             
-            if escolha == '5':
+            if escolha == '6':
                 console.print("\n[green]Até logo![/green]")
                 break
             
@@ -128,6 +135,12 @@ class ShowTrialsApp:
             elif escolha == '4':
                 # Estatísticas
                 self.cmd_estatisticas.executar()
+
+            elif escolha == '5':
+                # Relatórios avançados
+                self.cmd_relatorio.executar()
+            
+
     
 # src/interface/cli/app.py (SUBSTITUIR O MÉTODO _visualizar_e_aguardar)
     def _visualizar_e_aguardar(self, doc_id: int):

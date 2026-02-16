@@ -1,0 +1,246 @@
+# src/application/use_cases/gerar_relatorio.py
+"""
+Caso de uso: Gerar relatórios avançados.
+"""
+
+from typing import Optional, Dict, List, Tuple
+from datetime import datetime
+from collections import Counter
+from pathlib import Path
+
+from src.domain.interfaces.repositories import RepositorioDocumento
+from src.domain.interfaces.repositorio_traducao import RepositorioTraducao
+from src.domain.value_objects.tipo_documento import TipoDocumento
+from src.domain.value_objects.nome_russo import NomeRusso
+
+
+class GerarRelatorio:
+    """
+    Caso de uso para gerar relatórios avançados.
+    """
+    
+    def __init__(self, 
+                 repo_doc: RepositorioDocumento,
+                 repo_trad: Optional[RepositorioTraducao] = None):
+        self.repo_doc = repo_doc
+        self.repo_trad = repo_trad
+    
+    def _coletar_dados(self) -> Dict:
+        """
+        Coleta todos os dados necessários para o relatório.
+        """
+        # Buscar todos os documentos (limitado para performance)
+        documentos = self.repo_doc.listar(limite=5000)
+        
+        # Inicializar contadores
+        centro_counter = Counter()
+        tipo_counter = Counter()
+        pessoa_counter = Counter()
+        ano_counter = Counter()
+        mes_counter = Counter()
+        
+        # Métricas especiais
+        cartas = 0
+        declaracoes = 0
+        relatorios = 0
+        acareacoes = 0
+        acusacoes = 0
+        laudos = 0
+        anexos = 0
+        
+        # Processar documentos
+        for doc in documentos:
+            # Por centro
+            centro_counter[doc.centro] += 1
+            
+            # Por tipo
+            if doc.tipo:
+                tipo_counter[doc.tipo] += 1
+                
+                # Contagens específicas
+                if doc.tipo == 'carta':
+                    cartas += 1
+                elif doc.tipo == 'declaracao':
+                    declaracoes += 1
+                elif doc.tipo == 'relatorio':
+                    relatorios += 1
+                elif doc.tipo == 'acareacao':
+                    acareacoes += 1
+                elif doc.tipo == 'acusacao':
+                    acusacoes += 1
+                elif doc.tipo == 'laudo':
+                    laudos += 1
+            
+            # Pessoas
+            if doc.pessoa_principal:
+                pessoa_counter[doc.pessoa_principal] += 1
+            
+            # Anexos
+            if doc.tem_anexos:
+                anexos += 1
+            
+            # Extrair ano da data original
+            if doc.data_original:
+                import re
+                ano_match = re.search(r'(\d{4})', doc.data_original)
+                if ano_match:
+                    ano_counter[ano_match.group(1)] += 1
+                    
+                    # Mês (simplificado)
+                    if 'December' in doc.data_original or 'декабря' in doc.data_original:
+                        mes_counter['Dezembro'] += 1
+                    elif 'November' in doc.data_original or 'ноября' in doc.data_original:
+                        mes_counter['Novembro'] += 1
+        
+        # Pessoas mais frequentes (com tradução)
+        pessoas_frequentes = []
+        for nome, count in pessoa_counter.most_common(20):
+            try:
+                nome_en = NomeRusso(nome).transliterar()
+            except:
+                nome_en = nome
+            pessoas_frequentes.append((nome, count, nome_en))
+        
+        # Dados de tradução
+        total_traducoes = 0
+        traducoes_por_idioma = {}
+        
+        if self.repo_trad:
+            # Simplificado - em produção, faria uma query agregada
+            for doc in documentos[:100]:  # Amostra
+                traducoes = self.repo_trad.listar_por_documento(doc.id)
+                total_traducoes += len(traducoes)
+                for t in traducoes:
+                    idioma = t.idioma
+                    traducoes_por_idioma[idioma] = traducoes_por_idioma.get(idioma, 0) + 1
+        
+        return {
+            'total_documentos': len(documentos),
+            'total_traducoes': total_traducoes,
+            'documentos_por_centro': dict(centro_counter),
+            'documentos_por_tipo': dict(tipo_counter),
+            'pessoas_frequentes': pessoas_frequentes[:15],
+            'anos': dict(ano_counter.most_common()),
+            'meses': dict(mes_counter),
+            'cartas': cartas,
+            'declaracoes': declaracoes,
+            'relatorios': relatorios,
+            'acareacoes': acareacoes,
+            'acusacoes': acusacoes,
+            'laudos': laudos,
+            'documentos_com_anexos': anexos,
+            'traducoes_por_idioma': traducoes_por_idioma,
+            'data_geracao': datetime.now().isoformat()[:10]
+        }
+    
+    def gerar_relatorio_txt(self) -> str:
+        """
+        Gera relatório em formato texto.
+        """
+        dados = self._coletar_dados()
+        
+        linhas = []
+        linhas.append("=" * 80)
+        linhas.append("RELATÓRIO DO ACERVO - SHOW TRIALS".center(80))
+        linhas.append(f"Data: {dados['data_geracao']}".center(80))
+        linhas.append("=" * 80)
+        linhas.append("")
+        
+        # 1. Visão Geral
+        linhas.append("📊 VISÃO GERAL")
+        linhas.append("-" * 40)
+        linhas.append(f"Total de documentos: {dados['total_documentos']}")
+        linhas.append(f"Total de traduções: {dados['total_traducoes']}")
+        linhas.append(f"Documentos com anexos: {dados['documentos_com_anexos']}")
+        if dados['total_documentos'] > 0:
+            pct = (dados['total_traducoes'] / dados['total_documentos'] * 100)
+            linhas.append(f"Percentual traduzido: {pct:.1f}%")
+        linhas.append("")
+        
+        # 2. Por Centro
+        linhas.append("🏛️  DOCUMENTOS POR CENTRO")
+        linhas.append("-" * 40)
+        for centro, total in dados['documentos_por_centro'].items():
+            nome = "Leningrad" if centro == "lencenter" else "Moscow"
+            pct = (total / dados['total_documentos'] * 100)
+            linhas.append(f"{nome}: {total} ({pct:.1f}%)")
+        linhas.append("")
+        
+        # 3. Por Tipo
+        linhas.append("📋 DOCUMENTOS POR TIPO")
+        linhas.append("-" * 40)
+        tipos_ordenados = sorted(dados['documentos_por_tipo'].items(), key=lambda x: x[1], reverse=True)
+        for tipo, total in tipos_ordenados:
+            try:
+                tipo_enum = TipoDocumento(tipo)
+                nome = tipo_enum.descricao_pt
+            except:
+                nome = tipo
+            pct = (total / dados['total_documentos'] * 100)
+            linhas.append(f"{nome}: {total} ({pct:.1f}%)")
+        linhas.append("")
+        
+        # 4. Por Ano
+        if dados['anos']:
+            linhas.append("📅 DOCUMENTOS POR ANO")
+            linhas.append("-" * 40)
+            anos_ordenados = sorted(dados['anos'].items())
+            for ano, total in anos_ordenados:
+                linhas.append(f"{ano}: {total}")
+            linhas.append("")
+        
+        # 5. Pessoas Mais Frequentes
+        linhas.append("👤 PESSOAS MAIS FREQUENTES")
+        linhas.append("-" * 40)
+        for i, (nome_ru, total, nome_en) in enumerate(dados['pessoas_frequentes'][:10], 1):
+            linhas.append(f"{i:2d}. {nome_en} ({nome_ru}): {total}")
+        linhas.append("")
+        
+        # 6. Documentos Especiais
+        linhas.append("📌 DOCUMENTOS ESPECIAIS")
+        linhas.append("-" * 40)
+        linhas.append(f"✉️  Cartas: {dados['cartas']}")
+        linhas.append(f"📝 Declarações: {dados['declaracoes']}")
+        linhas.append(f"📋 Relatórios NKVD: {dados['relatorios']}")
+        linhas.append(f"⚖️  Acareações: {dados['acareacoes']}")
+        linhas.append(f"📜 Acusações: {dados['acusacoes']}")
+        linhas.append(f"🏥 Laudos: {dados['laudos']}")
+        linhas.append("")
+        
+        # 7. Traduções
+        if dados['traducoes_por_idioma']:
+            linhas.append("🌐 TRADUÇÕES POR IDIOMA")
+            linhas.append("-" * 40)
+            idiomas_nomes = {'en': 'Inglês', 'pt': 'Português', 'es': 'Espanhol', 'fr': 'Francês'}
+            for idioma, total in dados['traducoes_por_idioma'].items():
+                nome = idiomas_nomes.get(idioma, idioma)
+                linhas.append(f"{nome}: {total}")
+            linhas.append("")
+        
+        linhas.append("=" * 80)
+        linhas.append("FIM DO RELATÓRIO".center(80))
+        linhas.append("=" * 80)
+        
+        return '\n'.join(linhas)
+    
+    def salvar_relatorio(self, formato: str = 'txt', diretorio: str = 'relatorios') -> str:
+        """
+        Gera e salva relatório em arquivo.
+        """
+        Path(diretorio).mkdir(exist_ok=True)
+        
+        if formato == 'txt':
+            conteudo = self.gerar_relatorio_txt()
+            nome_arquivo = f"relatorio_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
+            caminho = Path(diretorio) / nome_arquivo
+            
+            with open(caminho, 'w', encoding='utf-8') as f:
+                f.write(conteudo)
+            
+            return str(caminho)
+        
+        elif formato == 'html':
+            # Placeholder para versão HTML
+            return "relatorio.html (em desenvolvimento)"
+        
+        return ""
