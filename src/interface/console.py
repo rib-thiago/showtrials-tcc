@@ -60,7 +60,10 @@ def mostrar_aviso(mensagem: str):
 
 
 def spinner(mensagem: str, funcao, *args, **kwargs):
-    """Executa função com spinner de carregamento."""
+    """
+    Executa função com spinner de carregamento.
+    Captura exceções e as relança após o spinner.
+    """
     with Progress(
         SpinnerColumn(),
         TextColumn("[progress.description]{task.description}"),
@@ -68,4 +71,21 @@ def spinner(mensagem: str, funcao, *args, **kwargs):
         transient=True
     ) as progress:
         progress.add_task(f"[cyan]{mensagem}[/cyan]", total=None)
-        return funcao(*args, **kwargs)
+        try:
+            resultado = funcao(*args, **kwargs)
+            return resultado
+        except Exception as e:
+            # Relançar a exceção após o spinner
+            raise e
+
+# Garantir que as funções estejam disponíveis globalmente
+__all__ = [
+    'console',
+    'limpar_tela',
+    'cabecalho',
+    'mostrar_erro',
+    'mostrar_sucesso',
+    'mostrar_aviso',
+    'spinner'
+]
+

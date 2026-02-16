@@ -92,3 +92,41 @@ class ComandoEstatisticas:
         stats = self.estatisticas_use_case.executar()
         self.presenter.estatisticas(stats)
         input("\n[cyan]Pressione Enter para voltar...[/cyan]")
+
+
+# src/interface/cli/commands.py (ADICIONAR ESTA CLASSE)
+
+class ComandoAlternarIdioma:
+    """Comando para alternar entre idiomas durante visualização."""
+    
+    def __init__(self, listar_traducoes_use_case, obter_documento_use_case):
+        self.listar_traducoes = listar_traducoes_use_case
+        self.obter_documento = obter_documento_use_case
+    
+    def executar(self, documento_id: int, idioma_atual: str = 'original') -> str:
+        """
+        Alterna entre original e traduções disponíveis.
+        Retorna o novo idioma selecionado.
+        """
+        # Buscar traduções disponíveis
+        traducoes = self.listar_traducoes(documento_id)
+        
+        if not traducoes:
+            return 'original'
+        
+        # Determinar próximo idioma
+        if idioma_atual == 'original':
+            # Vai para primeira tradução
+            return traducoes[0].idioma
+        else:
+            # Encontra índice atual e vai para o próximo
+            idiomas = [t.idioma for t in traducoes]
+            try:
+                idx = idiomas.index(idioma_atual)
+                if idx + 1 < len(idiomas):
+                    return idiomas[idx + 1]
+                else:
+                    # Volta para original
+                    return 'original'
+            except ValueError:
+                return traducoes[0].idioma

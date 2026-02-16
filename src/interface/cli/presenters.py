@@ -132,12 +132,6 @@ class DocumentoPresenter:
         console.print(texto)
         console.print("─" * 80)
         
-        # Rodapé com comandos
-        console.print("\n[dim]COMANDOS:[/dim]")
-        console.print("  [green]⏎ Enter[/green] - Voltar à listagem")
-        console.print("  [yellow]e[/yellow] - Exportar documento")
-        if hasattr(dto, 'traducoes') and dto.traducoes:
-            console.print("  [cyan]t[/cyan] - Alternar entre traduções")
 
     @classmethod
     def estatisticas(cls, stats):
