@@ -35,20 +35,6 @@ class ListarDocumentos:
                  tipo: Optional[str] = None) -> Dict:
         """
         Executa a listagem com filtros e paginação.
-        
-        Args:
-            pagina: Número da página (começa em 1)
-            limite: Itens por página
-            centro: Filtrar por centro
-            tipo: Filtrar por tipo
-            
-        Returns:
-            Dict com:
-                - items: List[DocumentoListaDTO]
-                - total: int
-                - pagina: int
-                - total_paginas: int
-                - filtros: dict
         """
         offset = (pagina - 1) * limite
         
@@ -66,8 +52,8 @@ class ListarDocumentos:
         # Converter para DTO
         items = []
         for doc in documentos:
-            # Verificar se tem tradução (simplificado)
-            tem_traducao = False  # Será implementado depois
+            # Verificar se tem tradução
+            tem_traducao = self._verificar_traducoes(doc.id)
             
             dto = DocumentoListaDTO.from_domain(
                 doc,
@@ -121,3 +107,27 @@ class ListarDocumentos:
             resultado.append((tipo, descricao, icone, count))
         
         return resultado
+
+    def _verificar_traducoes(self, documento_id: int) -> bool:
+        """
+        Verifica se documento tem alguma tradução consultando o banco.
+        """
+        try:
+            # Usar o repositório para buscar traduções
+            # Como o repositório atual não tem método para traduções,
+            # vamos fazer uma consulta direta (temporário)
+            from src.infrastructure.persistence.sqlite_repository import SQLiteDocumentoRepository
+            repo = SQLiteDocumentoRepository()
+            
+            with repo._conexao() as conn:
+                cursor = conn.cursor()
+                cursor.execute(
+                    "SELECT COUNT(*) FROM traducoes WHERE documento_id = ?",
+                    (documento_id,)
+                )
+                count = cursor.fetchone()[0]
+                return count > 0
+        except Exception as e:
+            # Se algo der errado, assume que não tem tradução
+            print(f"Erro ao verificar traduções: {e}")
+            return False

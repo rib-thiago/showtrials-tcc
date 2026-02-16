@@ -41,14 +41,18 @@ class DocumentoDTO:
     tamanho_caracteres: int = 0
     tamanho_palavras: int = 0
     
+    # Traduções
+    traducoes: List[Dict] = field(default_factory=list)
+    
     @classmethod
-    def from_domain(cls, documento, tradutor_nomes=None):
+    def from_domain(cls, documento, tradutor_nomes=None, traducoes=None):
         """
         Converte entidade Documento para DTO.
         
         Args:
             documento: Entidade Documento do domínio
             tradutor_nomes: Função opcional para traduzir nomes
+            traducoes: Lista opcional de traduções do documento
         """
         # Traduzir pessoa principal se houver tradutor
         pessoa_en = None
@@ -58,6 +62,9 @@ class DocumentoDTO:
                 pessoa_en = nome.transliterar()
             except:
                 pessoa_en = documento.pessoa_principal
+        
+        # Calcular palavras (aproximado)
+        palavras = len(documento.texto.split()) if documento.texto else 0
         
         return cls(
             id=documento.id,
@@ -77,7 +84,8 @@ class DocumentoDTO:
             envolvidos=documento.envolvidos or [],
             tem_anexos=documento.tem_anexos,
             tamanho_caracteres=documento.tamanho_caracteres,
-            tamanho_palavras=documento.tamanho_palavras
+            tamanho_palavras=palavras,
+            traducoes=traducoes or []
         )
 
 

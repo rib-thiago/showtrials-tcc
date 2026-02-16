@@ -26,17 +26,16 @@ class ObterDocumento:
     def executar(self, documento_id: int) -> Optional[DocumentoDTO]:
         """
         Busca documento por ID e converte para DTO.
-        
-        Args:
-            documento_id: ID do documento
-            
-        Returns:
-            DocumentoDTO ou None se não encontrado
         """
         documento = self.repo.buscar_por_id(documento_id)
         
         if not documento:
             return None
+        
+        # Buscar traduções do documento
+        from src.application.use_cases.listar_traducoes import ListarTraducoes
+        listar_trad = ListarTraducoes(self.repo)
+        traducoes = listar_trad.executar(documento_id)
         
         # Função de tradução
         def tradutor(nome):
@@ -47,4 +46,4 @@ class ObterDocumento:
             except:
                 return nome
         
-        return DocumentoDTO.from_domain(documento, tradutor)
+        return DocumentoDTO.from_domain(documento, tradutor, traducoes)
