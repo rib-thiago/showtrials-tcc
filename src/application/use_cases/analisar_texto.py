@@ -4,11 +4,12 @@ Caso de uso: Analisar um documento individual.
 """
 
 from typing import Optional
-from datetime import datetime  # <-- IMPORT ADICIONADO!
+from datetime import datetime
 from pathlib import Path
 
 from src.domain.interfaces.repositories import RepositorioDocumento
 from src.domain.interfaces.repositorio_traducao import RepositorioTraducao
+from src.infrastructure.registry import ServiceRegistry
 from src.infrastructure.analysis.spacy_analyzer import SpacyAnalyzer
 from src.infrastructure.analysis.wordcloud_generator import WordCloudGenerator
 from src.domain.value_objects.analise_texto import AnaliseTexto
@@ -17,15 +18,30 @@ from src.domain.value_objects.analise_texto import AnaliseTexto
 class AnalisarDocumento:
     """
     Caso de uso para analisar um documento.
+    Agora usa Service Registry para obter serviços sob demanda.
     """
     
     def __init__(self,
                  repo_doc: RepositorioDocumento,
-                 repo_trad: Optional[RepositorioTraducao] = None):
+                 repo_trad: Optional[RepositorioTraducao] = None,
+                 registry: Optional[ServiceRegistry] = None):
+        """
+        Args:
+            repo_doc: Repositório de documentos
+            repo_trad: Repositório de traduções (opcional)
+            registry: Registry de serviços (para lazy loading)
+        """
         self.repo_doc = repo_doc
         self.repo_trad = repo_trad
-        self.analyzer = SpacyAnalyzer()
-        self.wordcloud = WordCloudGenerator()
+        self.registry = registry or ServiceRegistry()
+    
+    def _get_analyzer(self) -> SpacyAnalyzer:
+        """Obtém analisador spaCy do registry (lazy)."""
+        return self.registry.get('spacy')
+    
+    def _get_wordcloud(self) -> WordCloudGenerator:
+        """Obtém gerador de wordcloud do registry (lazy)."""
+        return self.registry.get('wordcloud')
     
     def executar(self, 
                  documento_id: int,
@@ -33,6 +49,14 @@ class AnalisarDocumento:
                  gerar_wordcloud: bool = False) -> Optional[AnaliseTexto]:
         """
         Analisa um documento específico.
+        
+        Args:
+            documento_id: ID do documento
+            idioma: 'ru' (original) ou código de tradução
+            gerar_wordcloud: Se True, gera imagem da nuvem
+        
+        Returns:
+            AnaliseTexto com resultados
         """
         # 1. Buscar texto
         if idioma == 'ru':
@@ -48,8 +72,9 @@ class AnalisarDocumento:
                 return None
             texto = traducao.texto_traduzido
         
-        # 2. Analisar
-        analise = self.analyzer.analisar(
+        # 2. Analisar (usa registry para obter analyzer)
+        analyzer = self._get_analyzer()
+        analise = analyzer.analisar(
             texto=texto,
             documento_id=documento_id,
             idioma=idioma
@@ -57,15 +82,16 @@ class AnalisarDocumento:
         
         # 3. Gerar wordcloud se solicitado
         if gerar_wordcloud:
+            wordcloud = self._get_wordcloud()
             nome_arquivo = f"wordcloud_{documento_id}_{idioma}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.png"
             caminho = Path("analises") / nome_arquivo
-            self.wordcloud.gerar(
+            wordcloud.gerar(
                 texto=texto,
                 titulo=f"Documento {documento_id} - {idioma}",
                 idioma=idioma,
                 salvar_em=str(caminho)
             )
-            # Adicionar caminho ao objeto de análise (precisa estender a classe)
-            # Por enquanto, apenas retornamos a análise
+            # Opcional: adicionar caminho à análise
+            # analise.wordcloud_path = str(caminho)
         
         return analise
