@@ -1,6 +1,7 @@
 # src/infrastructure/analysis/spacy_analyzer.py
 """
 Integração com SpaCy para análise de texto multilíngue.
+Versão com lazy loading - modelos carregados sob demanda.
 """
 
 import spacy
@@ -8,17 +9,20 @@ from typing import List, Dict, Optional
 import time
 from collections import Counter
 import re
-from datetime import datetime  # <-- DEVE EXISTIR
+import logging
+from datetime import datetime  # <-- IMPORT ADICIONADO!
 
 from src.domain.value_objects.analise_texto import (
     AnaliseTexto, Entidade, Sentimento, EstatisticasTexto
 )
 
+logger = logging.getLogger(__name__)
+
 
 class SpacyAnalyzer:
     """
-    Analisador de texto usando SpaCy.
-    Suporta múltiplos idiomas.
+    Analisador de texto usando SpaCy com lazy loading.
+    Modelos são carregados apenas quando necessários.
     """
     
     # Mapeamento de idiomas para modelos SpaCy
@@ -45,29 +49,67 @@ class SpacyAnalyzer:
     }
     
     def __init__(self):
-        self._modelos = {}
-        self._carregar_modelos()
+        """Inicializa sem carregar modelos."""
+        self._models = {}  # Cache de modelos carregados
+        self._stats = {lang: {'loaded': False, 'time': None} for lang in self.MODELOS}
+        logger.info("🔧 SpacyAnalyzer inicializado (modelos serão carregados sob demanda)")
     
-    def _carregar_modelos(self):
-        """Carrega modelos sob demanda."""
-        for idioma, modelo in self.MODELOS.items():
-            try:
-                self._modelos[idioma] = spacy.load(modelo)
-                print(f"✅ Modelo SpaCy carregado: {modelo}")
-            except OSError:
-                print(f"⚠️ Modelo {modelo} não encontrado. Instale com:")
-                print(f"   python -m spacy download {modelo}")
-                self._modelos[idioma] = None
-    
-    def _get_nlp(self, idioma: str):
-        """Retorna modelo para o idioma."""
-        if idioma not in self._modelos:
+    def _get_model(self, idioma: str):
+        """
+        Carrega modelo sob demanda e mantém em cache.
+        
+        Args:
+            idioma: Código do idioma (ru, en, pt)
+        
+        Returns:
+            Modelo spaCy carregado
+        """
+        if idioma not in self.MODELOS:
             raise ValueError(f"Idioma não suportado: {idioma}")
         
-        if self._modelos[idioma] is None:
-            raise RuntimeError(f"Modelo para {idioma} não carregado")
+        # Retorna do cache se já carregado
+        if idioma in self._models:
+            return self._models[idioma]
         
-        return self._modelos[idioma]
+        modelo_nome = self.MODELOS[idioma]
+        logger.info(f"🔄 Carregando modelo spaCy: {modelo_nome}")
+        
+        try:
+            start = time.time()
+            modelo = spacy.load(modelo_nome)
+            elapsed = time.time() - start
+            
+            self._models[idioma] = modelo
+            self._stats[idioma] = {'loaded': True, 'time': elapsed}
+            logger.info(f"✅ Modelo {modelo_nome} carregado em {elapsed:.2f}s")
+            
+            return modelo
+            
+        except OSError as e:
+            logger.error(f"❌ Modelo {modelo_nome} não encontrado: {e}")
+            logger.info(f"   Instale com: python -m spacy download {modelo_nome}")
+            raise
+    
+    def _get_nlp(self, idioma: str):
+        """Retorna modelo para o idioma (com lazy loading)."""
+        return self._get_model(idioma)
+    
+    def get_loaded_models(self) -> Dict[str, bool]:
+        """Retorna quais modelos estão carregados."""
+        return {lang: lang in self._models for lang in self.MODELOS}
+    
+    def preload_model(self, idioma: str) -> bool:
+        """
+        Pré-carrega um modelo especificado.
+        
+        Returns:
+            True se carregado com sucesso
+        """
+        try:
+            self._get_model(idioma)
+            return True
+        except:
+            return False
     
     def _calcular_estatisticas(self, texto: str, doc) -> EstatisticasTexto:
         """Calcula estatísticas do texto."""
@@ -107,7 +149,7 @@ class SpacyAnalyzer:
             tipo_pt = self.TIPOS_ENTIDADE.get(ent.tipo, ent.tipo)
             if tipo_pt not in grupos:
                 grupos[tipo_pt] = []
-            if ent.texto not in grupos[tipo_pt]:  # <-- ent.texto, não ent.text
+            if ent.texto not in grupos[tipo_pt]:
                 grupos[tipo_pt].append(ent.texto)
         return grupos
     
@@ -116,15 +158,20 @@ class SpacyAnalyzer:
         Análise de sentimento básica.
         Para análise avançada, usaríamos transformers.
         """
-        from textblob import TextBlob
-        
-        if idioma == 'en':
-            blob = TextBlob(texto)
-            polaridade = blob.sentiment.polarity
-            subjetividade = blob.sentiment.subjectivity
-        else:
-            # Para russo/português, usaríamos modelo específico
-            # Placeholder
+        try:
+            from textblob import TextBlob
+            
+            if idioma == 'en':
+                blob = TextBlob(texto)
+                polaridade = blob.sentiment.polarity
+                subjetividade = blob.sentiment.subjectivity
+            else:
+                # Para russo/português, usaríamos modelo específico
+                # Placeholder
+                polaridade = 0.0
+                subjetividade = 0.5
+        except ImportError:
+            # TextBlob não instalado
             polaridade = 0.0
             subjetividade = 0.5
         
@@ -160,14 +207,16 @@ class SpacyAnalyzer:
                  idioma: str = 'ru') -> AnaliseTexto:
         """
         Analisa texto completo.
+        O modelo é carregado sob demanda na primeira chamada.
         """
+        logger.info(f"🔍 Analisando documento {documento_id} em {idioma}")
         inicio = time.time()
         
-        # Carregar modelo
-        nlp = self._get_nlp(idioma)
+        # Carregar modelo (lazy)
+        nlp = self._get_model(idioma)
         
-        # Processar texto
-        doc = nlp(texto[:100000])  # Limitar tamanho por performance
+        # Processar texto (limitado por performance)
+        doc = nlp(texto[:100000])
         
         # Estatísticas
         estatisticas = self._calcular_estatisticas(texto, doc)
@@ -183,6 +232,7 @@ class SpacyAnalyzer:
         palavras_freq = self._palavras_frequentes(doc)
         
         tempo = time.time() - inicio
+        logger.info(f"✅ Análise concluída em {tempo:.2f}s - {len(entidades)} entidades encontradas")
         
         return AnaliseTexto(
             documento_id=documento_id,

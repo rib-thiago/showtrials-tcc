@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}Administração - Serviços{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Início</a></li>
+                <li class="breadcrumb-item active">Administração de Serviços</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h3>🔧 Gerenciamento de Serviços</h3>
+            </div>
+            <div class="card-body">
+                <p class="lead">Serviços são carregados sob demanda para otimizar performance e memória.</p>
+                
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Serviço</th>
+                            <th>Status</th>
+                            <th>Lazy</th>
+                            <th>Carregado</th>
+                            <th>Chamadas</th>
+                            <th>Tempo de carga</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for name, info in status.items() %}
+                        <tr>
+                            <td><strong>{{ name }}</strong></td>
+                            <td>
+                                {% if info.loaded %}
+                                <span class="badge bg-success">Ativo</span>
+                                {% else %}
+                                <span class="badge bg-secondary">Inativo</span>
+                                {% endif %}
+                            </td>
+                            <td>{{ "Sim" if info.lazy else "Não" }}</td>
+                            <td>{{ "Sim" if info.loaded else "Não" }}</td>
+                            <td>{{ info.calls }}</td>
+                            <td>
+                                {% if info.load_time %}
+                                {{ "%.2f"|format(info.load_time) }}s
+                                {% else %}
+                                -
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if info.loaded %}
+                                <button class="btn btn-sm btn-warning" onclick="clearCache('{{ name }}')">
+                                    🧹 Limpar cache
+                                </button>
+                                {% endif %}
+                                
+                                {% if name == 'spacy' and not info.loaded %}
+                                <button class="btn btn-sm btn-info" onclick="preloadSpacy('ru')">
+                                    🇷🇺 Pré-carregar russo
+                                </button>
+                                <button class="btn btn-sm btn-info" onclick="preloadSpacy('en')">
+                                    🇺🇸 Pré-carregar inglês
+                                </button>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function clearCache(service) {
+    fetch(`/admin/services/${service}/clear-cache`, {
+        method: 'POST',
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(`Cache limpo: ${data.message}`);
+        location.reload();
+    });
+}
+
+function preloadSpacy(lang) {
+    fetch(`/admin/services/spacy/preload?lang=${lang}`)
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert(`Modelo ${lang} pré-carregado com sucesso!`);
+        } else {
+            alert(`Falha ao pré-carregar ${lang}`);
+        }
+        location.reload();
+    });
+}
+</script>
+{% endblock %}

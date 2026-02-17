@@ -1,30 +1,42 @@
 # src/application/use_cases/traduzir_documento.py
 """
 Caso de uso: Traduzir um documento.
-Integra com Google Translate e salva no repositório.
+Integra com Google Translate via Service Registry.
 """
 
 from typing import Optional
 from datetime import datetime
 
 from src.domain.entities.traducao import Traducao
-from src.domain.interfaces.repositories import RepositorioDocumento  # <-- CORRIGIDO
+from src.domain.interfaces.repositories import RepositorioDocumento
 from src.domain.interfaces.repositorio_traducao import RepositorioTraducao
+from src.infrastructure.registry import ServiceRegistry
 from src.application.dtos.traducao_dto import TraducaoDTO
 
 
 class TraduzirDocumento:
     """
     Caso de uso para traduzir um documento.
+    Agora usa Service Registry para obter o tradutor sob demanda.
     """
     
     def __init__(self, 
                  repo_doc: RepositorioDocumento,
                  repo_trad: RepositorioTraducao,
-                 tradutor_service):  # Serviço externo (Google Translate)
+                 registry: Optional[ServiceRegistry] = None):
+        """
+        Args:
+            repo_doc: Repositório de documentos
+            repo_trad: Repositório de traduções
+            registry: Registry de serviços (para lazy loading)
+        """
         self.repo_doc = repo_doc
         self.repo_trad = repo_trad
-        self.tradutor = tradutor_service
+        self.registry = registry or ServiceRegistry()
+    
+    def _get_translator(self):
+        """Obtém tradutor do registry (lazy)."""
+        return self.registry.get('translator')
     
     def executar(self, 
                  documento_id: int, 
@@ -52,9 +64,11 @@ class TraduzirDocumento:
             if existente:
                 return TraducaoDTO.from_domain(existente)
         
-        # 3. Traduzir usando serviço externo
+        # 3. Obter tradutor do registry e traduzir
+        tradutor = self._get_translator()
+        
         try:
-            texto_traduzido = self.tradutor.traduzir(
+            texto_traduzido = tradutor.traduzir(
                 documento.texto,
                 destino=idioma_destino
             )
