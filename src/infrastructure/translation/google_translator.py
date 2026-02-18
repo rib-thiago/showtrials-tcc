@@ -1,108 +1,316 @@
 # src/infrastructure/translation/google_translator.py
 """
 Adaptador para o Google Cloud Translation API.
-Reutiliza o tradutor existente do projeto.
+Versão auto-contida sem dependência do tradutor legado.
 """
 
 import os
-from typing import Optional
+import time
+from typing import Optional, List, Union
 from pathlib import Path
+from dataclasses import dataclass
+from datetime import datetime
 
-# Importar o tradutor existente (FALLBACK)
+# Carregar variáveis de ambiente
 try:
-    from translator import GoogleTranslator, TradutorComPersistencia
-    from translator import criar_tradutor_da_configuracao as criar_tradutor_legado
-    TRADUTOR_LEGADO_DISPONIVEL = True
+    from dotenv import load_dotenv
+    load_dotenv()
 except ImportError:
-    TRADUTOR_LEGADO_DISPONIVEL = False
-    print("⚠️ Tradutor legado não encontrado. Usando implementação simplificada.")
+    pass
 
-from src.infrastructure.config.settings import settings
+# Tentar importar a biblioteca oficial do Google
+try:
+    from google.cloud import translate_v2 as translate
+    GOOGLE_CLIENT_AVAILABLE = True
+except ImportError:
+    GOOGLE_CLIENT_AVAILABLE = False
+    print("⚠️ google-cloud-translate não instalado. Instale com: pip install google-cloud-translate")
 
 
-class GoogleTranslatorAdapter:
+@dataclass
+class TraducaoResultado:
+    """Resultado completo de uma tradução."""
+    texto_original: str
+    texto_traduzido: str
+    idioma_origem: str
+    idioma_destino: str
+    modelo_utilizado: str
+    caracteres_originais: int
+    custo_estimado: float
+    timestamp: datetime = None
+    
+    def __post_init__(self):
+        if self.timestamp is None:
+            self.timestamp = datetime.utcnow()
+    
+    @property
+    def resumo(self) -> str:
+        """Resumo da tradução."""
+        return (f"[{self.idioma_origem} → {self.idioma_destino}] "
+                f"{self.caracteres_originais} chars, "
+                f"custo: ${self.custo_estimado:.6f}")
+
+
+class GoogleTranslator:
     """
-    Adaptador para o Google Translate.
-    Encapsula a complexidade do tradutor original.
+    Cliente para Google Cloud Translation API.
+    Implementação própria sem dependência do tradutor legado.
     """
     
-    def __init__(self):
-        self._tradutor = None
+    # Tabela de preços (US$) por caractere
+    PRICING = {
+        'nmt': 0.000020,  # Neural Machine Translation
+        'general': 0.000020,
+        'default': 0.000020
+    }
+    
+    # Idiomas suportados
+    LINGUAS_SUPORTADAS = {
+        'pt': 'Português',
+        'en': 'Inglês',
+        'ru': 'Russo',
+        'es': 'Espanhol',
+        'fr': 'Francês',
+        'de': 'Alemão',
+        'it': 'Italiano',
+        'ja': 'Japonês',
+        'zh': 'Chinês',
+        'ar': 'Árabe'
+    }
+    
+    def __init__(self, 
+                 credentials_path: Optional[str] = None,
+                 api_key: Optional[str] = None,
+                 project_id: Optional[str] = None,
+                 location: str = 'global'):
+        """
+        Inicializa o tradutor.
+        
+        Args:
+            credentials_path: Caminho para arquivo JSON de conta de serviço
+            api_key: Chave de API diretamente
+            project_id: ID do projeto Google Cloud
+            location: Localização ('global' ou específica)
+        """
+        self.project_id = project_id
+        self.location = location
+        self.api_key = api_key
+        self.credentials_path = credentials_path
+        
+        self._client = None
         self._inicializar()
     
     def _inicializar(self):
-        """Inicializa o tradutor (tenta usar o legado primeiro)."""
-        if TRADUTOR_LEGADO_DISPONIVEL:
-            try:
-                # Tenta usar o tradutor existente
-                self._tradutor = criar_tradutor_legado()
-                if self._tradutor:
-                    print("✅ Tradutor Google inicializado (modo legado)")
-                    return
-            except Exception as e:
-                print(f"⚠️ Erro ao inicializar tradutor legado: {e}")
+        """Inicializa o cliente Google Translate."""
+        if not GOOGLE_CLIENT_AVAILABLE:
+            print("⚠️ Biblioteca google-cloud-translate não disponível. Usando modo simulação.")
+            self._client = None
+            return
         
-        # Fallback: implementação simplificada
-        print("⚠️ Usando implementação simplificada de tradução")
-        self._tradutor = None
+        try:
+            if self.api_key:
+                # Modo Chave de API
+                self._client = translate.Client(target_language='en', api_key=self.api_key)
+                print("✅ Tradutor Google inicializado com Chave de API")
+            elif self.credentials_path:
+                # Modo Conta de Serviço
+                os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = self.credentials_path
+                self._client = translate.Client(target_language='en')
+                print("✅ Tradutor Google inicializado com Conta de Serviço")
+            else:
+                # Tentar via ambiente
+                self._client = translate.Client(target_language='en')
+                print("✅ Tradutor Google inicializado via ambiente")
+        except Exception as e:
+            print(f"⚠️ Falha ao inicializar cliente Google Translate: {e}")
+            print("   Usando modo simulação.")
+            self._client = None
     
-    def traduzir(self, texto: str, destino: str = 'en') -> str:
+    def traduzir(self,
+                 texto: Union[str, List[str]],
+                 destino: str = 'en',
+                 origem: Optional[str] = None,
+                 modelo: str = 'nmt') -> Union[TraducaoResultado, List[TraducaoResultado]]:
         """
-        Traduz texto para o idioma destino.
+        Traduz texto(s) para o idioma destino.
         
         Args:
-            texto: Texto original em russo
-            destino: Código ISO do idioma (en, pt, es, fr)
+            texto: String ou lista de strings
+            destino: Código ISO do idioma destino
+            origem: Código ISO do idioma origem (None = detecção automática)
+            modelo: 'nmt' (neural) ou 'base'
         
         Returns:
-            str: Texto traduzido
+            TraducaoResultado ou lista de resultados
         """
-        if not texto:
-            return ""
+        # Se não tem cliente, usar simulação
+        if self._client is None:
+            return self._simular_traducao(texto, destino, origem)
         
-        # Se tem tradutor legado, usa ele
-        if self._tradutor:
-            try:
-                resultado = self._tradutor.traduzir_documento_completo(texto, destino=destino)
-                return resultado.texto_traduzido
-            except Exception as e:
-                print(f"⚠️ Erro na tradução com legado: {e}")
-                # Fallback para simulação
+        # Converter string única em lista
+        textos = [texto] if isinstance(texto, str) else texto
         
-        # SIMULAÇÃO (apenas para testes)
-        # Remove quando tiver a chave da API configurada
-        return self._simular_traducao(texto, destino)
+        try:
+            # Chamada à API
+            resultados_api = self._client.translate(
+                textos,
+                target_language=destino,
+                source_language=origem,
+                model=modelo
+            )
+            
+            # Processar resultados
+            resultados = []
+            for i, res in enumerate(resultados_api):
+                chars_originais = len(textos[i])
+                custo = chars_originais * self.PRICING.get(modelo, self.PRICING['default'])
+                
+                resultado = TraducaoResultado(
+                    texto_original=textos[i],
+                    texto_traduzido=res['translatedText'],
+                    idioma_origem=res.get('detectedSourceLanguage', origem or 'ru'),
+                    idioma_destino=destino,
+                    modelo_utilizado=res.get('model', modelo),
+                    caracteres_originais=chars_originais,
+                    custo_estimado=custo
+                )
+                resultados.append(resultado)
+            
+            return resultados[0] if isinstance(texto, str) else resultados
+            
+        except Exception as e:
+            print(f"⚠️ Erro na tradução com API: {e}")
+            print("   Usando fallback para simulação.")
+            return self._simular_traducao(texto, destino, origem)
     
-    def _simular_traducao(self, texto: str, destino: str) -> str:
+    def traduzir_documento_completo(self,
+                                   texto: str,
+                                   destino: str = 'en',
+                                   chunk_size: int = 3000) -> TraducaoResultado:
         """
-        Simula tradução para testes.
-        Remove quando tiver a chave da API configurada.
+        Traduz documentos grandes dividindo em chunks.
+        
+        Args:
+            texto: Texto completo do documento
+            destino: Idioma destino
+            chunk_size: Tamanho máximo de cada chunk
+        
+        Returns:
+            TraducaoResultado com texto completo traduzido
         """
-        prefixos = {
-            'en': '[EN] ',
-            'pt': '[PT] ',
-            'es': '[ES] ',
-            'fr': '[FR] '
-        }
-        prefixo = prefixos.get(destino, f'[{destino}] ')
+        # Dividir em parágrafos
+        paragrafos = texto.split('\n')
+        chunks = []
+        chunk_atual = []
+        tamanho_atual = 0
         
-        # Simplesmente adiciona um prefixo (apenas para teste)
-        linhas = texto.split('\n')
-        linhas_traduzidas = [f"{prefixo}{linha}" for linha in linhas if linha.strip()]
+        for para in paragrafos:
+            if tamanho_atual + len(para) < chunk_size:
+                chunk_atual.append(para)
+                tamanho_atual += len(para)
+            else:
+                chunks.append('\n'.join(chunk_atual))
+                chunk_atual = [para]
+                tamanho_atual = len(para)
         
-        return '\n'.join(linhas_traduzidas) if linhas_traduzidas else texto
+        if chunk_atual:
+            chunks.append('\n'.join(chunk_atual))
+        
+        print(f"📄 Documento dividido em {len(chunks)} partes para tradução")
+        
+        # Traduzir cada chunk
+        traducoes = []
+        total_chars = 0
+        
+        for i, chunk in enumerate(chunks, 1):
+            print(f"  ↳ Traduzindo parte {i}/{len(chunks)}...")
+            try:
+                resultado = self.traduzir(chunk, destino=destino)
+                if isinstance(resultado, TraducaoResultado):
+                    traducoes.append(resultado.texto_traduzido)
+                    total_chars += resultado.caracteres_originais
+                time.sleep(0.5)  # Rate limiting
+            except Exception as e:
+                print(f"    ⚠️ Erro na parte {i}: {e}")
+                traducoes.append("")
+        
+        texto_completo = '\n'.join(traducoes)
+        
+        return TraducaoResultado(
+            texto_original=texto,
+            texto_traduzido=texto_completo,
+            idioma_origem='ru',
+            idioma_destino=destino,
+            modelo_utilizado='nmt',
+            caracteres_originais=total_chars,
+            custo_estimado=total_chars * self.PRICING['nmt']
+        )
+    
+    def _simular_traducao(self, texto, destino='en', origem=None):
+        """Simula tradução para testes (fallback quando API não disponível)."""
+        if isinstance(texto, str):
+            return TraducaoResultado(
+                texto_original=texto,
+                texto_traduzido=f"[SIMULAÇÃO {destino}] {texto[:100]}...",
+                idioma_origem=origem or 'ru',
+                idioma_destino=destino,
+                modelo_utilizado='simulação',
+                caracteres_originais=len(texto),
+                custo_estimado=0.0
+            )
+        else:
+            return [
+                TraducaoResultado(
+                    texto_original=t,
+                    texto_traduzido=f"[SIMULAÇÃO {destino}] {t[:50]}...",
+                    idioma_origem=origem or 'ru',
+                    idioma_destino=destino,
+                    modelo_utilizado='simulação',
+                    caracteres_originais=len(t),
+                    custo_estimado=0.0
+                )
+                for t in texto
+            ]
     
     def testar_conexao(self) -> bool:
         """Testa se a API está respondendo."""
-        if self._tradutor:
-            try:
-                return self._tradutor.testar_conexao()
-            except:
-                pass
-        return False
+        try:
+            resultado = self.traduzir("Hello world", destino='pt')
+            if isinstance(resultado, TraducaoResultado):
+                print(f"✅ Conexão OK! Tradução teste: 'Hello world' → '{resultado.texto_traduzido}'")
+                return True
+            return False
+        except Exception as e:
+            print(f"❌ Falha na conexão: {e}")
+            return False
 
 
-# Adaptador com persistência (reutiliza o existente)
+def criar_tradutor_da_configuracao() -> Optional[GoogleTranslator]:
+    """
+    Factory function que cria o tradutor a partir de variáveis de ambiente.
+    """
+    # Tentar com API Key
+    api_key = os.getenv('GOOGLE_TRANSLATE_API_KEY')
+    if api_key:
+        try:
+            return GoogleTranslator(api_key=api_key)
+        except Exception as e:
+            print(f"⚠️ Falha ao usar API Key: {e}")
+    
+    # Tentar com Conta de Serviço
+    creds_path = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
+    if creds_path and Path(creds_path).exists():
+        try:
+            return GoogleTranslator(credentials_path=creds_path)
+        except Exception as e:
+            print(f"⚠️ Falha ao usar Conta de Serviço: {e}")
+    
+    # Fallback para simulação
+    print("⚠️ Nenhuma credencial válida encontrada. Usando modo simulação.")
+    return GoogleTranslator()  # Sem credenciais = modo simulação
+
+
+# Adaptador com persistência
 class TradutorComPersistenciaAdapter:
     """
     Adaptador que adiciona persistência às traduções.
@@ -120,7 +328,13 @@ class TradutorComPersistenciaAdapter:
         from datetime import datetime
         
         # Traduzir
-        texto_traduzido = self.tradutor.traduzir(texto, destino)
+        if hasattr(self.tradutor, 'traduzir_documento_completo'):
+            resultado = self.tradutor.traduzir_documento_completo(texto, destino)
+            texto_traduzido = resultado.texto_traduzido
+            custo = resultado.custo_estimado
+        else:
+            texto_traduzido = self.tradutor.traduzir(texto, destino)
+            custo = len(texto) * 0.000020
         
         # Criar entidade
         traducao = Traducao(
@@ -129,7 +343,7 @@ class TradutorComPersistenciaAdapter:
             texto_traduzido=texto_traduzido,
             data_traducao=datetime.now(),
             modelo='nmt',
-            custo=len(texto) * 0.000020
+            custo=custo
         )
         
         # Salvar

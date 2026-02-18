@@ -27,7 +27,7 @@ from src.interface.console import (
 )
 from src.infrastructure.persistence.sqlite_traducao_repository import SQLiteTraducaoRepository
 from src.infrastructure.translation.google_translator import (
-    GoogleTranslatorAdapter, 
+    GoogleTranslator, 
     TradutorComPersistenciaAdapter
 )
 from src.application.use_cases.traduzir_documento import TraduzirDocumento
@@ -51,7 +51,7 @@ class ShowTrialsApp:
         # 1. Infraestrutura
         self.repo = SQLiteDocumentoRepository()
         self.repo_traducao = SQLiteTraducaoRepository()
-        self.tradutor_service = GoogleTranslatorAdapter()  # Adaptador
+        self.tradutor_service = GoogleTranslator()  # Adaptador
         self.tradutor_persistente = TradutorComPersistenciaAdapter(
             self.tradutor_service, 
             self.repo_traducao

@@ -10,7 +10,7 @@ from typing import Optional, Dict, Any
 from src.infrastructure.config import config as app_config
 from src.infrastructure.analysis.spacy_analyzer import SpacyAnalyzer
 from src.infrastructure.analysis.wordcloud_generator import WordCloudGenerator
-from src.infrastructure.translation.google_translator import GoogleTranslatorAdapter
+from src.infrastructure.translation.google_translator import GoogleTranslator
 
 logger = logging.getLogger(__name__)
 
@@ -88,7 +88,7 @@ class MockSpacyAnalyzer:
 
 def create_translator(api_key: Optional[str] = None, 
                      simulate: bool = False,
-                     **kwargs) -> GoogleTranslatorAdapter:
+                     **kwargs) -> GoogleTranslator:
     """
     Factory para tradutor.
     
@@ -110,7 +110,7 @@ def create_translator(api_key: Optional[str] = None,
     api_key = api_key or kwargs.get('api_key') or os.getenv('GOOGLE_TRANSLATE_API_KEY')
     
     try:
-        return GoogleTranslatorAdapter(api_key=api_key)
+        return GoogleTranslator(api_key=api_key)
     except Exception as e:
         logger.error(f"❌ Falha ao criar tradutor real: {e}")
         logger.info("🎭 Fallback para tradutor MOCK")

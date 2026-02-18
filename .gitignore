@@ -181,3 +181,10 @@ pyrightconfig.json
 
 # Generated using ignr.py - github.com/Antrikshy/ignr.py
 
+legacy/
+*.db
+*.db-journal
+*.pyc
+config.local.yaml
+.DS_Store
+diagnostico_*.txt
