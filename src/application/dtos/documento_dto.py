@@ -5,10 +5,10 @@ Separamos o que vai para UI do que fica no domínio.
 """
 
 from dataclasses import dataclass, field
-from typing import Optional, List, Dict
-from datetime import datetime
-from src.domain.value_objects.tipo_documento import TipoDocumento
+from typing import Dict, List, Optional
+
 from src.domain.value_objects.nome_russo import NomeRusso
+from src.domain.value_objects.tipo_documento import TipoDocumento
 
 
 @dataclass
@@ -17,7 +17,7 @@ class DocumentoDTO:
     DTO completo para exibição de um documento.
     Contém apenas dados necessários para a UI.
     """
-    
+
     id: Optional[int]
     centro: str
     titulo: str
@@ -25,7 +25,7 @@ class DocumentoDTO:
     url: str
     texto: str
     data_coleta: str  # ISO format
-    
+
     # Metadados enriquecidos
     tipo: Optional[str]
     tipo_descricao: Optional[str]
@@ -36,19 +36,19 @@ class DocumentoDTO:
     destinatario: Optional[str]
     envolvidos: List[str] = field(default_factory=list)
     tem_anexos: bool = False
-    
+
     # Métricas
     tamanho_caracteres: int = 0
     tamanho_palavras: int = 0
-    
+
     # Traduções
     traducoes: List[Dict] = field(default_factory=list)
-    
+
     @classmethod
     def from_domain(cls, documento, tradutor_nomes=None, traducoes=None):
         """
         Converte entidade Documento para DTO.
-        
+
         Args:
             documento: Entidade Documento do domínio
             tradutor_nomes: Função opcional para traduzir nomes
@@ -60,12 +60,12 @@ class DocumentoDTO:
             try:
                 nome = NomeRusso(documento.pessoa_principal)
                 pessoa_en = nome.transliterar()
-            except:
+            except Exception:
                 pessoa_en = documento.pessoa_principal
-        
+
         # Calcular palavras (aproximado)
         palavras = len(documento.texto.split()) if documento.texto else 0
-        
+
         return cls(
             id=documento.id,
             centro=documento.centro,
@@ -85,7 +85,7 @@ class DocumentoDTO:
             tem_anexos=documento.tem_anexos,
             tamanho_caracteres=documento.tamanho_caracteres,
             tamanho_palavras=palavras,
-            traducoes=traducoes or []
+            traducoes=traducoes or [],
         )
 
 
@@ -95,7 +95,7 @@ class DocumentoListaDTO:
     DTO resumido para listagens.
     Mais leve que o DTO completo.
     """
-    
+
     id: int
     centro: str
     titulo: str
@@ -107,7 +107,7 @@ class DocumentoListaDTO:
     pessoa_principal_en: Optional[str]
     tem_traducao: bool = False
     tamanho: int = 0
-    
+
     @classmethod
     def from_domain(cls, documento, tem_traducao=False, tradutor_nomes=None):
         """Converte entidade para DTO de listagem."""
@@ -116,9 +116,9 @@ class DocumentoListaDTO:
             try:
                 nome = NomeRusso(documento.pessoa_principal)
                 pessoa_en = nome.transliterar()
-            except:
+            except Exception:
                 pessoa_en = documento.pessoa_principal
-        
+
         return cls(
             id=documento.id,
             centro=documento.centro,
@@ -130,5 +130,5 @@ class DocumentoListaDTO:
             pessoa_principal=documento.pessoa_principal,
             pessoa_principal_en=pessoa_en,
             tem_traducao=tem_traducao,
-            tamanho=documento.tamanho_caracteres
+            tamanho=documento.tamanho_caracteres,
         )

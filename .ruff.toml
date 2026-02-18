@@ -1,0 +1,25 @@
+# .ruff.toml - Configuração do Ruff
+
+# Ignorar certos tipos de erro
+ignore = [
+    "E402",  # Module level import not at top of file (sys.path.insert é necessário)
+    "F841",  # Local variable assigned but never used (variáveis intencionalmente não usadas)
+]
+
+# Linha muito longa (aumentar tolerância)
+line-length = 120
+
+# Excluir pastas que não precisam ser verificadas
+exclude = [
+    "legacy/*",
+    "backup_*",
+    "diagnostico_*",
+    ".git",
+    "__pycache__",
+]
+
+# Permitir bare except em alguns casos (opcional, mas vamos manter por enquanto)
+# "E722" - Do not use bare `except`
+
+# Selecionar erros (deixar comentado usa o padrão)
+# select = ["E", "F", "I", "B"]

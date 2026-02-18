@@ -5,4 +5,4 @@ Web Interface - Adaptador FastAPI.
 
 from src.interface.web.app import create_app
 
-__all__ = ['create_app']
+__all__ = ["create_app"]

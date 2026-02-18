@@ -6,10 +6,10 @@ Permite registro e acesso centralizado a serviços com inicialização sob deman
 
 import logging
 import time
-from typing import Dict, Any, Callable, Optional
-from threading import Lock
-from datetime import datetime
 from dataclasses import dataclass, field
+from datetime import datetime
+from threading import Lock
+from typing import Any, Callable, Dict, Optional
 
 logger = logging.getLogger(__name__)
 
@@ -17,6 +17,7 @@ logger = logging.getLogger(__name__)
 @dataclass
 class ServiceStats:
     """Estatísticas de uso de um serviço."""
+
     calls: int = 0
     last_call: Optional[datetime] = None
     load_time: Optional[float] = None
@@ -27,6 +28,7 @@ class ServiceStats:
 @dataclass
 class ServiceInfo:
     """Informações de registro de um serviço."""
+
     name: str
     factory: Callable
     lazy: bool = True
@@ -37,17 +39,17 @@ class ServiceInfo:
 class ServiceRegistry:
     """
     Registro central de serviços com lazy loading.
-    
+
     Características:
     - Thread-safe (usa Lock para acesso concorrente)
     - Suporte a serviços eager e lazy
     - Cache de instâncias após primeira inicialização
     - Estatísticas de uso por serviço
     """
-    
+
     _instance = None
     _lock = Lock()
-    
+
     def __new__(cls):
         """Singleton thread-safe."""
         if cls._instance is None:
@@ -56,28 +58,25 @@ class ServiceRegistry:
                     cls._instance = super().__new__(cls)
                     cls._instance._initialized = False
         return cls._instance
-    
+
     def __init__(self):
         """Inicialização (executada apenas uma vez devido ao singleton)."""
         if self._initialized:
             return
-            
+
         self._services: Dict[str, ServiceInfo] = {}
         self._instances: Dict[str, Any] = {}
         self._stats: Dict[str, ServiceStats] = {}
         self._lock = Lock()
         self._initialized = True
         logger.info("🔧 Service Registry inicializado")
-    
-    def register(self, 
-                 name: str, 
-                 factory: Callable, 
-                 lazy: bool = True,
-                 singleton: bool = True,
-                 **config) -> None:
+
+    def register(
+        self, name: str, factory: Callable, lazy: bool = True, singleton: bool = True, **config
+    ) -> None:
         """
         Registra um serviço no registry.
-        
+
         Args:
             name: Nome único do serviço
             factory: Função que cria a instância do serviço
@@ -88,28 +87,24 @@ class ServiceRegistry:
         with self._lock:
             if name in self._services:
                 logger.warning(f"⚠️ Serviço {name} já registrado. Substituindo.")
-            
+
             self._services[name] = ServiceInfo(
-                name=name,
-                factory=factory,
-                lazy=lazy,
-                singleton=singleton,
-                config=config
+                name=name, factory=factory, lazy=lazy, singleton=singleton, config=config
             )
             self._stats[name] = ServiceStats()
             logger.info(f"✅ Serviço registrado: {name} (lazy={lazy})")
-    
+
     def get(self, name: str, *args, **kwargs) -> Any:
         """
         Obtém instância de um serviço (inicializa se necessário).
-        
+
         Args:
             name: Nome do serviço
             *args, **kwargs: Argumentos para a factory (se primeira vez)
-        
+
         Returns:
             Instância do serviço
-        
+
         Raises:
             KeyError: Se serviço não registrado
             RuntimeError: Se serviço eager não inicializado
@@ -119,57 +114,57 @@ class ServiceRegistry:
             if name not in self._services:
                 available = ", ".join(self._services.keys())
                 raise KeyError(f"Serviço não registrado: {name}. Disponíveis: {available}")
-            
+
             self._stats[name].calls += 1
             self._stats[name].last_call = datetime.now()
-        
+
         service_info = self._services[name]
-        
+
         # Se já tem instância e é singleton, retorna
         if service_info.singleton and name in self._instances:
             return self._instances[name]
-        
+
         # Se não é lazy, deveria já ter sido inicializado
         if not service_info.lazy and service_info.singleton and name not in self._instances:
             raise RuntimeError(
                 f"❌ Serviço eager {name} não foi inicializado. "
                 "Chame start_eager_services() primeiro."
             )
-        
+
         # Inicialização (thread-safe)
         with self._lock:
             # Verifica novamente dentro do lock (para singletons)
             if service_info.singleton and name in self._instances:
                 return self._instances[name]
-            
+
             logger.info(f"🔄 Inicializando serviço: {name}")
             start = time.time()
-            
+
             try:
                 # Mescla config com args/kwargs
                 factory_kwargs = service_info.config.copy()
                 factory_kwargs.update(kwargs)
-                
+
                 instance = service_info.factory(*args, **factory_kwargs)
-                
+
                 if service_info.singleton:
                     self._instances[name] = instance
-                
+
                 elapsed = time.time() - start
                 self._stats[name].load_time = elapsed
                 logger.info(f"✅ Serviço {name} inicializado em {elapsed:.2f}s")
-                
+
                 return instance
-                
+
             except Exception as e:
                 self._stats[name].errors += 1
                 logger.error(f"❌ Falha ao inicializar {name}: {e}")
                 raise
-    
+
     def start_eager_services(self) -> Dict[str, float]:
         """
         Inicializa todos os serviços marcados como eager.
-        
+
         Returns:
             Dict com tempos de inicialização por serviço
         """
@@ -189,30 +184,30 @@ class ServiceRegistry:
                     logger.error(f"❌ Falha ao inicializar {name}: {e}")
                     results[name] = -1
         return results
-    
+
     def get_status(self) -> Dict[str, Dict]:
         """Retorna status de todos os serviços registrados."""
         status = {}
         for name, info in self._services.items():
             stats = self._stats[name]
             status[name] = {
-                'registered': True,
-                'lazy': info.lazy,
-                'singleton': info.singleton,
-                'loaded': name in self._instances,
-                'calls': stats.calls,
-                'last_call': stats.last_call.isoformat() if stats.last_call else None,
-                'load_time': stats.load_time,
-                'errors': stats.errors,
-                'registered_at': stats.registered_at.isoformat(),
-                'config': info.config
+                "registered": True,
+                "lazy": info.lazy,
+                "singleton": info.singleton,
+                "loaded": name in self._instances,
+                "calls": stats.calls,
+                "last_call": stats.last_call.isoformat() if stats.last_call else None,
+                "load_time": stats.load_time,
+                "errors": stats.errors,
+                "registered_at": stats.registered_at.isoformat(),
+                "config": info.config,
             }
         return status
-    
+
     def get_service(self, name: str) -> Optional[ServiceInfo]:
         """Retorna informações de registro de um serviço."""
         return self._services.get(name)
-    
+
     def reset(self) -> None:
         """Reset completo (útil para testes)."""
         with self._lock:
@@ -220,11 +215,11 @@ class ServiceRegistry:
             self._instances.clear()
             self._stats.clear()
             logger.info("🔄 Registry resetado")
-    
+
     def clear_cache(self, name: Optional[str] = None) -> None:
         """
         Limpa instâncias em cache (força recarga na próxima chamada).
-        
+
         Args:
             name: Nome do serviço (None para todos)
         """

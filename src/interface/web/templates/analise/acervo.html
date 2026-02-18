@@ -193,11 +193,11 @@ document.addEventListener('DOMContentLoaded', function() {
         {{ stats.documentos_por_tamanho['médio (1000-5000 palavras)'] }},
         {{ stats.documentos_por_tamanho['grande (>5000 palavras)'] }}
     ];
-    
+
     console.log("Valores recebidos:", valores);
-    
+
     const ctx = document.getElementById('graficoTamanho').getContext('2d');
-    
+
     if (valores[0] === 0 && valores[1] === 0 && valores[2] === 0) {
         document.getElementById('graficoTamanho').parentNode.innerHTML = '<p class="text-muted">Sem dados suficientes para gerar gráfico.</p>';
     } else {

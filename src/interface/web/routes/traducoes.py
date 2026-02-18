@@ -3,9 +3,10 @@
 Rotas para traduções.
 """
 
-from fastapi import APIRouter, Request, HTTPException
-from fastapi.templating import Jinja2Templates
 from pathlib import Path
+
+from fastapi import APIRouter, Request
+from fastapi.templating import Jinja2Templates
 
 router = APIRouter()
 templates = Jinja2Templates(directory=Path(__file__).parent.parent / "templates")
@@ -18,10 +19,7 @@ async def listar_todas_traducoes(request: Request):
     """
     return templates.TemplateResponse(
         "traducoes/todas.html",
-        {
-            "request": request,
-            "mensagem": "Funcionalidade em desenvolvimento"
-        }
+        {"request": request, "mensagem": "Funcionalidade em desenvolvimento"},
     )
 
 
@@ -33,7 +31,7 @@ async def listar_traducoes(request: Request, documento_id: int):
     try:
         repo_trad = request.app.state.repo_trad
         repo_doc = request.app.state.repo_doc
-        
+
         # Buscar documento
         documento = repo_doc.buscar_por_id(documento_id)
         if not documento:
@@ -42,22 +40,22 @@ async def listar_traducoes(request: Request, documento_id: int):
                 {
                     "request": request,
                     "mensagem": f"Documento {documento_id} não encontrado",
-                    "voltar": "/documentos/"
+                    "voltar": "/documentos/",
                 },
-                status_code=404
+                status_code=404,
             )
-        
+
         # Buscar traduções
         traducoes = repo_trad.listar_por_documento(documento_id)
-        
+
         return templates.TemplateResponse(
             "traducoes/lista.html",
             {
                 "request": request,
                 "documento_id": documento_id,
                 "documento_titulo": documento.titulo,
-                "traducoes": traducoes
-            }
+                "traducoes": traducoes,
+            },
         )
     except Exception as e:
         return templates.TemplateResponse(
@@ -65,9 +63,9 @@ async def listar_traducoes(request: Request, documento_id: int):
             {
                 "request": request,
                 "mensagem": f"Erro ao buscar traduções: {str(e)}",
-                "voltar": f"/documentos/{documento_id}"
+                "voltar": f"/documentos/{documento_id}",
             },
-            status_code=500
+            status_code=500,
         )
 
 
@@ -79,7 +77,7 @@ async def ver_traducao(request: Request, documento_id: int, idioma: str):
     try:
         repo_trad = request.app.state.repo_trad
         repo_doc = request.app.state.repo_doc
-        
+
         # Buscar tradução
         traducao = repo_trad.buscar_por_documento(documento_id, idioma)
         if not traducao:
@@ -88,22 +86,17 @@ async def ver_traducao(request: Request, documento_id: int, idioma: str):
                 {
                     "request": request,
                     "mensagem": f"Tradução {idioma} para documento {documento_id} não encontrada",
-                    "voltar": f"/traducoes/documento/{documento_id}"
+                    "voltar": f"/traducoes/documento/{documento_id}",
                 },
-                status_code=404
+                status_code=404,
             )
-        
+
         # Buscar documento original
         documento = repo_doc.buscar_por_id(documento_id)
-        
+
         return templates.TemplateResponse(
             "traducoes/detalhe.html",
-            {
-                "request": request,
-                "traducao": traducao,
-                "documento": documento,
-                "idioma": idioma
-            }
+            {"request": request, "traducao": traducao, "documento": documento, "idioma": idioma},
         )
     except Exception as e:
         return templates.TemplateResponse(
@@ -111,7 +104,7 @@ async def ver_traducao(request: Request, documento_id: int, idioma: str):
             {
                 "request": request,
                 "mensagem": f"Erro ao visualizar tradução: {str(e)}",
-                "voltar": f"/traducoes/documento/{documento_id}"
+                "voltar": f"/traducoes/documento/{documento_id}",
             },
-            status_code=500
+            status_code=500,
         )

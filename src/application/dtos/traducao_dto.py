@@ -12,7 +12,7 @@ class TraducaoDTO:
     """
     DTO para exibição de tradução.
     """
-    
+
     id: Optional[int]
     documento_id: int
     idioma: str
@@ -22,7 +22,7 @@ class TraducaoDTO:
     data_traducao: str
     modelo: Optional[str]
     custo: float
-    
+
     @classmethod
     def from_domain(cls, traducao):
         """Converte entidade para DTO."""
@@ -35,5 +35,5 @@ class TraducaoDTO:
             texto_traduzido=traducao.texto_traduzido,
             data_traducao=traducao.data_traducao.isoformat()[:10],
             modelo=traducao.modelo,
-            custo=traducao.custo
+            custo=traducao.custo,
         )

@@ -4,13 +4,14 @@ Gerador de nuvem de palavras.
 Versão robusta que aceita qualquer parâmetro de configuração.
 """
 
-from wordcloud import WordCloud
-import matplotlib.pyplot as plt
-from pathlib import Path
-import spacy
-from collections import Counter
-from typing import Optional, Dict, Any
 import logging
+from collections import Counter
+from pathlib import Path
+from typing import Optional
+
+import matplotlib.pyplot as plt
+import spacy
+from wordcloud import WordCloud
 
 logger = logging.getLogger(__name__)
 
@@ -20,66 +21,99 @@ class WordCloudGenerator:
     Gerador de nuvens de palavras a partir de textos.
     Versão flexível que aceita configurações via kwargs.
     """
-    
+
     def __init__(self, **kwargs):
         """
         Inicializa o gerador com configurações flexíveis.
-        
+
         Args:
             **kwargs: Qualquer parâmetro de configuração.
                      Os reconhecidos serão usados, outros serão ignorados.
         """
         # Parâmetros reconhecidos com valores padrão
-        self.default_size = kwargs.get('default_size', (800, 400))
-        self.max_words = kwargs.get('max_words', 200)
-        self.background_color = kwargs.get('background_color', 'white')
-        self.width = kwargs.get('width', self.default_size[0])
-        self.height = kwargs.get('height', self.default_size[1])
-        
+        self.default_size = kwargs.get("default_size", (800, 400))
+        self.max_words = kwargs.get("max_words", 200)
+        self.background_color = kwargs.get("background_color", "white")
+        self.width = kwargs.get("width", self.default_size[0])
+        self.height = kwargs.get("height", self.default_size[1])
+
         # Armazenar kwargs extras para uso futuro (ignorados)
-        self._extra_kwargs = {k: v for k, v in kwargs.items() 
-                              if k not in ['default_size', 'max_words', 
-                                           'background_color', 'width', 'height']}
-        
+        self._extra_kwargs = {
+            k: v
+            for k, v in kwargs.items()
+            if k not in ["default_size", "max_words", "background_color", "width", "height"]
+        }
+
         # Carregar stopwords para múltiplos idiomas
         self.stopwords = self._carregar_stopwords()
-        
-        logger.info(f"🔧 WordCloudGenerator inicializado (tamanho: {self.width}x{self.height}, "
-                   f"max_words: {self.max_words})")
-        
+
+        logger.info(
+            f"🔧 WordCloudGenerator inicializado (tamanho: {self.width}x{self.height}, "
+            f"max_words: {self.max_words})"
+        )
+
         if self._extra_kwargs:
             logger.debug(f"   Parâmetros extras ignorados: {list(self._extra_kwargs.keys())}")
-    
+
     def _carregar_stopwords(self) -> set:
         """Carrega stopwords de vários idiomas."""
         stopwords = set()
-        
+
         # Stopwords em russo (básicas)
-        stopwords_ru = {'и', 'в', 'на', 'с', 'по', 'для', 'что', 'как', 'это', 
-                        'весь', 'мой', 'твой', 'его', 'ее', 'их', 'к', 'у', 'о',
-                        'из', 'за', 'над', 'под', 'а', 'но', 'да', 'или', 'если'}
-        
+        stopwords_ru = {
+            "и",
+            "в",
+            "на",
+            "с",
+            "по",
+            "для",
+            "что",
+            "как",
+            "это",
+            "весь",
+            "мой",
+            "твой",
+            "его",
+            "ее",
+            "их",
+            "к",
+            "у",
+            "о",
+            "из",
+            "за",
+            "над",
+            "под",
+            "а",
+            "но",
+            "да",
+            "или",
+            "если",
+        }
+
         # Stopwords em inglês
         try:
             from wordcloud import STOPWORDS
+
             stopwords.update(STOPWORDS)
-        except:
+        except Exception:
             pass
-        
+
         stopwords.update(stopwords_ru)
         return stopwords
-    
-    def gerar(self, 
-              texto: str,
-              titulo: str = "Nuvem de Palavras",
-              idioma: str = 'ru',
-              max_palavras: Optional[int] = None,
-              largura: Optional[int] = None,
-              altura: Optional[int] = None,
-              salvar_em: Optional[str] = None) -> Optional[Path]:
+
+    def gerar(
+        self,
+        texto: str,
+        titulo: str = "Nuvem de Palavras",
+        idioma: str = "ru",
+        max_palavras: Optional[int] = None,
+        largura: Optional[int] = None,
+        altura: Optional[int] = None,
+        salvar_em: Optional[str] = None,
+    ) -> Optional[Path]:
         """
         Gera nuvem de palavras a partir do texto.
-        
+
         Args:
             texto: Texto a ser analisado
             titulo: Título da imagem
@@ -88,7 +122,7 @@ class WordCloudGenerator:
             largura: Largura da imagem (sobrescreve o padrão)
             altura: Altura da imagem (sobrescreve o padrão)
             salvar_em: Caminho para salvar a imagem (se None, mostra na tela)
-        
+
         Returns:
             Path da imagem salva ou None
         """
@@ -96,40 +130,41 @@ class WordCloudGenerator:
         max_words = max_palavras or self.max_words
         width = largura or self.width
         height = altura or self.height
-        
+
         # Processar texto com SpaCy para melhor tokenização
         try:
-            if idioma == 'ru':
-                nlp = spacy.load('ru_core_news_sm')
+            if idioma == "ru":
+                nlp = spacy.load("ru_core_news_sm")
             else:
-                nlp = spacy.load('en_core_web_sm')
-            
+                nlp = spacy.load("en_core_web_sm")
+
             doc = nlp(texto[:50000])  # Limitar tamanho
-            
+
             # Extrair palavras significativas
             palavras = [
-                token.text.lower() for token in doc
-                if not token.is_stop 
-                and not token.is_punct 
+                token.text.lower()
+                for token in doc
+                if not token.is_stop
+                and not token.is_punct
                 and not token.is_space
                 and len(token.text) > 2
                 and token.text.lower() not in self.stopwords
             ]
-            
+
             # Contar frequências
             frequencias = Counter(palavras)
-            
+
         except Exception as e:
             logger.warning(f"Erro ao processar com spaCy: {e}. Usando método simples.")
             # Fallback: split simples
             palavras = texto.lower().split()
             palavras = [p for p in palavras if len(p) > 2 and p not in self.stopwords]
             frequencias = Counter(palavras)
-        
+
         if not frequencias:
             logger.warning("Nenhuma palavra significativa encontrada para gerar nuvem.")
             return None
-        
+
         # Gerar nuvem
         wordcloud = WordCloud(
             width=width,
@@ -137,19 +172,19 @@ class WordCloudGenerator:
             background_color=self.background_color,
             max_words=max_words,
             stopwords=self.stopwords,
-            collocations=False
+            collocations=False,
         ).generate_from_frequencies(frequencias)
-        
+
         # Plotar
-        plt.figure(figsize=(width/100, height/100))
-        plt.imshow(wordcloud, interpolation='bilinear')
-        plt.axis('off')
+        plt.figure(figsize=(width / 100, height / 100))
+        plt.imshow(wordcloud, interpolation="bilinear")
+        plt.axis("off")
         plt.title(titulo)
-        
+
         if salvar_em:
             caminho = Path(salvar_em)
             caminho.parent.mkdir(exist_ok=True)
-            plt.savefig(caminho, bbox_inches='tight', dpi=300)
+            plt.savefig(caminho, bbox_inches="tight", dpi=300)
             plt.close()
             logger.info(f"✅ Nuvem de palavras salva em: {caminho}")
             return caminho

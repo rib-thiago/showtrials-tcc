@@ -4,10 +4,10 @@ Modelos SQLite para mapeamento objeto-relacional.
 Usamos SQLite puro (sem ORM) por simplicidade.
 """
 
-from dataclasses import dataclass
-from typing import Optional, List
 import sqlite3
+from dataclasses import dataclass
 from datetime import datetime
+from typing import Optional
 
 
 @dataclass
@@ -16,7 +16,7 @@ class DocumentoModel:
     Modelo de documento para o banco SQLite.
     Reflete exatamente a estrutura da tabela.
     """
-    
+
     id: Optional[int]
     centro: str
     titulo: str
@@ -24,7 +24,7 @@ class DocumentoModel:
     url: str
     texto: str
     data_coleta: str
-    
+
     # Colunas adicionadas nas migrações
     tipo_documento: Optional[str] = None
     tipo_descricao: Optional[str] = None
@@ -35,11 +35,12 @@ class DocumentoModel:
     envolvidos: Optional[str] = None
     tem_anexos: int = 0  # SQLite não tem boolean, usar 0/1
     tipo_en: Optional[str] = None
-    
+
     @classmethod
     def criar_tabela(cls, cursor: sqlite3.Cursor):
         """Cria a tabela documentos se não existir."""
-        cursor.execute("""
+        cursor.execute(
+            """
             CREATE TABLE IF NOT EXISTS documentos (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 centro TEXT NOT NULL,
@@ -49,8 +50,9 @@ class DocumentoModel:
                 texto TEXT NOT NULL,
                 data_coleta TEXT NOT NULL
             )
-        """)
-    
+        """
+        )
+
     @classmethod
     def adicionar_colunas_metadados(cls, cursor: sqlite3.Cursor):
         """Adiciona colunas de metadados (migração)."""
@@ -63,27 +65,27 @@ class DocumentoModel:
             ("destinatario_orgao", "TEXT"),
             ("envolvidos", "TEXT"),
             ("tem_anexos", "INTEGER DEFAULT 0"),
-            ("tipo_en", "TEXT")
+            ("tipo_en", "TEXT"),
         ]
-        
+
         for coluna, tipo in colunas:
             try:
                 cursor.execute(f"ALTER TABLE documentos ADD COLUMN {coluna} {tipo}")
             except sqlite3.OperationalError:
                 pass  # Coluna já existe
-    
+
     def para_entidade(self):
         """
         Converte modelo para entidade do domínio.
         Usado ao carregar dados do banco.
         """
         from src.domain.entities.documento import Documento
-        
+
         # Converter envolvidos de string para lista
         envolvidos_list = []
         if self.envolvidos:
-            envolvidos_list = [e.strip() for e in self.envolvidos.split(',')]
-        
+            envolvidos_list = [e.strip() for e in self.envolvidos.split(",")]
+
         return Documento(
             id=self.id,
             centro=self.centro,
@@ -98,9 +100,9 @@ class DocumentoModel:
             remetente=self.remetente,
             destinatario=self.destinatario,
             envolvidos=envolvidos_list,
-            tem_anexos=bool(self.tem_anexos)
+            tem_anexos=bool(self.tem_anexos),
         )
-    
+
     @classmethod
     def de_entidade(cls, documento):
         """
@@ -120,15 +122,15 @@ class DocumentoModel:
             pessoa_principal=documento.pessoa_principal,
             remetente=documento.remetente,
             destinatario=documento.destinatario,
-            envolvidos=', '.join(documento.envolvidos) if documento.envolvidos else None,
-            tem_anexos=1 if documento.tem_anexos else 0
+            envolvidos=", ".join(documento.envolvidos) if documento.envolvidos else None,
+            tem_anexos=1 if documento.tem_anexos else 0,
         )
 
 
 @dataclass
 class TraducaoModel:
     """Modelo para tabela de traduções."""
-    
+
     id: Optional[int]
     documento_id: int
     idioma: str
@@ -136,11 +138,12 @@ class TraducaoModel:
     modelo: Optional[str]
     custo: float
     data_traducao: str
-    
+
     @classmethod
     def criar_tabela(cls, cursor: sqlite3.Cursor):
         """Cria a tabela traducoes se não existir."""
-        cursor.execute("""
+        cursor.execute(
+            """
             CREATE TABLE IF NOT EXISTS traducoes (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 documento_id INTEGER NOT NULL,
@@ -151,9 +154,12 @@ class TraducaoModel:
                 data_traducao TEXT NOT NULL,
                 FOREIGN KEY (documento_id) REFERENCES documentos (id) ON DELETE CASCADE
             )
-        """)
-        
-        cursor.execute("""
-            CREATE INDEX IF NOT EXISTS idx_traducoes_documento 
+        """
+        )
+
+        cursor.execute(
+            """
+            CREATE INDEX IF NOT EXISTS idx_traducoes_documento
             ON traducoes (documento_id, idioma)
-        """)
+        """
+        )

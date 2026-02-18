@@ -3,19 +3,19 @@
 Menus interativos da aplicação.
 """
 
-from src.interface.console import console, limpar_tela, cabecalho
+from src.interface.console import console, limpar_tela
 
 
 class MenuPrincipal:
     """Menu principal da aplicação."""
-    
+
     def __init__(self, app):
         self.app = app
-    
+
     def mostrar(self) -> str:
         """Exibe menu e retorna opção escolhida."""
         limpar_tela()
-        
+
         banner = """
 ╔══════════════════════════════════════════════════════════════╗
 ║                                                              ║
@@ -25,7 +25,7 @@ class MenuPrincipal:
 """
         console.print(banner, style="bold cyan")
         console.print()
-        
+
         console.print("[bold cyan]MENU PRINCIPAL[/bold cyan]")
         console.print()
         console.print("  [1] 📋 Listar todos os documentos")
@@ -36,14 +36,14 @@ class MenuPrincipal:
         console.print("  [6] 🔍 Análise de texto")  # <-- NOVO
         console.print("  [7] 🔄 Sair")
         console.print()
-        
+
         escolha = input("Escolha: ").strip()  # Sem cor no input
         return escolha
 
 
 class MenuCentro:
     """Menu para escolha de centro."""
-    
+
     @staticmethod
     def mostrar() -> str:
         """Exibe opções de centro."""
@@ -53,11 +53,11 @@ class MenuCentro:
         console.print("  [2] 🏛️ Moscow Center")
         console.print("  [0] ↩️  Voltar")
         console.print()
-        
+
         opcao = input("Escolha o centro: ").strip()
-        
-        if opcao == '1':
-            return 'lencenter'
-        elif opcao == '2':
-            return 'moscenter'
+
+        if opcao == "1":
+            return "lencenter"
+        elif opcao == "2":
+            return "moscenter"
         return None

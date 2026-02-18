@@ -4,27 +4,25 @@ Configuração do Rich console para toda a interface.
 Reutiliza e adapta o que já existia.
 """
 
-from rich.console import Console
-from rich.theme import Theme
-from rich.panel import Panel
-from rich.table import Table
-from rich import box
-from rich.text import Text
-from rich.progress import Progress, SpinnerColumn, TextColumn
-from rich.prompt import Prompt, IntPrompt
-from rich import print  # <-- ADICIONAR ESTA LINHA!
 import os
 
+from rich import print  # <-- ADICIONAR ESTA LINHA!
+from rich.console import Console
+from rich.progress import Progress, SpinnerColumn, TextColumn
+from rich.theme import Theme
+
 # Tema personalizado
-tema = Theme({
-    "primary": "bold cyan",
-    "secondary": "bold yellow",
-    "success": "bold green",
-    "error": "bold red",
-    "warning": "bold yellow",
-    "info": "dim white",
-    "destaque": "reverse white"
-})
+tema = Theme(
+    {
+        "primary": "bold cyan",
+        "secondary": "bold yellow",
+        "success": "bold green",
+        "error": "bold red",
+        "warning": "bold yellow",
+        "info": "dim white",
+        "destaque": "reverse white",
+    }
+)
 
 # Console global
 console = Console(theme=tema)
@@ -32,10 +30,10 @@ console = Console(theme=tema)
 
 def limpar_tela():
     """Limpa o terminal."""
-    os.system('cls' if os.name == 'nt' else 'clear')
-    if os.name != 'nt':
-        print('\033[3J', end='')  # Limpa scrollback
-        print('\033[H', end='')   # Posiciona cursor
+    os.system("cls" if os.name == "nt" else "clear")
+    if os.name != "nt":
+        print("\033[3J", end="")  # Limpa scrollback
+        print("\033[H", end="")  # Posiciona cursor
 
 
 def cabecalho(titulo: str):
@@ -68,7 +66,7 @@ def spinner(mensagem: str, funcao, *args, **kwargs):
         SpinnerColumn(),
         TextColumn("[progress.description]{task.description}"),
         console=console,
-        transient=True
+        transient=True,
     ) as progress:
         progress.add_task(f"[cyan]{mensagem}[/cyan]", total=None)
         try:
@@ -78,14 +76,14 @@ def spinner(mensagem: str, funcao, *args, **kwargs):
             # Relançar a exceção após o spinner
             raise e
 
+
 # Garantir que as funções estejam disponíveis globalmente
 __all__ = [
-    'console',
-    'limpar_tela',
-    'cabecalho',
-    'mostrar_erro',
-    'mostrar_sucesso',
-    'mostrar_aviso',
-    'spinner'
+    "console",
+    "limpar_tela",
+    "cabecalho",
+    "mostrar_erro",
+    "mostrar_sucesso",
+    "mostrar_aviso",
+    "spinner",
 ]
-

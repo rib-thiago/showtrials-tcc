@@ -1,9 +1,11 @@
 import time
-from extractor import coletar_links, extrair_texto, montar_documento
+
 from db import criar_tabela, inserir_documento
+from extractor import coletar_links, extrair_texto, montar_documento
 
 LENCENTER = "http://showtrials.ru/glavnaya/lencenter/lencenter-materials/"
 MOSCENTER = "http://showtrials.ru/glavnaya/moscow-center-trial/materialy-sledstviya-1935/"
+
 
 def main():
     criar_tabela()
@@ -37,6 +39,7 @@ def main():
         time.sleep(1)
 
     print("[✓] Coleta finalizada.")
+
 
 if __name__ == "__main__":
     main()
