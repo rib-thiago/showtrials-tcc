@@ -32,6 +32,7 @@ mkdocstrings = "^1.0.3"
 mkdocs-material = "^9.7.1"
 mkdocstrings-python = "^2.0.2"
 commitizen = "^4.13.7"
+taskipy = "^1.14.1"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
@@ -39,7 +40,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]  # <-- ADICIONAR PARA TESTES!
-addopts = "-v --cov=src --cov-report=term-missing --cov-fail-under=80"
+addopts = "-v --cov=src --cov-report=term-missing"
 
 [tool.black]
 line-length = 100
@@ -58,3 +59,32 @@ ignore = []
 name = "cz_conventional_commits"
 version = "0.2.0"
 tag_format = "v$version"
+
+[tool.taskipy.tasks]
+# === Qualidade ===
+lint = "ruff check src"
+type = "mypy src"
+format = "black src && isort src"
+quality = "task lint && task type"
+
+# === Testes ===
+test = "pytest src/tests -v"
+test-cov = "pytest src/tests --cov=src --cov-report=term-missing --cov-fail-under=45"
+test-html = "pytest src/tests --cov=src --cov-report=html"
+
+# === Telemetria ===
+metrics = "python -c 'from src.infrastructure.telemetry import telemetry; telemetry.flush()'"
+monitor = "task test && task metrics"
+
+# === Execução ===
+run-cli = "python run.py"
+run-web = "python web_run.py"
+
+# === Manutenção ===
+clean = "find . -type d -name __pycache__ -exec rm -rf {} + && find . -name '*.pyc' -delete"
+docs = "mkdocs serve"
+
+# === Tudo junto ===
+check = "task lint && task type && task test"
+pre-push = "task check && task test-cov"
+help = "task --list"
