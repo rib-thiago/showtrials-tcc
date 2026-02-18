@@ -44,35 +44,42 @@ class TraduzirDocumento:
                  forcar_novo: bool = False) -> Optional[TraducaoDTO]:
         """
         Traduz um documento para o idioma especificado.
-        
-        Args:
-            documento_id: ID do documento original
-            idioma_destino: Código do idioma (en, pt, es, fr)
-            forcar_novo: Se True, ignora tradução existente
-        
-        Returns:
-            TraducaoDTO da tradução (nova ou existente)
         """
+        print(f"🔍 DEBUG: executar tradução - documento {documento_id}, idioma {idioma_destino}")
+        
         # 1. Verificar se documento existe
         documento = self.repo_doc.buscar_por_id(documento_id)
         if not documento:
             raise ValueError(f"Documento {documento_id} não encontrado")
         
+        print(f"   ✅ Documento encontrado: {documento.titulo[:50]}...")
+        
         # 2. Verificar se já existe tradução (a menos que force nova)
         if not forcar_novo:
             existente = self.repo_trad.buscar_por_documento(documento_id, idioma_destino)
             if existente:
+                print(f"   📚 Tradução existente encontrada")
                 return TraducaoDTO.from_domain(existente)
         
         # 3. Obter tradutor do registry e traduzir
+        print(f"   🔧 Obtendo tradutor do registry...")
         tradutor = self._get_translator()
+        print(f"   ✅ Tradutor obtido: {type(tradutor).__name__}")
+        print(f"   📋 Métodos: {[m for m in dir(tradutor) if not m.startswith('_')]}")
         
         try:
-            texto_traduzido = tradutor.traduzir(
+            print(f"   🌐 Chamando tradutor.traduzir_documento_completo...")
+            texto_traduzido = tradutor.traduzir_documento_completo(
                 documento.texto,
                 destino=idioma_destino
             )
+            print(f"   ✅ Tradução concluída, tamanho: {len(texto_traduzido)} caracteres")
+            
         except Exception as e:
+            print(f"   ❌ ERRO: {e}")
+            print(f"   🔍 Tipo do erro: {type(e).__name__}")
+            import traceback
+            traceback.print_exc()
             raise RuntimeError(f"Erro na tradução: {e}")
         
         # 4. Criar entidade de tradução
@@ -82,7 +89,7 @@ class TraduzirDocumento:
             texto_traduzido=texto_traduzido,
             data_traducao=datetime.now(),
             modelo='nmt',
-            custo=len(documento.texto) * 0.000020  # Estimativa
+            custo=len(documento.texto) * 0.000020
         )
         
         # 5. Salvar no repositório

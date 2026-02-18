@@ -4,6 +4,7 @@ Factories para criação de serviços com configuração.
 Isola a lógica de criação e permite mocks em testes.
 """
 
+import os  # <-- IMPORT ADICIONADO!
 import logging
 from typing import Optional, Dict, Any
 
@@ -27,20 +28,9 @@ class MockTranslator:
         logger.info(f"🔧 MOCK traduzindo para {destino}")
         return f"[{destino.upper()} MOCK] {texto}"
     
-    def traduzir_documento_completo(self, texto: str, destino: str = 'en'):
+    def traduzir_documento_completo(self, texto: str, destino: str = 'en') -> str:
         """Mock de tradução de documento."""
-        from dataclasses import dataclass
-        
-        @dataclass
-        class MockResultado:
-            texto_traduzido: str
-            caracteres_originais: int
-            custo_estimado: float = 0.0
-        
-        return MockResultado(
-            texto_traduzido=self.traduzir(texto, destino),
-            caracteres_originais=len(texto)
-        )
+        return self.traduzir(texto, destino)
     
     def testar_conexao(self) -> bool:
         """Mock sempre funciona."""
@@ -162,6 +152,7 @@ def create_wordcloud_generator(**kwargs):
         Instância do gerador
     """
     logger.info("🔧 Factory: criando gerador de wordcloud")
+    from src.infrastructure.analysis.wordcloud_generator import WordCloudGenerator
     return WordCloudGenerator(**kwargs)
 
 

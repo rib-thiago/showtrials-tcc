@@ -186,7 +186,7 @@ class GoogleTranslator:
     def traduzir_documento_completo(self,
                                    texto: str,
                                    destino: str = 'en',
-                                   chunk_size: int = 3000) -> TraducaoResultado:
+                                   chunk_size: int = 3000) -> str:
         """
         Traduz documentos grandes dividindo em chunks.
         
@@ -196,8 +196,11 @@ class GoogleTranslator:
             chunk_size: Tamanho máximo de cada chunk
         
         Returns:
-            TraducaoResultado com texto completo traduzido
+            str: Texto traduzido completo
         """
+        if not texto:
+            return ""
+        
         # Dividir em parágrafos
         paragrafos = texto.split('\n')
         chunks = []
@@ -220,7 +223,6 @@ class GoogleTranslator:
         
         # Traduzir cada chunk
         traducoes = []
-        total_chars = 0
         
         for i, chunk in enumerate(chunks, 1):
             print(f"  ↳ Traduzindo parte {i}/{len(chunks)}...")
@@ -228,23 +230,14 @@ class GoogleTranslator:
                 resultado = self.traduzir(chunk, destino=destino)
                 if isinstance(resultado, TraducaoResultado):
                     traducoes.append(resultado.texto_traduzido)
-                    total_chars += resultado.caracteres_originais
+                else:
+                    traducoes.append(str(resultado))
                 time.sleep(0.5)  # Rate limiting
             except Exception as e:
                 print(f"    ⚠️ Erro na parte {i}: {e}")
                 traducoes.append("")
         
-        texto_completo = '\n'.join(traducoes)
-        
-        return TraducaoResultado(
-            texto_original=texto,
-            texto_traduzido=texto_completo,
-            idioma_origem='ru',
-            idioma_destino=destino,
-            modelo_utilizado='nmt',
-            caracteres_originais=total_chars,
-            custo_estimado=total_chars * self.PRICING['nmt']
-        )
+        return '\n'.join(traducoes)
     
     def _simular_traducao(self, texto, destino='en', origem=None):
         """Simula tradução para testes (fallback quando API não disponível)."""
@@ -310,7 +303,7 @@ def criar_tradutor_da_configuracao() -> Optional[GoogleTranslator]:
     return GoogleTranslator()  # Sem credenciais = modo simulação
 
 
-# Adaptador com persistência
+# Adaptador com persistência (mantido para compatibilidade)
 class TradutorComPersistenciaAdapter:
     """
     Adaptador que adiciona persistência às traduções.
@@ -329,12 +322,16 @@ class TradutorComPersistenciaAdapter:
         
         # Traduzir
         if hasattr(self.tradutor, 'traduzir_documento_completo'):
-            resultado = self.tradutor.traduzir_documento_completo(texto, destino)
-            texto_traduzido = resultado.texto_traduzido
-            custo = resultado.custo_estimado
-        else:
-            texto_traduzido = self.tradutor.traduzir(texto, destino)
+            texto_traduzido = self.tradutor.traduzir_documento_completo(texto, destino)
             custo = len(texto) * 0.000020
+        else:
+            resultado = self.tradutor.traduzir(texto, destino)
+            if hasattr(resultado, 'texto_traduzido'):
+                texto_traduzido = resultado.texto_traduzido
+                custo = resultado.custo_estimado
+            else:
+                texto_traduzido = str(resultado)
+                custo = len(texto) * 0.000020
         
         # Criar entidade
         traducao = Traducao(

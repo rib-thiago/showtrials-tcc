@@ -9,6 +9,12 @@ from pathlib import Path
 # Adicionar src ao path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
+from src.infrastructure.registry import ServiceRegistry
+from src.infrastructure.factories import (
+    create_translator, 
+    create_spacy_analyzer, 
+    create_wordcloud_generator
+)
 from src.infrastructure.persistence.sqlite_repository import SQLiteDocumentoRepository
 from src.infrastructure.persistence.migrations import criar_tabelas, migrar_banco_existente
 from src.application.use_cases.listar_documentos import ListarDocumentos
@@ -37,10 +43,10 @@ from src.application.use_cases.exportar_documento import ExportarDocumento
 from src.interface.cli.commands_export import ComandoExportar
 from src.application.use_cases.gerar_relatorio import GerarRelatorio
 from src.interface.cli.commands_relatorio import ComandoRelatorio
-# NOVOS IMPORTS
 from src.application.use_cases.analisar_texto import AnalisarDocumento
 from src.application.use_cases.analisar_acervo import AnalisarAcervo
 from src.interface.cli.commands_analise import ComandoAnalisarDocumento, ComandoAnalisarAcervo
+
 
 class ShowTrialsApp:
     """
@@ -48,49 +54,72 @@ class ShowTrialsApp:
     """
     
     def __init__(self):
-        # 1. Infraestrutura
+        # =====================================================
+        # 1. INFRAESTRUTURA
+        # =====================================================
         self.repo = SQLiteDocumentoRepository()
         self.repo_traducao = SQLiteTraducaoRepository()
-        self.tradutor_service = GoogleTranslator()  # Adaptador
+        
+        # Service Registry (para lazy loading)
+        self.registry = ServiceRegistry()
+        
+        # Registrar serviços no registry
+        self.registry.register('translator', create_translator, lazy=True)
+        self.registry.register('spacy', create_spacy_analyzer, lazy=True)
+        self.registry.register('wordcloud', create_wordcloud_generator, lazy=True)
+        
+        # Tradutor (pode ser usado diretamente ou via registry)
+        self.tradutor_service = GoogleTranslator()
         self.tradutor_persistente = TradutorComPersistenciaAdapter(
             self.tradutor_service, 
             self.repo_traducao
         )
         
-        # 2. Casos de uso
+        # =====================================================
+        # 2. CASOS DE USO
+        # =====================================================
+        
+        # Casos que não precisam de registry
         self.listar_use_case = ListarDocumentos(self.repo).com_traducao_nomes(True)
         self.obter_use_case = ObterDocumento(
             self.repo,
-            self.repo_traducao  # <-- ADICIONAR AQUI!
+            self.repo_traducao
         ).com_traducao_nomes(True)
         self.estatisticas_use_case = ObterEstatisticas(self.repo)
+        self.exportar_use_case = ExportarDocumento(self.repo, self.repo_traducao)
+        self.relatorio_use_case = GerarRelatorio(self.repo, self.repo_traducao)
+        
+        # Casos que usam registry (CORRIGIDOS!)
         self.traduzir_use_case = TraduzirDocumento(
-            self.repo,
-            self.repo_traducao,
-            self.tradutor_service
+            repo_doc=self.repo,
+            repo_trad=self.repo_traducao,
+            registry=self.registry  # ← Agora passa o registry
         )
-        self.listar_traducoes_use_case = ListarTraducoes(self.repo_traducao)
-        self.exportar_use_case = ExportarDocumento(
-            self.repo,
-            self.repo_traducao
-        )
-        self.cmd_exportar = ComandoExportar(self.exportar_use_case)
-        self.relatorio_use_case = GerarRelatorio(
-            self.repo,
-            self.repo_traducao
-        )
-        # Análise de texto
+        
         self.analisar_documento_use_case = AnalisarDocumento(
-            self.repo,
-            self.repo_traducao
+            repo_doc=self.repo,
+            repo_trad=self.repo_traducao,
+            registry=self.registry  # ← Corrigido também (opcional, mas consistente)
         )
-        self.analisar_acervo_use_case = AnalisarAcervo(self.repo)
         
+        self.analisar_acervo_use_case = AnalisarAcervo(
+            repo_doc=self.repo,
+            registry=self.registry  # ← Corrigido também
+        )
         
-        # 3. Comandos
+        # Casos auxiliares
+        self.listar_traducoes_use_case = ListarTraducoes(self.repo_traducao)
+        
+        # =====================================================
+        # 3. COMANDOS
+        # =====================================================
         self.cmd_listar = ComandoListar(self.listar_use_case)
         self.cmd_visualizar = ComandoVisualizar(self.obter_use_case)
         self.cmd_estatisticas = ComandoEstatisticas(self.estatisticas_use_case)
+        self.cmd_exportar = ComandoExportar(self.exportar_use_case)
+        self.cmd_relatorio = ComandoRelatorio(self.relatorio_use_case)
+        
+        # Comandos de tradução
         self.cmd_traduzir = ComandoTraduzir(
             self.traduzir_use_case,
             self.listar_traducoes_use_case
@@ -99,12 +128,14 @@ class ShowTrialsApp:
             self.listar_traducoes_use_case,
             self.obter_use_case
         )
-        self.cmd_relatorio = ComandoRelatorio(self.relatorio_use_case)
+        
         # Comandos de análise
         self.cmd_analisar_doc = ComandoAnalisarDocumento(self.analisar_documento_use_case)
         self.cmd_analisar_acervo = ComandoAnalisarAcervo(self.analisar_acervo_use_case)
         
-        # 4. Menus
+        # =====================================================
+        # 4. MENUS
+        # =====================================================
         self.menu_principal = MenuPrincipal(self)
         self.menu_centro = MenuCentro()
     
@@ -126,13 +157,11 @@ class ShowTrialsApp:
                 break
             
             elif escolha == '1':
-                # Listar todos
                 doc_id = self.cmd_listar.executar()
                 if doc_id:
                     self._visualizar_e_aguardar(doc_id)
             
             elif escolha == '2':
-                # Listar por centro
                 centro = self.menu_centro.mostrar()
                 if centro:
                     doc_id = self.cmd_listar.executar(centro=centro)
@@ -140,7 +169,6 @@ class ShowTrialsApp:
                         self._visualizar_e_aguardar(doc_id)
             
             elif escolha == '3':
-                # Visualizar direto por ID
                 try:
                     doc_id = int(input("ID do documento: "))
                     self._visualizar_e_aguardar(doc_id)
@@ -148,17 +176,14 @@ class ShowTrialsApp:
                     mostrar_erro("ID inválido!")
             
             elif escolha == '4':
-                # Estatísticas
                 self.cmd_estatisticas.executar()
 
             elif escolha == '5':
-                # Relatórios avançados
                 self.cmd_relatorio.executar()
 
             elif escolha == '6':
-                # Análise de texto
                 self._menu_analise()
-            
+    
     def _menu_analise(self):
         """Menu de análise de texto."""
         while True:
@@ -194,7 +219,6 @@ class ShowTrialsApp:
             else:
                 mostrar_erro("Opção inválida!")
     
-# src/interface/cli/app.py (SUBSTITUIR O MÉTODO _visualizar_e_aguardar)
     def _visualizar_e_aguardar(self, doc_id: int):
         """Visualiza documento com suporte a alternância de idiomas e nova tradução."""
         idioma_atual = 'original'
@@ -205,18 +229,15 @@ class ShowTrialsApp:
                 dto = self.obter_use_case.executar(doc_id)
                 texto = dto.texto if dto else None
             else:
-                # Buscar tradução específica
                 from src.application.use_cases.listar_traducoes import ListarTraducoes
                 listar_trad = ListarTraducoes(self.repo_traducao)
                 traducoes = listar_trad.executar(doc_id)
                 
                 traducao = next((t for t in traducoes if t.idioma == idioma_atual), None)
                 if traducao:
-                    # Criar um DTO temporário com o texto traduzido
                     dto = self.obter_use_case.executar(doc_id)
                     if dto:
                         dto.texto = traducao.texto_traduzido
-                        # Marcar que é uma tradução
                         dto.titulo = f"{dto.titulo} [{traducao.idioma_nome}]"
                 else:
                     dto = self.obter_use_case.executar(doc_id)
@@ -226,15 +247,12 @@ class ShowTrialsApp:
                 mostrar_erro("Documento não encontrado!")
                 return
             
-            # Mostrar badge do idioma atual
             from src.interface.cli.presenters_traducao import TraducaoPresenter
             console.print(TraducaoPresenter.badge_idioma_atual(idioma_atual))
             
-            # Mostrar documento (sem comandos - o presenter não deve ter comandos)
             from src.interface.cli.presenters import DocumentoPresenter
             DocumentoPresenter.documento_completo(dto)
             
-            # Listar traduções disponíveis (se houver)
             from src.application.use_cases.listar_traducoes import ListarTraducoes
             listar_trad = ListarTraducoes(self.repo_traducao)
             traducoes = listar_trad.executar(doc_id)
@@ -247,7 +265,6 @@ class ShowTrialsApp:
                     else:
                         console.print(f"    {t.idioma_icone} {t.idioma_nome} - {t.data_traducao}")
             
-            # COMANDOS (APENAS UMA VEZ)
             console.print("\n[dim]─────────────────────────────────────────────────[/dim]")
             console.print("[bold cyan]COMANDOS[/bold cyan]")
             console.print("  [green]⏎ Enter[/green] - Voltar à listagem")
@@ -269,7 +286,6 @@ class ShowTrialsApp:
                 break
                 
             elif cmd == 't':
-                # Alternar idioma
                 from src.application.use_cases.listar_traducoes import ListarTraducoes
                 listar_trad = ListarTraducoes(self.repo_traducao)
                 
@@ -284,7 +300,6 @@ class ShowTrialsApp:
                     idioma_atual = 'original'
                     
             elif cmd == 'n':
-                # Nova tradução
                 from src.interface.cli.commands_traducao import ComandoTraduzir
                 cmd_traduzir = ComandoTraduzir(
                     self.traduzir_use_case,
@@ -299,16 +314,14 @@ class ShowTrialsApp:
                     mostrar_erro(f"Erro durante tradução: {e}")
                     
             elif cmd == 'e':
-                # Exportar documento
                 self.cmd_exportar.executar(doc_id)
                 input("\nPressione Enter para continuar...")
                 
             else:
                 mostrar_erro("Comando inválido!")
-
-
+    
     def _exportar_documento(self, doc_id: int):
-        """Exporta documento (placeholder - será implementado)."""
+        """Exporta documento (placeholder)."""
         console.print("[yellow]Exportação será implementada[/yellow]")
         input("Pressione Enter...")
 
