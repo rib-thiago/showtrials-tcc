@@ -3,6 +3,7 @@
 <div align="center">
 
 ![Python](https://img.shields.io/badge/python-3.12-blue)
+![CI](https://github.com/rib-thiago/showtrials-tcc/actions/workflows/ci.yml/badge.svg)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Coverage](https://img.shields.io/badge/coverage-48%25-yellow)
 ![Code style](https://img.shields.io/badge/code%20style-black-000000.svg)
@@ -12,7 +13,7 @@
 
 **Sistema para coleta, armazenamento, tradução e análise de documentos históricos**
 
-[📚 Documentação](docs/) | [🚀 Instalação](#instalação) | [🤝 Contribuir](#contribuindo)
+[📚 Documentação](docs/) | [🚀 Instalação](#instalação) | [📊 Estatísticas](#estatísticas) | [🤝 Contribuir](#contribuindo)
 
 </div>
 
