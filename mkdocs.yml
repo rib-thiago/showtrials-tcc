@@ -1,0 +1,77 @@
+site_name: ShowTrials
+site_description: Sistema de Gestão de Documentos Históricos
+site_author: Thiago Ribeiro
+repo_url: https://github.com/rib-thiago/showtrials-tcc
+repo_name: showtrials-tcc
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  language: pt-BR
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+    - search.suggest
+    - content.code.copy
+    - content.code.annotate
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Mudar para modo escuro
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Mudar para modo claro
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]
+          options:
+            show_source: true
+            show_root_heading: true
+            heading_level: 3
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - admonition
+  - footnotes
+  - toc:
+      permalink: true
+  - attr_list
+  - md_in_html
+
+nav:
+  - Início: index.md
+  - Visão Geral: overview.md
+  - Arquitetura: ARCHITECTURE.md
+  - Fases do Projeto:
+    - FASE 1 - Domain: FASE1_DOMAIN.md
+    - FASE 2 - Application: FASE2_APPLICATION.md
+    - FASE 3 - Infrastructure: FASE3_INFRASTRUCTURE.md
+    - FASE 4 - CLI: FASE4_CLI.md
+    - FASE 5 - Tradução: FASE5_TRADUCAO.md
+    - FASE 6 - Exportação: FASE6_EXPORTACAO.md
+    - FASE 7 - Relatórios: FASE7_RELATORIOS.md
+    - FASE 8 - Análise de Texto: FASE8_ANALISE_TEXTO.md
+    - FASE 9 - Web Interface: FASE9_WEB_INTERFACE.md
+    - FASE 10 - Service Registry: FASE10_SERVICE_REGISTRY.md
+  - Como Contribuir: contributing.md
+  - Changelog: changelog.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/rib-thiago/showtrials-tcc
