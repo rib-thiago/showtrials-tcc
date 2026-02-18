@@ -31,6 +31,7 @@ mkdocs = "^1.6.1"
 mkdocstrings = "^1.0.3"
 mkdocs-material = "^9.7.1"
 mkdocstrings-python = "^2.0.2"
+commitizen = "^4.13.7"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
@@ -52,3 +53,8 @@ line_length = 100
 line-length = 100
 select = ["E", "F", "I", "B"]
 ignore = []
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "0.2.0"
+tag_format = "v$version"
