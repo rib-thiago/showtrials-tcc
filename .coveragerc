@@ -6,6 +6,7 @@ omit =
     */.pytest_cache/*
     legacy/*
     scripts/*
+    */interface/*
 
 [report]
 exclude_lines =
@@ -22,6 +23,3 @@ skip_covered = True
 
 [html]
 directory = htmlcov
-
-# Interface (testada manualmente)
-omit = */interface/*
