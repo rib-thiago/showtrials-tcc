@@ -1,0 +1,27 @@
+[run]
+source = src
+omit =
+    */test_*
+    */__pycache__/*
+    */.pytest_cache/*
+    legacy/*
+    scripts/*
+
+[report]
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    if self.debug:
+    if __name__ == .__main__.:
+    raise AssertionError
+    raise NotImplementedError
+
+fail_under = 27
+show_missing = True
+skip_covered = True
+
+[html]
+directory = htmlcov
+
+# Interface (testada manualmente)
+omit = */interface/*
