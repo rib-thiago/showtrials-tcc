@@ -2,19 +2,35 @@
 """
 Value Object: TipoDocumento
 Representa os tipos possíveis de documentos históricos.
-
-Value Objects são imutáveis e definidos por seus atributos.
-Dois objetos com mesmo tipo são considerados iguais.
 """
 
 from enum import Enum
 from typing import Dict, List
 
+# Telemetria opcional (pode ser None)
+_telemetry = None
+
+
+def _monitor(name=None):
+    """Decorator dummy que não faz nada."""
+
+    def decorator(func):
+        return func
+
+    return decorator
+
+
+def configure_telemetry(telemetry_instance=None, monitor_decorator=None):
+    """Configura telemetria para este módulo (usado apenas em testes)."""
+    global _telemetry, _monitor
+    _telemetry = telemetry_instance
+    if monitor_decorator:
+        _monitor = monitor_decorator
+
 
 class TipoDocumento(Enum):
     """
     Enumeração dos tipos de documento identificados no acervo.
-    Baseado na análise real dos 519 documentos.
     """
 
     INTERROGATORIO = "interrogatorio"
@@ -30,77 +46,83 @@ class TipoDocumento(Enum):
     @property
     def descricao_pt(self) -> str:
         """Descrição em português para UI"""
-        return {
-            self.INTERROGATORIO: "Protocolo de Interrogatório",
-            self.ACAREACAO: "Protocolo de Acareação",
-            self.ACUSACAO: "Auto de Acusação",
-            self.DECLARACAO: "Declaração/Requerimento",
-            self.CARTA: "Correspondência",
-            self.RELATORIO: "Relatório Especial (NKVD)",
-            self.DEPOIMENTO: "Depoimento Espontâneo",
-            self.LAUDO: "Laudo Pericial",
-            self.DESCONHECIDO: "Não classificado",
-        }[self]
+        descricoes: Dict[TipoDocumento, str] = {
+            TipoDocumento.INTERROGATORIO: "Protocolo de Interrogatório",
+            TipoDocumento.ACAREACAO: "Protocolo de Acareação",
+            TipoDocumento.ACUSACAO: "Auto de Acusação",
+            TipoDocumento.DECLARACAO: "Declaração/Requerimento",
+            TipoDocumento.CARTA: "Correspondência",
+            TipoDocumento.RELATORIO: "Relatório Especial (NKVD)",
+            TipoDocumento.DEPOIMENTO: "Depoimento Espontâneo",
+            TipoDocumento.LAUDO: "Laudo Pericial",
+            TipoDocumento.DESCONHECIDO: "Não classificado",
+        }
+        return descricoes[self]
 
     @property
     def descricao_en(self) -> str:
         """Descrição em inglês para exportação"""
-        return {
-            self.INTERROGATORIO: "Interrogation Protocol",
-            self.ACAREACAO: "Confrontation Protocol",
-            self.ACUSACAO: "Indictment",
-            self.DECLARACAO: "Statement",
-            self.CARTA: "Correspondence",
-            self.RELATORIO: "NKVD Special Report",
-            self.DEPOIMENTO: "Testimony",
-            self.LAUDO: "Forensic Report",
-            self.DESCONHECIDO: "Unclassified",
-        }[self]
+        descricoes: Dict[TipoDocumento, str] = {
+            TipoDocumento.INTERROGATORIO: "Interrogation Protocol",
+            TipoDocumento.ACAREACAO: "Confrontation Protocol",
+            TipoDocumento.ACUSACAO: "Indictment",
+            TipoDocumento.DECLARACAO: "Statement",
+            TipoDocumento.CARTA: "Correspondence",
+            TipoDocumento.RELATORIO: "NKVD Special Report",
+            TipoDocumento.DEPOIMENTO: "Testimony",
+            TipoDocumento.LAUDO: "Forensic Report",
+            TipoDocumento.DESCONHECIDO: "Unclassified",
+        }
+        return descricoes[self]
 
     @property
     def icone(self) -> str:
         """Ícone para UI"""
-        return {
-            self.INTERROGATORIO: "🔍",
-            self.ACAREACAO: "⚖️",
-            self.ACUSACAO: "📜",
-            self.DECLARACAO: "📝",
-            self.CARTA: "✉️",
-            self.RELATORIO: "📋",
-            self.DEPOIMENTO: "🗣️",
-            self.LAUDO: "🏥",
-            self.DESCONHECIDO: "📄",
-        }[self]
+        icones: Dict[TipoDocumento, str] = {
+            TipoDocumento.INTERROGATORIO: "🔍",
+            TipoDocumento.ACAREACAO: "⚖️",
+            TipoDocumento.ACUSACAO: "📜",
+            TipoDocumento.DECLARACAO: "📝",
+            TipoDocumento.CARTA: "✉️",
+            TipoDocumento.RELATORIO: "📋",
+            TipoDocumento.DEPOIMENTO: "🗣️",
+            TipoDocumento.LAUDO: "🏥",
+            TipoDocumento.DESCONHECIDO: "📄",
+        }
+        return icones[self]
 
     @classmethod
+    @_monitor("tipo_documento.from_titulo")
     def from_titulo(cls, titulo: str) -> "TipoDocumento":
         """
         Classifica o tipo baseado no título em russo.
-        Regras baseadas em padrões observados no acervo real.
         """
         if not titulo:
+            if _telemetry:
+                _telemetry.increment("tipo_documento.titulo_vazio")
             return cls.DESCONHECIDO
 
         # Mapeamento de padrões para tipos
-        padroes: Dict[List[str], TipoDocumento] = {
-            "interrogatorio": (["Протокол допроса"], cls.INTERROGATORIO),
-            "acareacao": (["Протокол очной ставки"], cls.ACAREACAO),
-            "acusacao": (
-                ["Проект обвинительного заключения", "Обвинительное заключение"],
-                cls.ACUSACAO,
-            ),
-            "declaracao": (["Заявление"], cls.DECLARACAO),
-            "carta": (["Письмо"], cls.CARTA),
-            "relatorio": (["Спецсообщение"], cls.RELATORIO),
-            "depoimento": (["Показания", "Показание"], cls.DEPOIMENTO),
-            "laudo": (["Акт судебно-медицинского"], cls.LAUDO),
+        padroes: Dict[str, List[str]] = {
+            "interrogatorio": ["Протокол допроса"],
+            "acareacao": ["Протокол очной ставки"],
+            "acusacao": ["Проект обвинительного заключения", "Обвинительное заключение"],
+            "declaracao": ["Заявление"],
+            "carta": ["Письмо"],
+            "relatorio": ["Спецсообщение"],
+            "depoimento": ["Показания", "Показание"],
+            "laudo": ["Акт судебно-медицинского"],
         }
 
-        for _, (padroes_lista, tipo) in padroes.items():
+        for tipo_str, padroes_lista in padroes.items():
             for padrao in padroes_lista:
                 if padrao in titulo:
-                    return tipo
+                    if _telemetry:
+                        _telemetry.increment(f"tipo_documento.classificado.{tipo_str}")
+                    return cls(tipo_str)
 
+        if _telemetry:
+            _telemetry.increment("tipo_documento.desconhecido")
         return cls.DESCONHECIDO
 
     @classmethod
