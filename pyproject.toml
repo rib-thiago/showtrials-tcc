@@ -33,6 +33,7 @@ mkdocs-material = "^9.7.1"
 mkdocstrings-python = "^2.0.2"
 commitizen = "^4.13.7"
 taskipy = "^1.14.1"
+mypy = "^1.19.1"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
