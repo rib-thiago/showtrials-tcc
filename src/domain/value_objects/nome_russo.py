@@ -1,17 +1,31 @@
 # src/domain/value_objects/nome_russo.py
 """
 Value Object: NomeRusso
-Representa nomes russos no formato "Л.В. Николаева".
-
-Responsabilidades:
-- Validar formato de nome russo
-- Extrair iniciais e sobrenome
-- Transliterar para inglês (GOST 7.79-2000)
-- Corrigir declinações (genitivo → nominativo)
+Representa nomes russos no formato "Л.В. Николаева" com telemetria.
 """
 
 import re
 from typing import Dict, Tuple
+
+# Telemetria opcional
+_telemetry = None
+
+
+def _monitor(name=None):
+    """Decorator dummy que não faz nada."""
+
+    def decorator(func):
+        return func
+
+    return decorator
+
+
+def configure_telemetry(telemetry_instance=None, monitor_decorator=None):
+    """Configura telemetria para este módulo (usado apenas em testes)."""
+    global _telemetry, _monitor
+    _telemetry = telemetry_instance
+    if monitor_decorator:
+        _monitor = monitor_decorator
 
 
 class NomeRusso:
@@ -109,6 +123,9 @@ class NomeRusso:
         "Л.В. Николаев": "Leonid V. Nikolaev",
     }
 
+    # Terminações femininas
+    TERMINACOES_FEMININAS = ("а", "я")
+
     def __init__(self, nome_completo: str):
         """
         Inicializa um nome russo.
@@ -119,12 +136,18 @@ class NomeRusso:
         Raises:
             ValueError: Se o formato for inválido
         """
-        self._original = nome_completo.strip()
+        # Normalizar espaços (remover extras, manter um espaço entre partes)
+        self._original = " ".join(nome_completo.split())
 
         if not self._validar_formato():
+            if _telemetry:
+                _telemetry.increment("nome_russo.formato_invalido")
             raise ValueError(f"Formato de nome russo inválido: {nome_completo}")
 
         self._iniciais, self._sobrenome = self._extrair_partes()
+
+        if _telemetry:
+            _telemetry.increment("nome_russo.criado")
 
     def _validar_formato(self) -> bool:
         """Valida se o nome está no formato correto."""
@@ -155,15 +178,32 @@ class NomeRusso:
         return self._sobrenome
 
     @property
+    def genero(self) -> str:
+        """Detecta o gênero baseado na terminação."""
+        if self._sobrenome.endswith(self.TERMINACOES_FEMININAS):
+            return "feminino"
+        return "masculino"
+
+    @property
     def sobrenome_base(self) -> str:
         """
-        Remove declinação russa (genitivo → nominativo).
-        Ex: 'Николаева' → 'Николаев'
+        Remove declinação russa (genitivo → nominativo) para nomes masculinos.
+        Para nomes femininos, mantém a forma original.
+        Ex: 'Николаева' (feminino) → 'Николаева'
+            'Николаев' (masculino) → 'Николаев'
         """
-        if self._sobrenome.endswith(("а", "у")):
+        # Se o nome inteiro é uma exceção, retorna o sobrenome original
+        if self._original in self.EXCECOES:
+            return self._sobrenome
+
+        # Para nomes masculinos, remove terminações de caso genitivo
+        if self.genero == "masculino" and self._sobrenome.endswith(("а", "у")):
             return self._sobrenome[:-1]
+
+        # Para femininos, mantém como está
         return self._sobrenome
 
+    @_monitor("nome_russo.transliterar")
     def transliterar(self) -> str:
         """
         Converte para inglês usando GOST 7.79-2000.
@@ -171,6 +211,8 @@ class NomeRusso:
         """
         # 1. Verificar exceções
         if self._original in self.EXCECOES:
+            if _telemetry:
+                _telemetry.increment("nome_russo.transliterado.excecao")
             return self.EXCECOES[self._original]
 
         # 2. Aplicar transliteração ao sobrenome base
@@ -185,6 +227,9 @@ class NomeRusso:
         sobrenome_str = "".join(sobrenome_en)
         if sobrenome_str:
             sobrenome_str = sobrenome_str[0].upper() + sobrenome_str[1:]
+
+        if _telemetry:
+            _telemetry.increment("nome_russo.transliterado.regra")
 
         return f"{self._iniciais} {sobrenome_str}"
 
