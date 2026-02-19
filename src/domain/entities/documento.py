@@ -2,42 +2,38 @@
 """
 Módulo: Documento
 Entidade principal do sistema, representa um documento histórico.
-
-Regras de negócio:
-- Um documento tem título, texto, data de coleta
-- Pode ser classificado por tipo (interrogatório, carta, etc)
-- Pode ter pessoas envolvidas (réu, remetente, destinatário)
-- O tamanho do texto é uma propriedade derivada
 """
 
 import re
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import List, Optional
+from typing import Any, Dict, List, Optional
+
+# Telemetria opcional
+_telemetry = None
+
+
+def _monitor(name=None):
+    """Decorator dummy que não faz nada."""
+
+    def decorator(func):
+        return func
+
+    return decorator
+
+
+def configure_telemetry(telemetry_instance=None, monitor_decorator=None):
+    """Configura telemetria para este módulo (usado apenas em testes)."""
+    global _telemetry, _monitor
+    _telemetry = telemetry_instance
+    if monitor_decorator:
+        _monitor = monitor_decorator
 
 
 @dataclass
 class Documento:
     """
     Representa um documento histórico coletado.
-
-    Attributes:
-        id: Identificador único (None se não persistido)
-        centro: Centro de origem ('lencenter' ou 'moscenter')
-        titulo: Título original em russo
-        data_original: Data do documento no formato original
-        url: URL de origem
-        texto: Conteúdo textual completo
-        data_coleta: Timestamp da coleta
-
-        # Metadados enriquecidos (opcionais)
-        tipo: Tipo do documento (interrogatorio, carta, etc)
-        tipo_descricao: Descrição amigável do tipo
-        pessoa_principal: Pessoa focal do documento (réu, autor)
-        remetente: Quem enviou (para cartas/relatórios)
-        destinatario: Quem recebeu (para cartas/relatórios)
-        envolvidos: Lista de pessoas envolvidas (acareações)
-        tem_anexos: Se o documento possui anexos
     """
 
     # Atributos obrigatórios
@@ -63,19 +59,27 @@ class Documento:
     def __post_init__(self):
         """Validações após inicialização"""
         if self.centro not in ["lencenter", "moscenter"]:
+            if _telemetry:
+                _telemetry.increment("documento.centro_invalido")
             raise ValueError(f"Centro inválido: {self.centro}")
 
         if not self.titulo:
+            if _telemetry:
+                _telemetry.increment("documento.titulo_vazio")
             raise ValueError("Título não pode ser vazio")
 
         if not self.url:
+            if _telemetry:
+                _telemetry.increment("documento.url_vazia")
             raise ValueError("URL não pode ser vazia")
+
+        if _telemetry:
+            _telemetry.increment("documento.criado")
 
     @property
     def tamanho_caracteres(self) -> int:
         """
         Retorna o tamanho do texto em caracteres.
-        Propriedade derivada (não armazenada).
         """
         return len(self.texto)
 
@@ -83,8 +87,9 @@ class Documento:
     def tamanho_palavras(self) -> int:
         """
         Retorna o número aproximado de palavras.
-        Útil para estatísticas.
         """
+        if not self.texto:
+            return 0
         return len(self.texto.split())
 
     @property
@@ -96,19 +101,23 @@ class Documento:
         pessoa_str = f" - {self.pessoa_principal}" if self.pessoa_principal else ""
         return f"{self.titulo[:50]}{tipo_str}{pessoa_str}"
 
+    @_monitor("documento.extrair_pessoas")
     def extrair_pessoas_do_titulo(self) -> List[str]:
         """
         Extrai nomes no formato russo (Л.В. Николаева) do título.
-        Regra de negócio: nomes russos seguem padrão de iniciais + sobrenome.
         """
         if not self.titulo:
             return []
 
-        # Padrão: Letra.Inicial. Letra.Inicial. Sobrenome
         padrao = r"([А-Я]\. ?[А-Я]\. [А-Я][а-я]+)"
-        return re.findall(padrao, self.titulo)
+        resultado = re.findall(padrao, self.titulo)
 
-    def to_dict(self) -> dict:
+        if _telemetry:
+            _telemetry.increment("documento.pessoas_extraidas", value=len(resultado))
+
+        return resultado
+
+    def to_dict(self) -> Dict[str, Any]:
         """
         Converte para dicionário (útil para serialização).
         """
@@ -131,7 +140,7 @@ class Documento:
         }
 
     @classmethod
-    def from_dict(cls, dados: dict) -> "Documento":
+    def from_dict(cls, dados: Dict[str, Any]) -> "Documento":
         """
         Cria documento a partir de dicionário.
         """
@@ -140,5 +149,8 @@ class Documento:
             from datetime import datetime
 
             dados["data_coleta"] = datetime.fromisoformat(dados["data_coleta"])
+
+        if _telemetry:
+            _telemetry.increment("documento.from_dict")
 
         return cls(**dados)
