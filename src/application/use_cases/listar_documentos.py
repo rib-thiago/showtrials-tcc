@@ -3,10 +3,22 @@
 Caso de uso: Listar documentos com paginação e filtros.
 """
 
+from collections import Counter
+from typing import Counter as CounterType
 from typing import Dict, List, Optional
 
 from src.application.dtos.documento_dto import DocumentoListaDTO
 from src.domain.interfaces.repositories import RepositorioDocumento
+from src.domain.value_objects.tipo_documento import TipoDocumento
+
+# Telemetria opcional
+_telemetry = None
+
+
+def configure_telemetry(telemetry_instance=None):
+    """Configura telemetria para este módulo (usado apenas em testes)."""
+    global _telemetry
+    _telemetry = telemetry_instance
 
 
 class ListarDocumentos:
@@ -21,10 +33,12 @@ class ListarDocumentos:
 
     def __init__(self, repo: RepositorioDocumento):
         self.repo = repo
-        self._tradutor_nomes = None
+        self._tradutor_nomes: Optional[bool] = None  # ← MyPy: type hint corrigido
 
     def com_traducao_nomes(self, ativo: bool = True):
         """Ativa/desativa tradução de nomes."""
+        if _telemetry:
+            _telemetry.increment("listar_documentos.com_traducao_nomes")
         self._tradutor_nomes = ativo
         return self
 
@@ -38,6 +52,10 @@ class ListarDocumentos:
         """
         Executa a listagem com filtros e paginação.
         """
+        if _telemetry:
+            _telemetry.increment("listar_documentos.executar.iniciado")
+            _telemetry.increment(f"listar_documentos.pagina.{pagina}")
+
         offset = (pagina - 1) * limite
 
         # Buscar documentos
@@ -49,13 +67,19 @@ class ListarDocumentos:
         # Converter para DTO
         items = []
         for doc in documentos:
-            # Verificar se tem tradução
-            tem_traducao = self._verificar_traducoes(doc.id)
+            # Verificar se tem tradução (com proteção contra None)
+            tem_traducao = False
+            if doc.id is not None:  # ← MyPy: verificação adicionada
+                tem_traducao = self._verificar_traducoes(doc.id)
 
             dto = DocumentoListaDTO.from_domain(
                 doc, tem_traducao=tem_traducao, tradutor_nomes=self._tradutor_nomes
             )
             items.append(dto)
+
+        if _telemetry:
+            _telemetry.increment("listar_documentos.executar.concluido")
+            _telemetry.increment("listar_documentos.resultados", value=len(items))
 
         return {
             "items": items,
@@ -70,15 +94,16 @@ class ListarDocumentos:
         Lista tipos disponíveis com contagens.
 
         Returns:
-            Lista de (tipo, descricao, count)
+            Lista de (tipo, descricao, icone, count)
         """
-        from collections import Counter
+        if _telemetry:
+            _telemetry.increment("listar_documentos.listar_tipos.iniciado")
 
         # Buscar todos (limitado para performance)
         docs = self.repo.listar(limite=1000, centro=centro)
 
         # Contar por tipo
-        counter = Counter()
+        counter: CounterType[str] = Counter()  # ← MyPy: type hint adicionado
         for doc in docs:
             if doc.tipo:
                 counter[doc.tipo] += 1
@@ -86,8 +111,6 @@ class ListarDocumentos:
         # Converter para lista ordenada
         resultado = []
         for tipo, count in counter.most_common():
-            from src.domain.value_objects.tipo_documento import TipoDocumento
-
             try:
                 tipo_enum = TipoDocumento(tipo)
                 descricao = tipo_enum.descricao_pt
@@ -98,16 +121,21 @@ class ListarDocumentos:
 
             resultado.append((tipo, descricao, icone, count))
 
+        if _telemetry:
+            _telemetry.increment("listar_documentos.listar_tipos.concluido")
+            _telemetry.increment("listar_documentos.tipos_encontrados", value=len(resultado))
+
         return resultado
 
     def _verificar_traducoes(self, documento_id: int) -> bool:
         """
         Verifica se documento tem alguma tradução consultando o banco.
         """
+        if _telemetry:
+            _telemetry.increment("listar_documentos.verificar_traducoes.iniciado")
+
         try:
             # Usar o repositório para buscar traduções
-            # Como o repositório atual não tem método para traduções,
-            # vamos fazer uma consulta direta (temporário)
             from src.infrastructure.persistence.sqlite_repository import SQLiteDocumentoRepository
 
             repo = SQLiteDocumentoRepository()
@@ -118,8 +146,16 @@ class ListarDocumentos:
                     "SELECT COUNT(*) FROM traducoes WHERE documento_id = ?", (documento_id,)
                 )
                 count = cursor.fetchone()[0]
-                return count > 0
+                tem_traducao = count > 0
+
+                if _telemetry:
+                    _telemetry.increment("listar_documentos.verificar_traducoes.sucesso")
+
+                return tem_traducao
+
         except Exception as e:
             # Se algo der errado, assume que não tem tradução
+            if _telemetry:
+                _telemetry.increment("listar_documentos.verificar_traducoes.erro")
             print(f"Erro ao verificar traduções: {e}")
             return False
