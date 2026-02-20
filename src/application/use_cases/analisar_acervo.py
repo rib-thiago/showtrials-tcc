@@ -1,16 +1,25 @@
 # src/application/use_cases/analisar_acervo.py
 """
-Caso de uso: Analisar todo o acervo (estatísticas globais).
+Caso de uso: Analisar todo o acervo (estatísticas globais) com telemetria.
 """
 
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, Optional
+from typing import Any, Dict, Optional
 
 from src.domain.interfaces.repositories import RepositorioDocumento
 from src.infrastructure.analysis.spacy_analyzer import SpacyAnalyzer
 from src.infrastructure.analysis.wordcloud_generator import WordCloudGenerator
 from src.infrastructure.registry import ServiceRegistry
+
+# Telemetria opcional
+_telemetry = None
+
+
+def configure_telemetry(telemetry_instance=None):
+    """Configura telemetria para este módulo (usado apenas em testes)."""
+    global _telemetry
+    _telemetry = telemetry_instance
 
 
 class AnalisarAcervo:
@@ -30,13 +39,16 @@ class AnalisarAcervo:
         """Obtém gerador de wordcloud do registry."""
         return self.registry.get("wordcloud")
 
-    def estatisticas_globais(self) -> Dict:
+    def estatisticas_globais(self) -> Dict[str, Any]:
         """
         Estatísticas agregadas de todo o acervo.
         """
+        if _telemetry:
+            _telemetry.increment("analisar_acervo.estatisticas.iniciado")
+
         documentos = self.repo_doc.listar(limite=5000)
 
-        stats = {
+        stats: Dict[str, Any] = {
             "total_docs": len(documentos),
             "total_palavras": 0,
             "total_caracteres": 0,
@@ -51,14 +63,23 @@ class AnalisarAcervo:
             "top_organizacoes": [],
         }
 
+        if _telemetry:
+            _telemetry.increment("analisar_acervo.estatisticas.documentos", value=len(documentos))
+
         # Amostra para análise de entidades (limitado por performance)
         amostra = documentos[:100]
 
         # Usa analyzer se disponível
         try:
             analyzer = self._get_analyzer()
+            analyzer_disponivel = True
+            if _telemetry:
+                _telemetry.increment("analisar_acervo.analyzer.disponivel")
         except Exception:
             analyzer = None
+            analyzer_disponivel = False
+            if _telemetry:
+                _telemetry.increment("analisar_acervo.analyzer.indisponivel")
 
         for doc in amostra:
             # Estatísticas básicas
@@ -78,17 +99,21 @@ class AnalisarAcervo:
             # Análise de entidades (apenas se analyzer disponível)
             if analyzer and len(amostra) < 50:  # Performance
                 try:
-                    analise = analyzer.analisar(doc.texto[:20000], doc.id, "ru")
-
-                    # Contar pessoas (seria melhor se analise retornasse isso estruturado)
-                    # Placeholder
-                    pass
+                    if doc.id is not None:
+                        analise = analyzer.analisar(doc.texto[:20000], doc.id, "ru")
+                    if _telemetry:
+                        _telemetry.increment("analisar_acervo.analise_entidades.sucesso")
                 except Exception:
+                    if _telemetry:
+                        _telemetry.increment("analisar_acervo.analise_entidades.erro")
                     pass
 
         # Calcular médias
         if stats["total_docs"] > 0:
             stats["media_palavras_por_doc"] = stats["total_palavras"] / stats["total_docs"]
+
+        if _telemetry:
+            _telemetry.increment("analisar_acervo.estatisticas.concluido")
 
         return stats
 
@@ -96,23 +121,34 @@ class AnalisarAcervo:
         """
         Gera nuvem de palavras com todo o acervo.
         """
+        if _telemetry:
+            _telemetry.increment("analisar_acervo.wordcloud.iniciado")
+            _telemetry.increment(f"analisar_acervo.wordcloud.idioma.{idioma}")
+
         documentos = self.repo_doc.listar(limite=500)
 
         # Concatenar textos (limitado)
         texto_completo = ""
-        for doc in documentos[:100]:  # Limitar para performance
+        for i, doc in enumerate(documentos[:100]):  # Limitar para performance
             texto_completo += doc.texto[:5000] + "\n"
 
         nome_arquivo = f"wordcloud_acervo_{idioma}_{datetime.now().strftime('%Y%m%d')}.png"
         caminho = Path("analises") / nome_arquivo
 
-        wordcloud = self._get_wordcloud()
-        wordcloud.gerar(
-            texto=texto_completo,
-            titulo=f"Acervo Completo - {idioma}",
-            idioma=idioma,
-            max_palavras=200,
-            salvar_em=str(caminho),
-        )
+        try:
+            wordcloud = self._get_wordcloud()
+            wordcloud.gerar(
+                texto=texto_completo,
+                titulo=f"Acervo Completo - {idioma}",
+                idioma=idioma,
+                max_palavras=200,
+                salvar_em=str(caminho),
+            )
+            if _telemetry:
+                _telemetry.increment("analisar_acervo.wordcloud.sucesso")
+        except Exception as e:
+            if _telemetry:
+                _telemetry.increment("analisar_acervo.wordcloud.erro")
+            raise e
 
         return caminho
