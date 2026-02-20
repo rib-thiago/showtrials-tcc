@@ -1,6 +1,6 @@
 # src/application/use_cases/exportar_documento.py
 """
-Caso de uso: Exportar documento.
+Caso de uso: Exportar documento com telemetria.
 """
 
 from datetime import datetime
@@ -11,6 +11,15 @@ from src.application.dtos.documento_dto import DocumentoDTO
 from src.domain.interfaces.repositories import RepositorioDocumento
 from src.domain.interfaces.repositorio_traducao import RepositorioTraducao
 from src.domain.value_objects.nome_russo import NomeRusso
+
+# Telemetria opcional
+_telemetry = None
+
+
+def configure_telemetry(telemetry_instance=None):
+    """Configura telemetria para este módulo (usado apenas em testes)."""
+    global _telemetry
+    _telemetry = telemetry_instance
 
 
 class ExportarDocumento:
@@ -33,9 +42,15 @@ class ExportarDocumento:
         """
         Busca documento ou tradução.
         """
+        if _telemetry:
+            _telemetry.increment("exportar_documento.buscar_documento.iniciado")
+            _telemetry.increment(f"exportar_documento.idioma.{idioma}")
+
         if idioma == "original":
             doc = self.repo_doc.buscar_por_id(documento_id)
             if not doc:
+                if _telemetry:
+                    _telemetry.increment("exportar_documento.erro.documento_nao_encontrado")
                 return None
 
             def tradutor(nome):
@@ -44,20 +59,31 @@ class ExportarDocumento:
                 except Exception:
                     return nome
 
+            if _telemetry:
+                _telemetry.increment("exportar_documento.buscar_documento.sucesso_original")
             return DocumentoDTO.from_domain(doc, tradutor, [])
 
         elif self.repo_trad:
             traducao = self.repo_trad.buscar_por_documento(documento_id, idioma)
             if not traducao:
+                if _telemetry:
+                    _telemetry.increment("exportar_documento.erro.traducao_nao_encontrada")
                 return None
 
             doc = self.repo_doc.buscar_por_id(documento_id)
             if not doc:
+                if _telemetry:
+                    _telemetry.increment(
+                        "exportar_documento.erro.documento_original_nao_encontrado"
+                    )
                 return None
 
             dto = DocumentoDTO.from_domain(doc, None, [])
             dto.texto = traducao.texto_traduzido
             dto.titulo = f"{dto.titulo} [{traducao.idioma_nome}]"
+
+            if _telemetry:
+                _telemetry.increment("exportar_documento.buscar_documento.sucesso_traducao")
             return dto
 
         return None
@@ -66,6 +92,9 @@ class ExportarDocumento:
         """
         Gera conteúdo formatado para TXT.
         """
+        if _telemetry:
+            _telemetry.increment("exportar_documento.gerar_conteudo_txt.iniciado")
+
         linhas = []
 
         if incluir_metadados:
@@ -90,6 +119,9 @@ class ExportarDocumento:
 
         linhas.append(dto.texto)
 
+        if _telemetry:
+            _telemetry.increment("exportar_documento.gerar_conteudo_txt.concluido")
+
         return "\n".join(linhas)
 
     def _gerar_nome_arquivo(self, dto: DocumentoDTO, formato: str, idioma: str) -> str:
@@ -97,6 +129,9 @@ class ExportarDocumento:
         Gera nome do arquivo no formato:
         ID_TITULO_IDIOMA.formato
         """
+        if _telemetry:
+            _telemetry.increment("exportar_documento.gerar_nome_arquivo.iniciado")
+
         # Sanitizar título (remover caracteres especiais)
         titulo = "".join(c for c in dto.titulo if c.isalnum() or c in (" ", "-", "_")).rstrip()
         titulo = titulo[:50]  # Limitar tamanho
@@ -118,22 +153,15 @@ class ExportarDocumento:
     ) -> Dict:
         """
         Exporta documento.
-
-        Args:
-            documento_id: ID do documento
-            formato: 'txt' ou 'pdf'
-            idioma: 'original' ou código do idioma
-            diretorio: Pasta de destino
-            incluir_metadados: Incluir cabeçalho com metadados
-
-        Returns:
-            Dict com:
-                - sucesso: bool
-                - caminho: str (se sucesso)
-                - erro: str (se falha)
         """
+        if _telemetry:
+            _telemetry.increment("exportar_documento.executar.iniciado")
+            _telemetry.increment(f"exportar_documento.executar.formato.{formato}")
+
         # Validar formato
         if formato not in self.FORMATOS:
+            if _telemetry:
+                _telemetry.increment("exportar_documento.erro.formato_invalido")
             return {
                 "sucesso": False,
                 "erro": f"Formato não suportado: {formato}. Use: {', '.join(self.FORMATOS)}",
@@ -142,6 +170,8 @@ class ExportarDocumento:
         # Buscar documento
         dto = self._buscar_documento(documento_id, idioma)
         if not dto:
+            if _telemetry:
+                _telemetry.increment("exportar_documento.erro.documento_indisponivel")
             return {
                 "sucesso": False,
                 "erro": f"Documento/idioma não encontrado: {documento_id}/{idioma}",
@@ -159,9 +189,18 @@ class ExportarDocumento:
                 conteudo = self._gerar_conteudo_txt(dto, incluir_metadados)
                 with open(caminho, "w", encoding="utf-8") as f:
                     f.write(conteudo)
+
+                if _telemetry:
+                    _telemetry.increment("exportar_documento.executar.sucesso_txt")
+                    _telemetry.increment("exportar_documento.caracteres", value=len(conteudo))
+
             elif formato == "pdf":
-                # Placeholder para FASE 7
+                if _telemetry:
+                    _telemetry.increment("exportar_documento.executar.pdf_nao_implementado")
                 return {"sucesso": False, "erro": "Exportação PDF será implementada na FASE 7"}
+
+            if _telemetry:
+                _telemetry.increment("exportar_documento.executar.concluido")
 
             return {
                 "sucesso": True,
@@ -170,17 +209,27 @@ class ExportarDocumento:
             }
 
         except Exception as e:
+            if _telemetry:
+                _telemetry.increment("exportar_documento.erro.execucao")
             return {"sucesso": False, "erro": f"Erro ao exportar: {e}"}
 
     def listar_idiomas_disponiveis(self, documento_id: int) -> list:
         """
         Lista idiomas disponíveis para exportação.
         """
+        if _telemetry:
+            _telemetry.increment("exportar_documento.listar_idiomas.iniciado")
+
         idiomas = [{"codigo": "original", "nome": "Original (Russo)"}]
 
         if self.repo_trad:
             traducoes = self.repo_trad.listar_por_documento(documento_id)
             for t in traducoes:
                 idiomas.append({"codigo": t.idioma, "nome": t.idioma_nome, "icone": t.idioma_icone})
+
+            if _telemetry:
+                _telemetry.increment(
+                    f"exportar_documento.listar_idiomas.encontrados.{len(traducoes)}"
+                )
 
         return idiomas
