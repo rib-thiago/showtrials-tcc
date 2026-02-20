@@ -36,8 +36,30 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-poetry-
 
-    - name: Install dependencies
+    - name: Install Poetry dependencies
       run: poetry install --no-interaction
+
+    # ===== INÍCIO DA CORREÇÃO - Instalar dependências NLP via pip =====
+    # Motivo: Estas dependências não puderam ser adicionadas ao Poetry
+    # devido a conflitos de versão (documentado na FASE 8 e FASE 11)
+    - name: Install NLP dependencies (pip)
+      run: |
+        poetry run pip install numpy==1.26.0
+        poetry run pip install spacy==3.7.5
+        poetry run pip install textblob nltk wordcloud matplotlib
+
+    - name: Download spaCy models
+      run: |
+        poetry run python -m spacy download en_core_web_sm
+        poetry run python -m spacy download ru_core_news_sm
+
+    - name: Verify installations
+      run: |
+        poetry run python -c "import spacy; print(f'✅ spacy {spacy.__version__}')"
+        poetry run python -c "import numpy; print(f'✅ numpy {numpy.__version__}')"
+        poetry run python -c "import textblob; print('✅ textblob')"
+        poetry run python -c "import wordcloud; print('✅ wordcloud')"
+    # ===== FIM DA CORREÇÃO =====
 
     - name: Lint with ruff
       run: poetry run ruff check src/
