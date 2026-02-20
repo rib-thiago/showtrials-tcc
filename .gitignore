@@ -188,3 +188,4 @@ legacy/
 config.local.yaml
 .DS_Store
 diagnostico_*.txt
+/site/
