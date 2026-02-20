@@ -1,17 +1,26 @@
 # src/application/use_cases/gerar_relatorio.py
 """
-Caso de uso: Gerar relatórios avançados.
+Caso de uso: Gerar relatórios avançados com telemetria.
 """
 
 from collections import Counter
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 from src.domain.interfaces.repositories import RepositorioDocumento
 from src.domain.interfaces.repositorio_traducao import RepositorioTraducao
 from src.domain.value_objects.nome_russo import NomeRusso
 from src.domain.value_objects.tipo_documento import TipoDocumento
+
+# Telemetria opcional
+_telemetry = None
+
+
+def configure_telemetry(telemetry_instance=None):
+    """Configura telemetria para este módulo (usado apenas em testes)."""
+    global _telemetry
+    _telemetry = telemetry_instance
 
 
 class GerarRelatorio:
@@ -25,19 +34,22 @@ class GerarRelatorio:
         self.repo_doc = repo_doc
         self.repo_trad = repo_trad
 
-    def _coletar_dados(self) -> Dict:
+    def _coletar_dados(self) -> Dict[str, Any]:
         """
         Coleta todos os dados necessários para o relatório.
         """
+        if _telemetry:
+            _telemetry.increment("gerar_relatorio.coletar_dados.iniciado")
+
         # Buscar todos os documentos (limitado para performance)
         documentos = self.repo_doc.listar(limite=5000)
 
-        # Inicializar contadores
-        centro_counter = Counter()
-        tipo_counter = Counter()
-        pessoa_counter = Counter()
-        ano_counter = Counter()
-        mes_counter = Counter()
+        # Inicializar contadores com type hints
+        centro_counter: Counter[str] = Counter()
+        tipo_counter: Counter[str] = Counter()
+        pessoa_counter: Counter[str] = Counter()
+        ano_counter: Counter[str] = Counter()
+        mes_counter: Counter[str] = Counter()
 
         # Métricas especiais
         cartas = 0
@@ -94,7 +106,7 @@ class GerarRelatorio:
                         mes_counter["Novembro"] += 1
 
         # Pessoas mais frequentes (com tradução)
-        pessoas_frequentes = []
+        pessoas_frequentes: List[Tuple[str, int, str]] = []
         for nome, count in pessoa_counter.most_common(20):
             try:
                 nome_en = NomeRusso(nome).transliterar()
@@ -104,16 +116,21 @@ class GerarRelatorio:
 
         # Dados de tradução
         total_traducoes = 0
-        traducoes_por_idioma = {}
+        traducoes_por_idioma: Dict[str, int] = {}
 
         if self.repo_trad:
-            # Simplificado - em produção, faria uma query agregada
-            for doc in documentos[:100]:  # Amostra
-                traducoes = self.repo_trad.listar_por_documento(doc.id)
-                total_traducoes += len(traducoes)
-                for t in traducoes:
-                    idioma = t.idioma
-                    traducoes_por_idioma[idioma] = traducoes_por_idioma.get(idioma, 0) + 1
+            # Amostra para performance
+            for doc in documentos[:100]:
+                if doc.id is not None:  # ← ADICIONAR ESTA VERIFICAÇÃO
+                    traducoes = self.repo_trad.listar_por_documento(doc.id)
+                    total_traducoes += len(traducoes)
+                    for t in traducoes:
+                        idioma = t.idioma
+                        traducoes_por_idioma[idioma] = traducoes_por_idioma.get(idioma, 0) + 1
+
+        if _telemetry:
+            _telemetry.increment("gerar_relatorio.coletar_dados.concluido")
+            _telemetry.increment("gerar_relatorio.documentos_processados", value=len(documentos))
 
         return {
             "total_documentos": len(documentos),
@@ -138,9 +155,12 @@ class GerarRelatorio:
         """
         Gera relatório em formato texto.
         """
+        if _telemetry:
+            _telemetry.increment("gerar_relatorio.gerar_txt.iniciado")
+
         dados = self._coletar_dados()
 
-        linhas = []
+        linhas: List[str] = []
         linhas.append("=" * 80)
         linhas.append("RELATÓRIO DO ACERVO - SHOW TRIALS".center(80))
         linhas.append(f"Data: {dados['data_geracao']}".center(80))
@@ -224,12 +244,19 @@ class GerarRelatorio:
         linhas.append("FIM DO RELATÓRIO".center(80))
         linhas.append("=" * 80)
 
+        if _telemetry:
+            _telemetry.increment("gerar_relatorio.gerar_txt.concluido")
+
         return "\n".join(linhas)
 
     def salvar_relatorio(self, formato: str = "txt", diretorio: str = "relatorios") -> str:
         """
         Gera e salva relatório em arquivo.
         """
+        if _telemetry:
+            _telemetry.increment("gerar_relatorio.salvar.iniciado")
+            _telemetry.increment(f"gerar_relatorio.formato.{formato}")
+
         Path(diretorio).mkdir(exist_ok=True)
 
         if formato == "txt":
@@ -240,10 +267,18 @@ class GerarRelatorio:
             with open(caminho, "w", encoding="utf-8") as f:
                 f.write(conteudo)
 
+            if _telemetry:
+                _telemetry.increment("gerar_relatorio.salvar.sucesso_txt")
+                _telemetry.increment("gerar_relatorio.caracteres", value=len(conteudo))
+
             return str(caminho)
 
         elif formato == "html":
-            # Placeholder para versão HTML
+            if _telemetry:
+                _telemetry.increment("gerar_relatorio.salvar.html_placeholder")
             return "relatorio.html (em desenvolvimento)"
+
+        if _telemetry:
+            _telemetry.increment("gerar_relatorio.salvar.formato_invalido")
 
         return ""
