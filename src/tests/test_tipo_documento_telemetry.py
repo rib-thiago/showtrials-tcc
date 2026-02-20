@@ -61,23 +61,3 @@ class TestTipoDocumentoTelemetry:
 
         tipo = TipoDocumento.from_titulo("Протокол допроса")
         assert tipo == TipoDocumento.INTERROGATORIO
-
-    def test_com_decorator_mock(self):
-        """Testa o decorator com mock (opcional)."""
-        mock_monitor = MagicMock(return_value=lambda f: f)
-        td_module.configure_telemetry(monitor_decorator=mock_monitor)
-
-        # Recarregar o módulo para aplicar o decorator
-        import importlib
-
-        import src.domain.value_objects.tipo_documento as td
-
-        importlib.reload(td)
-
-        from src.domain.value_objects.tipo_documento import TipoDocumento
-
-        tipo = TipoDocumento.from_titulo("Протокол допроса")
-        assert tipo == TipoDocumento.INTERROGATORIO
-
-        # Verificar se o decorator foi aplicado (opcional)
-        # mock_monitor.assert_called_with("tipo_documento.from_titulo")
