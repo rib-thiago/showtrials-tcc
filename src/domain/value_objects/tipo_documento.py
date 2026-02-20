@@ -1,26 +1,20 @@
 # src/domain/value_objects/tipo_documento.py
 """
 Value Object: TipoDocumento
-Representa os tipos possíveis de documentos históricos com type hints e telemetria.
+Representa os tipos possíveis de documentos históricos.
 """
 
 from enum import Enum
-from typing import Callable, Dict, List, Optional
+from typing import Dict, List
 
-# Telemetria opcional
-try:
-    from src.infrastructure.telemetry import monitor as telemetry_monitor
+# Telemetria opcional (padrão do projeto)
+_telemetry = None
 
-    TELEMETRY_AVAILABLE = True
-    monitor = telemetry_monitor
-except ImportError:
-    TELEMETRY_AVAILABLE = False
 
-    def monitor(name: Optional[str] = None) -> Callable:
-        def decorator(func: Callable) -> Callable:
-            return func
-
-        return decorator
+def configure_telemetry(telemetry_instance=None):
+    """Configura telemetria para este módulo (usado apenas em testes)."""
+    global _telemetry
+    _telemetry = telemetry_instance
 
 
 class TipoDocumento(Enum):
@@ -87,12 +81,15 @@ class TipoDocumento(Enum):
         return icones[self.value]
 
     @classmethod
-    @monitor("tipo_documento.from_titulo")
     def from_titulo(cls, titulo: str) -> "TipoDocumento":
         """
         Classifica o tipo baseado no título em russo.
         """
+        global _telemetry
+
         if not titulo:
+            if _telemetry:
+                _telemetry.increment("tipo_documento.titulo_vazio")
             return cls.DESCONHECIDO
 
         # Mapeamento de padrões para tipos
@@ -110,8 +107,12 @@ class TipoDocumento(Enum):
         for tipo_str, padroes_lista in padroes.items():
             for padrao in padroes_lista:
                 if padrao in titulo:
+                    if _telemetry:
+                        _telemetry.increment(f"tipo_documento.classificado.{tipo_str}")
                     return cls(tipo_str)
 
+        if _telemetry:
+            _telemetry.increment("tipo_documento.desconhecido")
         return cls.DESCONHECIDO
 
     @classmethod
