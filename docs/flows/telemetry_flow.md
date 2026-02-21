@@ -434,9 +434,9 @@ def setup_method(self):
 
 ## 📚 **REFERÊNCIAS**
 
-- [FASE 14 - ExportarDocumento](../FASE14.md)
-- [FASE 15 - GerarRelatorio](../FASE15.md)
-- [FASE 16 - ListarDocumentos](../FASE16.md)
+- [FASE 14 - ExportarDocumento](../fases/FASE14.md)
+- [FASE 15 - GerarRelatorio](../fases/FASE15.md)
+- [FASE 16 - ListarDocumentos](../fases/FASE16.md)
 ---
 
 ## 👤 **AUTOR**

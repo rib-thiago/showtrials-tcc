@@ -27,7 +27,7 @@
 | 19/02/2026 | 63% | +8% | FASE 12-13 (telemetria + limpeza) |
 | 19/02/2026 | 55% | - | Diagnóstico inicial |
 
-*Detalhes das contribuições estão documentados em cada [FASE*.md](../fases/)*
+*Detalhes das contribuições estão documentados em cada [FASE*.md](fases/)*
 
 ---
 
@@ -65,7 +65,7 @@
   - Expandidos testes de lógica (12)
   - Criados testes de telemetria (6)
   - Corrigidos 3 erros de MyPy
-🔗 [FASE16.md](../fases/FASE16.md)
+🔗 [FASE16.md](fases/FASE16.md)
 ```
 
 ### **FASE 15 - GerarRelatorio (20/02/2026)**
@@ -77,7 +77,7 @@
   - Criados 12 testes de lógica
   - Criados 6 testes de telemetria
   - Corrigidos 7 erros de MyPy
-🔗 [FASE15.md](../fases/FASE15.md)
+🔗 [FASE15.md](fases/FASE15.md)
 ```
 
 ### **FASE 14 - ExportarDocumento (20/02/2026)**
@@ -88,7 +88,7 @@
   - Adicionada telemetria
   - Criados 12 testes de lógica
   - Criados 8 testes de telemetria
-🔗 [FASE14.md](../fases/FASE14.md)
+🔗 [FASE14.md](fases/FASE14.md)
 ```
 
 ### **FASE 12-13 - Fundação (19/02/2026)**
@@ -98,7 +98,7 @@
   - Padronização de telemetria em tipo_documento.py
   - Limpeza de arquivos .bak e diagnóstico
   - Organização do repositório
-🔗 [FASE12.md](../fases/FASE12.md) | [FASE13.md](../fases/FASE13.md)
+🔗 [FASE12.md](fases/FASE12.md) | [FASE13.md](fases/FASE13.md)
 ```
 
 ---
@@ -119,7 +119,7 @@
 
 - [Issues abertas relacionadas](https://github.com/rib-thiago/showtrials-tcc/issues?q=is%3Aopen+is%3Aissue+label%3Atipo%2Ftestes)
 - [Milestone: Qualidade](https://github.com/rib-thiago/showtrials-tcc/milestone/2)
-- [Documentação das fases](../fases/)
+- [Documentação das fases](fases/)
 - [Como contribuir com testes](../contributing.md#testes)
 
 ---

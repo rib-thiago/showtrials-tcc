@@ -27,7 +27,7 @@ Toda FASE*.md DEVE conter as seguintes seções nesta ordem:
 | **Artefatos** | Lista de arquivos principais |
 | **Dependências** | Fases relacionadas |
 | **Issue principal** | [#N](https://github.com/rib-thiago/showtrials-tcc/issues/N) |
-| **Commit principal** | [hash](link) |
+| **Commit principal** | [hash](#) |
 
 ---
 
@@ -115,7 +115,7 @@ Lista de testes de telemetria
 
 ## 📋 **Issues Relacionadas**
 
-- [#N](link) - Descrição
+- [#N](#) - Descrição
 
 ---
 

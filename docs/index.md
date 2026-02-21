@@ -58,16 +58,16 @@ O projeto segue **Clean Architecture** com 4 camadas independentes:
 
 ### Fases do Projeto
 
-- [FASE 1 - Domain Layer](FASE1_DOMAIN.md)
-- [FASE 2 - Application Layer](FASE2_APPLICATION.md)
-- [FASE 3 - Infrastructure Layer](FASE3_INFRASTRUCTURE.md)
-- [FASE 4 - CLI Interface](FASE4_CLI.md)
-- [FASE 5 - Tradução Avançada](FASE5_TRADUCAO.md)
-- [FASE 6 - Exportação](FASE6_EXPORTACAO.md)
-- [FASE 7 - Relatórios](FASE7_RELATORIOS.md)
-- [FASE 8 - Análise de Texto](FASE8_ANALISE_TEXTO.md)
-- [FASE 9 - Web Interface](FASE9_WEB_INTERFACE.md)
-- [FASE 10 - Service Registry](FASE10_SERVICE_REGISTRY.md)
+- [FASE 1 - Domain Layer](fases/FASE1_DOMAIN.md)
+- [FASE 2 - Application Layer](fases/FASE2_APPLICATION.md)
+- [FASE 3 - Infrastructure Layer](fases/FASE3_INFRASTRUCTURE.md)
+- [FASE 4 - CLI Interface](fases/FASE4_CLI.md)
+- [FASE 5 - Tradução Avançada](fases/FASE5_TRADUCAO.md)
+- [FASE 6 - Exportação](fases/FASE6_EXPORTACAO.md)
+- [FASE 7 - Relatórios](fases/FASE7_RELATORIOS.md)
+- [FASE 8 - Análise de Texto](fases/FASE8_ANALISE_TEXTO.md)
+- [FASE 9 - Web Interface](fases/FASE9_WEB_INTERFACE.md)
+- [FASE 10 - Service Registry](fases/FASE10_SERVICE_REGISTRY.md)
 
 ## 👤 Autor
 
