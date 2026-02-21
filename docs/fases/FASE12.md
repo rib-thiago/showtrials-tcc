@@ -25,7 +25,7 @@ Padronizar a implementação da telemetria no arquivo `tipo_documento.py` para s
 
 ---
 
-## 📁 **Arquivo Modificado**
+## 📁 **Estrutura Criada/Modificada**
 
 ```bash
 src/
