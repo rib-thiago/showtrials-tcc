@@ -404,8 +404,7 @@ poetry run python -m spacy download en_core_web_sm
 ## 📚 **REFERÊNCIAS**
 
 - [Poetry Documentation](https://python-poetry.org/docs/)
-- [FASE 8 - Análise de Texto](docs/FASE8_ANALISE_TEXTO.md)
-- [FASE 11 - CI](docs/FASE11_CI.md)
+- [FASE 8 - Análise de Texto](../FASE8_ANALISE_TEXTO.md)
 - [Issue #1 - Migrar NLP para Poetry](https://github.com/rib-thiago/showtrials-tcc/issues/1)
 
 ---
