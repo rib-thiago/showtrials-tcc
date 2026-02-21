@@ -10,8 +10,9 @@
 
 | Item | Descrição |
 |------|-----------|
-| **Status** | ⏳ Em andamento |
+| **Status** | ✅ Concluída |
 | **Data de Início** | 19 de Fevereiro de 2026 |
+| **Data de Conclusão** | 20 de Fevereiro de 2026 |
 | **Artefatos** | Script de diagnóstico, Análise de falhas, Workflow CI corrigido, Documentação de decisões |
 | **Dependências** | FASE 8 (Análise de Texto), FASE 10 (Service Registry) |
 | **Pré-requisitos** | Acesso ao GitHub, Permissão para modificar workflows |
@@ -289,7 +290,7 @@ Este compromisso fica registrado neste documento e no código (via comentários)
 
 ---
 
-## 📋 **PARTE 4: TODO LIST - EVOLUÇÃO FUTURA**
+## 📋 **PARTE 4: TODO LIST - EVOLUÇÃO FUTURA (Issue #1)**
 
 ### 4.1 Tarefas para Migração para Poetry
 
@@ -307,6 +308,8 @@ Este compromisso fica registrado neste documento e no código (via comentários)
 - [ ] **Testar no CI** (simulando o ambiente limpo)
 - [ ] **Remover** etapas de `pip install` do workflow
 - [ ] **Atualizar** este documento com a solução final
+
+🔗 **Issue relacionada:** [#1 - Migrar dependências NLP para Poetry](https://github.com/rib-thiago/showtrials-tcc/issues/1)
 
 ### 4.2 Comando para Lembrete
 
