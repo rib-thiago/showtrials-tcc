@@ -490,8 +490,8 @@ Closes #123"
 
 ## 📚 **REFERÊNCIAS**
 
-- [Quality Flow](QUALITY_FLOW.md)
-- [Telemetry Flow](TELEMETRY_FLOW.md)
+- [Quality Flow](quality_flow.md)
+- [Telemetry Flow](telemetry_flow.md)
 - [Pytest Documentation](https://docs.pytest.org/)
 - [Python Debugger (pdb)](https://docs.python.org/3/library/pdb.html)
 
