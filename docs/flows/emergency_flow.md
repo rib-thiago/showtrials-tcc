@@ -458,9 +458,8 @@ git commit -m "hotfix: corrige bug e adiciona modo escuro"
 
 - [Git Flow - Hotfix branches](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow#hotfix-branches)
 - [Semantic Versioning - Patch](https://semver.org/#spec-item-6)
-- [Quality Flow](QUALITY_FLOW.md)
-- [Debug Flow](DEBUG_FLOW.md)
-
+- [Quality Flow](quality_flow.md)
+- [Debug Flow](debug_flow.md)
 ---
 
 ## 👤 **AUTOR**
