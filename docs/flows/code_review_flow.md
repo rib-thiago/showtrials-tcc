@@ -443,9 +443,9 @@ git push origin main
 
 ## 📚 **REFERÊNCIAS**
 
-- [Git Flow](GIT_FLOW.md)
-- [Quality Flow](QUALITY_FLOW.md)
-- [Telemetry Flow](TELEMETRY_FLOW.md)
+- [Git Flow](git_flow.md)
+- [Quality Flow](quality_flow.md)
+- [Telemetry Flow](telemetry_flow.md)
 - [Conventional Commits](https://www.conventionalcommits.org/)
 
 ---
