@@ -94,8 +94,15 @@ nav:
     - Plano de Issues: projeto/plano_issues_documentacao.md
     - Questionário: projeto/questionario_levantamento_requisitos.md
 
+  - Cobertura de Testes:
+    - Cobertura Atual: cobertura.md
+    - Cobertura V2: cobertura_v2.md
+
+  - Problemas Conhecidos:
+    - Problema no CI: problema_ci.md
+
   - Planejamento:
-    - Plano da Issue #2: planejamento/plano_issue2_revisao_documentacao.md
+    - Plano da Issue 2: planejamento/plano_issue2_revisao_documentacao.md
 
   - Como Contribuir: contributing.md
   - Changelog: changelog.md
