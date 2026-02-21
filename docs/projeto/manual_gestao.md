@@ -9,19 +9,19 @@
 ---
 
 ## 📋 **ÍNDICE**
-1. [Filosofia do Fluxo de Trabalho](#-filosofia-do-fluxo-de-trabalho)
-2. [Conceitos Fundamentais](#-conceitos-fundamentais)
-3. [Issues](#-issues)
-4. [Milestones](#-milestones)
-5. [Projects](#-projects)
-6. [Labels](#-labels)
-7. [Branches e Commits](#-branches-e-commits)
-8. [Workflows Diários](#-workflows-diários)
-9. [Checklists Rápidos](#-checklists-rápidos)
+1. [Filosofia do Fluxo de Trabalho](#filosofia-do-fluxo-de-trabalho)
+2. [Conceitos Fundamentais](#conceitos-fundamentais)
+3. [Issues](#issues)
+4. [Milestones](#milestones)
+5. [Projects](#projects)
+6. [Labels](#labels)
+7. [Branches e Commits](#branches-e-commits)
+8. [Workflows Diários](#workflows-diários)
+9. [Checklists Rápidos](#checklists-rápidos)
 
 ---
 
-## 🎯 **FILOSOFIA DO FLUXO DE TRABALHO**
+## 🎯 **FILOSOFIA DO FLUXO DE TRABALHO** {#filosofia-do-fluxo-de-trabalho}
 
 ### **Por que usar Projects + Milestones + Kanban?**
 
@@ -51,7 +51,7 @@ Agora, com o GitHub Projects, cada **issue** no Kanban representa exatamente uma
 
 ---
 
-## 📊 **CONCEITOS FUNDAMENTAIS**
+## 📊 **CONCEITOS FUNDAMENTAIS** {#conceitos-fundamentais}
 
 ### **O que é cada coisa e para que serve**
 
@@ -87,7 +87,7 @@ graph TD
 
 ---
 
-## 1️⃣ **ISSUES**
+## 1️⃣ **ISSUES** {#issues}
 
 ### **Criar uma nova issue (fase)**
 
@@ -197,7 +197,7 @@ gh issue comment 3 --body "Finalizado!" && gh issue close 3
 
 ---
 
-## 2️⃣ **MILESTONES**
+## 2️⃣ **MILESTONES** {#milestones}
 
 ### **Por que usamos milestones?**
 
@@ -233,7 +233,7 @@ open https://github.com/rib-thiago/showtrials-tcc/milestones
 
 ---
 
-## 3️⃣ **PROJECTS**
+## 3️⃣ **PROJECTS** {#projects}
 
 ### **Por que usamos Kanban?**
 
@@ -288,7 +288,7 @@ open https://github.com/users/rib-thiago/projects/1
 
 ---
 
-## 4️⃣ **LABELS**
+## 4️⃣ **LABELS** {#labels}
 
 ### **Por que usamos labels?**
 
@@ -327,7 +327,7 @@ gh label delete "tipo/performance"
 
 ---
 
-## 5️⃣ **BRANCHES E COMMITS**
+## 5️⃣ **BRANCHES E COMMITS** {#branches-e-commits}
 
 ### **Por que o padrão type/*?**
 
@@ -394,7 +394,7 @@ git branch -d type/classificar-documento  # deletar branch local após merge
 
 ---
 
-## 6️⃣ **WORKFLOWS DIÁRIOS**
+## 6️⃣ **WORKFLOWS DIÁRIOS** {#workflows-diários}
 
 ### **Fluxo Completo de uma Fase (do início ao fim)**
 
@@ -489,7 +489,7 @@ git branch -d type/classificar-documento
 
 ---
 
-## 7️⃣ **CHECKLISTS RÁPIDOS**
+## 7️⃣ **CHECKLISTS RÁPIDOS** {#checklists-rápidos}
 
 ### **Comandos mais úteis (cola rápida)**
 
