@@ -57,6 +57,7 @@ nav:
   - Início: index.md
   - Visão Geral: overview.md
   - Arquitetura: ARCHITECTURE.md
+
   - Fases do Projeto:
     - FASE 1 - Domain: FASE1_DOMAIN.md
     - FASE 2 - Application: FASE2_APPLICATION.md
@@ -68,6 +69,34 @@ nav:
     - FASE 8 - Análise de Texto: FASE8_ANALISE_TEXTO.md
     - FASE 9 - Web Interface: FASE9_WEB_INTERFACE.md
     - FASE 10 - Service Registry: FASE10_SERVICE_REGISTRY.md
+    - FASE 12: FASE12.md
+    - FASE 13: FASE13.md
+    - FASE 14: FASE14.md
+    - FASE 15: FASE15.md
+    - FASE 16: FASE16.md
+
+  - Flows de Trabalho:
+    - Git Flow: flows/git_flow.md
+    - Quality Flow: flows/quality_flow.md
+    - Telemetry Flow: flows/telemetry_flow.md
+    - Code Review Flow: flows/code_review_flow.md
+    - Dependencies Flow: flows/dependencies_flow.md
+    - Debug Flow: flows/debug_flow.md
+    - Documentation Flow: flows/documentation_flow.md
+    - Refactoring Flow: flows/refactoring_flow.md
+    - Emergency Flow: flows/emergency_flow.md
+
+  - Documentos do Projeto:
+    - Visão do Projeto: projeto/visao_do_projeto.md
+    - Análise Arquitetural: projeto/analise_arquitetural.md
+    - Roadmap Arquitetural: projeto/roadmap_arquitetural.md
+    - Manual de Gestão: projeto/manual_gestao.md
+    - Plano de Issues: projeto/plano_issues_documentacao.md
+    - Questionário: projeto/questionario_levantamento_requisitos.md
+
+  - Planejamento:
+    - Plano da Issue #2: planejamento/plano_issue2_revisao_documentacao.md
+
   - Como Contribuir: contributing.md
   - Changelog: changelog.md
 
