@@ -35,7 +35,7 @@ Revisar documentação (.md files) #2
 
 Revisar e consolidar arquivos .md em docs/:
 
-[ ] Verificar duplicatas (cobertura.md vs cobertura_v2.md)
+[ ] Verificar duplicatas (cobertura.md vs cobertura.md (versão histórica))
 [ ] Atualizar índices se necessário
 [ ] Garantir que todas as fases estão documentadas
 [ ] Fazer merge da branch docs/organizacao após revisão
@@ -56,7 +56,7 @@ Revisar e consolidar toda a documentação do projeto.
 ## 📋 Tarefas
 
 ### Documentação Existente (docs/)
-- [ ] Verificar duplicatas (cobertura.md vs cobertura_v2.md)
+- [ ] Verificar duplicatas (cobertura.md vs cobertura.md (versão histórica))
 - [ ] Garantir que todas as FASE*.md estão atualizadas
 - [ ] Padronizar formatação entre todos os arquivos
 - [ ] Verificar links internos
@@ -313,7 +313,7 @@ Revisar e consolidar toda a documentação do projeto, incluindo os 15 novos art
 ## 📋 Tarefas
 
 ### 1. Documentação Existente (docs/)
-- [ ] Verificar duplicatas (cobertura.md vs cobertura_v2.md)
+- [ ] Verificar duplicatas (cobertura.md vs cobertura.md (versão histórica))
 - [ ] Garantir que todas as FASE*.md estão atualizadas
 - [ ] Padronizar formatação entre todos os arquivos
 - [ ] Verificar links internos

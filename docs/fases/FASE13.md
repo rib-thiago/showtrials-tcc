@@ -225,7 +225,7 @@ Criamos a pasta `scripts/` (que já existia) e movemos todos os scripts para lá
 
 ### **Desafio 4: Documentação em Andamento**
 
-Arquivos como `FASE12.md` e `cobertura_v2.md` não deveriam ser simplesmente deletados, mas também não estavam prontos para versão final.
+Arquivos como `FASE12.md` e `cobertura.md (versão histórica)` não deveriam ser simplesmente deletados, mas também não estavam prontos para versão final.
 
 **Solução:**
 Criamos uma branch separada `docs/organizacao` e uma issue para revisão posterior, seguindo o fluxo:

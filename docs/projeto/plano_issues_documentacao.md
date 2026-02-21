@@ -898,7 +898,7 @@ Consolidar e revisar todos os arquivos de documentação.
 Issue #2 - Revisar documentação (.md files)
 
 ## 📋 Tarefas
-- [ ] Verificar duplicatas (cobertura.md vs cobertura_v2.md)
+- [ ] Verificar duplicatas (cobertura.md vs cobertura.md (versão histórica))
 - [ ] Atualizar índices
 - [ ] Garantir que todas as fases estão documentadas
 - [ ] Fazer merge da branch `docs/organizacao`

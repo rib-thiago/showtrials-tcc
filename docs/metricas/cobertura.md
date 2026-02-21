@@ -1,152 +1,148 @@
-## 📊 **ANÁLISE COMPLETA DE COBERTURA - SHOWTRIALS**
+## 📊 **COBERTURA DE TESTES - SHOWTRIALS**
 
 <div align="center">
 
-**Documento de planejamento baseado em dados reais (19/02/2026)**
+**Métricas atualizadas em 21/02/2026 • [Histórico de evolução](#histórico-de-evolução)**
 
 </div>
 
 ---
 
-## 📈 **MÉTRICAS GLOBAIS ATUAIS**
+## 📈 **MÉTRICAS ATUAIS**
 
 | Métrica | Valor |
 |---------|-------|
-| **Total de arquivos** | 40 |
-| **Linhas de código** | 1.726 |
-| **Cobertura global** | **55%** |
-| **Testes totais** | 116 |
-| **Testes passando** | 114 (98%) |
-| **Testes falhando** | 2 |
-
-**Meta atual:** 45% (já ultrapassada! ✅)
+| **Cobertura global** | **75%** 🚀 |
+| **Testes totais** | ~250 |
+| **Meta inicial** | 45% (✅ ultrapassada) |
+| **Arquivos monitorados** | 40+ |
 
 ---
 
-## 🎯 **TOP 10 ARQUIVOS POR PRIORIDADE (MENOR COBERTURA)**
+## 📊 **EVOLUÇÃO DA COBERTURA**
 
-| # | Arquivo | Cobertura | Linhas | Impacto | Prioridade |
-|---|---------|-----------|--------|---------|------------|
-| 1 | `sqlite_traducao_repository.py` | **0%** | 53 | Alto | 🔴 **URGENTE** |
-| 2 | `factories.py` | **0%** | 63 | Alto | 🔴 **URGENTE** |
-| 3 | `traduzir_documento.py` | **0%** | 42 | Alto | 🔴 **URGENTE** |
-| 4 | `analisar_acervo.py` | **0%** | 52 | Médio | 🔴 **URGENTE** |
-| 5 | `analisar_texto.py` | **0%** | 38 | Médio | 🔴 **URGENTE** |
-| 6 | `exportar_documento.py` | **0%** | 89 | Médio | 🟡 MÉDIA |
-| 7 | `gerar_relatorio.py` | **0%** | 153 | Médio | 🟡 MÉDIA |
-| 8 | `listar_traducoes.py` | **0%** | 11 | Baixo | 🟢 BAIXA |
-| 9 | `txt_exporter.py` | **0%** | 38 | Baixo | 🟢 BAIXA |
-| 10 | `estatisticas.py` | **15%** | 48 | Médio | 🟡 MÉDIA |
+| Data | Cobertura | Δ | Principais Contribuições |
+|------|-----------|-----|-------------------------|
+| **21/02/2026** | **75%** | +12% | FASE 14-16 (exportar, gerar, listar) |
+| 19/02/2026 | 63% | +8% | FASE 12-13 (telemetria + limpeza) |
+| 19/02/2026 | 55% | - | Diagnóstico inicial |
+
+*Detalhes das contribuições estão documentados em cada [FASE*.md](../fases/)*
 
 ---
 
-## 📊 **COBERTURA POR CAMADA (DADOS REAIS)**
+## 🎯 **TOP PRIORIDADES ATUAIS**
 
-| Camada | Cobertura | Cálculo |
-|--------|-----------|---------|
-| **Domain** | 92% | (89 + 91 + 88 + 95 + 96) / 5 |
-| **Application** | 24% | (41 + 15 + 55 + 57 + 0*5) / 9 |
-| **Infrastructure** | 41% | (54 + 92 + 0 + 88 + 95 + 85 + 0 + 90 + 89) / 9 |
-| **GLOBAL** | **55%** | - |
-
----
-
-## 🗺️ **PLANO DE AÇÃO POR FASES (COM DADOS REAIS)**
-
-### **FASE 1: ARQUIVOS CRÍTICOS (0%) - 5 ARQUIVOS**
-
-| # | Arquivo | Linhas | Esforço | Impacto |
-|---|---------|--------|---------|---------|
-| 1 | `sqlite_traducao_repository.py` | 53 | 2h | 🔴 Alto |
-| 2 | `factories.py` | 63 | 2h | 🔴 Alto |
-| 3 | `traduzir_documento.py` | 42 | 1.5h | 🔴 Alto |
-| 4 | `analisar_acervo.py` | 52 | 2h | 🟡 Médio |
-| 5 | `analisar_texto.py` | 38 | 1.5h | 🟡 Médio |
-
-**Ganho estimado:** +15% na cobertura global
+| # | Arquivo | Cobertura | Impacto | Issue | Fase |
+|---|---------|-----------|---------|-------|------|
+| 1 | `estatisticas.py` | 15% | 🔴 Alto | [#5](https://github.com/rib-thiago/showtrials-tcc/issues/5) | FASE 19 |
+| 2 | `classificar_documento.py` | 65% | 🟡 Médio | [#3](https://github.com/rib-thiago/showtrials-tcc/issues/3) | FASE 17 |
+| 3 | `obter_documento.py` | 57% | 🟡 Médio | [#4](https://github.com/rib-thiago/showtrials-tcc/issues/4) | FASE 18 |
+| 4 | `spacy_analyzer.py` | 23% | 🔴 Alto | - | - |
+| 5 | `google_translator.py` | 24% | 🔴 Alto | - | - |
 
 ---
 
-### **FASE 2: ARQUIVOS BAIXA COBERTURA (15-41%) - 3 ARQUIVOS**
+## 📊 **COBERTURA POR CAMADA**
 
-| # | Arquivo | Cobertura | Linhas | Esforço |
-|---|---------|-----------|--------|---------|
-| 6 | `estatisticas.py` | 15% | 48 | 1.5h |
-| 7 | `classificar_documento.py` | 41% | 51 | 1.5h |
-| 8 | `config/__init__.py` | 54% | 70 | 1h |
-
-**Ganho estimado:** +5% na cobertura global
-
----
-
-### **FASE 3: ARQUIVOS MÉDIA COBERTURA (55-85%) - 5 ARQUIVOS**
-
-| # | Arquivo | Cobertura | Linhas | Esforço |
-|---|---------|-----------|--------|---------|
-| 9 | `listar_documentos.py` | 55% | 51 | 1h |
-| 10 | `obter_documento.py` | 57% | 35 | 0.5h |
-| 11 | `repositories.py` | 74% | 19 | 0.5h |
-| 12 | `sqlite_repository.py` | 85% | 82 | 1h |
-| 13 | `estatisticas_dto.py` | 85% | 26 | 0.5h |
-
-**Ganho estimado:** +3% na cobertura global
+| Camada | Cobertura | Status |
+|--------|-----------|--------|
+| **Domain** | 92% | ✅ Excelente |
+| **Application** | 40% | ⚠️ Em progresso |
+| **Infrastructure** | 57% | 🟡 Melhorando |
+| **Interface** | - | Testes manuais |
 
 ---
 
-## ⚡ **ARQUIVOS QUE PODEMOS IGNORAR (JÁ > 85%)**
+## 📜 **HISTÓRICO DETALHADO DE MUDANÇAS**
 
-| Arquivo | Cobertura | Motivo |
-|---------|-----------|--------|
-| `documento.py` | 89% | Já excelente |
-| `traducao.py` | 91% | Já excelente |
-| `analise_texto.py` | 88% | Já excelente |
-| `nome_russo.py` | 95% | Já excelente |
-| `tipo_documento.py` | 96% | Já excelente |
-| `registry.py` | 90% | Já excelente |
-| `telemetry/__init__.py` | 89% | Já excelente |
-
----
-
-## 🔧 **CORREÇÕES URGENTES (2 TESTES FALHANDO)**
-
-Os dois testes que estão falhando são no mesmo arquivo: **`tipo_documento.py`** (linhas 60 e 92)
-
-```python
-# Problema: KeyError nos dicionários descricoes e icones
-return descricoes[self]  # ← KeyError
-return icones[self]      # ← KeyError
+### **FASE 16 - ListarDocumentos (20/02/2026)**
+```bash
+📁 src/application/use_cases/listar_documentos.py
+📈 55% → 80%
+✨ Melhorias:
+  - Adicionada telemetria
+  - Expandidos testes de lógica (12)
+  - Criados testes de telemetria (6)
+  - Corrigidos 3 erros de MyPy
+🔗 [FASE16.md](../fases/FASE16.md)
 ```
 
-**Solução:** Corrigir o dicionário para usar `self.value` em vez de `self`
-
----
-
-## ✅ **PRÓXIMO PASSO CONCRETO (BASEADO EM DADOS)**
-
-### **Prioridade #1: Corrigir os 2 testes falhando**
-
+### **FASE 15 - GerarRelatorio (20/02/2026)**
 ```bash
-git checkout -b fix/tipo-documento-keyerror
-# Corrigir linhas 60 e 92
-git add src/domain/value_objects/tipo_documento.py
-git commit -m "fix: corrige KeyError em tipo_documento.py
-
-- Substitui self por self.value nos dicionários
-- Resolve 2 testes falhando
-- Mantém cobertura em 96%"
+📁 src/application/use_cases/gerar_relatorio.py
+📈 0% → 86%
+✨ Melhorias:
+  - Adicionada telemetria completa
+  - Criados 12 testes de lógica
+  - Criados 6 testes de telemetria
+  - Corrigidos 7 erros de MyPy
+🔗 [FASE15.md](../fases/FASE15.md)
 ```
 
-### **Prioridade #2: Arquivo com 0% mais crítico**
-
+### **FASE 14 - ExportarDocumento (20/02/2026)**
 ```bash
-git checkout -b feat/sqlite-traducao-repo
-# Implementar testes para sqlite_traducao_repository.py
+📁 src/application/use_cases/exportar_documento.py
+📈 0% → 81%
+✨ Melhorias:
+  - Adicionada telemetria
+  - Criados 12 testes de lógica
+  - Criados 8 testes de telemetria
+🔗 [FASE14.md](../fases/FASE14.md)
+```
+
+### **FASE 12-13 - Fundação (19/02/2026)**
+```bash
+📈 55% → 63%
+✨ Melhorias:
+  - Padronização de telemetria em tipo_documento.py
+  - Limpeza de arquivos .bak e diagnóstico
+  - Organização do repositório
+🔗 [FASE12.md](../fases/FASE12.md) | [FASE13.md](../fases/FASE13.md)
 ```
 
 ---
 
-## 📋 **COMANDO PARA REAVALIAR APÓS CORREÇÕES**
+## 🔍 **COMO INTERPRETAR ESTE DOCUMENTO**
+
+| Seção | Para que serve |
+|-------|----------------|
+| **Métricas atuais** | Snapshot do momento |
+| **Evolução** | Visão histórica do progresso |
+| **Top prioridades** | Guia para próximas ações |
+| **Cobertura por camada** | Visão arquitetural |
+| **Histórico detalhado** | Rastreabilidade das melhorias |
+
+---
+
+## 🔗 **LINKS RÁPIDOS**
+
+- [Issues abertas relacionadas](https://github.com/rib-thiago/showtrials-tcc/issues?q=is%3Aopen+is%3Aissue+label%3Atipo%2Ftestes)
+- [Milestone: Qualidade](https://github.com/rib-thiago/showtrials-tcc/milestone/2)
+- [Documentação das fases](../fases/)
+- [Como contribuir com testes](../contributing.md#testes)
+
+---
+
+## 📊 **COMANDO PARA ATUALIZAR ESTE DOCUMENTO**
 
 ```bash
+# Para gerar métricas atualizadas
 poetry run pytest --cov=src --cov-report=term-missing | grep -E "^src/|^TOTAL" | cat
+
+# Após executar, atualize manualmente as seções:
+# - Métricas atuais
+# - Top prioridades (se mudou)
+# - Adicione nova entrada no histórico se houve melhoria
 ```
+
+---
+
+<div align="center">
+  <sub>Documento mantido vivo - última atualização: 21/02/2026</sub>
+  <br>
+  <sub>✅ Histórico completo • ✅ Métricas atuais • ✅ Próximos passos</sub>
+</div>
+```
+
+---
