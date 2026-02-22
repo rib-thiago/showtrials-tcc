@@ -3,7 +3,6 @@
 Testes para a lógica de negócio do TipoDocumento (sem telemetria).
 """
 
-
 from src.domain.value_objects.tipo_documento import TipoDocumento
 
 

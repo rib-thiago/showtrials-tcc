@@ -39,8 +39,7 @@ class DocumentoModel:
     @classmethod
     def criar_tabela(cls, cursor: sqlite3.Cursor):
         """Cria a tabela documentos se não existir."""
-        cursor.execute(
-            """
+        cursor.execute("""
             CREATE TABLE IF NOT EXISTS documentos (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 centro TEXT NOT NULL,
@@ -50,8 +49,7 @@ class DocumentoModel:
                 texto TEXT NOT NULL,
                 data_coleta TEXT NOT NULL
             )
-        """
-        )
+        """)
 
     @classmethod
     def adicionar_colunas_metadados(cls, cursor: sqlite3.Cursor):
@@ -142,8 +140,7 @@ class TraducaoModel:
     @classmethod
     def criar_tabela(cls, cursor: sqlite3.Cursor):
         """Cria a tabela traducoes se não existir."""
-        cursor.execute(
-            """
+        cursor.execute("""
             CREATE TABLE IF NOT EXISTS traducoes (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 documento_id INTEGER NOT NULL,
@@ -154,12 +151,9 @@ class TraducaoModel:
                 data_traducao TEXT NOT NULL,
                 FOREIGN KEY (documento_id) REFERENCES documentos (id) ON DELETE CASCADE
             )
-        """
-        )
+        """)
 
-        cursor.execute(
-            """
+        cursor.execute("""
             CREATE INDEX IF NOT EXISTS idx_traducoes_documento
             ON traducoes (documento_id, idioma)
-        """
-        )
+        """)

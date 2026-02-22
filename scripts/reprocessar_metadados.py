@@ -168,16 +168,14 @@ def gerar_estatisticas():
 
     # 3. Distribuição por tipo de documento
     if "tipo_descricao" in colunas:
-        cursor.execute(
-            """
+        cursor.execute("""
             SELECT
                 COALESCE(tipo_descricao, 'Não classificado') as tipo,
                 COUNT(*) as total
             FROM documentos
             GROUP BY tipo_descricao
             ORDER BY total DESC
-        """
-        )
+        """)
         tipos = cursor.fetchall()
         if tipos and tipos[0][0]:
             print("\n📋 DISTRIBUIÇÃO POR TIPO:")
@@ -187,16 +185,14 @@ def gerar_estatisticas():
 
     # 4. Pessoas mais frequentes
     if "pessoa_principal" in colunas:
-        cursor.execute(
-            """
+        cursor.execute("""
             SELECT pessoa_principal, COUNT(*) as total
             FROM documentos
             WHERE pessoa_principal IS NOT NULL AND pessoa_principal != ''
             GROUP BY pessoa_principal
             ORDER BY total DESC
             LIMIT 10
-        """
-        )
+        """)
         pessoas = cursor.fetchall()
         if pessoas:
             print("\n👤 PESSOAS MAIS FREQUENTES:")
@@ -205,16 +201,14 @@ def gerar_estatisticas():
 
     # 5. Correspondências
     if "tipo_documento" in colunas:
-        cursor.execute(
-            """
+        cursor.execute("""
             SELECT
                 SUM(CASE WHEN tipo_documento = 'carta' THEN 1 ELSE 0 END) as cartas,
                 SUM(CASE WHEN tipo_documento = 'declaracao' THEN 1 ELSE 0 END) as declaracoes,
                 SUM(CASE WHEN tipo_documento = 'relatorio' THEN 1 ELSE 0 END) as relatorios,
                 SUM(CASE WHEN tipo_documento = 'acareacao' THEN 1 ELSE 0 END) as acareacoes
             FROM documentos
-        """
-        )
+        """)
         carta_stats = cursor.fetchone()
         if carta_stats and any(carta_stats):
             print("\n✉️  CORRESPONDÊNCIAS E ATOS:")
@@ -314,8 +308,7 @@ def reprocessar_todos(limite=None):
 def main():
     """Interface interativa"""
 
-    print(
-        """
+    print("""
 ╔══════════════════════════════════════════════════════════════╗
 ║                                                              ║
 ║     🔄 REPROCESSADOR DE METADADOS - SHOW TRIALS             ║
@@ -325,8 +318,7 @@ def main():
 ║     títulos (tipo, pessoas, destinatários, etc).           ║
 ║                                                              ║
 ╚══════════════════════════════════════════════════════════════╝
-    """
-    )
+    """)
 
     total = contar_documentos()
 

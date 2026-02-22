@@ -26,7 +26,9 @@ try:
     GOOGLE_CLIENT_AVAILABLE = True
 except ImportError:
     GOOGLE_CLIENT_AVAILABLE = False
-    print("⚠️ google-cloud-translate não instalado. Instale com: pip install google-cloud-translate")
+    print(
+        "⚠️ google-cloud-translate não instalado. Instale com: pip install google-cloud-translate"
+    )
 
 
 @dataclass

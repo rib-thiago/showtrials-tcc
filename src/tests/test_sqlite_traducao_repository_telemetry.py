@@ -25,8 +25,7 @@ def repo_memoria():
         # Criar tabela
         with repo._conexao() as conn:
             cursor = conn.cursor()
-            cursor.execute(
-                """
+            cursor.execute("""
                 CREATE TABLE traducoes (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     documento_id INTEGER NOT NULL,
@@ -36,8 +35,7 @@ def repo_memoria():
                     custo REAL,
                     data_traducao TEXT NOT NULL
                 )
-            """
-            )
+            """)
 
         yield repo
 
