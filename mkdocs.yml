@@ -59,21 +59,22 @@ nav:
   - Arquitetura: ARCHITECTURE.md
 
   - Fases do Projeto:
-    - FASE 1 - Domain: FASE1_DOMAIN.md
-    - FASE 2 - Application: FASE2_APPLICATION.md
-    - FASE 3 - Infrastructure: FASE3_INFRASTRUCTURE.md
-    - FASE 4 - CLI: FASE4_CLI.md
-    - FASE 5 - Tradução: FASE5_TRADUCAO.md
-    - FASE 6 - Exportação: FASE6_EXPORTACAO.md
-    - FASE 7 - Relatórios: FASE7_RELATORIOS.md
-    - FASE 8 - Análise de Texto: FASE8_ANALISE_TEXTO.md
-    - FASE 9 - Web Interface: FASE9_WEB_INTERFACE.md
-    - FASE 10 - Service Registry: FASE10_SERVICE_REGISTRY.md
-    - FASE 12: FASE12.md
-    - FASE 13: FASE13.md
-    - FASE 14: FASE14.md
-    - FASE 15: FASE15.md
-    - FASE 16: FASE16.md
+    - FASE 1 - Domain: fases/FASE1_DOMAIN.md
+    - FASE 2 - Application: fases/FASE2_APPLICATION.md
+    - FASE 3 - Infrastructure: fases/FASE3_INFRASTRUCTURE.md
+    - FASE 4 - CLI: fases/FASE4_CLI.md
+    - FASE 5 - Tradução: fases/FASE5_TRADUCAO.md
+    - FASE 6 - Exportação: fases/FASE6_EXPORTACAO.md
+    - FASE 7 - Relatórios: fases/FASE7_RELATORIOS.md
+    - FASE 8 - Análise de Texto: fases/FASE8_ANALISE_TEXTO.md
+    - FASE 9 - Web Interface: fases/FASE9_WEB_INTERFACE.md
+    - FASE 10 - Service Registry: fases/FASE10_SERVICE_REGISTRY.md
+    - FASE 11 - CI: fases/FASE11_CI.md
+    - FASE 12 - Telemetria TipoDocumento: fases/FASE12.md
+    - FASE 13 - Limpeza: fases/FASE13.md
+    - FASE 14 - ExportarDocumento: fases/FASE14.md
+    - FASE 15 - GerarRelatorio: fases/FASE15.md
+    - FASE 16 - ListarDocumentos: fases/FASE16.md
 
   - Flows de Trabalho:
     - Git Flow: flows/git_flow.md
@@ -94,15 +95,14 @@ nav:
     - Plano de Issues: projeto/plano_issues_documentacao.md
     - Questionário: projeto/questionario_levantamento_requisitos.md
 
-  - Cobertura de Testes:
-    - Cobertura Atual: cobertura.md
-    - Cobertura V2: cobertura_v2.md
-
-  - Problemas Conhecidos:
-    - Problema no CI: problema_ci.md
+  - Métricas e Diagnósticos:
+    - Cobertura de Testes: metricas/cobertura.md
+    - Diagnóstico CI: metricas/diagnostico_ci.md
+    - Diagnóstico Telemetria: metricas/diagnostico_fase12.md
 
   - Planejamento:
     - Plano da Issue 2: planejamento/plano_issue2_revisao_documentacao.md
+    - Template de Documentação: planejamento/TEMPLATE_FASE.md
 
   - Como Contribuir: contributing.md
   - Changelog: changelog.md
