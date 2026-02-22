@@ -61,14 +61,8 @@ jobs:
         poetry run python -c "import wordcloud; print('✅ wordcloud')"
     # ===== FIM DA CORREÇÃO =====
 
-    - name: Lint (taskipy)
-      run: poetry run task lint
-
-    - name: Type check (taskipy - não gate por enquanto)
-      run: poetry run task type || echo "⚠️ MyPy warnings (ignorado por enquanto)"
-
-    - name: Tests + Coverage (taskipy)
-      run: poetry run task test-cov
+    - name: Quality pipeline (taskipy)
+      run: poetry run task pre-push
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v4
