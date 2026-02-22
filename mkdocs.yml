@@ -75,6 +75,7 @@ nav:
     - FASE 14 - ExportarDocumento: fases/FASE14.md
     - FASE 15 - GerarRelatorio: fases/FASE15.md
     - FASE 16 - ListarDocumentos: fases/FASE16.md
+    - FASE 17 - Padronização Documentação: fases/FASE17.md
 
   - Flows de Trabalho:
     - Git Flow: flows/git_flow.md
