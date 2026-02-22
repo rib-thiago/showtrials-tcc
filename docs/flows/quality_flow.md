@@ -1,8 +1,8 @@
-# 📚 **DOCUMENTO: QUALITY ASSURANCE FLOW - SHOWTRIALS**
+# 📚 **DOCUMENTO: QUALITY FLOW OFICIAL - SHOWTRIALS**
 
 <div align="center">
 
-**Estratégia completa de lint, type checking, testes e cobertura integrada com nosso fluxo de desenvolvimento**
+**Critérios obrigatórios de qualidade técnica em conformidade com a governança do projeto**
 
 </div>
 
@@ -10,530 +10,379 @@
 
 | Item | Descrição |
 |------|-----------|
-| **Data** | 20 de Fevereiro de 2026 |
+| **Data** | 22 de Fevereiro de 2026 |
 | **Autor** | Thiago Ribeiro |
-| **Versão** | 1.0 |
-| **Relacionado a** | Git Flow, CI/CD, Taskipy, Fases 1-16 |
+| **Versão** | 2.0 |
+| **Relacionado a** | [GOVERNANCA.md](GOVERNANCA.md), [Git Flow Oficial](git_flow.md), Milestone ativa |
 
 ---
 
 ## 🎯 **OBJETIVO**
 
-Formalizar e padronizar o processo de garantia de qualidade do código, integrando:
-- ✅ Linting com Ruff
-- ✅ Type checking com MyPy
-- ✅ Testes com Pytest
-- ✅ Cobertura de testes
-- ✅ Automação com Taskipy
-- ✅ CI/CD com GitHub Actions
-- ✅ Nosso padrão de commits atômicos
+Estabelecer critérios **obrigatórios** de qualidade técnica em **total aderência à governança do projeto**, garantindo:
+
+- ✅ Correção funcional antes de otimização
+- ✅ Clareza estrutural antes de abstração
+- ✅ Arquitetura explícita antes de conveniência
+- ✅ Mudanças pequenas e verificáveis
+- ✅ Nenhuma mudança estrutural implícita
+- ✅ Qualidade como critério de aceite, não melhoria opcional
 
 ---
 
-## 📊 **NOSSO CONTEXTO ATUAL**
+## 📊 **PRINCÍPIOS DE QUALIDADE**
 
-### **O que já funciona**
+| Princípio | Descrição |
+|-----------|-----------|
+| **1** | Correção funcional antes de otimização |
+| **2** | Clareza estrutural antes de abstração |
+| **3** | Arquitetura explícita antes de conveniência |
+| **4** | Mudanças pequenas e verificáveis |
+| **5** | Nenhuma mudança estrutural implícita |
+| **6** | Qualidade é critério de aceite, não opcional |
 
-| Ferramenta | Status | O que faz |
-|------------|--------|-----------|
-| **Ruff** | ✅ Configurado | Linting e formatação |
-| **Black** | ✅ Configurado | Formatação automática |
-| **isort** | ✅ Configurado | Organização de imports |
-| **MyPy** | ✅ Configurado | Type checking (parcial) |
-| **Pytest** | ✅ Configurado | Testes unitários |
-| **Pytest-cov** | ✅ Configurado | Medição de cobertura |
-| **Taskipy** | ✅ Configurado | Automação local |
-| **GitHub Actions** | ✅ Funcionando | CI automatizado |
-| **Pre-commit** | ✅ Configurado | Hooks locais |
+---
 
-### **Métricas Atuais**
+## ✅ **CRITÉRIOS OBRIGATÓRIOS ANTES DE MERGE**
 
+Toda issue só pode ser considerada concluída se:
+
+| Categoria | Critério |
+|-----------|----------|
+| **Escopo** | ✅ Critérios de aceite definidos na issue foram atendidos |
+| **Execução** | ✅ Código compila e executa sem erro |
+| **Tipagem** | ✅ Tipagem consistente (sem `Any` não justificado) |
+| **Limpeza** | ✅ Sem código morto, prints ou logs temporários |
+| **Dívida** | ✅ Sem comentários "TODO" não justificados |
+| **Efeitos** | ✅ Sem efeitos colaterais não documentados |
+| **Arquitetura** | ✅ Respeita o modelo arquitetural definido |
+| **Acoplamento** | ✅ Sem acoplamento indevido com persistência |
+| **Pureza** | ✅ Transformadores permanecem puros |
+| **Responsabilidade** | ✅ Responsabilidade no módulo correto |
+
+---
+
+## 🔤 **TIPAGEM E CONSISTÊNCIA**
+
+### **Regras Obrigatórias**
+
+```python
+# ✅ CORRETO - tipos explícitos
+def classificar(documento: Documento) -> Documento:
+    return documento
+
+# ✅ CORRETO - Optional quando necessário
+def buscar_por_id(id: Optional[int]) -> Optional[Documento]:
+
+# ❌ INCORRETO - Any sem justificativa
+def processar(dados: Any) -> Any:
+
+# ❌ INCORRETO - tipos implícitos
+def processar(dados):
 ```
-📊 COBERTURA GLOBAL: 75% (meta 45%)
-🧪 TESTES TOTAIS: ~250
-🔤 ERROS MYPY: 6 (em outros arquivos)
-⚡ LINT: 0 erros
+
+### **Durante Milestone Estrutural (Engine)**
+
+- ✅ Tipagem consistente é **obrigatória**
+- ✅ Interfaces devem ser **explícitas**
+- ✅ Contratos não podem ser **ambíguos**
+- ✅ Módulos devem ter responsabilidades **claras**
+- ✅ Dependências entre módulos devem ser **explícitas**
+
+---
+
+## 🏗️ **COERÊNCIA ARQUITETURAL**
+
+### **Checklist Pré-Merge**
+
+Antes de qualquer merge, validar:
+
+```markdown
+## 📋 Validação Arquitetural
+
+- [ ] A alteração respeita o modelo arquitetural definido?
+- [ ] Não há acoplamento indevido com persistência?
+- [ ] Transformadores permanecem puros?
+- [ ] Separação entre execução e configuração foi mantida?
+- [ ] A responsabilidade está no módulo correto?
+- [ ] Dependências externas são injetáveis?
+- [ ] Lógica não está acoplada a IO?
+```
+
+**Se qualquer resposta for negativa, a issue não deve ser encerrada.**
+
+---
+
+## 📦 **ESCOPO E ISOLAMENTO**
+
+### **Regra Fundamental**
+
+Uma issue deve:
+
+| Deve | Não Deve |
+|------|----------|
+| ✅ Resolver apenas o problema descrito | ❌ Incluir refatorações oportunistas |
+| ✅ Manter-se dentro do escopo definido | ❌ Alterar comportamento não relacionado |
+| ✅ Ser verificável isoladamente | ❌ Misturar responsabilidades |
+
+**Refatorações adicionais exigem nova issue.**
+
+### **Exemplo Prático**
+
+```python
+# Issue #42: Corrigir bug no exportador
+
+# ✅ CORRETO - apenas o bug
+def exportar(documento_id: int):
+    if documento_id is None:  # ← correção do bug
+        return {"erro": "ID inválido"}
+    # ... resto do código existente
+
+# ❌ INCORRETO - bug + refatoração
+def exportar(documento_id: int):
+    # corrigiu bug
+    # extraiu método _validar_id
+    # renomeou variáveis
+    # mudou formatação
 ```
 
 ---
 
-## 🔧 **FERRAMENTAS E CONFIGURAÇÕES**
+## 🧪 **TESTABILIDADE**
 
-### **1. Ruff (Linting)**
+### **Requisitos Mínimos**
 
-Arquivo: `.ruff.toml`
+Mesmo que o MVP ainda não possua cobertura completa de testes:
 
-```toml
-# .ruff.toml - Configuração do Ruff
+```python
+# ✅ Código estruturado para ser testável
+class Classificador:
+    def __init__(self, repo: RepositorioDocumento):  # injetável
+        self.repo = repo
 
-# Ignorar certos tipos de erro
-ignore = [
-    "E402",  # Module level import not at top of file (sys.path.insert é necessário)
-    "F841",  # Local variable assigned but never used (variáveis intencionalmente não usadas)
-]
+    def classificar(self, documento: Documento) -> Documento:  # puro
+        # lógica sem IO
+        return documento
 
-# Linha muito longa (aumentar tolerância)
-line-length = 120
-
-# Excluir pastas que não precisam ser verificadas
-exclude = [
-    "legacy/*",
-    "backup_*",
-    "diagnostico_*",
-    ".git",
-    "__pycache__",
-]
+# ❌ Código não testável
+class Classificador:
+    def classificar(self, id: int):  # acoplado a banco
+        documento = sqlite3.connect().execute(...)  # IO direto
 ```
 
-### **2. Black (Formatação)**
+### **Padrões Obrigatórios**
 
-No `pyproject.toml`:
-```toml
-[tool.black]
-line-length = 100
-target-version = ['py312']
+- ✅ Transformadores devem ser **isoláveis**
+- ✅ Dependências externas devem ser **injetáveis**
+- ✅ Lógica não deve estar **acoplada a IO**
+- ✅ Efeitos colaterais devem ser **explícitos**
+
+---
+
+## 🔄 **REVISÃO TÉCNICA (CHECKLIST)**
+
+### **Template de Revisão para PRs**
+
+````markdown
+## ✅ Checklist de Qualidade
+
+### Escopo e Critérios
+- [ ] Critérios de aceite cumpridos
+- [ ] Nenhuma alteração fora de escopo
+
+### Arquitetura
+- [ ] Respeita o modelo arquitetural definido
+- [ ] Sem acoplamento indevido com persistência
+- [ ] Transformadores permanecem puros
+- [ ] Separação execução/configuração mantida
+- [ ] Responsabilidade no módulo correto
+
+### Código
+- [ ] Tipagem adequada (sem `Any` não justificado)
+- [ ] Sem código morto
+- [ ] Sem prints/logs temporários
+- [ ] Sem comentários TODO não justificados
+
+### Dependências
+- [ ] Dependências externas são injetáveis
+- [ ] Lógica não acoplada a IO
+- [ ] Sem dependências ocultas
+
+### Documentação
+- [ ] Impacto arquitetural documentado (se aplicável)
+- [ ] PR referenciando issue (`Closes #N`)
+````
+
+---
+
+## 📊 **CONTROLE DE COMPLEXIDADE**
+
+### **O que Evitar**
+
+```python
+# ❌ Classe com múltiplas responsabilidades
+class ProcessadorTudo:
+    def classificar(self): ...
+    def traduzir(self): ...
+    def exportar(self): ...
+    def conectar_banco(self): ...
+
+# ❌ Método excessivamente longo
+def processar_tudo():  # 200 linhas
+    # faz coisa 1
+    # faz coisa 2
+    # faz coisa 3
+    # ...
+
+# ❌ Estruturas condicionais profundas
+if a:
+    if b:
+        if c:
+            if d:
+                # ...
+
+# ❌ Lógica de orquestração dentro de transformadores
+def transformar(documento):
+    self.repo.salvar(documento)  # orquestração, não transformação
 ```
 
-### **3. isort (Imports)**
+### **O que Preferir**
 
-No `pyproject.toml`:
-```toml
-[tool.isort]
-profile = "black"
-line_length = 100
-```
+```python
+# ✅ Funções pequenas e puras
+def classificar(documento: Documento) -> Documento:
+    """Apenas classificação, sem efeitos colaterais."""
+    documento.tipo = regras.classificar(documento.titulo)
+    return documento
 
-### **4. MyPy (Type Checking)**
+# ✅ Interfaces explícitas
+class Transformer(ABC):
+    @abstractmethod
+    def transformar(self, contexto: Contexto) -> Contexto:
+        pass
 
-```bash
-# Configuração via pyproject.toml
-[tool.mypy]
-python_version = "3.12"
-warn_return_any = true
-warn_unused_configs = true
-ignore_missing_imports = true  # temporário
-```
-
-### **5. Pytest (Testes)**
-
-No `pyproject.toml`:
-```toml
-[tool.pytest.ini_options]
-pythonpath = ["src"]
-addopts = "-v --cov=src --cov-report=term-missing"
+# ✅ Separação clara
+# engine/transformers.py  → lógica pura
+# engine/orquestrador.py   → coordenação
+# infrastructure/          → IO, banco, etc.
 ```
 
 ---
 
-## 📋 **COMANDOS TASKIPY (NOSSA AUTOMAÇÃO)**
+## 🎯 **MUDANÇAS ESTRUTURAIS**
 
-No `pyproject.toml`:
+### **Regras para Alterações Arquiteturais**
+
+| Requisito | Obrigação |
+|-----------|-----------|
+| **Tipo de issue** | `type:engine` ou `type:refactor` |
+| **Discussão prévia** | Deve ser discutida antes da implementação |
+| **Justificativa** | Deve justificar impacto na evolução do MVP |
+| **Escopo** | Não pode ocorrer dentro de issue de feature |
+
+### **O que Caracteriza Mudança Estrutural**
+
+- Criação/modificação de contratos fundamentais
+- Alteração no modelo de execução
+- Mudança na separação de camadas
+- Introdução de novas abstrações core
+- Refatoração que afeta múltiplos módulos
+
+**Mudança estrutural implícita é considerada falha de qualidade.**
+
+---
+
+## 🤖 **AUTOMAÇÃO COM TASKIPY**
+
+### **Comandos para Verificação de Qualidade**
 
 ```toml
 [tool.taskipy.tasks]
-# === QUALIDADE (executar sempre) ===
-lint = "ruff check src"
-format = "black src && isort src"
-type = "mypy src"
-quality = "task lint && task type"
+# === QUALIDADE (alinhada à governança) ===
+check-structural = "python scripts/validar_arquitetura.py"  # futuro
+check-scope = "git diff main...HEAD --name-only | grep -v '^docs/' | wc -l"  # mudanças fora de docs?
 
-# === TESTES ===
-test = "pytest src/tests -v"
-test-cov = "pytest src/tests --cov=src --cov-report=term-missing --cov-fail-under=45"
-test-html = "pytest src/tests --cov=src --cov-report=html"
-test-file = "pytest {path} -v"  # uso: task test-file --path src/tests/test_arquivo.py
-
-# === TELEMETRIA ===
-metrics = "python -c 'from src.infrastructure.telemetry import telemetry; telemetry.flush()'"
-monitor = "task test && task metrics"
-
-# === EXECUÇÃO ===
-run-cli = "python run.py"
-run-web = "python web_run.py"
-
-# === MANUTENÇÃO ===
-clean = "find . -type d -name __pycache__ -exec rm -rf {} + && find . -name '*.pyc' -delete"
-docs = "mkdocs serve"
-
-# === TUDO JUNTO (pré-commit) ===
-check = "task lint && task type && task test"
-pre-push = "task check && task test-cov"
-
-# === NOVOS COMANDOS ===
-# Qualidade focada em um arquivo
-lint-file = "ruff check {path}"
-type-file = "mypy {path}"
-test-file = "pytest {path} -v"
-cov-file = "pytest --cov={path} --cov-report=term-missing"
-
-# Resumo rápido
-summary = "echo '📊 Cobertura:' && pytest --cov=src --cov-report=term-missing | grep TOTAL && echo '🔤 MyPy:' && mypy src/ | grep error | wc -l | xargs echo '   Erros:'"
+# === Validação de Issue ===
+validate-issue = "gh issue view $(git branch --show-current | cut -d/ -f2-) --json title,labels,milestone"
+check-milestone = "gh issue list --milestone 'MVP - Engine de Pipeline' --assignee @me"
 ```
 
 ---
 
-## 🔄 **FLUXO DE QUALIDADE POR FASE**
-
-### **Nosso Padrão (já consolidado)**
-
-```mermaid
-graph TD
-    subgraph "Antes de Começar"
-        A[Arquivo alvo] -->|cobertura atual| AC[poetry run pytest --cov=arquivo]
-        A -->|myPy atual| AM[poetry run mypy arquivo]
-    end
-
-    subgraph "Durante o Desenvolvimento"
-        D[Editar código] -->|adicionar telemetria| D
-        D -->|criar testes| D
-        D -->|checkpoints| T{task check-file}
-        T -->|falhou| D
-        T -->|passou| P[Próximo passo]
-    end
-
-    subgraph "Antes do Commit"
-        C1[task lint-file] -->|ok| C2[task type-file]
-        C2 -->|ok| C3[task test-file]
-        C3 -->|ok| C4[task cov-file]
-        C4 -->|cobertura >=85%| Commit[git commit]
-    end
-
-    subgraph "Depois do Commit"
-        Push[git push] --> CI[GitHub Actions]
-        CI -->|task check| CI
-        CI -->|task test-cov| CI
-        CI -->|CI verde| Merge[git merge]
-    end
-```
-
----
-
-## 📋 **CHECKLIST DE QUALIDADE POR ARQUIVO**
-
-### **Antes de iniciar uma fase**
+## 📋 **COMANDOS RÁPIDOS**
 
 ```bash
-# 1. Ver cobertura atual do arquivo
-poetry run pytest --cov=src/application/use_cases/classificar_documento.py
+# Verificar qualidade geral
+task check
+task test-cov
 
-# 2. Ver MyPy atual
-poetry run mypy src/application/use_cases/classificar_documento.py
+# Verificar arquivo específico
+task lint-file --path src/engine/transformer.py
+task type-file --path src/engine/transformer.py
+task test-file --path tests/test_engine.py
 
-# 3. Ver lint atual
-poetry run ruff check src/application/use_cases/classificar_documento.py
+# Verificar cobertura
+task cov-file --path src/engine/transformer.py
 
-# 4. Registrar métricas iniciais na issue
+# Validar alinhamento com milestone
+task milestone-active
+task validate-issue
 ```
 
-### **Durante o desenvolvimento**
+---
+
+## ✅ **CHECKSUM DE QUALIDADE POR ISSUE**
+
+### **Antes de Iniciar**
+- [ ] Issue tem critérios de aceite claros?
+- [ ] Tipo da issue (`engine/`, `infra/`, etc.) está correto?
+- [ ] Issue está na milestone ativa?
+
+### **Durante Desenvolvimento**
+- [ ] Código estruturado para ser testável?
+- [ ] Transformadores puros e isoláveis?
+- [ ] Dependências injetáveis?
+- [ ] Nenhuma mudança estrutural implícita?
+
+### **Antes do PR**
+- [ ] `task check-file` passa?
+- [ ] `task cov-file` >= 85%?
+- [ ] Checklist de qualidade preenchido?
+- [ ] Impacto arquitetural documentado?
+
+### **Antes do Merge**
+- [ ] CI verde?
+- [ ] Nenhum desvio arquitetural?
+- [ ] Sem código morto?
+- [ ] Sem dependências ocultas?
+- [ ] Sem alterações fora de escopo?
+
+### **Após Merge**
+- [ ] Issue fechou automaticamente?
+- [ ] Movida para `Done` no Kanban?
+- [ ] (Se estrutural) Documentação atualizada?
+
+---
+
+## 🚨 **O QUE NÃO FAZER**
 
 ```bash
-# Checkpoint rápido (lint + type)
-task lint-file --path src/application/use_cases/classificar_documento.py
-task type-file --path src/application/use_cases/classificar_documento.py
+# ❌ NÃO ignorar os critérios de aceite
+# "funciona na minha máquina" não é suficiente
 
-# Rodar testes específicos
-task test-file --path src/tests/test_classificar_documento.py
+# ❌ NÃO introduzir mudanças estruturais em issues de feature
+# engine/ em feature/dark-mode? NÃO!
 
-# Ver cobertura parcial
-task cov-file --path src/application/use_cases/classificar_documento.py
+# ❌ NÃO deixar TODO sem justificativa
+# TODO: otimizar depois  # PRECISA DE ISSUE?
+
+# ❌ NÃO misturar IO com lógica pura
+def classificar(documento):
+    self.repo.salvar(documento)  # IO no transformador!
+
+# ❌ NÃO pular o checklist de qualidade
+# "depois a gente revisa"  # NUNCA!
 ```
-
-### **Antes do commit final**
-
-```bash
-# 1. Lint (deve passar)
-poetry run ruff check src/application/use_cases/classificar_documento.py
-
-# 2. Type checking (deve passar)
-poetry run mypy src/application/use_cases/classificar_documento.py
-
-# 3. Testes do arquivo (devem passar)
-poetry run pytest src/tests/test_classificar_documento.py -v
-poetry run pytest src/tests/test_classificar_documento_telemetry.py -v
-
-# 4. Cobertura final (deve ser >=85%)
-poetry run pytest --cov=src/application/use_cases/classificar_documento.py
-
-# 5. Tudo junto (opcional)
-task check-file --path src/application/use_cases/classificar_documento.py
-```
-
-### **Depois do commit**
-
-```bash
-# 1. Push
-git push origin type/classificar-documento
-
-# 2. Acompanhar CI
-gh run list
-gh run watch
-
-# 3. Verificar cobertura global
-task summary
-```
-
----
-
-## 🧪 **ESTRATÉGIA DE TESTES**
-
-### **Tipos de Testes que Escrevemos**
-
-| Tipo | Onde | Exemplo | Quantidade |
-|------|------|---------|------------|
-| **Testes de lógica** | `test_*.py` | `test_exportar_documento.py` | 12-15 por fase |
-| **Testes de telemetria** | `test_*_telemetry.py` | `test_exportar_documento_telemetry.py` | 6-8 por fase |
-| **Testes de integração** | `test_infrastructure/` | `test_sqlite_repository.py` | 20+ |
-| **Testes de regressão** | `test_use_cases.py` | `test_classificar_documento` | 4 |
-
-### **Padrão para Testes de Lógica**
-
-```python
-# test_classificar_documento.py
-class TestClassificarDocumento:
-    """Testes para a lógica de classificação."""
-
-    @pytest.fixture
-    def repo_mock(self):
-        """Fixture para mock do repositório."""
-        return Mock()
-
-    def test_classificar_interrogatorio(self, repo_mock):
-        """Deve classificar interrogatório corretamente."""
-        # Arrange
-        doc = Documento(titulo="Протокол допроса")
-        repo_mock.buscar_por_id.return_value = doc
-        use_case = ClassificarDocumento(repo_mock)
-
-        # Act
-        resultado = use_case.executar(1)
-
-        # Assert
-        assert resultado.tipo == "interrogatorio"
-```
-
-### **Padrão para Testes de Telemetria**
-
-```python
-# test_classificar_documento_telemetry.py
-class TestClassificarDocumentoTelemetry:
-    """Testes para telemetria."""
-
-    def setup_method(self):
-        """Reconfigura o módulo antes de cada teste."""
-        uc_module._telemetry = None
-
-    def test_telemetria_sucesso(self):
-        """Telemetria deve registrar classificação bem-sucedida."""
-        mock_telemetry = MagicMock()
-        uc_module.configure_telemetry(telemetry_instance=mock_telemetry)
-
-        # ... teste ...
-
-        mock_telemetry.increment.assert_any_call("classificar_documento.sucesso")
-```
-
----
-
-## 📊 **MÉTRICAS E METAS**
-
-### **Metas por Fase**
-
-| Métrica | Mínimo | Bom | Excelente |
-|---------|--------|-----|-----------|
-| **Cobertura do arquivo** | 80% | 85% | 90%+ |
-| **Testes de lógica** | 8 | 12 | 15+ |
-| **Testes de telemetria** | 4 | 6 | 8+ |
-| **MyPy no arquivo** | 0 erros | 0 erros | 0 erros |
-| **Lint** | 0 erros | 0 erros | 0 erros |
-
-### **Metas Globais**
-
-| Métrica | Atual | Meta |
-|---------|-------|------|
-| **Cobertura global** | 75% | 80% |
-| **Erros MyPy** | 6 | 0 |
-| **Testes totais** | ~250 | 300 |
-
----
-
-## 🤖 **CI/CD - GITHUB ACTIONS**
-
-### **Workflow Atual (`.github/workflows/ci.yml`)**
-
-```yaml
-name: CI
-
-on:
-  push:
-    branches: [ main, develop ]
-  pull_request:
-    branches: [ main ]
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ["3.12"]
-
-    steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: ${{ matrix.python-version }}
-
-    - name: Install Poetry
-      run: |
-        curl -sSL https://install.python-poetry.org | python3 -
-        echo "$HOME/.local/bin" >> $GITHUB_PATH
-
-    - name: Install dependencies
-      run: poetry install --no-interaction
-
-    # === NLP dependencies (pip) - Temporário até migrar para Poetry ===
-    - name: Install NLP dependencies
-      run: |
-        poetry run pip install numpy==1.26.0
-        poetry run pip install spacy==3.7.5
-        poetry run pip install textblob nltk wordcloud matplotlib
-        poetry run python -m spacy download en_core_web_sm
-        poetry run python -m spacy download ru_core_news_sm
-
-    - name: Lint with ruff
-      run: poetry run ruff check src/
-
-    - name: Type check with mypy
-      run: poetry run mypy src/ || echo "⚠️ MyPy warnings (ignorado por enquanto)"
-
-    - name: Test with pytest
-      run: poetry run pytest src/tests/ -v --cov=src --cov-report=xml --cov-fail-under=45
-
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v4
-      with:
-        file: ./coverage.xml
-        fail_ci_if_error: false
-        token: ${{ secrets.CODECOV_TOKEN }}
-```
-
----
-
-## 📋 **COMANDOS RÁPIDOS (COLA)**
-
-```bash
-# === QUALIDADE GERAL ===
-task lint        # Ruff em todo src
-task type        # MyPy em todo src
-task test        # Todos os testes
-task test-cov    # Testes com cobertura
-task check       # lint + type + test
-task pre-push    # check + test-cov
-
-# === QUALIDADE POR ARQUIVO ===
-task lint-file --path src/application/use_cases/classificar_documento.py
-task type-file --path src/application/use_cases/classificar_documento.py
-task test-file --path src/tests/test_classificar_documento.py
-task cov-file --path src/application/use_cases/classificar_documento.py
-task check-file --path src/application/use_cases/classificar_documento.py
-
-# === MÉTRICAS ===
-task summary      # Resumo de cobertura e MyPy
-
-# === LIMPEZA ===
-task clean        # Remove __pycache__ e .pyc
-
-# === EXECUÇÃO ===
-task run-cli      # Roda CLI
-task run-web      # Roda servidor web
-```
-
----
-
-## 🔄 **FLUXO COMPLETO (QUALIDADE + GIT + ISSUES)**
-
-```mermaid
-graph TD
-    subgraph "Issue no Kanban"
-        A[Issue #3 - Ready] -->|Iniciar| B[Issue #3 - In Progress]
-    end
-
-    subgraph "Desenvolvimento Local"
-        B --> C[git checkout -b type/classificar-documento]
-        C --> D[Editar código + testes]
-        D --> E{task check-file}
-        E -->|falhou| D
-        E -->|passou| F[task cov-file >=85%]
-    end
-
-    subgraph "Commit e Push"
-        F --> G[git commit -m "feat: ... Closes #3"]
-        G --> H[git push]
-    end
-
-    subgraph "CI"
-        H --> I[GitHub Actions]
-        I --> J[task lint]
-        I --> K[task type (ignorando erros)]
-        I --> L[task test-cov]
-        L --> M{coverage >=45%?}
-        M -->|sim| N[CI Verde]
-        M -->|não| O[CI Falha]
-    end
-
-    subgraph "Finalização"
-        N --> P[git merge]
-        P --> Q[Issue #3 fecha automática]
-        Q --> R[Mover para Done no Kanban]
-    end
-```
-
----
-
-## ✅ **CHECKLIST DE QUALIDADE POR FASE**
-
-### **Antes de começar**
-- [ ] Verificar cobertura atual do arquivo
-- [ ] Verificar MyPy atual
-- [ ] Registrar na issue
-
-### **Durante desenvolvimento**
-- [ ] Checkpoints frequentes com `task check-file`
-- [ ] Testes passando localmente
-- [ ] Lint zero
-
-### **Antes do commit**
-- [ ] `task lint-file` → 0 erros
-- [ ] `task type-file` → 0 erros
-- [ ] `task test-file` → todos passando
-- [ ] `task cov-file` → cobertura ≥85%
-- [ ] `task check-file` → tudo ok
-
-### **Depois do commit**
-- [ ] CI verde
-- [ ] Cobertura global mantida
-- [ ] Issue fechada
-
----
-
-## 📊 **TABELA DE COMANDOS DETALHADA**
-
-| Comando | O que faz | Quando usar |
-|---------|-----------|-------------|
-| `task lint` | Ruff em todo projeto | Antes de push |
-| `task lint-file --path X` | Ruff em um arquivo | Durante desenvolvimento |
-| `task type` | MyPy em todo projeto | Antes de push |
-| `task type-file --path X` | MyPy em um arquivo | Durante desenvolvimento |
-| `task test` | Todos os testes | Antes de push |
-| `task test-file --path X` | Testes de um arquivo | Durante desenvolvimento |
-| `task test-cov` | Testes com cobertura | Antes de push |
-| `task cov-file --path X` | Cobertura de um arquivo | Antes do commit |
-| `task check` | lint + type + test | Antes de push |
-| `task check-file --path X` | lint + type + test-file | Durante desenvolvimento |
-| `task pre-push` | check + test-cov | Antes de push |
-| `task summary` | Resumo de métricas | Qualquer momento |
-| `task clean` | Limpa caches | Quando necessário |
 
 ---
 
@@ -541,22 +390,22 @@ graph TD
 
 | Antes | Depois |
 |-------|--------|
-| ❌ Qualidade variável por arquivo | ✅ Padrão consistente |
-| ❌ Esquecia de rodar mypy | ✅ `task check-file` obrigatório |
-| ❌ Cobertura caía sem perceber | ✅ `task cov-file` antes do commit |
-| ❌ CI quebrava por erros bobos | ✅ Verificação local antes do push |
-| ❌ Dúvida sobre o que testar | ✅ Checklist claro por fase |
-| ❌ MyPy acumulava erros | ✅ Corrigido antes do merge |
+| ❌ Qualidade como opção | ✅ Qualidade como critério de aceite |
+| ❌ Mudanças estruturais implícitas | ✅ Issues `type:engine` explícitas |
+| ❌ Código não testável | ✅ Estrutura preparada para testes |
+| ❌ Acoplamento com persistência | ✅ Transformadores puros |
+| ❌ Escopo vazando | ✅ Isolamento por issue |
+| ❌ Revisão subjetiva | ✅ Checklist objetivo |
 
 ---
 
 ## 📚 **REFERÊNCIAS**
 
+- [GOVERNANCA.md](GOVERNANCA.md) - Política de governança do projeto
+- [Git Flow Oficial](git_flow.md) - Fluxo de branches e releases
 - [Ruff Documentation](https://beta.ruff.rs/docs/)
-- [Black Documentation](https://black.readthedocs.io/)
 - [MyPy Documentation](https://mypy.readthedocs.io/)
 - [Pytest Documentation](https://docs.pytest.org/)
-- [Taskipy Documentation](https://github.com/taskipy/taskipy)
 
 ---
 
@@ -567,9 +416,9 @@ graph TD
 ---
 
 <div align="center">
-  <sub>Quality Assurance Flow - ShowTrials</sub>
+  <sub>Quality Flow Oficial - ShowTrials</sub>
   <br>
-  <sub>Versão 1.0 - 20 de Fevereiro de 2026</sub>
+  <sub>Versão 2.0 - 22 de Fevereiro de 2026</sub>
   <br>
-  <sub>✅ Pronto para uso</sub>
+  <sub>✅ Em conformidade com a GOVERNANCA.md</sub>
 </div>
