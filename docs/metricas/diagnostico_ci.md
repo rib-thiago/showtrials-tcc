@@ -1,8 +1,3 @@
-## 📝 **PASSO 4: CRIAR ARQUIVO DE DIAGNÓSTICO**
-
-### **Novo arquivo: `docs/metricas/diagnostico_ci.md`**
-
-```markdown
 # Diagnóstico: Falhas no Pipeline de CI (FASE 11)
 
 <div align="center">
