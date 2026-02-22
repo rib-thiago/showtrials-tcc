@@ -17,7 +17,7 @@
 | **Dependências** | FASE 11 (CI), FASE 8 (Análise de Texto) |
 | **Issue principal** | [#2](https://github.com/rib-thiago/showtrials-tcc/issues/2) |
 | **Commit principal** | [`1b91b23`](https://github.com/rib-thiago/showtrials-tcc/commit/1b91b23660024bef1aa4cb073906db4a70a35d7b) |
-| **Diagnóstico relacionado** | [`diagnostico_telemetria_tipo_documento.md`](../metricas/diagnostico_telemetria_tipo_documento.md) |
+| **Diagnóstico relacionado** | [`diagnostico_fase12.md`](../metricas/diagnostico_fase12.md) |
 
 ---
 
@@ -290,7 +290,7 @@ git push origin main
 ## 📋 **Diagnóstico Relacionado**
 
 Para uma análise detalhada do problema que motivou esta fase, consulte:
-- [`diagnostico_telemetria_tipo_documento.md`](../metricas/diagnostico_telemetria_tipo_documento.md)
+- [`diagnostico_fase12.md`](../metricas/diagnostico_fase12.md)
 
 ---
 
