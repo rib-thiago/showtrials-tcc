@@ -1,8 +1,8 @@
-# 📚 **DOCUMENTO: GIT FLOW ADAPTADO - SHOWTRIALS**
+# 📚 **DOCUMENTO: GIT FLOW OFICIAL - SHOWTRIALS**
 
 <div align="center">
 
-**Estratégia completa de gerenciamento de branches, versões e releases integrada com nosso fluxo de trabalho**
+**Estratégia formal de gerenciamento de branches, versões e releases integrada à governança do projeto**
 
 </div>
 
@@ -10,166 +10,272 @@
 
 | Item | Descrição |
 |------|-----------|
-| **Data** | 20 de Fevereiro de 2026 |
+| **Data** | 22 de Fevereiro de 2026 |
 | **Autor** | Thiago Ribeiro |
-| **Versão** | 1.0 |
-| **Relacionado a** | Fases 1-16, Issues, Milestones, Kanban |
+| **Versão** | 2.0 |
+| **Relacionado a** | [GOVERNANCA.md](GOVERNANCA.md), Quality Flow, Issues, Milestones, Kanban |
 
 ---
 
 ## 🎯 **OBJETIVO**
 
-Formalizar e padronizar o fluxo de trabalho com Git, integrando:
-- ✅ Nosso padrão já consolidado de branches `type/*`
-- ✅ Issues e Milestones (gerenciamento de tarefas)
-- ✅ Kanban (visualização do fluxo)
-- ✅ Versionamento semântico (tags)
-- ✅ Releases documentadas
-- ✅ CI/CD com GitHub Actions
-- ✅ Taskipy para automação local
+Formalizar o fluxo de trabalho com Git em **total aderência à governança do projeto**, garantindo:
+
+- ✅ Foco arquitetural durante milestones estratégicas
+- ✅ Rastreabilidade técnica entre issues e código
+- ✅ Disciplina de execução (1 issue por vez)
+- ✅ Versionamento semântico alinhado a entregáveis estruturais
+- ✅ Redução de dispersão e feature creep
+- ✅ Evolução incremental controlada
 
 ---
 
-## 📊 **NOSSO CONTEXTO ATUAL**
+## 📊 **PRINCÍPIOS FUNDAMENTAIS**
 
-### **O que já funciona**
-
-| Aspecto | Status | Como fazemos |
-|---------|--------|--------------|
-| **Branches de features** | ✅ Consolidado | `type/nome-arquivo` |
-| **Branches de correção** | ✅ Consolidado | `fix/descricao` |
-| **Branches de documentação** | ✅ Consolidado | `docs/descricao` |
-| **Commits semânticos** | ✅ Padronizado | `feat:`, `fix:`, `docs:`, `test:`, `chore:` |
-| **CI** | ✅ Funcionando | GitHub Actions |
-| **Taskipy** | ✅ Configurado | `task lint`, `task test`, etc. |
-| **Issues** | ✅ Criadas | #1 até #8 |
-| **Milestones** | ✅ Criados | Fases Imediatas, Melhorias, Inovação, Documentação |
-| **Kanban** | ✅ Configurado | Backlog → Ready → In Progress → In Review → Done |
-
-### **O que vamos adicionar**
-
-| Aspecto | Por que | Como faremos |
-|---------|---------|--------------|
-| **Proteção da branch `main`** | Evitar merges acidentais | Regras no GitHub |
-| **Versionamento semântico** | Documentar evolução | Tags `v0.1.0`, `v0.2.0`, `v1.0.0` |
-| **Releases no GitHub** | Documentar entregas | `gh release create` |
-| **Política de merges** | Padronizar integração | CI obrigatório + rebase |
-| **Script de release** | Automatizar versões | Taskipy + script Python |
+| Princípio | Descrição |
+|-----------|-----------|
+| **1** | Nunca trabalhar diretamente na `main` |
+| **2** | Toda alteração relevante deve estar vinculada a uma issue |
+| **3** | Apenas **1 issue pode estar em `In Progress` por vez** |
+| **4** | Apenas issues da milestone estratégica ativa podem gerar branches |
+| **5** | Features congeladas (`frozen`) não podem gerar branches |
+| **6** | Mudanças estruturais devem ser explícitas (type:engine/refactor) |
 
 ---
 
-## 🔄 **NOSSO GIT FLOW ADAPTADO**
-
-```mermaid
-graph TD
-    subgraph "Branch Principal"
-        M[main] -->|protegida| M
-    end
-
-    subgraph "Branches de Desenvolvimento"
-        T[type/*] -->|nova funcionalidade| M
-        F[fix/*] -->|correção| M
-        D[docs/*] -->|documentação| M
-        E[feat/*] -->|melhoria| M
-        C[chore/*] -->|infra/CI| M
-    end
-
-    subgraph "Fluxo de uma Issue"
-        I[Issue #3] -->|cria branch| T
-        T -->|desenvolvimento| T
-        T -->|CI passa?| Q{Testes OK?}
-        Q -->|sim| Merge[Merge para main]
-        Q -->|não| T
-        Merge -->|commit com Closes| Fecha[Issue fecha automática]
-        Fecha -->|move kanban| Done[Coluna Done]
-    end
-
-    subgraph "Versionamento"
-        Main -->|tag| V[v0.3.0]
-        V -->|release| R[GitHub Release]
-        R -->|notas| RN[Notas de release com issues fechadas]
-    end
-```
-
----
-
-## 🌿 **ESTRUTURA DE BRANCHES**
+## 🏷️ **ESTRUTURA DE BRANCHES**
 
 ### **Padrões de Nomenclatura**
 
-| Tipo | Padrão | Exemplo | Quando usar |
-|------|--------|---------|-------------|
-| **Fase do projeto** | `type/[nome-arquivo]` | `type/classificar-documento` | Implementar telemetria e testes em um arquivo |
-| **Correção de bug** | `fix/[descricao]` | `fix/tipo-documento-keyerror` | Corrigir um problema específico |
-| **Documentação** | `docs/[descricao]` | `docs/atualizar-readme` | Atualizar documentação |
-| **Melhoria** | `feat/[descricao]` | `feat/modo-escuro-cli` | Nova funcionalidade (não fase) |
-| **Infra/CI/Chore** | `chore/[descricao]` | `chore/atualizar-dependencias` | Tarefas de manutenção |
+Formato obrigatório:
 
-### **Fluxo de Vida de uma Branch**
+```
+<tipo>/<descricao-curta>
+```
+
+**Tipos permitidos:**
+
+| Tipo | Descrição | Exemplo |
+|------|-----------|---------|
+| **engine/** | Mudanças na engine de pipeline | `engine/contexto-pipeline` |
+| **infra/** | Infraestrutura, CI, dependências | `infra/mypy-fix` |
+| **feature/** | Novas funcionalidades (não estruturais) | `feature/dark-mode` |
+| **docs/** | Documentação | `docs/governanca-update` |
+| **refactor/** | Refatoração sem mudança funcional | `refactor/transformadores-puros` |
+| **bug/** | Correção de bugs | `bug/exportar-id-none` |
+
+**Regras:**
+- Usar hífen (`-`), não underscore (`_`)
+- Nome curto e sem ambiguidade
+- Uma branch por issue
+- Branches de `engine/` e `refactor/` exigem issue do mesmo tipo
+
+---
+
+## 🔄 **FLUXO OPERACIONAL COMPLETO**
+
+```mermaid
+graph TD
+    subgraph "Seleção (Governança)"
+        A[Backlog] -->|Milestone ativa| B[Ready]
+        B -->|Apenas P0/P1| C[In Progress]
+        C -->|Criar branch| D[engine/descricao]
+    end
+
+    subgraph "Desenvolvimento"
+        D -->|Commits atômicos| E[Pull Request]
+        E -->|Review| F{Checklist OK?}
+        F -->|sim| G[CI passa?]
+        F -->|não| D
+        G -->|sim| H[Merge]
+        G -->|não| D
+    end
+
+    subgraph "Finalização"
+        H -->|Closes #N| I[Issue fecha]
+        I -->|Mover| J[Done]
+        J -->|Tag release| K[v0.3.0]
+    end
+
+    style A fill:#f9f,stroke:#333
+    style B fill:#bbf,stroke:#333
+    style C fill:#bfb,stroke:#333
+    style K fill:#ffd700,stroke:#333
+```
+
+---
+
+## 📋 **PASSO A PASSO DETALHADO**
+
+### **1. Seleção da Issue**
+
+Antes de criar qualquer branch:
 
 ```bash
-# 1. Criar a branch a partir da main
+# Verificar milestone ativa
+gh issue list --milestone "MVP - Engine de Pipeline"
+
+# Verificar prioridades
+gh issue list --label "priority:P0,priority:P1"
+
+# Verificar se há issue em progresso
+gh issue list --assignee @me --state open
+```
+
+**Regras de seleção:**
+- ✅ Issue deve estar na milestone ativa
+- ✅ Prioridade P0 ou P1 (durante milestone estrutural)
+- ✅ Não pode haver outra issue em `In Progress`
+- ❌ Features `frozen` não podem ser selecionadas
+
+---
+
+### **2. Criação da Branch**
+
+```bash
+# A partir da main atualizada
 git checkout main
 git pull origin main
-git checkout -b type/classificar-documento
 
-# 2. Desenvolver (commits intermediários)
-git add .
-git commit -m "wip: adiciona estrutura básica de testes"
+# Criar branch com tipo adequado
+git checkout -b engine/contexto-pipeline
+```
 
-# 3. Manter sincronizada (rebase, não merge)
+**Mapeamento tipo ↔ issue:**
+
+| Tipo de Issue | Tipo de Branch |
+|---------------|----------------|
+| `type:engine` | `engine/descricao` |
+| `type:infra` | `infra/descricao` |
+| `type:feature` | `feature/descricao` |
+| `type:docs` | `docs/descricao` |
+| `type:refactor` | `refactor/descricao` |
+| `type:bug` | `bug/descricao` |
+
+---
+
+### **3. Desenvolvimento**
+
+#### Commits Atômicos
+
+```bash
+# BOM - commit focado
+git commit -m "engine: define contrato de Transformer"
+
+# BOM - commit descritivo
+git commit -m "infra: adiciona stubs para módulos externos"
+
+# RUIM - vago
+git commit -m "ajustes"
+
+# RUIM - mistura responsabilidades
+git commit -m "engine: pipeline e correção de bug"
+```
+
+**Regras:**
+- ✅ Manter commits pequenos e descritivos
+- ✅ Não misturar múltiplas responsabilidades
+- ✅ Não alterar escopo da issue
+- ❌ Não introduzir mudanças arquiteturais não discutidas
+
+#### Sincronização com Main
+
+```bash
+# Manter branch atualizada (rebase, não merge)
 git fetch origin
 git rebase origin/main
-
-# 4. Finalizar com commit semântico
-git add .
-git commit -m "feat: adiciona telemetria e testes em classificar_documento.py
-
-- Adiciona padrão de telemetria
-- Cria testes de lógica (8) e telemetria (5)
-- Cobertura: 65% → 85%
-
-Closes #3"
-
-# 5. Push e merge
-git push origin type/classificar-documento
-# (merge via site ou CLI após CI passar)
 ```
+
+---
+
+### **4. Pull Request**
+
+#### Template Obrigatório
+
+````markdown
+## 📋 Descrição
+[Descrição clara da solução implementada]
+
+## 🔗 Issue relacionada
+Closes #N
+
+## ✅ Critérios de Aceite
+- [ ] Critério 1 atendido
+- [ ] Critério 2 atendido
+
+## 🏗️ Impacto Arquitetural
+[Explicar impacto na arquitetura, se houver]
+
+## 📊 Checklist Técnico
+- [ ] Código respeita o modelo arquitetural
+- [ ] Sem acoplamento indevido com persistência
+- [ ] Transformadores permanecem puros
+- [ ] Separação execução/configuração mantida
+- [ ] Responsabilidade no módulo correto
+- [ ] Nenhuma mudança fora de escopo
+````
+
+#### Verificações Obrigatórias
+
+```bash
+# Antes de abrir PR
+task check-file --path src/engine/contexto.py
+task test-cov
+```
+
+---
+
+### **5. Merge**
+
+#### Condições para Merge
+
+```bash
+✅ PR revisado
+✅ Critérios de aceite atendidos
+✅ Testes passando (task check)
+✅ CI verde no GitHub
+✅ Branch atualizada com main
+✅ Sem mudanças fora de escopo
+✅ Impacto arquitetural documentado (se aplicável)
+```
+
+#### Estratégia de Merge
+
+**Squash merge é obrigatório** para manter histórico limpo:
+
+```bash
+# No GitHub: selecionar "Squash and merge"
+
+# Ou via CLI (após aprovação)
+git checkout main
+git merge --squash engine/contexto-pipeline
+git commit -m "engine: implementa contexto de pipeline (#N)"
+git push origin main
+```
+
+**Fast-forward puro não é mais recomendado** pois perdemos o contexto da issue no histórico linear.
 
 ---
 
 ## 🛡️ **PROTEÇÃO DA BRANCH MAIN**
 
-### **Regras configuradas no GitHub**
-
-Acesse: `https://github.com/rib-thiago/showtrials-tcc/settings/branches`
+### **Regras Configuradas no GitHub**
 
 ```yaml
-# Configuração ideal
 Branch name pattern: main
 
 ✅ Require a pull request before merging
-  - [opcional, podemos mergir direto]
-
 ✅ Require status checks to pass before merging
-  - CI / test (3.12)  # nosso workflow
-
+  - CI / test (3.12)
 ✅ Require branches to be up to date before merging
-  - [garante que não tem conflitos]
-
 ✅ Include administrators
-  - [aplica as regras até para você]
-
-✅ Allow force pushes
-  - [❌ desabilitado]
-
-✅ Allow deletions
-  - [❌ desabilitado]
+❌ Allow force pushes
+❌ Allow deletions
 ```
 
-### **Comandos para verificar proteção**
+### **Verificação**
+
 ```bash
-# Ver regras da branch
 gh api repos/rib-thiago/showtrials-tcc/branches/main/protection
 ```
 
@@ -177,401 +283,141 @@ gh api repos/rib-thiago/showtrials-tcc/branches/main/protection
 
 ## 🏷️ **VERSIONAMENTO SEMÂNTICO**
 
-### **O que é Semantic Versioning**
+### **Política de Versões**
 
 ```
-v0.2.0
+v0.3.0
   ↑  ↑  ↑
   │  │  └── patch (correções)
   │  └───── minor (novas funcionalidades)
   └──────── major (mudanças que quebram compatibilidade)
 ```
 
-### **Nossa Estratégia de Versões**
+### **Estratégia por Milestone**
 
-| Versão | Quando criar | Exemplo |
-|--------|--------------|---------|
-| **v0.1.0** | ✅ Já existe | Versão inicial |
-| **v0.2.0** | ✅ Já existe | Após primeiras fases |
-| **v0.3.0** | Após concluir Fases 17-20 | classificar, obter, estatisticas, mypy |
-| **v0.4.0** | Após melhorias | modo escuro, gráficos, NLP Poetry |
-| **v1.0.0** | Entrega do TCC | Versão final |
+| Milestone | Versão | Critério |
+|-----------|--------|----------|
+| MVP - Engine de Pipeline | v0.3.0 | Contexto, transformadores, executor mínimo |
+| M2 - Migração completa | v0.4.0 | Todos os processadores refatorados |
+| M3 - Evolução do CLI | v0.5.0 | CLI adaptado ao novo modelo |
+| Entrega TCC | v1.0.0 | Versão final estável |
 
-### **Criando uma tag**
+### **Criação de Release**
 
 ```bash
-# Listar tags existentes
-git tag -l
+# Ver última tag
+git describe --tags --abbrev=0
 
-# Criar tag anotada (recomendado)
-git tag -a v0.3.0 -m "Versão 0.3.0 - Telemetria em classificar_documento, obter_documento, estatisticas"
+# Criar tag anotada
+git tag -a v0.3.0 -m "MVP - Engine de Pipeline
 
-# Enviar tag para o GitHub
+- Contexto de execução implementado
+- Transformadores purificados
+- Executor mínimo funcional"
+
+# Enviar tag
 git push origin v0.3.0
 
-# Ver tags no remote
-git ls-remote --tags origin
-```
-
----
-
-## 🚀 **RELEASES NO GITHUB**
-
-### **Criando uma release manualmente**
-
-```bash
-# Após criar a tag, criar release
+# Criar release
 gh release create v0.3.0 \
-  --title "v0.3.0" \
-  --notes "## ✅ Fases concluídas
-- FASE 17: classificar_documento.py (65% → 85%)
-- FASE 18: obter_documento.py (57% → 85%)
-- FASE 19: estatisticas.py (15% → 80%)
-- FASE 20: Correção MyPy global
-
-## 📊 Métricas
-- Cobertura global: 75%
-- Testes totais: ~250
-- Issues fechadas: #3, #4, #5, #6"
-```
-
-### **Ver releases**
-```bash
-gh release list
-gh release view v0.3.0
+  --title "v0.3.0 - MVP Engine de Pipeline" \
+  --notes-file RELEASE_NOTES.md
 ```
 
 ---
 
 ## 🤖 **AUTOMAÇÃO COM TASKIPY**
 
-### **Comandos adicionados ao `pyproject.toml`**
+### **Comandos para Governança**
 
 ```toml
 [tool.taskipy.tasks]
 # ... comandos existentes ...
 
+# ===== Governança =====
+status = "gh issue list --assignee @me"
+milestone-active = "gh issue list --milestone 'MVP - Engine de Pipeline'"
+frozen = "gh issue list --label frozen"
+next = "gh issue list --label 'priority:P0,priority:P1' --limit 1"
+
 # ===== Versionamento =====
 version-show = "git describe --tags --abbrev=0"
-version-list = "git tag -l"
 version-create = "python scripts/criar_release.py"
-
-# ===== Releases =====
 release-create = "gh release create $(git describe --tags --abbrev=0) --title $(git describe --tags --abbrev=0) --notes-file RELEASE_NOTES.md"
-release-list = "gh release list"
-
-# ===== Status do Projeto =====
-status-issues = "gh issue list --assignee @me"
-status-milestone = "gh issue list --milestone 'Fases Imediatas (Semanas 1-2)'"
-status-project = "open https://github.com/users/rib-thiago/projects/1"
-```
-
-### **Script de release automático**
-
-Crie `scripts/criar_release.py`:
-
-```python
-#!/usr/bin/env python
-"""
-Script para criar versões e releases automaticamente.
-Uso: poetry run task version-create
-"""
-
-import subprocess
-import re
-from datetime import datetime
-from typing import Optional, List, Tuple
-
-def get_last_tag() -> str:
-    """Retorna a última tag do repositório."""
-    try:
-        return subprocess.getoutput("git describe --tags --abbrev=0 2>/dev/null || echo 'v0.0.0'")
-    except:
-        return "v0.0.0"
-
-def suggest_next_version(last_tag: str) -> str:
-    """Sugere a próxima versão baseado na última."""
-    match = re.match(r"v(\d+)\.(\d+)\.(\d+)", last_tag)
-    if not match:
-        return "v0.1.0"
-
-    major, minor, patch = map(int, match.groups())
-    return f"v{major}.{minor + 1}.0"  # incrementa minor
-
-def get_issues_since_last_tag(last_tag: str) -> List[Tuple[str, str]]:
-    """Lista issues fechadas desde a última tag."""
-    log = subprocess.getoutput(f"git log {last_tag}..HEAD --oneline | grep -i 'closes'")
-    issues = []
-    for line in log.split('\n'):
-        if not line:
-            continue
-        # Procura por padrão "Closes #N"
-        match = re.search(r"closes #(\d+)", line.lower())
-        if match:
-            issues.append((match.group(1), line))
-    return issues
-
-def create_release_notes(last_tag: str, new_version: str, issues: List[Tuple[str, str]]) -> str:
-    """Gera notas de release."""
-    notes = []
-    notes.append(f"# Release {new_version}")
-    notes.append(f"Data: {datetime.now().strftime('%d/%m/%Y')}")
-    notes.append("")
-
-    if issues:
-        notes.append("## ✅ Issues fechadas")
-        for issue_num, commit_msg in issues:
-            notes.append(f"- #{issue_num}: {commit_msg}")
-    else:
-        notes.append("## ✅ Melhorias")
-        notes.append("- Nenhuma issue específica fechada")
-
-    notes.append("")
-    notes.append("## 📊 Métricas")
-    notes.append("- Cobertura global: (rode `poetry run pytest --cov=src | grep TOTAL`)")
-    notes.append("- Testes totais: (rode `poetry run pytest --collect-only | grep collected`)")
-
-    return '\n'.join(notes)
-
-def main():
-    print("🚀 Criador de Release - ShowTrials")
-    print("=" * 40)
-
-    # Última tag
-    last_tag = get_last_tag()
-    print(f"📌 Última tag: {last_tag}")
-
-    # Sugerir próxima versão
-    suggested = suggest_next_version(last_tag)
-    print(f"💡 Sugestão: {suggested}")
-
-    # Perguntar versão
-    new_version = input(f"Versão (Enter para '{suggested}'): ").strip()
-    if not new_version:
-        new_version = suggested
-
-    # Buscar issues fechadas
-    issues = get_issues_since_last_tag(last_tag)
-    if issues:
-        print(f"\n🔍 Issues fechadas desde {last_tag}:")
-        for issue_num, commit_msg in issues:
-            print(f"  • #{issue_num}")
-
-    # Perguntar notas
-    print("\n📝 Gerando notas de release automaticamente...")
-    notes = create_release_notes(last_tag, new_version, issues)
-
-    # Salvar notas em arquivo
-    with open("RELEASE_NOTES.md", "w") as f:
-        f.write(notes)
-
-    print(f"✅ Notas salvas em RELEASE_NOTES.md")
-    print("\n" + notes)
-
-    # Confirmar
-    confirm = input(f"\nCriar tag {new_version} e release? (s/N): ").strip().lower()
-    if confirm != 's':
-        print("❌ Cancelado")
-        return
-
-    # Criar tag
-    print(f"\n🏷️  Criando tag {new_version}...")
-    subprocess.run(f"git tag -a {new_version} -F RELEASE_NOTES.md", shell=True)
-    subprocess.run(f"git push origin {new_version}", shell=True)
-
-    # Criar release
-    print(f"🚀 Criando release no GitHub...")
-    subprocess.run(f"gh release create {new_version} --title '{new_version}' --notes-file RELEASE_NOTES.md", shell=True)
-
-    print(f"✅ Release {new_version} criada com sucesso!")
-    print(f"📎 Acesse: https://github.com/rib-thiago/showtrials-tcc/releases/tag/{new_version}")
-
-if __name__ == "__main__":
-    main()
-```
-
----
-
-## 📋 **POLÍTICA DE MERGES**
-
-### **Regras para merge na `main`**
-
-```bash
-# ANTES do merge, verificar:
-✅ Tests passam localmente (task test)
-✅ Lint ok (task lint)
-✅ MyPy ok (task type)
-✅ Cobertura >= 45% (task test-cov)
-✅ Branch está atualizada com main
-✅ CI passou no GitHub
-```
-
-### **Fluxo de merge recomendado**
-
-```bash
-# 1. Atualizar branch
-git checkout type/classificar-documento
-git fetch origin
-git rebase origin/main
-
-# 2. Verificar tudo
-task check
-
-# 3. Push final
-git push origin type/classificar-documento
-
-# 4. Merge (pelo site ou CLI)
-# Opção A: via GitHub (recomendado)
-#   - Acesse a branch no GitHub
-#   - Clique em "Compare & pull request"
-#   - Se não houver PR, crie um
-#   - Após CI passar, faça merge
-
-# Opção B: via CLI (mais rápido)
-git checkout main
-git merge --ff-only type/classificar-documento  # fast-forward apenas
-git push origin main
-```
-
-### **Por que fast-forward?**
-
-```bash
-# Com fast-forward (recomendado)
-A---B---C  main
-     \
-      D---E  type/*
-          ↓
-A---B---C---D---E  main (histórico linear)
-
-# Sem fast-forward (cria merge commit)
-A---B---C-----------F  main
-     \             /
-      D-----------E  type/*
-```
-
-**Fast-forward mantém o histórico limpo e linear.** Como trabalhamos sozinhos, não precisamos de merge commits.
-
----
-
-## 🔄 **FLUXO COMPLETO (ISSUE → BRANCH → RELEASE)**
-
-### **Exemplo prático: FASE 17**
-
-```bash
-# 1. Issue #3 está em "Ready" no Kanban
-
-# 2. Mover para "In Progress" (no site)
-
-# 3. Criar branch
-git checkout -b type/classificar-documento
-
-# 4. Desenvolver (commits intermediários)
-git add .
-git commit -m "wip: estrutura de testes"
-
-# 5. Manter sincronizado
-git fetch origin
-git rebase origin/main
-
-# 6. Testar localmente
-task test
-task lint
-task type
-task test-cov
-
-# 7. Commit final com fechamento da issue
-git add .
-git commit -m "feat: adiciona telemetria e testes em classificar_documento.py
-
-- Adiciona padrão de telemetria
-- Cria testes de lógica (8) e telemetria (5)
-- Cobertura: 65% → 85%
-
-Closes #3"
-
-# 8. Push
-git push origin type/classificar-documento
-
-# 9. Verificar CI no GitHub
-gh run list
-
-# 10. Merge (após CI passar)
-git checkout main
-git pull origin main
-git merge --ff-only type/classificar-documento
-git push origin main
-
-# 11. Issue fecha automaticamente (pelo commit)
-# 12. Mover issue para "Done" no Kanban
-
-# 13. Quando várias fases estiverem prontas, criar release
-task version-create
 ```
 
 ---
 
 ## 📊 **TABELA DE COMANDOS ÚTEIS**
 
-| O que fazer | Comando |
-|-------------|---------|
-| **Ver branch atual** | `git branch` |
-| **Criar nova branch** | `git checkout -b type/nome` |
-| **Atualizar branch** | `git fetch origin && git rebase origin/main` |
-| **Ver status** | `git status` |
-| **Commit semântico** | `git commit -m "tipo: mensagem"` |
-| **Commit com Closes** | `git commit -m "feat: ... Closes #3"` |
-| **Push** | `git push origin type/nome` |
-| **Merge (fast-forward)** | `git merge --ff-only type/nome` |
-| **Deletar branch local** | `git branch -d type/nome` |
-| **Deletar branch remota** | `git push origin --delete type/nome` |
-| **Ver tags** | `git tag -l` |
-| **Criar tag** | `git tag -a v0.3.0 -m "versão"` |
-| **Push tag** | `git push origin v0.3.0` |
-| **Ver releases** | `gh release list` |
-| **Criar release** | `gh release create v0.3.0 --notes-file RELEASE_NOTES.md` |
-| **Ver issues** | `gh issue list --assignee @me` |
-| **Ver milestone** | `gh issue list --milestone "Fases Imediatas"` |
-| **Ver project** | `open https://github.com/users/rib-thiago/projects/1` |
+| Ação | Comando |
+|------|---------|
+| Ver milestone ativa | `gh issue list --milestone 'MVP - Engine de Pipeline'` |
+| Ver issues P0/P1 | `gh issue list --label 'priority:P0,priority:P1'` |
+| Ver issue em progresso | `gh issue list --assignee @me --state open` |
+| Criar branch | `git checkout -b engine/descricao` |
+| Commit semântico | `git commit -m "engine: mensagem descritiva"` |
+| Atualizar branch | `git fetch origin && git rebase origin/main` |
+| Abrir PR | `gh pr create --title "engine: ..." --body-file PR_TEMPLATE.md` |
+| Ver CI | `gh run watch` |
+| Merge squash | `git merge --squash engine/descricao` |
+| Criar release | `task version-create` |
 
 ---
 
-## ✅ **CHECKLIST DE IMPLEMENTAÇÃO**
+## ✅ **CHECKLIST POR ISSUE**
 
-### **Configuração Inicial (uma vez)**
+### **Antes de Iniciar**
+- [ ] Issue está na milestone ativa?
+- [ ] Prioridade é P0 ou P1?
+- [ ] Nenhuma outra issue em `In Progress`?
+- [ ] Branch criada com tipo correto (`engine/`, `infra/`, etc.)?
 
-- [ ] Proteger branch `main` no GitHub
-- [ ] Adicionar script `scripts/criar_release.py`
-- [ ] Atualizar `pyproject.toml` com novos comandos taskipy
-- [ ] Testar `task version-create`
+### **Durante Desenvolvimento**
+- [ ] Commits são atômicos e descritivos?
+- [ ] Branch mantida atualizada com `rebase`?
+- [ ] Escopo da issue não foi alterado?
+- [ ] Nenhuma mudança arquitetural implícita?
 
-### **Para cada nova fase**
+### **Antes do PR**
+- [ ] `task check-file` passa?
+- [ ] `task test-cov` mantém cobertura?
+- [ ] PR template preenchido?
+- [ ] Impacto arquitetural documentado?
 
-- [ ] Issue criada com template
-- [ ] Label de prioridade definida
-- [ ] Milestone associado
-- [ ] Issue no Kanban (coluna Ready)
+### **Antes do Merge**
+- [ ] CI verde?
+- [ ] Critérios de aceite atendidos?
+- [ ] PR revisado?
+- [ ] Nenhuma mudança fora de escopo?
 
-### **Durante o desenvolvimento**
+### **Após Merge**
+- [ ] Issue fechou automaticamente?
+- [ ] Movida para `Done` no Kanban?
+- [ ] (Se aplicável) Release criada?
 
-- [ ] Branch criada no padrão
-- [ ] Commits intermediários (opcionais)
-- [ ] Rebase frequente com main
-- [ ] Testes passando localmente
+---
 
-### **Ao finalizar**
+## 🚨 **O QUE NÃO FAZER**
 
-- [ ] Commit final com `Closes #N`
-- [ ] CI verde no GitHub
-- [ ] Merge (fast-forward)
-- [ ] Issue fecha automaticamente
-- [ ] Mover no Kanban para Done
+```bash
+# ❌ NÃO trabalhar em múltiplas issues
+git checkout -b feature/x
+git checkout -b feature/y  # AINDA NÃO!
 
-### **Para releases**
+# ❌ NÃO criar branch sem issue
+git checkout -b ideia-legal  # ONDE ESTÁ A ISSUE?
 
-- [ ] Agrupar issues fechadas desde última tag
-- [ ] Executar `task version-create`
-- [ ] Verificar release no GitHub
-- [ ] Atualizar documentação se necessário
+# ❌ NÃO misturar tipos na branch
+git checkout -b engine/feature-x  # OU ENGINE OU FEATURE
+
+# ❌ NÃO fazer merge direto na main
+git checkout main
+git merge feature/x  # PRIMEIRO PR, DEPOIS MERGE
+
+# ❌ NÃO ignorar a milestone ativa
+# (se não está na milestone, não é prioridade agora)
+```
 
 ---
 
@@ -579,22 +425,22 @@ task version-create
 
 | Antes | Depois |
 |-------|--------|
-| ❌ Versões no "olhômetro" | ✅ Tags semânticas documentadas |
-| ❌ Histórico solto | ✅ Commits linkados a issues |
-| ❌ Progresso invisível | ✅ Kanban atualizado |
-| ❌ Merges manuais sem padrão | ✅ Política clara (fast-forward) |
+| ❌ Múltiplas issues em paralelo | ✅ Foco total na milestone ativa |
+| ❌ Branches sem padrão claro | ✅ Tipos definidos (`engine/`, `infra/`, etc.) |
+| ❌ Mudanças arquiteturais implícitas | ✅ Issues `type:engine` explícitas |
+| ❌ Histório com merge commits | ✅ Squash merge com contexto |
 | ❌ Releases manuais | ✅ Script automatizado |
-| ❌ Dúvida sobre o que foi feito | ✅ Release notes com issues fechadas |
+| ❌ Features congeladas sendo trabalhadas | ✅ `frozen` respeitado |
 
 ---
 
 ## 📚 **REFERÊNCIAS**
 
+- [GOVERNANCA.md](GOVERNANCA.md) - Política de governança do projeto
+- [Quality Flow](quality_flow.md) - Critérios de qualidade
 - [GitHub Flow](https://guides.github.com/introduction/flow/)
 - [Semantic Versioning](https://semver.org/)
 - [Conventional Commits](https://www.conventionalcommits.org/)
-- [Taskipy Documentation](https://github.com/taskipy/taskipy)
-- [GitHub CLI Manual](https://cli.github.com/manual/)
 
 ---
 
@@ -605,10 +451,9 @@ task version-create
 ---
 
 <div align="center">
-  <sub>Git Flow Adaptado - ShowTrials</sub>
+  <sub>Git Flow Oficial - ShowTrials</sub>
   <br>
-  <sub>Versão 1.0 - 20 de Fevereiro de 2026</sub>
+  <sub>Versão 2.0 - 22 de Fevereiro de 2026</sub>
   <br>
-  <sub>✅ Pronto para implementação</sub>
+  <sub>✅ Em conformidade com a GOVERNANCA.md</sub>
 </div>
-```
