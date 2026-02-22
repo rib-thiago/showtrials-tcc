@@ -3,7 +3,6 @@
 Comandos de tradução para a CLI.
 """
 
-
 from src.interface import console
 from src.interface.cli.presenters import DocumentoPresenter
 from src.interface.cli.presenters_traducao import TraducaoPresenter
