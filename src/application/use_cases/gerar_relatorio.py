@@ -107,12 +107,12 @@ class GerarRelatorio:
 
         # Pessoas mais frequentes (com tradução)
         pessoas_frequentes: List[Tuple[str, int, str]] = []
-        for nome, count in pessoa_counter.most_common(20):
+        for nome, _count in pessoa_counter.most_common(20):
             try:
                 nome_en = NomeRusso(nome).transliterar()
             except Exception:
                 nome_en = nome
-            pessoas_frequentes.append((nome, count, nome_en))
+            pessoas_frequentes.append((nome, _count, nome_en))
 
         # Dados de tradução
         total_traducoes = 0
@@ -215,8 +215,8 @@ class GerarRelatorio:
         # 5. Pessoas Mais Frequentes
         linhas.append("👤 PESSOAS MAIS FREQUENTES")
         linhas.append("-" * 40)
-        for i, (nome_ru, total, nome_en) in enumerate(dados["pessoas_frequentes"][:10], 1):
-            linhas.append(f"{i:2d}. {nome_en} ({nome_ru}): {total}")
+        for _i, (nome_ru, total, nome_en) in enumerate(dados["pessoas_frequentes"][:10], 1):
+            linhas.append(f"{_i:2d}. {nome_en} ({nome_ru}): {total}")
         linhas.append("")
 
         # 6. Documentos Especiais

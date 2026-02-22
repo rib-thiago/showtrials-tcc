@@ -78,7 +78,7 @@ class TestGerarRelatorio:
         docs = []
         tipos = ["carta", "declaracao", "relatorio", "acareacao", "acusacao", "laudo"]
 
-        for i, tipo in enumerate(tipos):
+        for _i, tipo in enumerate(tipos):
             doc = Mock()
             doc.tipo = tipo
             doc.centro = "lencenter"
@@ -124,7 +124,7 @@ class TestGerarRelatorio:
         docs = []
         anos = ["1934", "1935", "1934", "1936", "1935"]
 
-        for i, ano in enumerate(anos):
+        for _i, ano in enumerate(anos):
             doc = Mock()
             doc.data_original = f"{ano}-12-04"
             doc.centro = "lencenter"
@@ -189,7 +189,7 @@ class TestGerarRelatorio:
 
         dados = use_case._coletar_dados()
 
-        for nome_ru, count, nome_en in dados["pessoas_frequentes"]:
+        for nome_ru, _count, nome_en in dados["pessoas_frequentes"]:
             assert nome_ru in ["Л.В. Николаева", "И.В. Сталин"]
             assert nome_en in ["Leonid V. Nikolaev", "Joseph V. Stalin"]
 
@@ -205,7 +205,7 @@ class TestGerarRelatorio:
     def test_documentos_sem_tipo_sao_ignorados(self, repo_doc_mock):
         """Documentos sem tipo não devem quebrar contagens."""
         docs = []
-        for i in range(3):
+        for _i in range(3):
             doc = Mock()
             doc.tipo = None
             doc.centro = "lencenter"
