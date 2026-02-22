@@ -1,0 +1,3633 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Sistema de Gestão de Documentos Históricos">
+      
+      
+        <meta name="author" content="Thiago Ribeiro">
+      
+      
+      
+        <link rel="prev" href="../manual_gestao/">
+      
+      
+        <link rel="next" href="../questionario_levantamento_requisitos/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Plano de Issues - ShowTrials</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#plano-completo-de-issues-e-milestones" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="ShowTrials" class="md-header__button md-logo" aria-label="ShowTrials" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ShowTrials
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Plano de Issues
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Mudar para modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Mudar para modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rib-thiago/showtrials-tcc" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    showtrials-tcc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Início
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../overview/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Visão Geral
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ARCHITECTURE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Arquitetura
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../fases/FASE1_DOMAIN/" class="md-tabs__link">
+          
+  
+  
+  Fases do Projeto
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../flows/git_flow/" class="md-tabs__link">
+          
+  
+  
+  Flows de Trabalho
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../visao_do_projeto/" class="md-tabs__link">
+          
+  
+  
+  Documentos do Projeto
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../metricas/cobertura/" class="md-tabs__link">
+          
+  
+  
+  Métricas e Diagnósticos
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../planejamento/plano_issue2_revisao_documentacao/" class="md-tabs__link">
+          
+  
+  
+  Planejamento
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../contributing/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Como Contribuir
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../changelog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="ShowTrials" class="md-nav__button md-logo" aria-label="ShowTrials" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ShowTrials
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rib-thiago/showtrials-tcc" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    showtrials-tcc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visão Geral
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitetura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fases do Projeto
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fases do Projeto
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fases/FASE1_DOMAIN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 1 - Domain
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fases/FASE2_APPLICATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 2 - Application
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fases/FASE3_INFRASTRUCTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 3 - Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fases/FASE4_CLI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 4 - CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fases/FASE5_TRADUCAO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 5 - Tradução
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fases/FASE6_EXPORTACAO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 6 - Exportação
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fases/FASE7_RELATORIOS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 7 - Relatórios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fases/FASE8_ANALISE_TEXTO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 8 - Análise de Texto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fases/FASE9_WEB_INTERFACE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 9 - Web Interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fases/FASE10_SERVICE_REGISTRY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 10 - Service Registry
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fases/FASE11_CI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 11 - CI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fases/FASE12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 12 - Telemetria TipoDocumento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fases/FASE13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 13 - Limpeza
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fases/FASE14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 14 - ExportarDocumento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fases/FASE15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 15 - GerarRelatorio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fases/FASE16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 16 - ListarDocumentos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fases/FASE17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 17 - Padronização Documentação
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flows de Trabalho
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Flows de Trabalho
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../flows/git_flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git Flow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../flows/quality_flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quality Flow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../flows/telemetry_flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Telemetry Flow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../flows/code_review_flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code Review Flow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../flows/dependencies_flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dependencies Flow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../flows/debug_flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Debug Flow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../flows/documentation_flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Flow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../flows/refactoring_flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Refactoring Flow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../flows/emergency_flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Emergency Flow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentos do Projeto
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Documentos do Projeto
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../visao_do_projeto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visão do Projeto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../analise_arquitetural/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Análise Arquitetural
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../roadmap_arquitetural/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap Arquitetural
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../manual_gestao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manual de Gestão
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plano de Issues
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plano de Issues
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#plano-completo-de-issues-e-milestones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 PLANO COMPLETO DE ISSUES E MILESTONES
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#milestone-1-fundacao-semanas-1-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 MILESTONE 1: FUNDAÇÃO (Semanas 1-2)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#milestone-2-qualidade-e-testes-semanas-3-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔧 MILESTONE 2: QUALIDADE E TESTES (Semanas 3-4)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#milestone-3-dependencias-e-infra-semanas-5-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📦 MILESTONE 3: DEPENDÊNCIAS E INFRA (Semanas 5-6)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#milestone-4-novas-funcionalidades-semanas-7-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 MILESTONE 4: NOVAS FUNCIONALIDADES (Semanas 7-8)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#milestone-5-documentacao-e-finalizacao-continuo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 MILESTONE 5: DOCUMENTAÇÃO E FINALIZAÇÃO (Contínuo)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#todas-as-labels-necessarias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏷️ TODAS AS LABELS NECESSÁRIAS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumo-das-issues-por-milestone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 RESUMO DAS ISSUES POR MILESTONE
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#script-para-criar-todas-as-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 SCRIPT PARA CRIAR TODAS AS ISSUES
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximos-passos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ PRÓXIMOS PASSOS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#script-completo-29-issues-instrucoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📜 SCRIPT COMPLETO - 29 ISSUES + INSTRUÇÕES
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instrucoes-para-gerir-o-backlog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 INSTRUÇÕES PARA GERIR O BACKLOG
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📋 INSTRUÇÕES PARA GERIR O BACKLOG">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-apos-rodar-o-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Após rodar o script
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-adicionar-issues-ao-project-kanban" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Adicionar issues ao Project Kanban
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-organizar-o-kanban" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Organizar o Kanban
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-prioridades-iniciais-sugeridas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Prioridades iniciais sugeridas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-fluxo-diario-de-trabalho" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Fluxo diário de trabalho
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumo-o-que-voce-tem-agora" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 RESUMO - O QUE VOCÊ TEM AGORA
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../questionario_levantamento_requisitos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Questionário
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Métricas e Diagnósticos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Métricas e Diagnósticos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../metricas/cobertura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cobertura de Testes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../metricas/diagnostico_ci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagnóstico CI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../metricas/diagnostico_fase12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagnóstico Telemetria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Planejamento
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Planejamento
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../planejamento/plano_issue2_revisao_documentacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plano da Issue 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../planejamento/TEMPLATE_FASE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Template de Documentação
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Como Contribuir
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>Plano de Issues</h1>
+
+<h2 id="plano-completo-de-issues-e-milestones">📋 <strong>PLANO COMPLETO DE ISSUES E MILESTONES</strong><a class="headerlink" href="#plano-completo-de-issues-e-milestones" title="Permanent link">&para;</a></h2>
+<p>Com base em todos os flows documentados e no estado atual do projeto, aqui estão as issues organizadas por milestones:</p>
+<hr />
+<h2 id="milestone-1-fundacao-semanas-1-2">🎯 <strong>MILESTONE 1: FUNDAÇÃO (Semanas 1-2)</strong><a class="headerlink" href="#milestone-1-fundacao-semanas-1-2" title="Permanent link">&para;</a></h2>
+<p><em>Objetivo: Estabilizar e documentar os processos fundamentais</em></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Título</th>
+<th>Tipo</th>
+<th>Prioridade</th>
+<th>Estimativa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>F1</strong></td>
+<td>Criar documentação dos 9 flows do projeto</td>
+<td><code>docs</code></td>
+<td>Alta</td>
+<td>4h</td>
+</tr>
+<tr>
+<td><strong>F2</strong></td>
+<td>Integrar flows ao MkDocs</td>
+<td><code>docs</code></td>
+<td>Média</td>
+<td>1h</td>
+</tr>
+<tr>
+<td><strong>F3</strong></td>
+<td>Criar script de inicialização do projeto (onboarding)</td>
+<td><code>chore</code></td>
+<td>Média</td>
+<td>2h</td>
+</tr>
+<tr>
+<td><strong>F4</strong></td>
+<td>Revisar e atualizar README.md com badges e instruções</td>
+<td><code>docs</code></td>
+<td>Baixa</td>
+<td>1h</td>
+</tr>
+<tr>
+<td><strong>F5</strong></td>
+<td>Configurar branch protection rules no GitHub</td>
+<td><code>chore</code></td>
+<td>Alta</td>
+<td>30min</td>
+</tr>
+<tr>
+<td><strong>F6</strong></td>
+<td>Padronizar mensagens de commit com commitizen</td>
+<td><code>chore</code></td>
+<td>Média</td>
+<td>1h</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="milestone-2-qualidade-e-testes-semanas-3-4">🔧 <strong>MILESTONE 2: QUALIDADE E TESTES (Semanas 3-4)</strong><a class="headerlink" href="#milestone-2-qualidade-e-testes-semanas-3-4" title="Permanent link">&para;</a></h2>
+<p><em>Objetivo: Garantir qualidade consistente em todo o código</em></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Título</th>
+<th>Tipo</th>
+<th>Prioridade</th>
+<th>Estimativa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Q1</strong></td>
+<td>FASE 17: Telemetria e testes em <code>classificar_documento.py</code></td>
+<td><code>type</code></td>
+<td>Alta</td>
+<td>3h</td>
+</tr>
+<tr>
+<td><strong>Q2</strong></td>
+<td>FASE 18: Telemetria e testes em <code>obter_documento.py</code></td>
+<td><code>type</code></td>
+<td>Alta</td>
+<td>2h</td>
+</tr>
+<tr>
+<td><strong>Q3</strong></td>
+<td>FASE 19: Telemetria e testes em <code>estatisticas.py</code> (15% → 85%)</td>
+<td><code>type</code></td>
+<td><strong>Urgente</strong></td>
+<td>4h</td>
+</tr>
+<tr>
+<td><strong>Q4</strong></td>
+<td>FASE 20: Corrigir MyPy global (6 erros)</td>
+<td><code>type/qualidade</code></td>
+<td>Alta</td>
+<td>2h</td>
+</tr>
+<tr>
+<td><strong>Q5</strong></td>
+<td>Adicionar testes de integração para repositórios SQLite</td>
+<td><code>test</code></td>
+<td>Média</td>
+<td>3h</td>
+</tr>
+<tr>
+<td><strong>Q6</strong></td>
+<td>Aumentar cobertura para 80%+ nos arquivos restantes</td>
+<td><code>test</code></td>
+<td>Média</td>
+<td>4h</td>
+</tr>
+<tr>
+<td><strong>Q7</strong></td>
+<td>Adicionar property-based testing com Hypothesis</td>
+<td><code>test</code></td>
+<td>Baixa</td>
+<td>3h</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="milestone-3-dependencias-e-infra-semanas-5-6">📦 <strong>MILESTONE 3: DEPENDÊNCIAS E INFRA (Semanas 5-6)</strong><a class="headerlink" href="#milestone-3-dependencias-e-infra-semanas-5-6" title="Permanent link">&para;</a></h2>
+<p><em>Objetivo: Resolver dívidas técnicas e melhorar infraestrutura</em></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Título</th>
+<th>Tipo</th>
+<th>Prioridade</th>
+<th>Estimativa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>D1</strong></td>
+<td>Migrar dependências NLP para Poetry (Issue #1)</td>
+<td><code>tipo/infra</code></td>
+<td><strong>Alta</strong></td>
+<td>4h</td>
+</tr>
+<tr>
+<td><strong>D2</strong></td>
+<td>Instalar stubs para módulos externos (types-PyYAML)</td>
+<td><code>chore</code></td>
+<td>Média</td>
+<td>30min</td>
+</tr>
+<tr>
+<td><strong>D3</strong></td>
+<td>Atualizar CI para usar Poetry completamente</td>
+<td><code>chore</code></td>
+<td>Média</td>
+<td>2h</td>
+</tr>
+<tr>
+<td><strong>D4</strong></td>
+<td>Adicionar cache mais eficiente no CI</td>
+<td><code>chore</code></td>
+<td>Baixa</td>
+<td>1h</td>
+</tr>
+<tr>
+<td><strong>D5</strong></td>
+<td>Dockerizar aplicação (CLI + Web)</td>
+<td><code>feat</code></td>
+<td>Baixa</td>
+<td>4h</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="milestone-4-novas-funcionalidades-semanas-7-8">🚀 <strong>MILESTONE 4: NOVAS FUNCIONALIDADES (Semanas 7-8)</strong><a class="headerlink" href="#milestone-4-novas-funcionalidades-semanas-7-8" title="Permanent link">&para;</a></h2>
+<p><em>Objetivo: Expandir capacidades do sistema</em></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Título</th>
+<th>Tipo</th>
+<th>Prioridade</th>
+<th>Estimativa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>N1</strong></td>
+<td>Melhoria: Modo escuro no CLI</td>
+<td><code>feat</code></td>
+<td>Baixa</td>
+<td>2h</td>
+</tr>
+<tr>
+<td><strong>N2</strong></td>
+<td>Melhoria: Gráficos no terminal com plotext</td>
+<td><code>feat</code></td>
+<td>Média</td>
+<td>3h</td>
+</tr>
+<tr>
+<td><strong>N3</strong></td>
+<td>API REST documentada com OpenAPI/Swagger</td>
+<td><code>feat</code></td>
+<td>Média</td>
+<td>4h</td>
+</tr>
+<tr>
+<td><strong>N4</strong></td>
+<td>Exportação para PDF (usando ReportLab)</td>
+<td><code>feat</code></td>
+<td>Média</td>
+<td>4h</td>
+</tr>
+<tr>
+<td><strong>N5</strong></td>
+<td>Busca global no acervo</td>
+<td><code>feat</code></td>
+<td>Baixa</td>
+<td>3h</td>
+</tr>
+<tr>
+<td><strong>N6</strong></td>
+<td>Cache com Redis para análises frequentes</td>
+<td><code>feat</code></td>
+<td>Baixa</td>
+<td>4h</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="milestone-5-documentacao-e-finalizacao-continuo">📚 <strong>MILESTONE 5: DOCUMENTAÇÃO E FINALIZAÇÃO (Contínuo)</strong><a class="headerlink" href="#milestone-5-documentacao-e-finalizacao-continuo" title="Permanent link">&para;</a></h2>
+<p><em>Objetivo: Preparar para entrega do TCC</em></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Título</th>
+<th>Tipo</th>
+<th>Prioridade</th>
+<th>Estimativa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>R1</strong></td>
+<td>Revisar documentação (.md files) - Issue #2</td>
+<td><code>tipo/documentação</code></td>
+<td><strong>Alta</strong></td>
+<td>3h</td>
+</tr>
+<tr>
+<td><strong>R2</strong></td>
+<td>Atualizar todas as FASE*.md com resultados finais</td>
+<td><code>docs</code></td>
+<td>Alta</td>
+<td>4h</td>
+</tr>
+<tr>
+<td><strong>R3</strong></td>
+<td>Criar apresentação do TCC (slides)</td>
+<td><code>docs</code></td>
+<td>Alta</td>
+<td>6h</td>
+</tr>
+<tr>
+<td><strong>R4</strong></td>
+<td>Preparar vídeo de demonstração</td>
+<td><code>docs</code></td>
+<td>Média</td>
+<td>3h</td>
+</tr>
+<tr>
+<td><strong>R5</strong></td>
+<td>Revisar e publicar versão final (v1.0.0)</td>
+<td><code>release</code></td>
+<td>Alta</td>
+<td>2h</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="todas-as-labels-necessarias">🏷️ <strong>TODAS AS LABELS NECESSÁRIAS</strong><a class="headerlink" href="#todas-as-labels-necessarias" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Labels já existentes</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>-<span class="w"> </span>fase
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>-<span class="w"> </span>tipo/testes
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>-<span class="w"> </span>tipo/qualidade
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>-<span class="w"> </span>tipo/documentação
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>-<span class="w"> </span>tipo/infra
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>-<span class="w"> </span>melhoria
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>-<span class="w"> </span>ux
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>-<span class="w"> </span>prioridade:alta
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>-<span class="w"> </span>prioridade:media
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>-<span class="w"> </span>prioridade:baixa
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="c1"># Novas labels sugeridas</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>-<span class="w"> </span>tipo/hotfix
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>-<span class="w"> </span>tipo/security
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>-<span class="w"> </span>tipo/performance
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>-<span class="w"> </span>tipo/release
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>-<span class="w"> </span>tipo/onboarding
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>-<span class="w"> </span>status:bloqueado
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>-<span class="w"> </span>status:em-andamento
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>-<span class="w"> </span>status:revisao
+</code></pre></div>
+<hr />
+<h2 id="resumo-das-issues-por-milestone">📊 <strong>RESUMO DAS ISSUES POR MILESTONE</strong><a class="headerlink" href="#resumo-das-issues-por-milestone" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Milestone</th>
+<th>Issues</th>
+<th>Estimativa total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>FUNDAÇÃO</strong></td>
+<td>6</td>
+<td>~9h</td>
+</tr>
+<tr>
+<td><strong>QUALIDADE</strong></td>
+<td>7</td>
+<td>~21h</td>
+</tr>
+<tr>
+<td><strong>DEPENDÊNCIAS</strong></td>
+<td>5</td>
+<td>~11h</td>
+</tr>
+<tr>
+<td><strong>NOVAS FUNCIONALIDADES</strong></td>
+<td>6</td>
+<td>~20h</td>
+</tr>
+<tr>
+<td><strong>DOCUMENTAÇÃO</strong></td>
+<td>5</td>
+<td>~18h</td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td><strong>29 issues</strong></td>
+<td><strong>~79h</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="script-para-criar-todas-as-issues">🚀 <strong>SCRIPT PARA CRIAR TODAS AS ISSUES</strong><a class="headerlink" href="#script-para-criar-todas-as-issues" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1"># criar_todas_issues.sh</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># Script para criar todas as issues do projeto</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;🚀 Criando todas as issues do ShowTrials...&quot;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;===========================================&quot;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="c1"># =============================================</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1"># MILESTONE 1: FUNDAÇÃO</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="c1"># =============================================</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;📌 MILESTONE 1: FUNDAÇÃO&quot;</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>gh<span class="w"> </span>issue<span class="w"> </span>create<span class="w"> </span>--title<span class="w"> </span><span class="s2">&quot;F1: Criar documentação dos 9 flows do projeto&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">  </span>--body<span class="w"> </span><span class="s2">&quot;## 🎯 Objetivo</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="s2">Documentar todos os flows do projeto em arquivos separados.</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="s2">## 📋 Tarefas</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="s2">- [ ] Git Flow</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="s2">- [ ] Quality Flow</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="s2">- [ ] Telemetry Flow</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="s2">- [ ] Code Review Flow</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="s2">- [ ] Dependencies Flow</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="s2">- [ ] Debug Flow</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="s2">- [ ] Documentation Flow</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="s2">- [ ] Refactoring Flow</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="s2">- [ ] Emergency Flow</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="s2">## 📁 Local</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="s2">`docs/flows/`</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="s2">## ⏱️ Estimativa: 4h&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">  </span>--label<span class="w"> </span><span class="s2">&quot;docs,prioridade:alta&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">  </span>--milestone<span class="w"> </span><span class="s2">&quot;FUNDAÇÃO (Semanas 1-2)&quot;</span>
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a>
+<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a>gh<span class="w"> </span>issue<span class="w"> </span>create<span class="w"> </span>--title<span class="w"> </span><span class="s2">&quot;F2: Integrar flows ao MkDocs&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="w">  </span>--body<span class="w"> </span><span class="s2">&quot;## 🎯 Objetivo</span>
+<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="s2">Adicionar os flows documentados ao site do MkDocs.</span>
+<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a>
+<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="s2">## 📋 Tarefas</span>
+<a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a><span class="s2">- [ ] Criar seção &#39;Flows&#39; no mkdocs.yml</span>
+<a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a><span class="s2">- [ ] Adicionar links para cada flow</span>
+<a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="s2">- [ ] Verificar navegação</span>
+<a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a>
+<a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="s2">## ⏱️ Estimativa: 1h&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a><span class="w">  </span>--label<span class="w"> </span><span class="s2">&quot;docs,prioridade:media&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a><span class="w">  </span>--milestone<span class="w"> </span><span class="s2">&quot;FUNDAÇÃO (Semanas 1-2)&quot;</span>
+<a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a>
+<a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a>gh<span class="w"> </span>issue<span class="w"> </span>create<span class="w"> </span>--title<span class="w"> </span><span class="s2">&quot;F3: Criar script de inicialização do projeto&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a><span class="w">  </span>--body<span class="w"> </span><span class="s2">&quot;## 🎯 Objetivo</span>
+<a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a><span class="s2">Criar script que configura todo o ambiente do zero.</span>
+<a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a>
+<a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a><span class="s2">## 📋 Tarefas</span>
+<a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a><span class="s2">- [ ] Clonar repositório</span>
+<a id="__codelineno-1-55" name="__codelineno-1-55" href="#__codelineno-1-55"></a><span class="s2">- [ ] Instalar Poetry</span>
+<a id="__codelineno-1-56" name="__codelineno-1-56" href="#__codelineno-1-56"></a><span class="s2">- [ ] Instalar dependências</span>
+<a id="__codelineno-1-57" name="__codelineno-1-57" href="#__codelineno-1-57"></a><span class="s2">- [ ] Instalar NLP via pip</span>
+<a id="__codelineno-1-58" name="__codelineno-1-58" href="#__codelineno-1-58"></a><span class="s2">- [ ] Baixar modelos</span>
+<a id="__codelineno-1-59" name="__codelineno-1-59" href="#__codelineno-1-59"></a><span class="s2">- [ ] Verificar instalação</span>
+<a id="__codelineno-1-60" name="__codelineno-1-60" href="#__codelineno-1-60"></a>
+<a id="__codelineno-1-61" name="__codelineno-1-61" href="#__codelineno-1-61"></a><span class="s2">## ⏱️ Estimativa: 2h&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-62" name="__codelineno-1-62" href="#__codelineno-1-62"></a><span class="w">  </span>--label<span class="w"> </span><span class="s2">&quot;chore,prioridade:media&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-63" name="__codelineno-1-63" href="#__codelineno-1-63"></a><span class="w">  </span>--milestone<span class="w"> </span><span class="s2">&quot;FUNDAÇÃO (Semanas 1-2)&quot;</span>
+<a id="__codelineno-1-64" name="__codelineno-1-64" href="#__codelineno-1-64"></a>
+<a id="__codelineno-1-65" name="__codelineno-1-65" href="#__codelineno-1-65"></a><span class="c1"># =============================================</span>
+<a id="__codelineno-1-66" name="__codelineno-1-66" href="#__codelineno-1-66"></a><span class="c1"># MILESTONE 2: QUALIDADE</span>
+<a id="__codelineno-1-67" name="__codelineno-1-67" href="#__codelineno-1-67"></a><span class="c1"># =============================================</span>
+<a id="__codelineno-1-68" name="__codelineno-1-68" href="#__codelineno-1-68"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-1-69" name="__codelineno-1-69" href="#__codelineno-1-69"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;📌 MILESTONE 2: QUALIDADE&quot;</span>
+<a id="__codelineno-1-70" name="__codelineno-1-70" href="#__codelineno-1-70"></a>
+<a id="__codelineno-1-71" name="__codelineno-1-71" href="#__codelineno-1-71"></a>gh<span class="w"> </span>issue<span class="w"> </span>create<span class="w"> </span>--title<span class="w"> </span><span class="s2">&quot;Q1: FASE 17 - classificar_documento.py&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-72" name="__codelineno-1-72" href="#__codelineno-1-72"></a><span class="w">  </span>--body<span class="w"> </span><span class="s2">&quot;## 🎯 Objetivo</span>
+<a id="__codelineno-1-73" name="__codelineno-1-73" href="#__codelineno-1-73"></a><span class="s2">Aumentar cobertura de 65% para 85% em classificar_documento.py</span>
+<a id="__codelineno-1-74" name="__codelineno-1-74" href="#__codelineno-1-74"></a>
+<a id="__codelineno-1-75" name="__codelineno-1-75" href="#__codelineno-1-75"></a><span class="s2">## 📊 Métricas Atuais</span>
+<a id="__codelineno-1-76" name="__codelineno-1-76" href="#__codelineno-1-76"></a><span class="s2">- **Cobertura:** 65%</span>
+<a id="__codelineno-1-77" name="__codelineno-1-77" href="#__codelineno-1-77"></a><span class="s2">- **Linhas não cobertas:** 18</span>
+<a id="__codelineno-1-78" name="__codelineno-1-78" href="#__codelineno-1-78"></a><span class="s2">- **Telemetria:** ❌ Ausente</span>
+<a id="__codelineno-1-79" name="__codelineno-1-79" href="#__codelineno-1-79"></a><span class="s2">- **MyPy:** ✅ OK</span>
+<a id="__codelineno-1-80" name="__codelineno-1-80" href="#__codelineno-1-80"></a>
+<a id="__codelineno-1-81" name="__codelineno-1-81" href="#__codelineno-1-81"></a><span class="s2">## 📋 Tarefas</span>
+<a id="__codelineno-1-82" name="__codelineno-1-82" href="#__codelineno-1-82"></a><span class="s2">- [ ] Adicionar padrão de telemetria</span>
+<a id="__codelineno-1-83" name="__codelineno-1-83" href="#__codelineno-1-83"></a><span class="s2">- [ ] Expandir testes existentes</span>
+<a id="__codelineno-1-84" name="__codelineno-1-84" href="#__codelineno-1-84"></a><span class="s2">- [ ] Criar testes de telemetria</span>
+<a id="__codelineno-1-85" name="__codelineno-1-85" href="#__codelineno-1-85"></a><span class="s2">- [ ] Verificar cobertura final</span>
+<a id="__codelineno-1-86" name="__codelineno-1-86" href="#__codelineno-1-86"></a>
+<a id="__codelineno-1-87" name="__codelineno-1-87" href="#__codelineno-1-87"></a><span class="s2">## ⏱️ Estimativa: 3h&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-88" name="__codelineno-1-88" href="#__codelineno-1-88"></a><span class="w">  </span>--label<span class="w"> </span><span class="s2">&quot;fase,tipo/testes,prioridade:alta&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-89" name="__codelineno-1-89" href="#__codelineno-1-89"></a><span class="w">  </span>--milestone<span class="w"> </span><span class="s2">&quot;QUALIDADE E TESTES (Semanas 3-4)&quot;</span>
+<a id="__codelineno-1-90" name="__codelineno-1-90" href="#__codelineno-1-90"></a>
+<a id="__codelineno-1-91" name="__codelineno-1-91" href="#__codelineno-1-91"></a>gh<span class="w"> </span>issue<span class="w"> </span>create<span class="w"> </span>--title<span class="w"> </span><span class="s2">&quot;Q2: FASE 18 - obter_documento.py&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-92" name="__codelineno-1-92" href="#__codelineno-1-92"></a><span class="w">  </span>--body<span class="w"> </span><span class="s2">&quot;## 🎯 Objetivo</span>
+<a id="__codelineno-1-93" name="__codelineno-1-93" href="#__codelineno-1-93"></a><span class="s2">Aumentar cobertura de 57% para 85% em obter_documento.py</span>
+<a id="__codelineno-1-94" name="__codelineno-1-94" href="#__codelineno-1-94"></a>
+<a id="__codelineno-1-95" name="__codelineno-1-95" href="#__codelineno-1-95"></a><span class="s2">## 📊 Métricas Atuais</span>
+<a id="__codelineno-1-96" name="__codelineno-1-96" href="#__codelineno-1-96"></a><span class="s2">- **Cobertura:** 57%</span>
+<a id="__codelineno-1-97" name="__codelineno-1-97" href="#__codelineno-1-97"></a><span class="s2">- **Linhas não cobertas:** 15</span>
+<a id="__codelineno-1-98" name="__codelineno-1-98" href="#__codelineno-1-98"></a><span class="s2">- **Telemetria:** ❌ Ausente</span>
+<a id="__codelineno-1-99" name="__codelineno-1-99" href="#__codelineno-1-99"></a><span class="s2">- **MyPy:** ⚠️ 2 erros</span>
+<a id="__codelineno-1-100" name="__codelineno-1-100" href="#__codelineno-1-100"></a>
+<a id="__codelineno-1-101" name="__codelineno-1-101" href="#__codelineno-1-101"></a><span class="s2">## 📋 Tarefas</span>
+<a id="__codelineno-1-102" name="__codelineno-1-102" href="#__codelineno-1-102"></a><span class="s2">- [ ] Adicionar padrão de telemetria</span>
+<a id="__codelineno-1-103" name="__codelineno-1-103" href="#__codelineno-1-103"></a><span class="s2">- [ ] Expandir testes existentes</span>
+<a id="__codelineno-1-104" name="__codelineno-1-104" href="#__codelineno-1-104"></a><span class="s2">- [ ] Criar testes de telemetria</span>
+<a id="__codelineno-1-105" name="__codelineno-1-105" href="#__codelineno-1-105"></a><span class="s2">- [ ] Corrigir MyPy</span>
+<a id="__codelineno-1-106" name="__codelineno-1-106" href="#__codelineno-1-106"></a><span class="s2">- [ ] Verificar cobertura final</span>
+<a id="__codelineno-1-107" name="__codelineno-1-107" href="#__codelineno-1-107"></a>
+<a id="__codelineno-1-108" name="__codelineno-1-108" href="#__codelineno-1-108"></a><span class="s2">## ⏱️ Estimativa: 2h&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-109" name="__codelineno-1-109" href="#__codelineno-1-109"></a><span class="w">  </span>--label<span class="w"> </span><span class="s2">&quot;fase,tipo/testes,prioridade:alta&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-110" name="__codelineno-1-110" href="#__codelineno-1-110"></a><span class="w">  </span>--milestone<span class="w"> </span><span class="s2">&quot;QUALIDADE E TESTES (Semanas 3-4)&quot;</span>
+<a id="__codelineno-1-111" name="__codelineno-1-111" href="#__codelineno-1-111"></a>
+<a id="__codelineno-1-112" name="__codelineno-1-112" href="#__codelineno-1-112"></a>gh<span class="w"> </span>issue<span class="w"> </span>create<span class="w"> </span>--title<span class="w"> </span><span class="s2">&quot;Q3: FASE 19 - estatisticas.py (URGENTE)&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-113" name="__codelineno-1-113" href="#__codelineno-1-113"></a><span class="w">  </span>--body<span class="w"> </span><span class="s2">&quot;## 🎯 Objetivo</span>
+<a id="__codelineno-1-114" name="__codelineno-1-114" href="#__codelineno-1-114"></a><span class="s2">Aumentar cobertura de 15% para 85% em estatisticas.py</span>
+<a id="__codelineno-1-115" name="__codelineno-1-115" href="#__codelineno-1-115"></a>
+<a id="__codelineno-1-116" name="__codelineno-1-116" href="#__codelineno-1-116"></a><span class="s2">## 📊 Métricas Atuais</span>
+<a id="__codelineno-1-117" name="__codelineno-1-117" href="#__codelineno-1-117"></a><span class="s2">- **Cobertura:** 15% (⚠️ URGENTE!)</span>
+<a id="__codelineno-1-118" name="__codelineno-1-118" href="#__codelineno-1-118"></a><span class="s2">- **Linhas não cobertas:** 41</span>
+<a id="__codelineno-1-119" name="__codelineno-1-119" href="#__codelineno-1-119"></a><span class="s2">- **Telemetria:** ❌ Ausente</span>
+<a id="__codelineno-1-120" name="__codelineno-1-120" href="#__codelineno-1-120"></a><span class="s2">- **MyPy:** ⚠️ 3 erros</span>
+<a id="__codelineno-1-121" name="__codelineno-1-121" href="#__codelineno-1-121"></a>
+<a id="__codelineno-1-122" name="__codelineno-1-122" href="#__codelineno-1-122"></a><span class="s2">## 📋 Tarefas</span>
+<a id="__codelineno-1-123" name="__codelineno-1-123" href="#__codelineno-1-123"></a><span class="s2">- [ ] Adicionar padrão de telemetria</span>
+<a id="__codelineno-1-124" name="__codelineno-1-124" href="#__codelineno-1-124"></a><span class="s2">- [ ] Criar testes de lógica</span>
+<a id="__codelineno-1-125" name="__codelineno-1-125" href="#__codelineno-1-125"></a><span class="s2">- [ ] Criar testes de telemetria</span>
+<a id="__codelineno-1-126" name="__codelineno-1-126" href="#__codelineno-1-126"></a><span class="s2">- [ ] Corrigir MyPy</span>
+<a id="__codelineno-1-127" name="__codelineno-1-127" href="#__codelineno-1-127"></a><span class="s2">- [ ] Verificar cobertura final</span>
+<a id="__codelineno-1-128" name="__codelineno-1-128" href="#__codelineno-1-128"></a>
+<a id="__codelineno-1-129" name="__codelineno-1-129" href="#__codelineno-1-129"></a><span class="s2">## ⏱️ Estimativa: 4h&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-130" name="__codelineno-1-130" href="#__codelineno-1-130"></a><span class="w">  </span>--label<span class="w"> </span><span class="s2">&quot;fase,tipo/testes,prioridade:alta&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-131" name="__codelineno-1-131" href="#__codelineno-1-131"></a><span class="w">  </span>--milestone<span class="w"> </span><span class="s2">&quot;QUALIDADE E TESTES (Semanas 3-4)&quot;</span>
+<a id="__codelineno-1-132" name="__codelineno-1-132" href="#__codelineno-1-132"></a>
+<a id="__codelineno-1-133" name="__codelineno-1-133" href="#__codelineno-1-133"></a><span class="c1"># =============================================</span>
+<a id="__codelineno-1-134" name="__codelineno-1-134" href="#__codelineno-1-134"></a><span class="c1"># CONTINUAR PARA TODAS AS ISSUES...</span>
+<a id="__codelineno-1-135" name="__codelineno-1-135" href="#__codelineno-1-135"></a><span class="c1"># =============================================</span>
+<a id="__codelineno-1-136" name="__codelineno-1-136" href="#__codelineno-1-136"></a>
+<a id="__codelineno-1-137" name="__codelineno-1-137" href="#__codelineno-1-137"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-1-138" name="__codelineno-1-138" href="#__codelineno-1-138"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;✅ Script concluído! Foram criadas:&quot;</span>
+<a id="__codelineno-1-139" name="__codelineno-1-139" href="#__codelineno-1-139"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;- 6 issues para FUNDAÇÃO&quot;</span>
+<a id="__codelineno-1-140" name="__codelineno-1-140" href="#__codelineno-1-140"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;- 7 issues para QUALIDADE&quot;</span>
+<a id="__codelineno-1-141" name="__codelineno-1-141" href="#__codelineno-1-141"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;- 5 issues para DEPENDÊNCIAS&quot;</span>
+<a id="__codelineno-1-142" name="__codelineno-1-142" href="#__codelineno-1-142"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;- 6 issues para NOVAS FUNCIONALIDADES&quot;</span>
+<a id="__codelineno-1-143" name="__codelineno-1-143" href="#__codelineno-1-143"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;- 5 issues para DOCUMENTAÇÃO&quot;</span>
+<a id="__codelineno-1-144" name="__codelineno-1-144" href="#__codelineno-1-144"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-1-145" name="__codelineno-1-145" href="#__codelineno-1-145"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;📊 TOTAL: 29 issues&quot;</span>
+</code></pre></div>
+<hr />
+<h2 id="proximos-passos">✅ <strong>PRÓXIMOS PASSOS</strong><a class="headerlink" href="#proximos-passos" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Criar os milestones</strong> no GitHub:</li>
+<li>FUNDAÇÃO (Semanas 1-2) - due date: +14 dias</li>
+<li>QUALIDADE E TESTES (Semanas 3-4) - due date: +28 dias</li>
+<li>DEPENDÊNCIAS E INFRA (Semanas 5-6) - due date: +42 dias</li>
+<li>NOVAS FUNCIONALIDADES (Semanas 7-8) - due date: +56 dias</li>
+<li>
+<p>DOCUMENTAÇÃO E FINALIZAÇÃO (Contínuo) - due date: TCC</p>
+</li>
+<li>
+<p><strong>Criar as issues</strong> (pode usar o script acima como base)</p>
+</li>
+<li>
+<p><strong>Adicionar ao Project Kanban</strong></p>
+</li>
+</ol>
+<p><strong>Quer que eu gere o script completo com todas as 29 issues?</strong> 🚀</p>
+<h2 id="script-completo-29-issues-instrucoes">📜 <strong>SCRIPT COMPLETO - 29 ISSUES + INSTRUÇÕES</strong><a class="headerlink" href="#script-completo-29-issues-instrucoes" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># criar_todas_issues.sh</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># Script COMPLETO para criar todas as issues do projeto ShowTrials</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Uso: chmod +x criar_todas_issues.sh &amp;&amp; ./criar_todas_issues.sh</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;🚀 ShowTrials - Criando todas as 29 issues do projeto&quot;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;=====================================================&quot;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c1"># =============================================</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="c1"># VERIFICAR AUTENTICAÇÃO</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="c1"># =============================================</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;🔍 Verificando autenticação no GitHub...&quot;</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="k">if</span><span class="w"> </span>!<span class="w"> </span>gh<span class="w"> </span>auth<span class="w"> </span>status<span class="w"> </span><span class="p">&amp;</span>&gt;/dev/null<span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;❌ Você não está logado no GitHub CLI&quot;</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;   Execute: gh auth login&quot;</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="k">fi</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;   ✅ Autenticado&quot;</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="c1"># =============================================</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="c1"># CRIAR MILESTONES</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="c1"># =============================================</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;📅 Criando milestones (pelo site)...&quot;</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;⚠️  ATENÇÃO: Milestones precisam ser criados manualmente pelo site:&quot;</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;   https://github.com/rib-thiago/showtrials-tcc/milestones/new&quot;</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;   Crie os seguintes milestones:&quot;</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;   ------------------------------&quot;</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;   1. FUNDAÇÃO (Semanas 1-2)&quot;</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;      - Due date: </span><span class="k">$(</span>date<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;+14 days&quot;</span><span class="w"> </span>+%Y-%m-%d<span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;      - Description: Documentação e configuração inicial&quot;</span>
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;   2. QUALIDADE E TESTES (Semanas 3-4)&quot;</span>
+<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;      - Due date: </span><span class="k">$(</span>date<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;+28 days&quot;</span><span class="w"> </span>+%Y-%m-%d<span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;      - Description: Aumentar cobertura, corrigir MyPy&quot;</span>
+<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;   3. DEPENDÊNCIAS E INFRA (Semanas 5-6)&quot;</span>
+<a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;      - Due date: </span><span class="k">$(</span>date<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;+42 days&quot;</span><span class="w"> </span>+%Y-%m-%d<span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;      - Description: Migrar NLP, stubs, Docker&quot;</span>
+<a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;   4. NOVAS FUNCIONALIDADES (Semanas 7-8)&quot;</span>
+<a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;      - Due date: </span><span class="k">$(</span>date<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;+56 days&quot;</span><span class="w"> </span>+%Y-%m-%d<span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-2-46" name="__codelineno-2-46" href="#__codelineno-2-46"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;      - Description: Modo escuro, gráficos, API, PDF&quot;</span>
+<a id="__codelineno-2-47" name="__codelineno-2-47" href="#__codelineno-2-47"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-2-48" name="__codelineno-2-48" href="#__codelineno-2-48"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;   5. DOCUMENTAÇÃO E FINALIZAÇÃO (Contínuo)&quot;</span>
+<a id="__codelineno-2-49" name="__codelineno-2-49" href="#__codelineno-2-49"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;      - Due date: </span><span class="k">$(</span>date<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;+90 days&quot;</span><span class="w"> </span>+%Y-%m-%d<span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-2-50" name="__codelineno-2-50" href="#__codelineno-2-50"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;      - Description: Revisão de docs, preparação TCC&quot;</span>
+<a id="__codelineno-2-51" name="__codelineno-2-51" href="#__codelineno-2-51"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-2-52" name="__codelineno-2-52" href="#__codelineno-2-52"></a><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Pressione Enter após criar os milestones para continuar...&quot;</span>
+<a id="__codelineno-2-53" name="__codelineno-2-53" href="#__codelineno-2-53"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-2-54" name="__codelineno-2-54" href="#__codelineno-2-54"></a>
+<a id="__codelineno-2-55" name="__codelineno-2-55" href="#__codelineno-2-55"></a><span class="c1"># =============================================</span>
+<a id="__codelineno-2-56" name="__codelineno-2-56" href="#__codelineno-2-56"></a><span class="c1"># FUNÇÃO PARA CRIAR ISSUE</span>
+<a id="__codelineno-2-57" name="__codelineno-2-57" href="#__codelineno-2-57"></a><span class="c1"># =============================================</span>
+<a id="__codelineno-2-58" name="__codelineno-2-58" href="#__codelineno-2-58"></a>create_issue<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-2-59" name="__codelineno-2-59" href="#__codelineno-2-59"></a><span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">title</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+<a id="__codelineno-2-60" name="__codelineno-2-60" href="#__codelineno-2-60"></a><span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">body</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span>
+<a id="__codelineno-2-61" name="__codelineno-2-61" href="#__codelineno-2-61"></a><span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">labels</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$3</span><span class="s2">&quot;</span>
+<a id="__codelineno-2-62" name="__codelineno-2-62" href="#__codelineno-2-62"></a><span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">milestone</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$4</span><span class="s2">&quot;</span>
+<a id="__codelineno-2-63" name="__codelineno-2-63" href="#__codelineno-2-63"></a>
+<a id="__codelineno-2-64" name="__codelineno-2-64" href="#__codelineno-2-64"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;   Criando: </span><span class="nv">$title</span><span class="s2">&quot;</span>
+<a id="__codelineno-2-65" name="__codelineno-2-65" href="#__codelineno-2-65"></a><span class="w">    </span>gh<span class="w"> </span>issue<span class="w"> </span>create<span class="w"> </span>--title<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$title</span><span class="s2">&quot;</span><span class="w"> </span>--body<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$body</span><span class="s2">&quot;</span><span class="w"> </span>--label<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$labels</span><span class="s2">&quot;</span><span class="w"> </span>--milestone<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$milestone</span><span class="s2">&quot;</span>
+<a id="__codelineno-2-66" name="__codelineno-2-66" href="#__codelineno-2-66"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;   ✅ Criada&quot;</span>
+<a id="__codelineno-2-67" name="__codelineno-2-67" href="#__codelineno-2-67"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-2-68" name="__codelineno-2-68" href="#__codelineno-2-68"></a><span class="o">}</span>
+<a id="__codelineno-2-69" name="__codelineno-2-69" href="#__codelineno-2-69"></a>
+<a id="__codelineno-2-70" name="__codelineno-2-70" href="#__codelineno-2-70"></a><span class="c1"># =============================================</span>
+<a id="__codelineno-2-71" name="__codelineno-2-71" href="#__codelineno-2-71"></a><span class="c1"># MILESTONE 1: FUNDAÇÃO (Semanas 1-2)</span>
+<a id="__codelineno-2-72" name="__codelineno-2-72" href="#__codelineno-2-72"></a><span class="c1"># =============================================</span>
+<a id="__codelineno-2-73" name="__codelineno-2-73" href="#__codelineno-2-73"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;📌 MILESTONE 1: FUNDAÇÃO (6 issues)&quot;</span>
+<a id="__codelineno-2-74" name="__codelineno-2-74" href="#__codelineno-2-74"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;-------------------------------------&quot;</span>
+<a id="__codelineno-2-75" name="__codelineno-2-75" href="#__codelineno-2-75"></a>
+<a id="__codelineno-2-76" name="__codelineno-2-76" href="#__codelineno-2-76"></a>create_issue<span class="w"> </span><span class="s2">&quot;F1: Criar documentação dos 9 flows do projeto&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-77" name="__codelineno-2-77" href="#__codelineno-2-77"></a><span class="s2">&quot;## 🎯 Objetivo</span>
+<a id="__codelineno-2-78" name="__codelineno-2-78" href="#__codelineno-2-78"></a><span class="s2">Documentar todos os flows do projeto em arquivos separados na pasta `docs/flows/`.</span>
+<a id="__codelineno-2-79" name="__codelineno-2-79" href="#__codelineno-2-79"></a>
+<a id="__codelineno-2-80" name="__codelineno-2-80" href="#__codelineno-2-80"></a><span class="s2">## 📋 Tarefas</span>
+<a id="__codelineno-2-81" name="__codelineno-2-81" href="#__codelineno-2-81"></a><span class="s2">- [ ] Git Flow</span>
+<a id="__codelineno-2-82" name="__codelineno-2-82" href="#__codelineno-2-82"></a><span class="s2">- [ ] Quality Flow (lint, testes, cobertura)</span>
+<a id="__codelineno-2-83" name="__codelineno-2-83" href="#__codelineno-2-83"></a><span class="s2">- [ ] Telemetry Flow</span>
+<a id="__codelineno-2-84" name="__codelineno-2-84" href="#__codelineno-2-84"></a><span class="s2">- [ ] Code Review Flow</span>
+<a id="__codelineno-2-85" name="__codelineno-2-85" href="#__codelineno-2-85"></a><span class="s2">- [ ] Dependencies Flow</span>
+<a id="__codelineno-2-86" name="__codelineno-2-86" href="#__codelineno-2-86"></a><span class="s2">- [ ] Debug Flow</span>
+<a id="__codelineno-2-87" name="__codelineno-2-87" href="#__codelineno-2-87"></a><span class="s2">- [ ] Documentation Flow</span>
+<a id="__codelineno-2-88" name="__codelineno-2-88" href="#__codelineno-2-88"></a><span class="s2">- [ ] Refactoring Flow</span>
+<a id="__codelineno-2-89" name="__codelineno-2-89" href="#__codelineno-2-89"></a><span class="s2">- [ ] Emergency Flow (Hotfix)</span>
+<a id="__codelineno-2-90" name="__codelineno-2-90" href="#__codelineno-2-90"></a>
+<a id="__codelineno-2-91" name="__codelineno-2-91" href="#__codelineno-2-91"></a><span class="s2">## 📁 Local</span>
+<a id="__codelineno-2-92" name="__codelineno-2-92" href="#__codelineno-2-92"></a><span class="s2">`docs/flows/` (criar pasta)</span>
+<a id="__codelineno-2-93" name="__codelineno-2-93" href="#__codelineno-2-93"></a>
+<a id="__codelineno-2-94" name="__codelineno-2-94" href="#__codelineno-2-94"></a><span class="s2">## 📊 Definição de Pronto</span>
+<a id="__codelineno-2-95" name="__codelineno-2-95" href="#__codelineno-2-95"></a><span class="s2">- [ ] 9 arquivos .md criados</span>
+<a id="__codelineno-2-96" name="__codelineno-2-96" href="#__codelineno-2-96"></a><span class="s2">- [ ] Cada um com template padrão</span>
+<a id="__codelineno-2-97" name="__codelineno-2-97" href="#__codelineno-2-97"></a><span class="s2">- [ ] Revisados e consistentes</span>
+<a id="__codelineno-2-98" name="__codelineno-2-98" href="#__codelineno-2-98"></a>
+<a id="__codelineno-2-99" name="__codelineno-2-99" href="#__codelineno-2-99"></a><span class="s2">## ⏱️ Estimativa: 4h</span>
+<a id="__codelineno-2-100" name="__codelineno-2-100" href="#__codelineno-2-100"></a><span class="s2">## Prioridade: Alta&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-101" name="__codelineno-2-101" href="#__codelineno-2-101"></a><span class="w">  </span><span class="s2">&quot;docs,prioridade:alta&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-102" name="__codelineno-2-102" href="#__codelineno-2-102"></a><span class="w">  </span><span class="s2">&quot;FUNDAÇÃO (Semanas 1-2)&quot;</span>
+<a id="__codelineno-2-103" name="__codelineno-2-103" href="#__codelineno-2-103"></a>
+<a id="__codelineno-2-104" name="__codelineno-2-104" href="#__codelineno-2-104"></a>create_issue<span class="w"> </span><span class="s2">&quot;F2: Integrar flows ao MkDocs&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-105" name="__codelineno-2-105" href="#__codelineno-2-105"></a><span class="s2">&quot;## 🎯 Objetivo</span>
+<a id="__codelineno-2-106" name="__codelineno-2-106" href="#__codelineno-2-106"></a><span class="s2">Adicionar os flows documentados ao site do MkDocs para fácil navegação.</span>
+<a id="__codelineno-2-107" name="__codelineno-2-107" href="#__codelineno-2-107"></a>
+<a id="__codelineno-2-108" name="__codelineno-2-108" href="#__codelineno-2-108"></a><span class="s2">## 📋 Tarefas</span>
+<a id="__codelineno-2-109" name="__codelineno-2-109" href="#__codelineno-2-109"></a><span class="s2">- [ ] Adicionar seção &#39;Flows&#39; no `mkdocs.yml`</span>
+<a id="__codelineno-2-110" name="__codelineno-2-110" href="#__codelineno-2-110"></a><span class="s2">- [ ] Incluir links para cada flow</span>
+<a id="__codelineno-2-111" name="__codelineno-2-111" href="#__codelineno-2-111"></a><span class="s2">- [ ] Verificar navegação localmente</span>
+<a id="__codelineno-2-112" name="__codelineno-2-112" href="#__codelineno-2-112"></a><span class="s2">- [ ] Publicar com `mkdocs gh-deploy`</span>
+<a id="__codelineno-2-113" name="__codelineno-2-113" href="#__codelineno-2-113"></a>
+<a id="__codelineno-2-114" name="__codelineno-2-114" href="#__codelineno-2-114"></a><span class="s2">## 📊 Definição de Pronto</span>
+<a id="__codelineno-2-115" name="__codelineno-2-115" href="#__codelineno-2-115"></a><span class="s2">- [ ] Seção Flows aparece no menu</span>
+<a id="__codelineno-2-116" name="__codelineno-2-116" href="#__codelineno-2-116"></a><span class="s2">- [ ] Todos os links funcionam</span>
+<a id="__codelineno-2-117" name="__codelineno-2-117" href="#__codelineno-2-117"></a><span class="s2">- [ ] Site atualizado no GitHub Pages</span>
+<a id="__codelineno-2-118" name="__codelineno-2-118" href="#__codelineno-2-118"></a>
+<a id="__codelineno-2-119" name="__codelineno-2-119" href="#__codelineno-2-119"></a><span class="s2">## ⏱️ Estimativa: 1h</span>
+<a id="__codelineno-2-120" name="__codelineno-2-120" href="#__codelineno-2-120"></a><span class="s2">## Prioridade: Média&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-121" name="__codelineno-2-121" href="#__codelineno-2-121"></a><span class="w">  </span><span class="s2">&quot;docs,prioridade:media&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-122" name="__codelineno-2-122" href="#__codelineno-2-122"></a><span class="w">  </span><span class="s2">&quot;FUNDAÇÃO (Semanas 1-2)&quot;</span>
+<a id="__codelineno-2-123" name="__codelineno-2-123" href="#__codelineno-2-123"></a>
+<a id="__codelineno-2-124" name="__codelineno-2-124" href="#__codelineno-2-124"></a>create_issue<span class="w"> </span><span class="s2">&quot;F3: Criar script de inicialização do projeto (onboarding)&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-125" name="__codelineno-2-125" href="#__codelineno-2-125"></a><span class="s2">&quot;## 🎯 Objetivo</span>
+<a id="__codelineno-2-126" name="__codelineno-2-126" href="#__codelineno-2-126"></a><span class="s2">Criar script que configura todo o ambiente do zero para novos desenvolvedores.</span>
+<a id="__codelineno-2-127" name="__codelineno-2-127" href="#__codelineno-2-127"></a>
+<a id="__codelineno-2-128" name="__codelineno-2-128" href="#__codelineno-2-128"></a><span class="s2">## 📋 Tarefas</span>
+<a id="__codelineno-2-129" name="__codelineno-2-129" href="#__codelineno-2-129"></a><span class="s2">- [ ] Clonar repositório</span>
+<a id="__codelineno-2-130" name="__codelineno-2-130" href="#__codelineno-2-130"></a><span class="s2">- [ ] Verificar/instalar Poetry</span>
+<a id="__codelineno-2-131" name="__codelineno-2-131" href="#__codelineno-2-131"></a><span class="s2">- [ ] Instalar dependências (poetry install)</span>
+<a id="__codelineno-2-132" name="__codelineno-2-132" href="#__codelineno-2-132"></a><span class="s2">- [ ] Instalar NLP via pip (numpy, spacy, etc.)</span>
+<a id="__codelineno-2-133" name="__codelineno-2-133" href="#__codelineno-2-133"></a><span class="s2">- [ ] Baixar modelos spaCy</span>
+<a id="__codelineno-2-134" name="__codelineno-2-134" href="#__codelineno-2-134"></a><span class="s2">- [ ] Verificar instalação com testes rápidos</span>
+<a id="__codelineno-2-135" name="__codelineno-2-135" href="#__codelineno-2-135"></a>
+<a id="__codelineno-2-136" name="__codelineno-2-136" href="#__codelineno-2-136"></a><span class="s2">## 📁 Local</span>
+<a id="__codelineno-2-137" name="__codelineno-2-137" href="#__codelineno-2-137"></a><span class="s2">`scripts/setup.sh`</span>
+<a id="__codelineno-2-138" name="__codelineno-2-138" href="#__codelineno-2-138"></a>
+<a id="__codelineno-2-139" name="__codelineno-2-139" href="#__codelineno-2-139"></a><span class="s2">## 📊 Definição de Pronto</span>
+<a id="__codelineno-2-140" name="__codelineno-2-140" href="#__codelineno-2-140"></a><span class="s2">- [ ] Script funciona em ambiente limpo</span>
+<a id="__codelineno-2-141" name="__codelineno-2-141" href="#__codelineno-2-141"></a><span class="s2">- [ ] Documentado no README</span>
+<a id="__codelineno-2-142" name="__codelineno-2-142" href="#__codelineno-2-142"></a><span class="s2">- [ ] Testado em Ubuntu (ou seu SO)</span>
+<a id="__codelineno-2-143" name="__codelineno-2-143" href="#__codelineno-2-143"></a>
+<a id="__codelineno-2-144" name="__codelineno-2-144" href="#__codelineno-2-144"></a><span class="s2">## ⏱️ Estimativa: 2h</span>
+<a id="__codelineno-2-145" name="__codelineno-2-145" href="#__codelineno-2-145"></a><span class="s2">## Prioridade: Média&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-146" name="__codelineno-2-146" href="#__codelineno-2-146"></a><span class="w">  </span><span class="s2">&quot;chore,prioridade:media&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-147" name="__codelineno-2-147" href="#__codelineno-2-147"></a><span class="w">  </span><span class="s2">&quot;FUNDAÇÃO (Semanas 1-2)&quot;</span>
+<a id="__codelineno-2-148" name="__codelineno-2-148" href="#__codelineno-2-148"></a>
+<a id="__codelineno-2-149" name="__codelineno-2-149" href="#__codelineno-2-149"></a>create_issue<span class="w"> </span><span class="s2">&quot;F4: Revisar e atualizar README.md&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-150" name="__codelineno-2-150" href="#__codelineno-2-150"></a><span class="s2">&quot;## 🎯 Objetivo</span>
+<a id="__codelineno-2-151" name="__codelineno-2-151" href="#__codelineno-2-151"></a><span class="s2">Garantir que o README esteja completo e profissional.</span>
+<a id="__codelineno-2-152" name="__codelineno-2-152" href="#__codelineno-2-152"></a>
+<a id="__codelineno-2-153" name="__codelineno-2-153" href="#__codelineno-2-153"></a><span class="s2">## 📋 Tarefas</span>
+<a id="__codelineno-2-154" name="__codelineno-2-154" href="#__codelineno-2-154"></a><span class="s2">- [ ] Atualizar badges (coverage, CI, versão)</span>
+<a id="__codelineno-2-155" name="__codelineno-2-155" href="#__codelineno-2-155"></a><span class="s2">- [ ] Verificar instruções de instalação</span>
+<a id="__codelineno-2-156" name="__codelineno-2-156" href="#__codelineno-2-156"></a><span class="s2">- [ ] Adicionar seção de &#39;Primeiros passos&#39;</span>
+<a id="__codelineno-2-157" name="__codelineno-2-157" href="#__codelineno-2-157"></a><span class="s2">- [ ] Incluir exemplos de uso</span>
+<a id="__codelineno-2-158" name="__codelineno-2-158" href="#__codelineno-2-158"></a><span class="s2">- [ ] Links para documentação</span>
+<a id="__codelineno-2-159" name="__codelineno-2-159" href="#__codelineno-2-159"></a><span class="s2">- [ ] Contato e autor</span>
+<a id="__codelineno-2-160" name="__codelineno-2-160" href="#__codelineno-2-160"></a>
+<a id="__codelineno-2-161" name="__codelineno-2-161" href="#__codelineno-2-161"></a><span class="s2">## 📊 Definição de Pronto</span>
+<a id="__codelineno-2-162" name="__codelineno-2-162" href="#__codelineno-2-162"></a><span class="s2">- [ ] README revisado e aprovado</span>
+<a id="__codelineno-2-163" name="__codelineno-2-163" href="#__codelineno-2-163"></a><span class="s2">- [ ] Todos os links funcionam</span>
+<a id="__codelineno-2-164" name="__codelineno-2-164" href="#__codelineno-2-164"></a><span class="s2">- [ ] Badges refletem estado atual</span>
+<a id="__codelineno-2-165" name="__codelineno-2-165" href="#__codelineno-2-165"></a>
+<a id="__codelineno-2-166" name="__codelineno-2-166" href="#__codelineno-2-166"></a><span class="s2">## ⏱️ Estimativa: 1h</span>
+<a id="__codelineno-2-167" name="__codelineno-2-167" href="#__codelineno-2-167"></a><span class="s2">## Prioridade: Baixa&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-168" name="__codelineno-2-168" href="#__codelineno-2-168"></a><span class="w">  </span><span class="s2">&quot;docs,prioridade:baixa&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-169" name="__codelineno-2-169" href="#__codelineno-2-169"></a><span class="w">  </span><span class="s2">&quot;FUNDAÇÃO (Semanas 1-2)&quot;</span>
+<a id="__codelineno-2-170" name="__codelineno-2-170" href="#__codelineno-2-170"></a>
+<a id="__codelineno-2-171" name="__codelineno-2-171" href="#__codelineno-2-171"></a>create_issue<span class="w"> </span><span class="s2">&quot;F5: Configurar branch protection rules no GitHub&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-172" name="__codelineno-2-172" href="#__codelineno-2-172"></a><span class="s2">&quot;## 🎯 Objetivo</span>
+<a id="__codelineno-2-173" name="__codelineno-2-173" href="#__codelineno-2-173"></a><span class="s2">Proteger a branch main contra merges acidentais.</span>
+<a id="__codelineno-2-174" name="__codelineno-2-174" href="#__codelineno-2-174"></a>
+<a id="__codelineno-2-175" name="__codelineno-2-175" href="#__codelineno-2-175"></a><span class="s2">## 📋 Tarefas</span>
+<a id="__codelineno-2-176" name="__codelineno-2-176" href="#__codelineno-2-176"></a><span class="s2">- [ ] Acessar Settings &gt; Branches</span>
+<a id="__codelineno-2-177" name="__codelineno-2-177" href="#__codelineno-2-177"></a><span class="s2">- [ ] Adicionar regra para &#39;main&#39;</span>
+<a id="__codelineno-2-178" name="__codelineno-2-178" href="#__codelineno-2-178"></a><span class="s2">- [ ] Requerer status checks (CI)</span>
+<a id="__codelineno-2-179" name="__codelineno-2-179" href="#__codelineno-2-179"></a><span class="s2">- [ ] Requerer branches atualizadas</span>
+<a id="__codelineno-2-180" name="__codelineno-2-180" href="#__codelineno-2-180"></a><span class="s2">- [ ] Incluir administradores</span>
+<a id="__codelineno-2-181" name="__codelineno-2-181" href="#__codelineno-2-181"></a>
+<a id="__codelineno-2-182" name="__codelineno-2-182" href="#__codelineno-2-182"></a><span class="s2">## 📊 Definição de Pronto</span>
+<a id="__codelineno-2-183" name="__codelineno-2-183" href="#__codelineno-2-183"></a><span class="s2">- [ ] Regras aplicadas e testadas</span>
+<a id="__codelineno-2-184" name="__codelineno-2-184" href="#__codelineno-2-184"></a><span class="s2">- [ ] CI é obrigatório para merge</span>
+<a id="__codelineno-2-185" name="__codelineno-2-185" href="#__codelineno-2-185"></a>
+<a id="__codelineno-2-186" name="__codelineno-2-186" href="#__codelineno-2-186"></a><span class="s2">## ⏱️ Estimativa: 30min</span>
+<a id="__codelineno-2-187" name="__codelineno-2-187" href="#__codelineno-2-187"></a><span class="s2">## Prioridade: Alta&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-188" name="__codelineno-2-188" href="#__codelineno-2-188"></a><span class="w">  </span><span class="s2">&quot;chore,prioridade:alta&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-189" name="__codelineno-2-189" href="#__codelineno-2-189"></a><span class="w">  </span><span class="s2">&quot;FUNDAÇÃO (Semanas 1-2)&quot;</span>
+<a id="__codelineno-2-190" name="__codelineno-2-190" href="#__codelineno-2-190"></a>
+<a id="__codelineno-2-191" name="__codelineno-2-191" href="#__codelineno-2-191"></a>create_issue<span class="w"> </span><span class="s2">&quot;F6: Padronizar mensagens de commit com commitizen&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-192" name="__codelineno-2-192" href="#__codelineno-2-192"></a><span class="s2">&quot;## 🎯 Objetivo</span>
+<a id="__codelineno-2-193" name="__codelineno-2-193" href="#__codelineno-2-193"></a><span class="s2">Garantir que todas as mensagens de commit sigam o padrão Conventional Commits.</span>
+<a id="__codelineno-2-194" name="__codelineno-2-194" href="#__codelineno-2-194"></a>
+<a id="__codelineno-2-195" name="__codelineno-2-195" href="#__codelineno-2-195"></a><span class="s2">## 📋 Tarefas</span>
+<a id="__codelineno-2-196" name="__codelineno-2-196" href="#__codelineno-2-196"></a><span class="s2">- [ ] Verificar configuração do commitizen</span>
+<a id="__codelineno-2-197" name="__codelineno-2-197" href="#__codelineno-2-197"></a><span class="s2">- [ ] Atualizar pre-commit hook se necessário</span>
+<a id="__codelineno-2-198" name="__codelineno-2-198" href="#__codelineno-2-198"></a><span class="s2">- [ ] Documentar padrão no CONTRIBUTING.md</span>
+<a id="__codelineno-2-199" name="__codelineno-2-199" href="#__codelineno-2-199"></a><span class="s2">- [ ] Adicionar exemplo no README</span>
+<a id="__codelineno-2-200" name="__codelineno-2-200" href="#__codelineno-2-200"></a>
+<a id="__codelineno-2-201" name="__codelineno-2-201" href="#__codelineno-2-201"></a><span class="s2">## 📊 Definição de Pronto</span>
+<a id="__codelineno-2-202" name="__codelineno-2-202" href="#__codelineno-2-202"></a><span class="s2">- [ ] commitizen funcionando</span>
+<a id="__codelineno-2-203" name="__codelineno-2-203" href="#__codelineno-2-203"></a><span class="s2">- [ ] Documentação atualizada</span>
+<a id="__codelineno-2-204" name="__codelineno-2-204" href="#__codelineno-2-204"></a>
+<a id="__codelineno-2-205" name="__codelineno-2-205" href="#__codelineno-2-205"></a><span class="s2">## ⏱️ Estimativa: 1h</span>
+<a id="__codelineno-2-206" name="__codelineno-2-206" href="#__codelineno-2-206"></a><span class="s2">## Prioridade: Média&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-207" name="__codelineno-2-207" href="#__codelineno-2-207"></a><span class="w">  </span><span class="s2">&quot;chore,prioridade:media&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-208" name="__codelineno-2-208" href="#__codelineno-2-208"></a><span class="w">  </span><span class="s2">&quot;FUNDAÇÃO (Semanas 1-2)&quot;</span>
+<a id="__codelineno-2-209" name="__codelineno-2-209" href="#__codelineno-2-209"></a>
+<a id="__codelineno-2-210" name="__codelineno-2-210" href="#__codelineno-2-210"></a><span class="c1"># =============================================</span>
+<a id="__codelineno-2-211" name="__codelineno-2-211" href="#__codelineno-2-211"></a><span class="c1"># MILESTONE 2: QUALIDADE E TESTES (Semanas 3-4)</span>
+<a id="__codelineno-2-212" name="__codelineno-2-212" href="#__codelineno-2-212"></a><span class="c1"># =============================================</span>
+<a id="__codelineno-2-213" name="__codelineno-2-213" href="#__codelineno-2-213"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;📌 MILESTONE 2: QUALIDADE E TESTES (7 issues)&quot;</span>
+<a id="__codelineno-2-214" name="__codelineno-2-214" href="#__codelineno-2-214"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;-----------------------------------------------&quot;</span>
+<a id="__codelineno-2-215" name="__codelineno-2-215" href="#__codelineno-2-215"></a>
+<a id="__codelineno-2-216" name="__codelineno-2-216" href="#__codelineno-2-216"></a>create_issue<span class="w"> </span><span class="s2">&quot;Q1: FASE 17 - classificar_documento.py&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-217" name="__codelineno-2-217" href="#__codelineno-2-217"></a><span class="s2">&quot;## 🎯 Objetivo</span>
+<a id="__codelineno-2-218" name="__codelineno-2-218" href="#__codelineno-2-218"></a><span class="s2">Aumentar cobertura de 65% para 85% em classificar_documento.py</span>
+<a id="__codelineno-2-219" name="__codelineno-2-219" href="#__codelineno-2-219"></a>
+<a id="__codelineno-2-220" name="__codelineno-2-220" href="#__codelineno-2-220"></a><span class="s2">## 📊 Métricas Atuais</span>
+<a id="__codelineno-2-221" name="__codelineno-2-221" href="#__codelineno-2-221"></a><span class="s2">- **Cobertura:** 65%</span>
+<a id="__codelineno-2-222" name="__codelineno-2-222" href="#__codelineno-2-222"></a><span class="s2">- **Linhas não cobertas:** 18</span>
+<a id="__codelineno-2-223" name="__codelineno-2-223" href="#__codelineno-2-223"></a><span class="s2">- **Telemetria:** ❌ Ausente</span>
+<a id="__codelineno-2-224" name="__codelineno-2-224" href="#__codelineno-2-224"></a><span class="s2">- **MyPy:** ✅ OK</span>
+<a id="__codelineno-2-225" name="__codelineno-2-225" href="#__codelineno-2-225"></a>
+<a id="__codelineno-2-226" name="__codelineno-2-226" href="#__codelineno-2-226"></a><span class="s2">## 📋 Tarefas</span>
+<a id="__codelineno-2-227" name="__codelineno-2-227" href="#__codelineno-2-227"></a><span class="s2">- [ ] Adicionar padrão de telemetria</span>
+<a id="__codelineno-2-228" name="__codelineno-2-228" href="#__codelineno-2-228"></a><span class="s2">- [ ] Expandir testes existentes</span>
+<a id="__codelineno-2-229" name="__codelineno-2-229" href="#__codelineno-2-229"></a><span class="s2">- [ ] Criar testes de telemetria</span>
+<a id="__codelineno-2-230" name="__codelineno-2-230" href="#__codelineno-2-230"></a><span class="s2">- [ ] Verificar cobertura final</span>
+<a id="__codelineno-2-231" name="__codelineno-2-231" href="#__codelineno-2-231"></a>
+<a id="__codelineno-2-232" name="__codelineno-2-232" href="#__codelineno-2-232"></a><span class="s2">## 🔗 Links</span>
+<a id="__codelineno-2-233" name="__codelineno-2-233" href="#__codelineno-2-233"></a><span class="s2">- [Arquivo alvo](src/application/use_cases/classificar_documento.py)</span>
+<a id="__codelineno-2-234" name="__codelineno-2-234" href="#__codelineno-2-234"></a>
+<a id="__codelineno-2-235" name="__codelineno-2-235" href="#__codelineno-2-235"></a><span class="s2">## 📊 Definição de Pronto</span>
+<a id="__codelineno-2-236" name="__codelineno-2-236" href="#__codelineno-2-236"></a><span class="s2">- [ ] Cobertura &gt;= 85%</span>
+<a id="__codelineno-2-237" name="__codelineno-2-237" href="#__codelineno-2-237"></a><span class="s2">- [ ] Testes de lógica (8+)</span>
+<a id="__codelineno-2-238" name="__codelineno-2-238" href="#__codelineno-2-238"></a><span class="s2">- [ ] Testes de telemetria (4+)</span>
+<a id="__codelineno-2-239" name="__codelineno-2-239" href="#__codelineno-2-239"></a><span class="s2">- [ ] MyPy 0 erros</span>
+<a id="__codelineno-2-240" name="__codelineno-2-240" href="#__codelineno-2-240"></a>
+<a id="__codelineno-2-241" name="__codelineno-2-241" href="#__codelineno-2-241"></a><span class="s2">## ⏱️ Estimativa: 3h</span>
+<a id="__codelineno-2-242" name="__codelineno-2-242" href="#__codelineno-2-242"></a><span class="s2">## Prioridade: Alta&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-243" name="__codelineno-2-243" href="#__codelineno-2-243"></a><span class="w">  </span><span class="s2">&quot;fase,tipo/testes,prioridade:alta&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-244" name="__codelineno-2-244" href="#__codelineno-2-244"></a><span class="w">  </span><span class="s2">&quot;QUALIDADE E TESTES (Semanas 3-4)&quot;</span>
+<a id="__codelineno-2-245" name="__codelineno-2-245" href="#__codelineno-2-245"></a>
+<a id="__codelineno-2-246" name="__codelineno-2-246" href="#__codelineno-2-246"></a>create_issue<span class="w"> </span><span class="s2">&quot;Q2: FASE 18 - obter_documento.py&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-247" name="__codelineno-2-247" href="#__codelineno-2-247"></a><span class="s2">&quot;## 🎯 Objetivo</span>
+<a id="__codelineno-2-248" name="__codelineno-2-248" href="#__codelineno-2-248"></a><span class="s2">Aumentar cobertura de 57% para 85% em obter_documento.py</span>
+<a id="__codelineno-2-249" name="__codelineno-2-249" href="#__codelineno-2-249"></a>
+<a id="__codelineno-2-250" name="__codelineno-2-250" href="#__codelineno-2-250"></a><span class="s2">## 📊 Métricas Atuais</span>
+<a id="__codelineno-2-251" name="__codelineno-2-251" href="#__codelineno-2-251"></a><span class="s2">- **Cobertura:** 57%</span>
+<a id="__codelineno-2-252" name="__codelineno-2-252" href="#__codelineno-2-252"></a><span class="s2">- **Linhas não cobertas:** 15</span>
+<a id="__codelineno-2-253" name="__codelineno-2-253" href="#__codelineno-2-253"></a><span class="s2">- **Telemetria:** ❌ Ausente</span>
+<a id="__codelineno-2-254" name="__codelineno-2-254" href="#__codelineno-2-254"></a><span class="s2">- **MyPy:** ⚠️ 2 erros</span>
+<a id="__codelineno-2-255" name="__codelineno-2-255" href="#__codelineno-2-255"></a>
+<a id="__codelineno-2-256" name="__codelineno-2-256" href="#__codelineno-2-256"></a><span class="s2">## 📋 Tarefas</span>
+<a id="__codelineno-2-257" name="__codelineno-2-257" href="#__codelineno-2-257"></a><span class="s2">- [ ] Adicionar padrão de telemetria</span>
+<a id="__codelineno-2-258" name="__codelineno-2-258" href="#__codelineno-2-258"></a><span class="s2">- [ ] Expandir testes existentes</span>
+<a id="__codelineno-2-259" name="__codelineno-2-259" href="#__codelineno-2-259"></a><span class="s2">- [ ] Criar testes de telemetria</span>
+<a id="__codelineno-2-260" name="__codelineno-2-260" href="#__codelineno-2-260"></a><span class="s2">- [ ] Corrigir MyPy</span>
+<a id="__codelineno-2-261" name="__codelineno-2-261" href="#__codelineno-2-261"></a><span class="s2">- [ ] Verificar cobertura final</span>
+<a id="__codelineno-2-262" name="__codelineno-2-262" href="#__codelineno-2-262"></a>
+<a id="__codelineno-2-263" name="__codelineno-2-263" href="#__codelineno-2-263"></a><span class="s2">## 🔗 Links</span>
+<a id="__codelineno-2-264" name="__codelineno-2-264" href="#__codelineno-2-264"></a><span class="s2">- [Arquivo alvo](src/application/use_cases/obter_documento.py)</span>
+<a id="__codelineno-2-265" name="__codelineno-2-265" href="#__codelineno-2-265"></a>
+<a id="__codelineno-2-266" name="__codelineno-2-266" href="#__codelineno-2-266"></a><span class="s2">## 📊 Definição de Pronto</span>
+<a id="__codelineno-2-267" name="__codelineno-2-267" href="#__codelineno-2-267"></a><span class="s2">- [ ] Cobertura &gt;= 85%</span>
+<a id="__codelineno-2-268" name="__codelineno-2-268" href="#__codelineno-2-268"></a><span class="s2">- [ ] Testes de lógica (8+)</span>
+<a id="__codelineno-2-269" name="__codelineno-2-269" href="#__codelineno-2-269"></a><span class="s2">- [ ] Testes de telemetria (4+)</span>
+<a id="__codelineno-2-270" name="__codelineno-2-270" href="#__codelineno-2-270"></a><span class="s2">- [ ] MyPy 0 erros</span>
+<a id="__codelineno-2-271" name="__codelineno-2-271" href="#__codelineno-2-271"></a>
+<a id="__codelineno-2-272" name="__codelineno-2-272" href="#__codelineno-2-272"></a><span class="s2">## ⏱️ Estimativa: 2h</span>
+<a id="__codelineno-2-273" name="__codelineno-2-273" href="#__codelineno-2-273"></a><span class="s2">## Prioridade: Alta&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-274" name="__codelineno-2-274" href="#__codelineno-2-274"></a><span class="w">  </span><span class="s2">&quot;fase,tipo/testes,prioridade:alta&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-275" name="__codelineno-2-275" href="#__codelineno-2-275"></a><span class="w">  </span><span class="s2">&quot;QUALIDADE E TESTES (Semanas 3-4)&quot;</span>
+<a id="__codelineno-2-276" name="__codelineno-2-276" href="#__codelineno-2-276"></a>
+<a id="__codelineno-2-277" name="__codelineno-2-277" href="#__codelineno-2-277"></a>create_issue<span class="w"> </span><span class="s2">&quot;Q3: FASE 19 - estatisticas.py (URGENTE)&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-278" name="__codelineno-2-278" href="#__codelineno-2-278"></a><span class="s2">&quot;## 🎯 Objetivo</span>
+<a id="__codelineno-2-279" name="__codelineno-2-279" href="#__codelineno-2-279"></a><span class="s2">Aumentar cobertura de 15% para 85% em estatisticas.py</span>
+<a id="__codelineno-2-280" name="__codelineno-2-280" href="#__codelineno-2-280"></a>
+<a id="__codelineno-2-281" name="__codelineno-2-281" href="#__codelineno-2-281"></a><span class="s2">## 📊 Métricas Atuais</span>
+<a id="__codelineno-2-282" name="__codelineno-2-282" href="#__codelineno-2-282"></a><span class="s2">- **Cobertura:** 15% (⚠️ URGENTE!)</span>
+<a id="__codelineno-2-283" name="__codelineno-2-283" href="#__codelineno-2-283"></a><span class="s2">- **Linhas não cobertas:** 41</span>
+<a id="__codelineno-2-284" name="__codelineno-2-284" href="#__codelineno-2-284"></a><span class="s2">- **Telemetria:** ❌ Ausente</span>
+<a id="__codelineno-2-285" name="__codelineno-2-285" href="#__codelineno-2-285"></a><span class="s2">- **MyPy:** ⚠️ 3 erros</span>
+<a id="__codelineno-2-286" name="__codelineno-2-286" href="#__codelineno-2-286"></a>
+<a id="__codelineno-2-287" name="__codelineno-2-287" href="#__codelineno-2-287"></a><span class="s2">## 📋 Tarefas</span>
+<a id="__codelineno-2-288" name="__codelineno-2-288" href="#__codelineno-2-288"></a><span class="s2">- [ ] Adicionar padrão de telemetria</span>
+<a id="__codelineno-2-289" name="__codelineno-2-289" href="#__codelineno-2-289"></a><span class="s2">- [ ] Criar testes de lógica</span>
+<a id="__codelineno-2-290" name="__codelineno-2-290" href="#__codelineno-2-290"></a><span class="s2">- [ ] Criar testes de telemetria</span>
+<a id="__codelineno-2-291" name="__codelineno-2-291" href="#__codelineno-2-291"></a><span class="s2">- [ ] Corrigir MyPy</span>
+<a id="__codelineno-2-292" name="__codelineno-2-292" href="#__codelineno-2-292"></a><span class="s2">- [ ] Verificar cobertura final</span>
+<a id="__codelineno-2-293" name="__codelineno-2-293" href="#__codelineno-2-293"></a>
+<a id="__codelineno-2-294" name="__codelineno-2-294" href="#__codelineno-2-294"></a><span class="s2">## 🔗 Links</span>
+<a id="__codelineno-2-295" name="__codelineno-2-295" href="#__codelineno-2-295"></a><span class="s2">- [Arquivo alvo](src/application/use_cases/estatisticas.py)</span>
+<a id="__codelineno-2-296" name="__codelineno-2-296" href="#__codelineno-2-296"></a>
+<a id="__codelineno-2-297" name="__codelineno-2-297" href="#__codelineno-2-297"></a><span class="s2">## 📊 Definição de Pronto</span>
+<a id="__codelineno-2-298" name="__codelineno-2-298" href="#__codelineno-2-298"></a><span class="s2">- [ ] Cobertura &gt;= 85%</span>
+<a id="__codelineno-2-299" name="__codelineno-2-299" href="#__codelineno-2-299"></a><span class="s2">- [ ] Testes de lógica (12+)</span>
+<a id="__codelineno-2-300" name="__codelineno-2-300" href="#__codelineno-2-300"></a><span class="s2">- [ ] Testes de telemetria (6+)</span>
+<a id="__codelineno-2-301" name="__codelineno-2-301" href="#__codelineno-2-301"></a><span class="s2">- [ ] MyPy 0 erros</span>
+<a id="__codelineno-2-302" name="__codelineno-2-302" href="#__codelineno-2-302"></a>
+<a id="__codelineno-2-303" name="__codelineno-2-303" href="#__codelineno-2-303"></a><span class="s2">## ⏱️ Estimativa: 4h</span>
+<a id="__codelineno-2-304" name="__codelineno-2-304" href="#__codelineno-2-304"></a><span class="s2">## Prioridade: Alta&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-305" name="__codelineno-2-305" href="#__codelineno-2-305"></a><span class="w">  </span><span class="s2">&quot;fase,tipo/testes,prioridade:alta&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-306" name="__codelineno-2-306" href="#__codelineno-2-306"></a><span class="w">  </span><span class="s2">&quot;QUALIDADE E TESTES (Semanas 3-4)&quot;</span>
+<a id="__codelineno-2-307" name="__codelineno-2-307" href="#__codelineno-2-307"></a>
+<a id="__codelineno-2-308" name="__codelineno-2-308" href="#__codelineno-2-308"></a>create_issue<span class="w"> </span><span class="s2">&quot;Q4: FASE 20 - Corrigir MyPy global&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-309" name="__codelineno-2-309" href="#__codelineno-2-309"></a><span class="s2">&quot;## 🎯 Objetivo</span>
+<a id="__codelineno-2-310" name="__codelineno-2-310" href="#__codelineno-2-310"></a><span class="s2">Eliminar todos os erros de MyPy do projeto</span>
+<a id="__codelineno-2-311" name="__codelineno-2-311" href="#__codelineno-2-311"></a>
+<a id="__codelineno-2-312" name="__codelineno-2-312" href="#__codelineno-2-312"></a><span class="s2">## 📊 Métricas Atuais</span>
+<a id="__codelineno-2-313" name="__codelineno-2-313" href="#__codelineno-2-313"></a><span class="s2">- **Total de erros:** 6</span>
+<a id="__codelineno-2-314" name="__codelineno-2-314" href="#__codelineno-2-314"></a><span class="s2">- **Arquivos afetados:**</span>
+<a id="__codelineno-2-315" name="__codelineno-2-315" href="#__codelineno-2-315"></a><span class="s2">  - `estatisticas.py` (3 erros)</span>
+<a id="__codelineno-2-316" name="__codelineno-2-316" href="#__codelineno-2-316"></a><span class="s2">  - `config/__init__.py` (1 erro - yaml)</span>
+<a id="__codelineno-2-317" name="__codelineno-2-317" href="#__codelineno-2-317"></a><span class="s2">  - `sqlite_repository.py` (2 erros)</span>
+<a id="__codelineno-2-318" name="__codelineno-2-318" href="#__codelineno-2-318"></a>
+<a id="__codelineno-2-319" name="__codelineno-2-319" href="#__codelineno-2-319"></a><span class="s2">## 📋 Tarefas</span>
+<a id="__codelineno-2-320" name="__codelineno-2-320" href="#__codelineno-2-320"></a><span class="s2">- [ ] Adicionar type hints nos Counters de `estatisticas.py`</span>
+<a id="__codelineno-2-321" name="__codelineno-2-321" href="#__codelineno-2-321"></a><span class="s2">- [ ] Instalar stubs: `poetry add --dev types-PyYAML`</span>
+<a id="__codelineno-2-322" name="__codelineno-2-322" href="#__codelineno-2-322"></a><span class="s2">- [ ] Corrigir tipos em `sqlite_repository.py`</span>
+<a id="__codelineno-2-323" name="__codelineno-2-323" href="#__codelineno-2-323"></a><span class="s2">- [ ] Verificar com `poetry run mypy src/`</span>
+<a id="__codelineno-2-324" name="__codelineno-2-324" href="#__codelineno-2-324"></a>
+<a id="__codelineno-2-325" name="__codelineno-2-325" href="#__codelineno-2-325"></a><span class="s2">## 📊 Definição de Pronto</span>
+<a id="__codelineno-2-326" name="__codelineno-2-326" href="#__codelineno-2-326"></a><span class="s2">- [ ] `poetry run mypy src/` retorna 0 erros</span>
+<a id="__codelineno-2-327" name="__codelineno-2-327" href="#__codelineno-2-327"></a>
+<a id="__codelineno-2-328" name="__codelineno-2-328" href="#__codelineno-2-328"></a><span class="s2">## ⏱️ Estimativa: 2h</span>
+<a id="__codelineno-2-329" name="__codelineno-2-329" href="#__codelineno-2-329"></a><span class="s2">## Prioridade: Alta&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-330" name="__codelineno-2-330" href="#__codelineno-2-330"></a><span class="w">  </span><span class="s2">&quot;fase,tipo/qualidade,prioridade:alta&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-331" name="__codelineno-2-331" href="#__codelineno-2-331"></a><span class="w">  </span><span class="s2">&quot;QUALIDADE E TESTES (Semanas 3-4)&quot;</span>
+<a id="__codelineno-2-332" name="__codelineno-2-332" href="#__codelineno-2-332"></a>
+<a id="__codelineno-2-333" name="__codelineno-2-333" href="#__codelineno-2-333"></a>create_issue<span class="w"> </span><span class="s2">&quot;Q5: Adicionar testes de integração para repositórios SQLite&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-334" name="__codelineno-2-334" href="#__codelineno-2-334"></a><span class="s2">&quot;## 🎯 Objetivo</span>
+<a id="__codelineno-2-335" name="__codelineno-2-335" href="#__codelineno-2-335"></a><span class="s2">Garantir que as queries SQL funcionem com banco real.</span>
+<a id="__codelineno-2-336" name="__codelineno-2-336" href="#__codelineno-2-336"></a>
+<a id="__codelineno-2-337" name="__codelineno-2-337" href="#__codelineno-2-337"></a><span class="s2">## 📋 Tarefas</span>
+<a id="__codelineno-2-338" name="__codelineno-2-338" href="#__codelineno-2-338"></a><span class="s2">- [ ] Criar testes com banco temporário</span>
+<a id="__codelineno-2-339" name="__codelineno-2-339" href="#__codelineno-2-339"></a><span class="s2">- [ ] Testar `sqlite_repository.py` com dados reais</span>
+<a id="__codelineno-2-340" name="__codelineno-2-340" href="#__codelineno-2-340"></a><span class="s2">- [ ] Testar `sqlite_traducao_repository.py`</span>
+<a id="__codelineno-2-341" name="__codelineno-2-341" href="#__codelineno-2-341"></a><span class="s2">- [ ] Testar migrations</span>
+<a id="__codelineno-2-342" name="__codelineno-2-342" href="#__codelineno-2-342"></a>
+<a id="__codelineno-2-343" name="__codelineno-2-343" href="#__codelineno-2-343"></a><span class="s2">## 📊 Definição de Pronto</span>
+<a id="__codelineno-2-344" name="__codelineno-2-344" href="#__codelineno-2-344"></a><span class="s2">- [ ] Testes passando</span>
+<a id="__codelineno-2-345" name="__codelineno-2-345" href="#__codelineno-2-345"></a><span class="s2">- [ ] Cobertura dos repositórios &gt;= 80%</span>
+<a id="__codelineno-2-346" name="__codelineno-2-346" href="#__codelineno-2-346"></a>
+<a id="__codelineno-2-347" name="__codelineno-2-347" href="#__codelineno-2-347"></a><span class="s2">## ⏱️ Estimativa: 3h</span>
+<a id="__codelineno-2-348" name="__codelineno-2-348" href="#__codelineno-2-348"></a><span class="s2">## Prioridade: Média&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-349" name="__codelineno-2-349" href="#__codelineno-2-349"></a><span class="w">  </span><span class="s2">&quot;test,prioridade:media&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-350" name="__codelineno-2-350" href="#__codelineno-2-350"></a><span class="w">  </span><span class="s2">&quot;QUALIDADE E TESTES (Semanas 3-4)&quot;</span>
+<a id="__codelineno-2-351" name="__codelineno-2-351" href="#__codelineno-2-351"></a>
+<a id="__codelineno-2-352" name="__codelineno-2-352" href="#__codelineno-2-352"></a>create_issue<span class="w"> </span><span class="s2">&quot;Q6: Aumentar cobertura global para 80%+&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-353" name="__codelineno-2-353" href="#__codelineno-2-353"></a><span class="s2">&quot;## 🎯 Objetivo</span>
+<a id="__codelineno-2-354" name="__codelineno-2-354" href="#__codelineno-2-354"></a><span class="s2">Garantir que todo o código tenha cobertura mínima.</span>
+<a id="__codelineno-2-355" name="__codelineno-2-355" href="#__codelineno-2-355"></a>
+<a id="__codelineno-2-356" name="__codelineno-2-356" href="#__codelineno-2-356"></a><span class="s2">## 📋 Tarefas</span>
+<a id="__codelineno-2-357" name="__codelineno-2-357" href="#__codelineno-2-357"></a><span class="s2">- [ ] Mapear arquivos com cobertura &lt;80%</span>
+<a id="__codelineno-2-358" name="__codelineno-2-358" href="#__codelineno-2-358"></a><span class="s2">- [ ] Priorizar por impacto</span>
+<a id="__codelineno-2-359" name="__codelineno-2-359" href="#__codelineno-2-359"></a><span class="s2">- [ ] Criar testes faltantes</span>
+<a id="__codelineno-2-360" name="__codelineno-2-360" href="#__codelineno-2-360"></a><span class="s2">- [ ] Verificar cobertura final</span>
+<a id="__codelineno-2-361" name="__codelineno-2-361" href="#__codelineno-2-361"></a>
+<a id="__codelineno-2-362" name="__codelineno-2-362" href="#__codelineno-2-362"></a><span class="s2">## 📊 Definição de Pronto</span>
+<a id="__codelineno-2-363" name="__codelineno-2-363" href="#__codelineno-2-363"></a><span class="s2">- [ ] Cobertura global &gt;= 80%</span>
+<a id="__codelineno-2-364" name="__codelineno-2-364" href="#__codelineno-2-364"></a>
+<a id="__codelineno-2-365" name="__codelineno-2-365" href="#__codelineno-2-365"></a><span class="s2">## ⏱️ Estimativa: 4h</span>
+<a id="__codelineno-2-366" name="__codelineno-2-366" href="#__codelineno-2-366"></a><span class="s2">## Prioridade: Média&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-367" name="__codelineno-2-367" href="#__codelineno-2-367"></a><span class="w">  </span><span class="s2">&quot;test,prioridade:media&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-368" name="__codelineno-2-368" href="#__codelineno-2-368"></a><span class="w">  </span><span class="s2">&quot;QUALIDADE E TESTES (Semanas 3-4)&quot;</span>
+<a id="__codelineno-2-369" name="__codelineno-2-369" href="#__codelineno-2-369"></a>
+<a id="__codelineno-2-370" name="__codelineno-2-370" href="#__codelineno-2-370"></a>create_issue<span class="w"> </span><span class="s2">&quot;Q7: Adicionar property-based testing com Hypothesis&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-371" name="__codelineno-2-371" href="#__codelineno-2-371"></a><span class="s2">&quot;## 🎯 Objetivo</span>
+<a id="__codelineno-2-372" name="__codelineno-2-372" href="#__codelineno-2-372"></a><span class="s2">Testar propriedades invariantes com geração automática de dados.</span>
+<a id="__codelineno-2-373" name="__codelineno-2-373" href="#__codelineno-2-373"></a>
+<a id="__codelineno-2-374" name="__codelineno-2-374" href="#__codelineno-2-374"></a><span class="s2">## 📋 Tarefas</span>
+<a id="__codelineno-2-375" name="__codelineno-2-375" href="#__codelineno-2-375"></a><span class="s2">- [ ] Adicionar Hypothesis: `poetry add --dev hypothesis`</span>
+<a id="__codelineno-2-376" name="__codelineno-2-376" href="#__codelineno-2-376"></a><span class="s2">- [ ] Identificar funções com propriedades testáveis</span>
+<a id="__codelineno-2-377" name="__codelineno-2-377" href="#__codelineno-2-377"></a><span class="s2">- [ ] Escrever testes para `NomeRusso`</span>
+<a id="__codelineno-2-378" name="__codelineno-2-378" href="#__codelineno-2-378"></a><span class="s2">- [ ] Escrever testes para `TipoDocumento`</span>
+<a id="__codelineno-2-379" name="__codelineno-2-379" href="#__codelineno-2-379"></a><span class="s2">- [ ] Escrever testes para cálculos estatísticos</span>
+<a id="__codelineno-2-380" name="__codelineno-2-380" href="#__codelineno-2-380"></a>
+<a id="__codelineno-2-381" name="__codelineno-2-381" href="#__codelineno-2-381"></a><span class="s2">## 📊 Definição de Pronto</span>
+<a id="__codelineno-2-382" name="__codelineno-2-382" href="#__codelineno-2-382"></a><span class="s2">- [ ] Testes com Hypothesis passando</span>
+<a id="__codelineno-2-383" name="__codelineno-2-383" href="#__codelineno-2-383"></a><span class="s2">- [ ] Documentação de exemplos</span>
+<a id="__codelineno-2-384" name="__codelineno-2-384" href="#__codelineno-2-384"></a>
+<a id="__codelineno-2-385" name="__codelineno-2-385" href="#__codelineno-2-385"></a><span class="s2">## ⏱️ Estimativa: 3h</span>
+<a id="__codelineno-2-386" name="__codelineno-2-386" href="#__codelineno-2-386"></a><span class="s2">## Prioridade: Baixa&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-387" name="__codelineno-2-387" href="#__codelineno-2-387"></a><span class="w">  </span><span class="s2">&quot;test,prioridade:baixa&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-388" name="__codelineno-2-388" href="#__codelineno-2-388"></a><span class="w">  </span><span class="s2">&quot;QUALIDADE E TESTES (Semanas 3-4)&quot;</span>
+<a id="__codelineno-2-389" name="__codelineno-2-389" href="#__codelineno-2-389"></a>
+<a id="__codelineno-2-390" name="__codelineno-2-390" href="#__codelineno-2-390"></a><span class="c1"># =============================================</span>
+<a id="__codelineno-2-391" name="__codelineno-2-391" href="#__codelineno-2-391"></a><span class="c1"># MILESTONE 3: DEPENDÊNCIAS E INFRA (Semanas 5-6)</span>
+<a id="__codelineno-2-392" name="__codelineno-2-392" href="#__codelineno-2-392"></a><span class="c1"># =============================================</span>
+<a id="__codelineno-2-393" name="__codelineno-2-393" href="#__codelineno-2-393"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;📌 MILESTONE 3: DEPENDÊNCIAS E INFRA (5 issues)&quot;</span>
+<a id="__codelineno-2-394" name="__codelineno-2-394" href="#__codelineno-2-394"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;------------------------------------------------&quot;</span>
+<a id="__codelineno-2-395" name="__codelineno-2-395" href="#__codelineno-2-395"></a>
+<a id="__codelineno-2-396" name="__codelineno-2-396" href="#__codelineno-2-396"></a>create_issue<span class="w"> </span><span class="s2">&quot;D1: Migrar dependências NLP para Poetry&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-397" name="__codelineno-2-397" href="#__codelineno-2-397"></a><span class="s2">&quot;## 🎯 Objetivo</span>
+<a id="__codelineno-2-398" name="__codelineno-2-398" href="#__codelineno-2-398"></a><span class="s2">Substituir instalação via pip por dependências gerenciadas pelo Poetry.</span>
+<a id="__codelineno-2-399" name="__codelineno-2-399" href="#__codelineno-2-399"></a>
+<a id="__codelineno-2-400" name="__codelineno-2-400" href="#__codelineno-2-400"></a><span class="s2">## 🔗 Referência</span>
+<a id="__codelineno-2-401" name="__codelineno-2-401" href="#__codelineno-2-401"></a><span class="s2">Issue #1 - Migrar dependências NLP para Poetry</span>
+<a id="__codelineno-2-402" name="__codelineno-2-402" href="#__codelineno-2-402"></a>
+<a id="__codelineno-2-403" name="__codelineno-2-403" href="#__codelineno-2-403"></a><span class="s2">## 📋 Tarefas</span>
+<a id="__codelineno-2-404" name="__codelineno-2-404" href="#__codelineno-2-404"></a><span class="s2">- [ ] Pesquisar versões compatíveis</span>
+<a id="__codelineno-2-405" name="__codelineno-2-405" href="#__codelineno-2-405"></a><span class="s2">- [ ] Testar combinações em branch separada</span>
+<a id="__codelineno-2-406" name="__codelineno-2-406" href="#__codelineno-2-406"></a><span class="s2">- [ ] Atualizar `pyproject.toml`</span>
+<a id="__codelineno-2-407" name="__codelineno-2-407" href="#__codelineno-2-407"></a><span class="s2">- [ ] Atualizar `poetry.lock`</span>
+<a id="__codelineno-2-408" name="__codelineno-2-408" href="#__codelineno-2-408"></a><span class="s2">- [ ] Remover etapas de pip do CI</span>
+<a id="__codelineno-2-409" name="__codelineno-2-409" href="#__codelineno-2-409"></a><span class="s2">- [ ] Atualizar documentação</span>
+<a id="__codelineno-2-410" name="__codelineno-2-410" href="#__codelineno-2-410"></a>
+<a id="__codelineno-2-411" name="__codelineno-2-411" href="#__codelineno-2-411"></a><span class="s2">## 📊 Definição de Pronto</span>
+<a id="__codelineno-2-412" name="__codelineno-2-412" href="#__codelineno-2-412"></a><span class="s2">- [ ] `poetry install` instala tudo</span>
+<a id="__codelineno-2-413" name="__codelineno-2-413" href="#__codelineno-2-413"></a><span class="s2">- [ ] CI sem etapas de pip</span>
+<a id="__codelineno-2-414" name="__codelineno-2-414" href="#__codelineno-2-414"></a><span class="s2">- [ ] Testes passam</span>
+<a id="__codelineno-2-415" name="__codelineno-2-415" href="#__codelineno-2-415"></a>
+<a id="__codelineno-2-416" name="__codelineno-2-416" href="#__codelineno-2-416"></a><span class="s2">## ⏱️ Estimativa: 4h</span>
+<a id="__codelineno-2-417" name="__codelineno-2-417" href="#__codelineno-2-417"></a><span class="s2">## Prioridade: Alta&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-418" name="__codelineno-2-418" href="#__codelineno-2-418"></a><span class="w">  </span><span class="s2">&quot;tipo/infra,prioridade:alta&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-419" name="__codelineno-2-419" href="#__codelineno-2-419"></a><span class="w">  </span><span class="s2">&quot;DEPENDÊNCIAS E INFRA (Semanas 5-6)&quot;</span>
+<a id="__codelineno-2-420" name="__codelineno-2-420" href="#__codelineno-2-420"></a>
+<a id="__codelineno-2-421" name="__codelineno-2-421" href="#__codelineno-2-421"></a>create_issue<span class="w"> </span><span class="s2">&quot;D2: Instalar stubs para módulos externos&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-422" name="__codelineno-2-422" href="#__codelineno-2-422"></a><span class="s2">&quot;## 🎯 Objetivo</span>
+<a id="__codelineno-2-423" name="__codelineno-2-423" href="#__codelineno-2-423"></a><span class="s2">Eliminar erros de MyPy relacionados a módulos sem stubs.</span>
+<a id="__codelineno-2-424" name="__codelineno-2-424" href="#__codelineno-2-424"></a>
+<a id="__codelineno-2-425" name="__codelineno-2-425" href="#__codelineno-2-425"></a><span class="s2">## 📋 Tarefas</span>
+<a id="__codelineno-2-426" name="__codelineno-2-426" href="#__codelineno-2-426"></a><span class="s2">- [ ] `poetry add --dev types-PyYAML`</span>
+<a id="__codelineno-2-427" name="__codelineno-2-427" href="#__codelineno-2-427"></a><span class="s2">- [ ] `poetry add --dev types-requests`</span>
+<a id="__codelineno-2-428" name="__codelineno-2-428" href="#__codelineno-2-428"></a><span class="s2">- [ ] Verificar outros módulos</span>
+<a id="__codelineno-2-429" name="__codelineno-2-429" href="#__codelineno-2-429"></a><span class="s2">- [ ] Atualizar CI se necessário</span>
+<a id="__codelineno-2-430" name="__codelineno-2-430" href="#__codelineno-2-430"></a>
+<a id="__codelineno-2-431" name="__codelineno-2-431" href="#__codelineno-2-431"></a><span class="s2">## 📊 Definição de Pronto</span>
+<a id="__codelineno-2-432" name="__codelineno-2-432" href="#__codelineno-2-432"></a><span class="s2">- [ ] Erros de import resolvidos</span>
+<a id="__codelineno-2-433" name="__codelineno-2-433" href="#__codelineno-2-433"></a>
+<a id="__codelineno-2-434" name="__codelineno-2-434" href="#__codelineno-2-434"></a><span class="s2">## ⏱️ Estimativa: 30min</span>
+<a id="__codelineno-2-435" name="__codelineno-2-435" href="#__codelineno-2-435"></a><span class="s2">## Prioridade: Média&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-436" name="__codelineno-2-436" href="#__codelineno-2-436"></a><span class="w">  </span><span class="s2">&quot;tipo/qualidade,prioridade:media&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-437" name="__codelineno-2-437" href="#__codelineno-2-437"></a><span class="w">  </span><span class="s2">&quot;DEPENDÊNCIAS E INFRA (Semanas 5-6)&quot;</span>
+<a id="__codelineno-2-438" name="__codelineno-2-438" href="#__codelineno-2-438"></a>
+<a id="__codelineno-2-439" name="__codelineno-2-439" href="#__codelineno-2-439"></a>create_issue<span class="w"> </span><span class="s2">&quot;D3: Atualizar CI para usar Poetry completamente&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-440" name="__codelineno-2-440" href="#__codelineno-2-440"></a><span class="s2">&quot;## 🎯 Objetivo</span>
+<a id="__codelineno-2-441" name="__codelineno-2-441" href="#__codelineno-2-441"></a><span class="s2">Simplificar o workflow do GitHub Actions.</span>
+<a id="__codelineno-2-442" name="__codelineno-2-442" href="#__codelineno-2-442"></a>
+<a id="__codelineno-2-443" name="__codelineno-2-443" href="#__codelineno-2-443"></a><span class="s2">## 📋 Tarefas</span>
+<a id="__codelineno-2-444" name="__codelineno-2-444" href="#__codelineno-2-444"></a><span class="s2">- [ ] Remover etapas manuais de pip (após D1)</span>
+<a id="__codelineno-2-445" name="__codelineno-2-445" href="#__codelineno-2-445"></a><span class="s2">- [ ] Otimizar cache</span>
+<a id="__codelineno-2-446" name="__codelineno-2-446" href="#__codelineno-2-446"></a><span class="s2">- [ ] Adicionar step de verificação</span>
+<a id="__codelineno-2-447" name="__codelineno-2-447" href="#__codelineno-2-447"></a><span class="s2">- [ ] Testar execução</span>
+<a id="__codelineno-2-448" name="__codelineno-2-448" href="#__codelineno-2-448"></a>
+<a id="__codelineno-2-449" name="__codelineno-2-449" href="#__codelineno-2-449"></a><span class="s2">## 📊 Definição de Pronto</span>
+<a id="__codelineno-2-450" name="__codelineno-2-450" href="#__codelineno-2-450"></a><span class="s2">- [ ] CI mais rápido e limpo</span>
+<a id="__codelineno-2-451" name="__codelineno-2-451" href="#__codelineno-2-451"></a>
+<a id="__codelineno-2-452" name="__codelineno-2-452" href="#__codelineno-2-452"></a><span class="s2">## ⏱️ Estimativa: 2h</span>
+<a id="__codelineno-2-453" name="__codelineno-2-453" href="#__codelineno-2-453"></a><span class="s2">## Prioridade: Média&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-454" name="__codelineno-2-454" href="#__codelineno-2-454"></a><span class="w">  </span><span class="s2">&quot;tipo/infra,prioridade:media&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-455" name="__codelineno-2-455" href="#__codelineno-2-455"></a><span class="w">  </span><span class="s2">&quot;DEPENDÊNCIAS E INFRA (Semanas 5-6)&quot;</span>
+<a id="__codelineno-2-456" name="__codelineno-2-456" href="#__codelineno-2-456"></a>
+<a id="__codelineno-2-457" name="__codelineno-2-457" href="#__codelineno-2-457"></a>create_issue<span class="w"> </span><span class="s2">&quot;D4: Adicionar cache mais eficiente no CI&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-458" name="__codelineno-2-458" href="#__codelineno-2-458"></a><span class="s2">&quot;## 🎯 Objetivo</span>
+<a id="__codelineno-2-459" name="__codelineno-2-459" href="#__codelineno-2-459"></a><span class="s2">Acelerar as execuções do GitHub Actions.</span>
+<a id="__codelineno-2-460" name="__codelineno-2-460" href="#__codelineno-2-460"></a>
+<a id="__codelineno-2-461" name="__codelineno-2-461" href="#__codelineno-2-461"></a><span class="s2">## 📋 Tarefas</span>
+<a id="__codelineno-2-462" name="__codelineno-2-462" href="#__codelineno-2-462"></a><span class="s2">- [ ] Cache do Poetry mais granular</span>
+<a id="__codelineno-2-463" name="__codelineno-2-463" href="#__codelineno-2-463"></a><span class="s2">- [ ] Cache dos modelos spaCy</span>
+<a id="__codelineno-2-464" name="__codelineno-2-464" href="#__codelineno-2-464"></a><span class="s2">- [ ] Cache do pip (se ainda usado)</span>
+<a id="__codelineno-2-465" name="__codelineno-2-465" href="#__codelineno-2-465"></a><span class="s2">- [ ] Medir tempo antes/depois</span>
+<a id="__codelineno-2-466" name="__codelineno-2-466" href="#__codelineno-2-466"></a>
+<a id="__codelineno-2-467" name="__codelineno-2-467" href="#__codelineno-2-467"></a><span class="s2">## 📊 Definição de Pronto</span>
+<a id="__codelineno-2-468" name="__codelineno-2-468" href="#__codelineno-2-468"></a><span class="s2">- [ ] Redução de tempo &gt;= 30%</span>
+<a id="__codelineno-2-469" name="__codelineno-2-469" href="#__codelineno-2-469"></a>
+<a id="__codelineno-2-470" name="__codelineno-2-470" href="#__codelineno-2-470"></a><span class="s2">## ⏱️ Estimativa: 1h</span>
+<a id="__codelineno-2-471" name="__codelineno-2-471" href="#__codelineno-2-471"></a><span class="s2">## Prioridade: Baixa&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-472" name="__codelineno-2-472" href="#__codelineno-2-472"></a><span class="w">  </span><span class="s2">&quot;tipo/infra,prioridade:baixa&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-473" name="__codelineno-2-473" href="#__codelineno-2-473"></a><span class="w">  </span><span class="s2">&quot;DEPENDÊNCIAS E INFRA (Semanas 5-6)&quot;</span>
+<a id="__codelineno-2-474" name="__codelineno-2-474" href="#__codelineno-2-474"></a>
+<a id="__codelineno-2-475" name="__codelineno-2-475" href="#__codelineno-2-475"></a>create_issue<span class="w"> </span><span class="s2">&quot;D5: Dockerizar aplicação (CLI + Web)&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-476" name="__codelineno-2-476" href="#__codelineno-2-476"></a><span class="s2">&quot;## 🎯 Objetivo</span>
+<a id="__codelineno-2-477" name="__codelineno-2-477" href="#__codelineno-2-477"></a><span class="s2">Facilitar deploy e execução em qualquer ambiente.</span>
+<a id="__codelineno-2-478" name="__codelineno-2-478" href="#__codelineno-2-478"></a>
+<a id="__codelineno-2-479" name="__codelineno-2-479" href="#__codelineno-2-479"></a><span class="s2">## 📋 Tarefas</span>
+<a id="__codelineno-2-480" name="__codelineno-2-480" href="#__codelineno-2-480"></a><span class="s2">- [ ] Criar Dockerfile para CLI</span>
+<a id="__codelineno-2-481" name="__codelineno-2-481" href="#__codelineno-2-481"></a><span class="s2">- [ ] Criar Dockerfile para Web (com uvicorn)</span>
+<a id="__codelineno-2-482" name="__codelineno-2-482" href="#__codelineno-2-482"></a><span class="s2">- [ ] Criar docker-compose.yml</span>
+<a id="__codelineno-2-483" name="__codelineno-2-483" href="#__codelineno-2-483"></a><span class="s2">- [ ] Documentar uso</span>
+<a id="__codelineno-2-484" name="__codelineno-2-484" href="#__codelineno-2-484"></a>
+<a id="__codelineno-2-485" name="__codelineno-2-485" href="#__codelineno-2-485"></a><span class="s2">## 📊 Definição de Pronto</span>
+<a id="__codelineno-2-486" name="__codelineno-2-486" href="#__codelineno-2-486"></a><span class="s2">- [ ] `docker-compose up` funciona</span>
+<a id="__codelineno-2-487" name="__codelineno-2-487" href="#__codelineno-2-487"></a><span class="s2">- [ ] Documentação atualizada</span>
+<a id="__codelineno-2-488" name="__codelineno-2-488" href="#__codelineno-2-488"></a>
+<a id="__codelineno-2-489" name="__codelineno-2-489" href="#__codelineno-2-489"></a><span class="s2">## ⏱️ Estimativa: 4h</span>
+<a id="__codelineno-2-490" name="__codelineno-2-490" href="#__codelineno-2-490"></a><span class="s2">## Prioridade: Baixa&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-491" name="__codelineno-2-491" href="#__codelineno-2-491"></a><span class="w">  </span><span class="s2">&quot;feat,prioridade:baixa&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-492" name="__codelineno-2-492" href="#__codelineno-2-492"></a><span class="w">  </span><span class="s2">&quot;DEPENDÊNCIAS E INFRA (Semanas 5-6)&quot;</span>
+<a id="__codelineno-2-493" name="__codelineno-2-493" href="#__codelineno-2-493"></a>
+<a id="__codelineno-2-494" name="__codelineno-2-494" href="#__codelineno-2-494"></a><span class="c1"># =============================================</span>
+<a id="__codelineno-2-495" name="__codelineno-2-495" href="#__codelineno-2-495"></a><span class="c1"># MILESTONE 4: NOVAS FUNCIONALIDADES (Semanas 7-8)</span>
+<a id="__codelineno-2-496" name="__codelineno-2-496" href="#__codelineno-2-496"></a><span class="c1"># =============================================</span>
+<a id="__codelineno-2-497" name="__codelineno-2-497" href="#__codelineno-2-497"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;📌 MILESTONE 4: NOVAS FUNCIONALIDADES (6 issues)&quot;</span>
+<a id="__codelineno-2-498" name="__codelineno-2-498" href="#__codelineno-2-498"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;-------------------------------------------------&quot;</span>
+<a id="__codelineno-2-499" name="__codelineno-2-499" href="#__codelineno-2-499"></a>
+<a id="__codelineno-2-500" name="__codelineno-2-500" href="#__codelineno-2-500"></a>create_issue<span class="w"> </span><span class="s2">&quot;N1: Melhoria - Modo escuro no CLI&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-501" name="__codelineno-2-501" href="#__codelineno-2-501"></a><span class="s2">&quot;## 🎯 Objetivo</span>
+<a id="__codelineno-2-502" name="__codelineno-2-502" href="#__codelineno-2-502"></a><span class="s2">Adicionar suporte a modo escuro na interface CLI.</span>
+<a id="__codelineno-2-503" name="__codelineno-2-503" href="#__codelineno-2-503"></a>
+<a id="__codelineno-2-504" name="__codelineno-2-504" href="#__codelineno-2-504"></a><span class="s2">## 📋 Tarefas</span>
+<a id="__codelineno-2-505" name="__codelineno-2-505" href="#__codelineno-2-505"></a><span class="s2">- [ ] Criar tema escuro no `console.py`</span>
+<a id="__codelineno-2-506" name="__codelineno-2-506" href="#__codelineno-2-506"></a><span class="s2">- [ ] Adicionar flag `--dark-mode`</span>
+<a id="__codelineno-2-507" name="__codelineno-2-507" href="#__codelineno-2-507"></a><span class="s2">- [ ] Permitir alternância durante execução</span>
+<a id="__codelineno-2-508" name="__codelineno-2-508" href="#__codelineno-2-508"></a><span class="s2">- [ ] Documentar no help</span>
+<a id="__codelineno-2-509" name="__codelineno-2-509" href="#__codelineno-2-509"></a>
+<a id="__codelineno-2-510" name="__codelineno-2-510" href="#__codelineno-2-510"></a><span class="s2">## 🔗 Referência</span>
+<a id="__codelineno-2-511" name="__codelineno-2-511" href="#__codelineno-2-511"></a><span class="s2">- [Rich Themes](https://rich.readthedocs.io/en/stable/appendix/colors.html)</span>
+<a id="__codelineno-2-512" name="__codelineno-2-512" href="#__codelineno-2-512"></a>
+<a id="__codelineno-2-513" name="__codelineno-2-513" href="#__codelineno-2-513"></a><span class="s2">## ⏱️ Estimativa: 2h</span>
+<a id="__codelineno-2-514" name="__codelineno-2-514" href="#__codelineno-2-514"></a><span class="s2">## Prioridade: Baixa&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-515" name="__codelineno-2-515" href="#__codelineno-2-515"></a><span class="w">  </span><span class="s2">&quot;melhoria,ux,prioridade:baixa&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-516" name="__codelineno-2-516" href="#__codelineno-2-516"></a><span class="w">  </span><span class="s2">&quot;NOVAS FUNCIONALIDADES (Semanas 7-8)&quot;</span>
+<a id="__codelineno-2-517" name="__codelineno-2-517" href="#__codelineno-2-517"></a>
+<a id="__codelineno-2-518" name="__codelineno-2-518" href="#__codelineno-2-518"></a>create_issue<span class="w"> </span><span class="s2">&quot;N2: Melhoria - Gráficos no terminal&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-519" name="__codelineno-2-519" href="#__codelineno-2-519"></a><span class="s2">&quot;## 🎯 Objetivo</span>
+<a id="__codelineno-2-520" name="__codelineno-2-520" href="#__codelineno-2-520"></a><span class="s2">Adicionar gráficos de barras no CLI usando plotext.</span>
+<a id="__codelineno-2-521" name="__codelineno-2-521" href="#__codelineno-2-521"></a>
+<a id="__codelineno-2-522" name="__codelineno-2-522" href="#__codelineno-2-522"></a><span class="s2">## 📋 Tarefas</span>
+<a id="__codelineno-2-523" name="__codelineno-2-523" href="#__codelineno-2-523"></a><span class="s2">- [ ] Adicionar `plotext` como dependência</span>
+<a id="__codelineno-2-524" name="__codelineno-2-524" href="#__codelineno-2-524"></a><span class="s2">- [ ] Criar presenter para gráficos</span>
+<a id="__codelineno-2-525" name="__codelineno-2-525" href="#__codelineno-2-525"></a><span class="s2">- [ ] Integrar com estatísticas</span>
+<a id="__codelineno-2-526" name="__codelineno-2-526" href="#__codelineno-2-526"></a><span class="s2">- [ ] Adicionar comando `--grafico`</span>
+<a id="__codelineno-2-527" name="__codelineno-2-527" href="#__codelineno-2-527"></a>
+<a id="__codelineno-2-528" name="__codelineno-2-528" href="#__codelineno-2-528"></a><span class="s2">## 🔗 Referência</span>
+<a id="__codelineno-2-529" name="__codelineno-2-529" href="#__codelineno-2-529"></a><span class="s2">- [plotext](https://github.com/piccolomo/plotext)</span>
+<a id="__codelineno-2-530" name="__codelineno-2-530" href="#__codelineno-2-530"></a>
+<a id="__codelineno-2-531" name="__codelineno-2-531" href="#__codelineno-2-531"></a><span class="s2">## ⏱️ Estimativa: 3h</span>
+<a id="__codelineno-2-532" name="__codelineno-2-532" href="#__codelineno-2-532"></a><span class="s2">## Prioridade: Média&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-533" name="__codelineno-2-533" href="#__codelineno-2-533"></a><span class="w">  </span><span class="s2">&quot;melhoria,ux,prioridade:media&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-534" name="__codelineno-2-534" href="#__codelineno-2-534"></a><span class="w">  </span><span class="s2">&quot;NOVAS FUNCIONALIDADES (Semanas 7-8)&quot;</span>
+<a id="__codelineno-2-535" name="__codelineno-2-535" href="#__codelineno-2-535"></a>
+<a id="__codelineno-2-536" name="__codelineno-2-536" href="#__codelineno-2-536"></a>create_issue<span class="w"> </span><span class="s2">&quot;N3: API REST documentada com OpenAPI/Swagger&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-537" name="__codelineno-2-537" href="#__codelineno-2-537"></a><span class="s2">&quot;## 🎯 Objetivo</span>
+<a id="__codelineno-2-538" name="__codelineno-2-538" href="#__codelineno-2-538"></a><span class="s2">Disponibilizar API pública para integrações.</span>
+<a id="__codelineno-2-539" name="__codelineno-2-539" href="#__codelineno-2-539"></a>
+<a id="__codelineno-2-540" name="__codelineno-2-540" href="#__codelineno-2-540"></a><span class="s2">## 📋 Tarefas</span>
+<a id="__codelineno-2-541" name="__codelineno-2-541" href="#__codelineno-2-541"></a><span class="s2">- [ ] Revisar endpoints existentes</span>
+<a id="__codelineno-2-542" name="__codelineno-2-542" href="#__codelineno-2-542"></a><span class="s2">- [ ] Adicionar docstrings OpenAPI</span>
+<a id="__codelineno-2-543" name="__codelineno-2-543" href="#__codelineno-2-543"></a><span class="s2">- [ ] Configurar Swagger UI</span>
+<a id="__codelineno-2-544" name="__codelineno-2-544" href="#__codelineno-2-544"></a><span class="s2">- [ ] Testar com curl/Postman</span>
+<a id="__codelineno-2-545" name="__codelineno-2-545" href="#__codelineno-2-545"></a>
+<a id="__codelineno-2-546" name="__codelineno-2-546" href="#__codelineno-2-546"></a><span class="s2">## ⏱️ Estimativa: 4h</span>
+<a id="__codelineno-2-547" name="__codelineno-2-547" href="#__codelineno-2-547"></a><span class="s2">## Prioridade: Média&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-548" name="__codelineno-2-548" href="#__codelineno-2-548"></a><span class="w">  </span><span class="s2">&quot;feat,prioridade:media&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-549" name="__codelineno-2-549" href="#__codelineno-2-549"></a><span class="w">  </span><span class="s2">&quot;NOVAS FUNCIONALIDADES (Semanas 7-8)&quot;</span>
+<a id="__codelineno-2-550" name="__codelineno-2-550" href="#__codelineno-2-550"></a>
+<a id="__codelineno-2-551" name="__codelineno-2-551" href="#__codelineno-2-551"></a>create_issue<span class="w"> </span><span class="s2">&quot;N4: Exportação para PDF&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-552" name="__codelineno-2-552" href="#__codelineno-2-552"></a><span class="s2">&quot;## 🎯 Objetivo</span>
+<a id="__codelineno-2-553" name="__codelineno-2-553" href="#__codelineno-2-553"></a><span class="s2">Implementar exportação de documentos para PDF.</span>
+<a id="__codelineno-2-554" name="__codelineno-2-554" href="#__codelineno-2-554"></a>
+<a id="__codelineno-2-555" name="__codelineno-2-555" href="#__codelineno-2-555"></a><span class="s2">## 📋 Tarefas</span>
+<a id="__codelineno-2-556" name="__codelineno-2-556" href="#__codelineno-2-556"></a><span class="s2">- [ ] Pesquisar bibliotecas (ReportLab, WeasyPrint)</span>
+<a id="__codelineno-2-557" name="__codelineno-2-557" href="#__codelineno-2-557"></a><span class="s2">- [ ] Criar caso de uso `exportar_pdf`</span>
+<a id="__codelineno-2-558" name="__codelineno-2-558" href="#__codelineno-2-558"></a><span class="s2">- [ ] Adicionar template de PDF</span>
+<a id="__codelineno-2-559" name="__codelineno-2-559" href="#__codelineno-2-559"></a><span class="s2">- [ ] Integrar com CLI e Web</span>
+<a id="__codelineno-2-560" name="__codelineno-2-560" href="#__codelineno-2-560"></a>
+<a id="__codelineno-2-561" name="__codelineno-2-561" href="#__codelineno-2-561"></a><span class="s2">## ⏱️ Estimativa: 4h</span>
+<a id="__codelineno-2-562" name="__codelineno-2-562" href="#__codelineno-2-562"></a><span class="s2">## Prioridade: Média&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-563" name="__codelineno-2-563" href="#__codelineno-2-563"></a><span class="w">  </span><span class="s2">&quot;feat,prioridade:media&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-564" name="__codelineno-2-564" href="#__codelineno-2-564"></a><span class="w">  </span><span class="s2">&quot;NOVAS FUNCIONALIDADES (Semanas 7-8)&quot;</span>
+<a id="__codelineno-2-565" name="__codelineno-2-565" href="#__codelineno-2-565"></a>
+<a id="__codelineno-2-566" name="__codelineno-2-566" href="#__codelineno-2-566"></a>create_issue<span class="w"> </span><span class="s2">&quot;N5: Busca global no acervo&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-567" name="__codelineno-2-567" href="#__codelineno-2-567"></a><span class="s2">&quot;## 🎯 Objetivo</span>
+<a id="__codelineno-2-568" name="__codelineno-2-568" href="#__codelineno-2-568"></a><span class="s2">Permitir busca textual em todos os documentos.</span>
+<a id="__codelineno-2-569" name="__codelineno-2-569" href="#__codelineno-2-569"></a>
+<a id="__codelineno-2-570" name="__codelineno-2-570" href="#__codelineno-2-570"></a><span class="s2">## 📋 Tarefas</span>
+<a id="__codelineno-2-571" name="__codelineno-2-571" href="#__codelineno-2-571"></a><span class="s2">- [ ] Adicionar índice FTS no SQLite</span>
+<a id="__codelineno-2-572" name="__codelineno-2-572" href="#__codelineno-2-572"></a><span class="s2">- [ ] Criar caso de uso `buscar_documentos`</span>
+<a id="__codelineno-2-573" name="__codelineno-2-573" href="#__codelineno-2-573"></a><span class="s2">- [ ] Adicionar comando CLI `buscar`</span>
+<a id="__codelineno-2-574" name="__codelineno-2-574" href="#__codelineno-2-574"></a><span class="s2">- [ ] Adicionar endpoint REST `/busca`</span>
+<a id="__codelineno-2-575" name="__codelineno-2-575" href="#__codelineno-2-575"></a>
+<a id="__codelineno-2-576" name="__codelineno-2-576" href="#__codelineno-2-576"></a><span class="s2">## ⏱️ Estimativa: 3h</span>
+<a id="__codelineno-2-577" name="__codelineno-2-577" href="#__codelineno-2-577"></a><span class="s2">## Prioridade: Baixa&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-578" name="__codelineno-2-578" href="#__codelineno-2-578"></a><span class="w">  </span><span class="s2">&quot;feat,prioridade:baixa&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-579" name="__codelineno-2-579" href="#__codelineno-2-579"></a><span class="w">  </span><span class="s2">&quot;NOVAS FUNCIONALIDADES (Semanas 7-8)&quot;</span>
+<a id="__codelineno-2-580" name="__codelineno-2-580" href="#__codelineno-2-580"></a>
+<a id="__codelineno-2-581" name="__codelineno-2-581" href="#__codelineno-2-581"></a>create_issue<span class="w"> </span><span class="s2">&quot;N6: Cache com Redis para análises frequentes&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-582" name="__codelineno-2-582" href="#__codelineno-2-582"></a><span class="s2">&quot;## 🎯 Objetivo</span>
+<a id="__codelineno-2-583" name="__codelineno-2-583" href="#__codelineno-2-583"></a><span class="s2">Melhorar performance de análises repetidas.</span>
+<a id="__codelineno-2-584" name="__codelineno-2-584" href="#__codelineno-2-584"></a>
+<a id="__codelineno-2-585" name="__codelineno-2-585" href="#__codelineno-2-585"></a><span class="s2">## 📋 Tarefas</span>
+<a id="__codelineno-2-586" name="__codelineno-2-586" href="#__codelineno-2-586"></a><span class="s2">- [ ] Adicionar Redis como dependência opcional</span>
+<a id="__codelineno-2-587" name="__codelineno-2-587" href="#__codelineno-2-587"></a><span class="s2">- [ ] Criar decorator de cache</span>
+<a id="__codelineno-2-588" name="__codelineno-2-588" href="#__codelineno-2-588"></a><span class="s2">- [ ] Aplicar em `analisar_acervo`</span>
+<a id="__codelineno-2-589" name="__codelineno-2-589" href="#__codelineno-2-589"></a><span class="s2">- [ ] Configurar TTL</span>
+<a id="__codelineno-2-590" name="__codelineno-2-590" href="#__codelineno-2-590"></a>
+<a id="__codelineno-2-591" name="__codelineno-2-591" href="#__codelineno-2-591"></a><span class="s2">## ⏱️ Estimativa: 4h</span>
+<a id="__codelineno-2-592" name="__codelineno-2-592" href="#__codelineno-2-592"></a><span class="s2">## Prioridade: Baixa&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-593" name="__codelineno-2-593" href="#__codelineno-2-593"></a><span class="w">  </span><span class="s2">&quot;feat,prioridade:baixa&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-594" name="__codelineno-2-594" href="#__codelineno-2-594"></a><span class="w">  </span><span class="s2">&quot;NOVAS FUNCIONALIDADES (Semanas 7-8)&quot;</span>
+<a id="__codelineno-2-595" name="__codelineno-2-595" href="#__codelineno-2-595"></a>
+<a id="__codelineno-2-596" name="__codelineno-2-596" href="#__codelineno-2-596"></a><span class="c1"># =============================================</span>
+<a id="__codelineno-2-597" name="__codelineno-2-597" href="#__codelineno-2-597"></a><span class="c1"># MILESTONE 5: DOCUMENTAÇÃO E FINALIZAÇÃO (Contínuo)</span>
+<a id="__codelineno-2-598" name="__codelineno-2-598" href="#__codelineno-2-598"></a><span class="c1"># =============================================</span>
+<a id="__codelineno-2-599" name="__codelineno-2-599" href="#__codelineno-2-599"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;📌 MILESTONE 5: DOCUMENTAÇÃO E FINALIZAÇÃO (5 issues)&quot;</span>
+<a id="__codelineno-2-600" name="__codelineno-2-600" href="#__codelineno-2-600"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;-----------------------------------------------------&quot;</span>
+<a id="__codelineno-2-601" name="__codelineno-2-601" href="#__codelineno-2-601"></a>
+<a id="__codelineno-2-602" name="__codelineno-2-602" href="#__codelineno-2-602"></a>create_issue<span class="w"> </span><span class="s2">&quot;R1: Revisar documentação (.md files)&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-603" name="__codelineno-2-603" href="#__codelineno-2-603"></a><span class="s2">&quot;## 🎯 Objetivo</span>
+<a id="__codelineno-2-604" name="__codelineno-2-604" href="#__codelineno-2-604"></a><span class="s2">Consolidar e revisar todos os arquivos de documentação.</span>
+<a id="__codelineno-2-605" name="__codelineno-2-605" href="#__codelineno-2-605"></a>
+<a id="__codelineno-2-606" name="__codelineno-2-606" href="#__codelineno-2-606"></a><span class="s2">## 🔗 Referência</span>
+<a id="__codelineno-2-607" name="__codelineno-2-607" href="#__codelineno-2-607"></a><span class="s2">Issue #2 - Revisar documentação (.md files)</span>
+<a id="__codelineno-2-608" name="__codelineno-2-608" href="#__codelineno-2-608"></a>
+<a id="__codelineno-2-609" name="__codelineno-2-609" href="#__codelineno-2-609"></a><span class="s2">## 📋 Tarefas</span>
+<a id="__codelineno-2-610" name="__codelineno-2-610" href="#__codelineno-2-610"></a><span class="s2">- [ ] Verificar duplicatas (cobertura.md vs cobertura.md (versão histórica))</span>
+<a id="__codelineno-2-611" name="__codelineno-2-611" href="#__codelineno-2-611"></a><span class="s2">- [ ] Atualizar índices</span>
+<a id="__codelineno-2-612" name="__codelineno-2-612" href="#__codelineno-2-612"></a><span class="s2">- [ ] Garantir que todas as fases estão documentadas</span>
+<a id="__codelineno-2-613" name="__codelineno-2-613" href="#__codelineno-2-613"></a><span class="s2">- [ ] Fazer merge da branch `docs/organizacao`</span>
+<a id="__codelineno-2-614" name="__codelineno-2-614" href="#__codelineno-2-614"></a>
+<a id="__codelineno-2-615" name="__codelineno-2-615" href="#__codelineno-2-615"></a><span class="s2">## ⏱️ Estimativa: 3h</span>
+<a id="__codelineno-2-616" name="__codelineno-2-616" href="#__codelineno-2-616"></a><span class="s2">## Prioridade: Alta&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-617" name="__codelineno-2-617" href="#__codelineno-2-617"></a><span class="w">  </span><span class="s2">&quot;tipo/documentação,prioridade:alta&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-618" name="__codelineno-2-618" href="#__codelineno-2-618"></a><span class="w">  </span><span class="s2">&quot;DOCUMENTAÇÃO E FINALIZAÇÃO (Contínuo)&quot;</span>
+<a id="__codelineno-2-619" name="__codelineno-2-619" href="#__codelineno-2-619"></a>
+<a id="__codelineno-2-620" name="__codelineno-2-620" href="#__codelineno-2-620"></a>create_issue<span class="w"> </span><span class="s2">&quot;R2: Atualizar todas as FASE*.md com resultados finais&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-621" name="__codelineno-2-621" href="#__codelineno-2-621"></a><span class="s2">&quot;## 🎯 Objetivo</span>
+<a id="__codelineno-2-622" name="__codelineno-2-622" href="#__codelineno-2-622"></a><span class="s2">Garantir que cada fase tenha sua documentação completa.</span>
+<a id="__codelineno-2-623" name="__codelineno-2-623" href="#__codelineno-2-623"></a>
+<a id="__codelineno-2-624" name="__codelineno-2-624" href="#__codelineno-2-624"></a><span class="s2">## 📋 Tarefas</span>
+<a id="__codelineno-2-625" name="__codelineno-2-625" href="#__codelineno-2-625"></a><span class="s2">- [ ] Revisar FASE 1-16</span>
+<a id="__codelineno-2-626" name="__codelineno-2-626" href="#__codelineno-2-626"></a><span class="s2">- [ ] Adicionar métricas finais</span>
+<a id="__codelineno-2-627" name="__codelineno-2-627" href="#__codelineno-2-627"></a><span class="s2">- [ ] Verificar links</span>
+<a id="__codelineno-2-628" name="__codelineno-2-628" href="#__codelineno-2-628"></a><span class="s2">- [ ] Padronizar formatação</span>
+<a id="__codelineno-2-629" name="__codelineno-2-629" href="#__codelineno-2-629"></a>
+<a id="__codelineno-2-630" name="__codelineno-2-630" href="#__codelineno-2-630"></a><span class="s2">## ⏱️ Estimativa: 4h</span>
+<a id="__codelineno-2-631" name="__codelineno-2-631" href="#__codelineno-2-631"></a><span class="s2">## Prioridade: Alta&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-632" name="__codelineno-2-632" href="#__codelineno-2-632"></a><span class="w">  </span><span class="s2">&quot;docs,prioridade:alta&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-633" name="__codelineno-2-633" href="#__codelineno-2-633"></a><span class="w">  </span><span class="s2">&quot;DOCUMENTAÇÃO E FINALIZAÇÃO (Contínuo)&quot;</span>
+<a id="__codelineno-2-634" name="__codelineno-2-634" href="#__codelineno-2-634"></a>
+<a id="__codelineno-2-635" name="__codelineno-2-635" href="#__codelineno-2-635"></a>create_issue<span class="w"> </span><span class="s2">&quot;R3: Criar apresentação do TCC (slides)&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-636" name="__codelineno-2-636" href="#__codelineno-2-636"></a><span class="s2">&quot;## 🎯 Objetivo</span>
+<a id="__codelineno-2-637" name="__codelineno-2-637" href="#__codelineno-2-637"></a><span class="s2">Preparar slides para apresentação final.</span>
+<a id="__codelineno-2-638" name="__codelineno-2-638" href="#__codelineno-2-638"></a>
+<a id="__codelineno-2-639" name="__codelineno-2-639" href="#__codelineno-2-639"></a><span class="s2">## 📋 Tarefas</span>
+<a id="__codelineno-2-640" name="__codelineno-2-640" href="#__codelineno-2-640"></a><span class="s2">- [ ] Definir estrutura</span>
+<a id="__codelineno-2-641" name="__codelineno-2-641" href="#__codelineno-2-641"></a><span class="s2">- [ ] Criar slides de introdução</span>
+<a id="__codelineno-2-642" name="__codelineno-2-642" href="#__codelineno-2-642"></a><span class="s2">- [ ] Mostrar arquitetura</span>
+<a id="__codelineno-2-643" name="__codelineno-2-643" href="#__codelineno-2-643"></a><span class="s2">- [ ] Demonstrar funcionalidades</span>
+<a id="__codelineno-2-644" name="__codelineno-2-644" href="#__codelineno-2-644"></a><span class="s2">- [ ] Resultados e métricas</span>
+<a id="__codelineno-2-645" name="__codelineno-2-645" href="#__codelineno-2-645"></a><span class="s2">- [ ] Conclusão</span>
+<a id="__codelineno-2-646" name="__codelineno-2-646" href="#__codelineno-2-646"></a>
+<a id="__codelineno-2-647" name="__codelineno-2-647" href="#__codelineno-2-647"></a><span class="s2">## ⏱️ Estimativa: 6h</span>
+<a id="__codelineno-2-648" name="__codelineno-2-648" href="#__codelineno-2-648"></a><span class="s2">## Prioridade: Alta&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-649" name="__codelineno-2-649" href="#__codelineno-2-649"></a><span class="w">  </span><span class="s2">&quot;docs,prioridade:alta&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-650" name="__codelineno-2-650" href="#__codelineno-2-650"></a><span class="w">  </span><span class="s2">&quot;DOCUMENTAÇÃO E FINALIZAÇÃO (Contínuo)&quot;</span>
+<a id="__codelineno-2-651" name="__codelineno-2-651" href="#__codelineno-2-651"></a>
+<a id="__codelineno-2-652" name="__codelineno-2-652" href="#__codelineno-2-652"></a>create_issue<span class="w"> </span><span class="s2">&quot;R4: Preparar vídeo de demonstração&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-653" name="__codelineno-2-653" href="#__codelineno-2-653"></a><span class="s2">&quot;## 🎯 Objetivo</span>
+<a id="__codelineno-2-654" name="__codelineno-2-654" href="#__codelineno-2-654"></a><span class="s2">Gravar vídeo mostrando o sistema em funcionamento.</span>
+<a id="__codelineno-2-655" name="__codelineno-2-655" href="#__codelineno-2-655"></a>
+<a id="__codelineno-2-656" name="__codelineno-2-656" href="#__codelineno-2-656"></a><span class="s2">## 📋 Tarefas</span>
+<a id="__codelineno-2-657" name="__codelineno-2-657" href="#__codelineno-2-657"></a><span class="s2">- [ ] Roteiro</span>
+<a id="__codelineno-2-658" name="__codelineno-2-658" href="#__codelineno-2-658"></a><span class="s2">- [ ] Gravar CLI</span>
+<a id="__codelineno-2-659" name="__codelineno-2-659" href="#__codelineno-2-659"></a><span class="s2">- [ ] Gravar Web</span>
+<a id="__codelineno-2-660" name="__codelineno-2-660" href="#__codelineno-2-660"></a><span class="s2">- [ ] Editar</span>
+<a id="__codelineno-2-661" name="__codelineno-2-661" href="#__codelineno-2-661"></a><span class="s2">- [ ] Adicionar narração</span>
+<a id="__codelineno-2-662" name="__codelineno-2-662" href="#__codelineno-2-662"></a>
+<a id="__codelineno-2-663" name="__codelineno-2-663" href="#__codelineno-2-663"></a><span class="s2">## ⏱️ Estimativa: 3h</span>
+<a id="__codelineno-2-664" name="__codelineno-2-664" href="#__codelineno-2-664"></a><span class="s2">## Prioridade: Média&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-665" name="__codelineno-2-665" href="#__codelineno-2-665"></a><span class="w">  </span><span class="s2">&quot;docs,prioridade:media&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-666" name="__codelineno-2-666" href="#__codelineno-2-666"></a><span class="w">  </span><span class="s2">&quot;DOCUMENTAÇÃO E FINALIZAÇÃO (Contínuo)&quot;</span>
+<a id="__codelineno-2-667" name="__codelineno-2-667" href="#__codelineno-2-667"></a>
+<a id="__codelineno-2-668" name="__codelineno-2-668" href="#__codelineno-2-668"></a>create_issue<span class="w"> </span><span class="s2">&quot;R5: Revisar e publicar versão final (v1.0.0)&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-669" name="__codelineno-2-669" href="#__codelineno-2-669"></a><span class="s2">&quot;## 🎯 Objetivo</span>
+<a id="__codelineno-2-670" name="__codelineno-2-670" href="#__codelineno-2-670"></a><span class="s2">Preparar release final para entrega do TCC.</span>
+<a id="__codelineno-2-671" name="__codelineno-2-671" href="#__codelineno-2-671"></a>
+<a id="__codelineno-2-672" name="__codelineno-2-672" href="#__codelineno-2-672"></a><span class="s2">## 📋 Tarefas</span>
+<a id="__codelineno-2-673" name="__codelineno-2-673" href="#__codelineno-2-673"></a><span class="s2">- [ ] Verificar CHANGELOG</span>
+<a id="__codelineno-2-674" name="__codelineno-2-674" href="#__codelineno-2-674"></a><span class="s2">- [ ] Atualizar versão no pyproject.toml</span>
+<a id="__codelineno-2-675" name="__codelineno-2-675" href="#__codelineno-2-675"></a><span class="s2">- [ ] Criar tag v1.0.0</span>
+<a id="__codelineno-2-676" name="__codelineno-2-676" href="#__codelineno-2-676"></a><span class="s2">- [ ] Criar release no GitHub</span>
+<a id="__codelineno-2-677" name="__codelineno-2-677" href="#__codelineno-2-677"></a><span class="s2">- [ ] Publicar documentação final</span>
+<a id="__codelineno-2-678" name="__codelineno-2-678" href="#__codelineno-2-678"></a>
+<a id="__codelineno-2-679" name="__codelineno-2-679" href="#__codelineno-2-679"></a><span class="s2">## ⏱️ Estimativa: 2h</span>
+<a id="__codelineno-2-680" name="__codelineno-2-680" href="#__codelineno-2-680"></a><span class="s2">## Prioridade: Alta&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-681" name="__codelineno-2-681" href="#__codelineno-2-681"></a><span class="w">  </span><span class="s2">&quot;tipo/release,prioridade:alta&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-682" name="__codelineno-2-682" href="#__codelineno-2-682"></a><span class="w">  </span><span class="s2">&quot;DOCUMENTAÇÃO E FINALIZAÇÃO (Contínuo)&quot;</span>
+<a id="__codelineno-2-683" name="__codelineno-2-683" href="#__codelineno-2-683"></a>
+<a id="__codelineno-2-684" name="__codelineno-2-684" href="#__codelineno-2-684"></a><span class="c1"># =============================================</span>
+<a id="__codelineno-2-685" name="__codelineno-2-685" href="#__codelineno-2-685"></a><span class="c1"># RESUMO FINAL</span>
+<a id="__codelineno-2-686" name="__codelineno-2-686" href="#__codelineno-2-686"></a><span class="c1"># =============================================</span>
+<a id="__codelineno-2-687" name="__codelineno-2-687" href="#__codelineno-2-687"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-2-688" name="__codelineno-2-688" href="#__codelineno-2-688"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;=====================================================&quot;</span>
+<a id="__codelineno-2-689" name="__codelineno-2-689" href="#__codelineno-2-689"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;✅ SCRIPT CONCLUÍDO!&quot;</span>
+<a id="__codelineno-2-690" name="__codelineno-2-690" href="#__codelineno-2-690"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;=====================================================&quot;</span>
+<a id="__codelineno-2-691" name="__codelineno-2-691" href="#__codelineno-2-691"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-2-692" name="__codelineno-2-692" href="#__codelineno-2-692"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;📊 RESUMO DAS ISSUES CRIADAS:&quot;</span>
+<a id="__codelineno-2-693" name="__codelineno-2-693" href="#__codelineno-2-693"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-2-694" name="__codelineno-2-694" href="#__codelineno-2-694"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;   Milestone 1: FUNDAÇÃO ................ 6 issues&quot;</span>
+<a id="__codelineno-2-695" name="__codelineno-2-695" href="#__codelineno-2-695"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;   Milestone 2: QUALIDADE ................ 7 issues&quot;</span>
+<a id="__codelineno-2-696" name="__codelineno-2-696" href="#__codelineno-2-696"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;   Milestone 3: DEPENDÊNCIAS ............. 5 issues&quot;</span>
+<a id="__codelineno-2-697" name="__codelineno-2-697" href="#__codelineno-2-697"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;   Milestone 4: NOVAS FUNCIONALIDADES .... 6 issues&quot;</span>
+<a id="__codelineno-2-698" name="__codelineno-2-698" href="#__codelineno-2-698"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;   Milestone 5: DOCUMENTAÇÃO ............. 5 issues&quot;</span>
+<a id="__codelineno-2-699" name="__codelineno-2-699" href="#__codelineno-2-699"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;   -----------------------------------------&quot;</span>
+<a id="__codelineno-2-700" name="__codelineno-2-700" href="#__codelineno-2-700"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;   TOTAL ................................. 29 issues&quot;</span>
+<a id="__codelineno-2-701" name="__codelineno-2-701" href="#__codelineno-2-701"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-2-702" name="__codelineno-2-702" href="#__codelineno-2-702"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;=====================================================&quot;</span>
+<a id="__codelineno-2-703" name="__codelineno-2-703" href="#__codelineno-2-703"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;📋 PRÓXIMOS PASSOS:&quot;</span>
+<a id="__codelineno-2-704" name="__codelineno-2-704" href="#__codelineno-2-704"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-2-705" name="__codelineno-2-705" href="#__codelineno-2-705"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;1️⃣  Verifique os milestones no site:&quot;</span>
+<a id="__codelineno-2-706" name="__codelineno-2-706" href="#__codelineno-2-706"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;   https://github.com/rib-thiago/showtrials-tcc/milestones&quot;</span>
+<a id="__codelineno-2-707" name="__codelineno-2-707" href="#__codelineno-2-707"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-2-708" name="__codelineno-2-708" href="#__codelineno-2-708"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;2️⃣  Acesse o Project Kanban:&quot;</span>
+<a id="__codelineno-2-709" name="__codelineno-2-709" href="#__codelineno-2-709"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;   https://github.com/users/rib-thiago/projects/1&quot;</span>
+<a id="__codelineno-2-710" name="__codelineno-2-710" href="#__codelineno-2-710"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-2-711" name="__codelineno-2-711" href="#__codelineno-2-711"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;3️⃣  Adicione as issues ao Project:&quot;</span>
+<a id="__codelineno-2-712" name="__codelineno-2-712" href="#__codelineno-2-712"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;   gh project item-add &lt;NUMERO&gt; --owner rib-thiago --url https://github.com/rib-thiago/showtrials-tcc/issues/&lt;NUMERO&gt;&quot;</span>
+<a id="__codelineno-2-713" name="__codelineno-2-713" href="#__codelineno-2-713"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-2-714" name="__codelineno-2-714" href="#__codelineno-2-714"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;4️⃣  Comece pela F1 (flows) ou Q3 (estatisticas.py urgente)&quot;</span>
+<a id="__codelineno-2-715" name="__codelineno-2-715" href="#__codelineno-2-715"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-2-716" name="__codelineno-2-716" href="#__codelineno-2-716"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;=====================================================&quot;</span>
+</code></pre></div>
+<hr />
+<h2 id="instrucoes-para-gerir-o-backlog">📋 <strong>INSTRUÇÕES PARA GERIR O BACKLOG</strong><a class="headerlink" href="#instrucoes-para-gerir-o-backlog" title="Permanent link">&para;</a></h2>
+<h3 id="1-apos-rodar-o-script"><strong>1. Após rodar o script</strong><a class="headerlink" href="#1-apos-rodar-o-script" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Ver todas as issues criadas</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>gh<span class="w"> </span>issue<span class="w"> </span>list<span class="w"> </span>--state<span class="w"> </span>all
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># Ver issues por milestone</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>gh<span class="w"> </span>issue<span class="w"> </span>list<span class="w"> </span>--milestone<span class="w"> </span><span class="s2">&quot;FUNDAÇÃO (Semanas 1-2)&quot;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>gh<span class="w"> </span>issue<span class="w"> </span>list<span class="w"> </span>--milestone<span class="w"> </span><span class="s2">&quot;QUALIDADE E TESTES (Semanas 3-4)&quot;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1"># ... etc</span>
+</code></pre></div>
+<h3 id="2-adicionar-issues-ao-project-kanban"><strong>2. Adicionar issues ao Project Kanban</strong><a class="headerlink" href="#2-adicionar-issues-ao-project-kanban" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Primeiro, liste os projects para pegar o ID</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>gh<span class="w"> </span>project<span class="w"> </span>list<span class="w"> </span>--owner<span class="w"> </span>rib-thiago
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Para cada issue, adicione ao project (substitua NUMERO e PROJECT_ID)</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>gh<span class="w"> </span>project<span class="w"> </span>item-add<span class="w"> </span><span class="m">1</span><span class="w"> </span>--owner<span class="w"> </span>rib-thiago<span class="w"> </span>--url<span class="w"> </span>https://github.com/rib-thiago/showtrials-tcc/issues/1
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>gh<span class="w"> </span>project<span class="w"> </span>item-add<span class="w"> </span><span class="m">2</span><span class="w"> </span>--owner<span class="w"> </span>rib-thiago<span class="w"> </span>--url<span class="w"> </span>https://github.com/rib-thiago/showtrials-tcc/issues/2
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># ... repita para todas as 29 issues</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1"># Ou crie um loop (depois de pegar o PROJECT_ID)</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="k">for</span><span class="w"> </span>issue<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span><span class="m">1</span>..29<span class="o">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span>gh<span class="w"> </span>project<span class="w"> </span>item-add<span class="w"> </span><span class="nv">$issue</span><span class="w"> </span>--owner<span class="w"> </span>rib-thiago<span class="w"> </span>--url<span class="w"> </span>https://github.com/rib-thiago/showtrials-tcc/issues/<span class="nv">$issue</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="k">done</span>
+</code></pre></div>
+<h3 id="3-organizar-o-kanban"><strong>3. Organizar o Kanban</strong><a class="headerlink" href="#3-organizar-o-kanban" title="Permanent link">&para;</a></h3>
+<p>No site do Project, arraste as issues para as colunas corretas:</p>
+<table>
+<thead>
+<tr>
+<th>Coluna</th>
+<th>Quais issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>📋 Backlog</strong></td>
+<td>Todas as 29 issues (inicialmente)</td>
+</tr>
+<tr>
+<td><strong>✅ Ready</strong></td>
+<td>As que você vai começar agora (ex: F1, Q3)</td>
+</tr>
+<tr>
+<td><strong>⏳ In Progress</strong></td>
+<td>Quando começar a trabalhar</td>
+</tr>
+<tr>
+<td><strong>👀 In Review</strong></td>
+<td>Se fizer PR (opcional)</td>
+</tr>
+<tr>
+<td><strong>✅ Done</strong></td>
+<td>Quando concluídas</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-prioridades-iniciais-sugeridas"><strong>4. Prioridades iniciais sugeridas</strong><a class="headerlink" href="#4-prioridades-iniciais-sugeridas" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Mover para &quot;Ready&quot; primeiro:</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>-<span class="w"> </span>Q3:<span class="w"> </span>estatisticas.py<span class="w"> </span><span class="o">(</span>URGENTE<span class="w"> </span>-<span class="w"> </span><span class="m">15</span>%<span class="w"> </span>cobertura<span class="o">)</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>-<span class="w"> </span>F1:<span class="w"> </span>Documentar<span class="w"> </span>flows
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>-<span class="w"> </span>F5:<span class="w"> </span>Branch<span class="w"> </span>protection
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>-<span class="w"> </span>Q1:<span class="w"> </span>classificar_documento.py
+</code></pre></div>
+<h3 id="5-fluxo-diario-de-trabalho"><strong>5. Fluxo diário de trabalho</strong><a class="headerlink" href="#5-fluxo-diario-de-trabalho" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># 1. Ver o que está em Ready</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>gh<span class="w"> </span>issue<span class="w"> </span>list<span class="w"> </span>--label<span class="w"> </span><span class="s2">&quot;prioridade:alta&quot;</span><span class="w"> </span>--state<span class="w"> </span>open
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># 2. Pegar uma issue</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>type/classificar-documento<span class="w">  </span><span class="c1"># ou fix/, docs/, etc.</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="c1"># 3. Desenvolver</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="c1"># ...</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="c1"># 4. Commit com fechamento</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat: ... Closes #NUMERO&quot;</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="c1"># 5. Push e merge</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>type/classificar-documento
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="c1"># (merge após CI passar)</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="c1"># 6. No Kanban, mover issue para &quot;Done&quot;</span>
+</code></pre></div>
+<hr />
+<h2 id="resumo-o-que-voce-tem-agora">🎯 <strong>RESUMO - O QUE VOCÊ TEM AGORA</strong><a class="headerlink" href="#resumo-o-que-voce-tem-agora" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Recurso</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>29 issues</strong></td>
+<td>✅ Prontas para criar</td>
+</tr>
+<tr>
+<td><strong>5 milestones</strong></td>
+<td>✅ Com datas sugeridas</td>
+</tr>
+<tr>
+<td><strong>Project Kanban</strong></td>
+<td>✅ Já configurado</td>
+</tr>
+<tr>
+<td><strong>Labels</strong></td>
+<td>✅ 10+ disponíveis</td>
+</tr>
+<tr>
+<td><strong>Fluxo de trabalho</strong></td>
+<td>✅ Documentado</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Quer que eu execute o script para você ou prefere criar manualmente?</strong> 🚀</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/rib-thiago/showtrials-tcc" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "search.suggest", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
