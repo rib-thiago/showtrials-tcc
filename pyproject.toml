@@ -70,13 +70,30 @@ ignore = ["E402", "F841"]
 python_version = "3.12"
 strict_optional = true
 
+# (opcional) evita ruído extra
+warn_unused_ignores = true
+
+# Terceiros sem typing: não seguir imports
 [[tool.mypy.overrides]]
 module = [
+  "google",
+  "google.*",
+  "wordcloud",
   "wordcloud.*",
+  "textblob",
   "textblob.*",
-  "google.*"
 ]
 ignore_missing_imports = true
+follow_imports = "skip"
+
+# Silenciar o erro import-untyped APENAS onde ele estoura (nos seus arquivos)
+[[tool.mypy.overrides]]
+module = [
+  "src.infrastructure.translation.google_translator",
+  "src.infrastructure.analysis.wordcloud_generator",
+  "src.infrastructure.analysis.spacy_analyzer",
+]
+disable_error_code = ["import-untyped"]
 
 [tool.commitizen]
 name = "cz_conventional_commits"
