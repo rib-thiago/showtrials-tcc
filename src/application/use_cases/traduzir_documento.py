@@ -88,7 +88,7 @@ class TraduzirDocumento:
         except Exception as e:
             if _telemetry:
                 _telemetry.increment("traduzir_documento.erro.traducao")
-            raise RuntimeError(f"Erro na tradução: {e}")
+            raise RuntimeError(f"Erro na tradução: {e}") from e
 
         # 4. Criar entidade de tradução
         traducao = Traducao(
