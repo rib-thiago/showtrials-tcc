@@ -79,7 +79,7 @@ quality = "task lint && task type"
 
 # === Testes ===
 test = "pytest src/tests -v"
-test-cov = "pytest src/tests --cov=src --cov-report=term-missing --cov-fail-under=45"
+test-cov = "pytest src/tests --cov=src --cov-report=term-missing --cov-report=xml:coverage.xml --cov-fail-under=45"
 test-html = "pytest src/tests --cov=src --cov-report=html"
 
 # === Telemetria ===
