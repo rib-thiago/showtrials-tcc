@@ -34,6 +34,7 @@ mkdocstrings-python = "^2.0.2"
 commitizen = "^4.13.7"
 taskipy = "^1.14.1"
 mypy = "^1.19.1"
+types-pyyaml = "^6.0.12.20250915"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
@@ -64,6 +65,18 @@ exclude = [
 [tool.ruff.lint]
 select = ["E", "F", "I", "B"]
 ignore = ["E402", "F841"]
+
+[tool.mypy]
+python_version = "3.12"
+strict_optional = true
+
+[[tool.mypy.overrides]]
+module = [
+  "wordcloud.*",
+  "textblob.*",
+  "google.*"
+]
+ignore_missing_imports = true
 
 [tool.commitizen]
 name = "cz_conventional_commits"
