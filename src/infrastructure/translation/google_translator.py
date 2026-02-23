@@ -42,7 +42,7 @@ class TraducaoResultado:
     modelo_utilizado: str
     caracteres_originais: int
     custo_estimado: float
-    timestamp: datetime = None
+    timestamp: Optional[datetime] = None  # <- fix MyPy: Optional explícito
 
     def __post_init__(self):
         if self.timestamp is None:
@@ -144,15 +144,6 @@ class GoogleTranslator:
     ) -> Union[TraducaoResultado, List[TraducaoResultado]]:
         """
         Traduz texto(s) para o idioma destino.
-
-        Args:
-            texto: String ou lista de strings
-            destino: Código ISO do idioma destino
-            origem: Código ISO do idioma origem (None = detecção automática)
-            modelo: 'nmt' (neural) ou 'base'
-
-        Returns:
-            TraducaoResultado ou lista de resultados
         """
         # Se não tem cliente, usar simulação
         if self._client is None:
@@ -167,8 +158,7 @@ class GoogleTranslator:
                 textos, target_language=destino, source_language=origem, model=modelo
             )
 
-            # Processar resultados
-            resultados = []
+            resultados: List[TraducaoResultado] = []
             for i, res in enumerate(resultados_api):
                 chars_originais = len(textos[i])
                 custo = chars_originais * self.PRICING.get(modelo, self.PRICING["default"])
@@ -196,22 +186,13 @@ class GoogleTranslator:
     ) -> str:
         """
         Traduz documentos grandes dividindo em chunks.
-
-        Args:
-            texto: Texto completo do documento
-            destino: Idioma destino
-            chunk_size: Tamanho máximo de cada chunk
-
-        Returns:
-            str: Texto traduzido completo
         """
         if not texto:
             return ""
 
-        # Dividir em parágrafos
         paragrafos = texto.split("\n")
-        chunks = []
-        chunk_atual = []
+        chunks: List[str] = []
+        chunk_atual: List[str] = []
         tamanho_atual = 0
 
         for para in paragrafos:
@@ -228,9 +209,7 @@ class GoogleTranslator:
 
         print(f"📄 Documento dividido em {len(chunks)} partes para tradução")
 
-        # Traduzir cada chunk
-        traducoes = []
-
+        traducoes: List[str] = []
         for i, chunk in enumerate(chunks, 1):
             print(f"  ↳ Traduzindo parte {i}/{len(chunks)}...")
             try:
@@ -239,7 +218,7 @@ class GoogleTranslator:
                     traducoes.append(resultado.texto_traduzido)
                 else:
                     traducoes.append(str(resultado))
-                time.sleep(0.5)  # Rate limiting
+                time.sleep(0.5)
             except Exception as e:
                 print(f"    ⚠️ Erro na parte {i}: {e}")
                 traducoes.append("")
@@ -288,10 +267,7 @@ class GoogleTranslator:
 
 
 def criar_tradutor_da_configuracao() -> Optional[GoogleTranslator]:
-    """
-    Factory function que cria o tradutor a partir de variáveis de ambiente.
-    """
-    # Tentar com API Key
+    """Factory function que cria o tradutor a partir de variáveis de ambiente."""
     api_key = os.getenv("GOOGLE_TRANSLATE_API_KEY")
     if api_key:
         try:
@@ -299,7 +275,6 @@ def criar_tradutor_da_configuracao() -> Optional[GoogleTranslator]:
         except Exception as e:
             print(f"⚠️ Falha ao usar API Key: {e}")
 
-    # Tentar com Conta de Serviço
     creds_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
     if creds_path and Path(creds_path).exists():
         try:
@@ -307,30 +282,23 @@ def criar_tradutor_da_configuracao() -> Optional[GoogleTranslator]:
         except Exception as e:
             print(f"⚠️ Falha ao usar Conta de Serviço: {e}")
 
-    # Fallback para simulação
     print("⚠️ Nenhuma credencial válida encontrada. Usando modo simulação.")
-    return GoogleTranslator()  # Sem credenciais = modo simulação
+    return GoogleTranslator()
 
 
-# Adaptador com persistência (mantido para compatibilidade)
 class TradutorComPersistenciaAdapter:
-    """
-    Adaptador que adiciona persistência às traduções.
-    """
+    """Adaptador que adiciona persistência às traduções."""
 
     def __init__(self, tradutor_adapter, repo_traducao):
         self.tradutor = tradutor_adapter
         self.repo = repo_traducao
 
     def traduzir_e_salvar(self, documento_id: int, texto: str, destino: str = "en"):
-        """
-        Traduz e salva no banco.
-        """
+        """Traduz e salva no banco."""
         from datetime import datetime
 
         from src.domain.entities.traducao import Traducao
 
-        # Traduzir
         if hasattr(self.tradutor, "traduzir_documento_completo"):
             texto_traduzido = self.tradutor.traduzir_documento_completo(texto, destino)
             custo = len(texto) * 0.000020
@@ -343,7 +311,6 @@ class TradutorComPersistenciaAdapter:
                 texto_traduzido = str(resultado)
                 custo = len(texto) * 0.000020
 
-        # Criar entidade
         traducao = Traducao(
             documento_id=documento_id,
             idioma=destino,
@@ -353,7 +320,5 @@ class TradutorComPersistenciaAdapter:
             custo=custo,
         )
 
-        # Salvar
         traducao.id = self.repo.salvar(traducao)
-
         return traducao

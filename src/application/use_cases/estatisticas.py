@@ -26,9 +26,9 @@ class ObterEstatisticas:
         documentos = self.repo.listar(limite=5000)
 
         # Inicializar contadores
-        centro_counter = Counter()
-        tipo_counter = Counter()
-        pessoa_counter = Counter()
+        centro_counter: Counter[str] = Counter()
+        tipo_counter: Counter[str] = Counter()
+        pessoa_counter: Counter[str] = Counter()
 
         # Métricas especiais
         cartas = 0
@@ -71,7 +71,7 @@ class ObterEstatisticas:
                 anexos += 1
 
         # Pessoas mais frequentes (com tradução)
-        pessoas_frequentes = []
+        pessoas_frequentes: list[tuple[str, int, str]] = []
         for nome, count in pessoa_counter.most_common(15):
             try:
                 nome_en = NomeRusso(nome).transliterar()
@@ -80,7 +80,7 @@ class ObterEstatisticas:
             pessoas_frequentes.append((nome, count, nome_en))
 
         # Traduções (mock por enquanto - será integrado depois)
-        traducoes_por_idioma = {"en": 0, "pt": 0}
+        traducoes_por_idioma: dict[str, int] = {"en": 0, "pt": 0}
 
         return EstatisticasDTO(
             total_documentos=len(documentos),
