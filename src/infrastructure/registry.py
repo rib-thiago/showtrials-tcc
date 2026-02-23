@@ -30,7 +30,7 @@ class ServiceInfo:
     """Informações de registro de um serviço."""
 
     name: str
-    factory: Callable
+    factory: Callable[..., Any]
     lazy: bool = True
     config: Dict[str, Any] = field(default_factory=dict)
     singleton: bool = True  # Se True, mesma instância para todas as chamadas
@@ -47,10 +47,10 @@ class ServiceRegistry:
     - Estatísticas de uso por serviço
     """
 
-    _instance = None
-    _lock = Lock()
+    _instance: Optional["ServiceRegistry"] = None
+    _lock: Lock = Lock()
 
-    def __new__(cls):
+    def __new__(cls) -> "ServiceRegistry":
         """Singleton thread-safe."""
         if cls._instance is None:
             with cls._lock:
@@ -59,9 +59,9 @@ class ServiceRegistry:
                     cls._instance._initialized = False
         return cls._instance
 
-    def __init__(self):
+    def __init__(self) -> None:
         """Inicialização (executada apenas uma vez devido ao singleton)."""
-        if self._initialized:
+        if getattr(self, "_initialized", False):
             return
 
         self._services: Dict[str, ServiceInfo] = {}
@@ -72,7 +72,12 @@ class ServiceRegistry:
         logger.info("🔧 Service Registry inicializado")
 
     def register(
-        self, name: str, factory: Callable, lazy: bool = True, singleton: bool = True, **config
+        self,
+        name: str,
+        factory: Callable[..., Any],
+        lazy: bool = True,
+        singleton: bool = True,
+        **config: Any,
     ) -> None:
         """
         Registra um serviço no registry.
@@ -89,12 +94,12 @@ class ServiceRegistry:
                 logger.warning(f"⚠️ Serviço {name} já registrado. Substituindo.")
 
             self._services[name] = ServiceInfo(
-                name=name, factory=factory, lazy=lazy, singleton=singleton, config=config
+                name=name, factory=factory, lazy=lazy, singleton=singleton, config=dict(config)
             )
             self._stats[name] = ServiceStats()
             logger.info(f"✅ Serviço registrado: {name} (lazy={lazy})")
 
-    def get(self, name: str, *args, **kwargs) -> Any:
+    def get(self, name: str, *args: Any, **kwargs: Any) -> Any:
         """
         Obtém instância de um serviço (inicializa se necessário).
 
@@ -142,7 +147,7 @@ class ServiceRegistry:
 
             try:
                 # Mescla config com args/kwargs
-                factory_kwargs = service_info.config.copy()
+                factory_kwargs: Dict[str, Any] = service_info.config.copy()
                 factory_kwargs.update(kwargs)
 
                 instance = service_info.factory(*args, **factory_kwargs)
@@ -168,7 +173,7 @@ class ServiceRegistry:
         Returns:
             Dict com tempos de inicialização por serviço
         """
-        results = {}
+        results: Dict[str, float] = {}
         for name, info in self._services.items():
             if not info.lazy and info.singleton and name not in self._instances:
                 logger.info(f"🚀 Inicializando serviço eager: {name}")
@@ -182,12 +187,12 @@ class ServiceRegistry:
                     logger.info(f"✅ {name} pronto em {elapsed:.2f}s")
                 except Exception as e:
                     logger.error(f"❌ Falha ao inicializar {name}: {e}")
-                    results[name] = -1
+                    results[name] = -1.0
         return results
 
-    def get_status(self) -> Dict[str, Dict]:
+    def get_status(self) -> Dict[str, Dict[str, Any]]:
         """Retorna status de todos os serviços registrados."""
-        status = {}
+        status: Dict[str, Dict[str, Any]] = {}
         for name, info in self._services.items():
             stats = self._stats[name]
             status[name] = {

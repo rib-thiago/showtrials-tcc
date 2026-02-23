@@ -6,6 +6,7 @@ Aplicação FastAPI com lazy loading via Service Registry.
 import logging
 import sys
 from pathlib import Path
+from typing import Any, Callable, cast
 
 from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
@@ -19,9 +20,7 @@ from src.application.use_cases.analisar_texto import AnalisarDocumento
 from src.application.use_cases.estatisticas import ObterEstatisticas
 from src.application.use_cases.listar_documentos import ListarDocumentos
 from src.application.use_cases.obter_documento import ObterDocumento
-from src.application.use_cases.traduzir_documento import (  # <-- ADICIONAR ESTA LINHA!
-    TraduzirDocumento,
-)
+from src.application.use_cases.traduzir_documento import TraduzirDocumento
 from src.infrastructure.config import ApplicationConfig
 from src.infrastructure.factories import SERVICE_FACTORIES
 from src.infrastructure.persistence.sqlite_repository import SQLiteDocumentoRepository
@@ -58,9 +57,12 @@ def create_app(config_path: str = "config.yaml"):
             logger.warning(f"⚠️ Factory não encontrada para serviço: {name}")
             continue
 
+        # Tipagem local para satisfazer o mypy (sem alterar lógica)
+        factory_typed = cast(Callable[..., Any], factory)
+
         registry.register(
             name=name,
-            factory=factory,
+            factory=factory_typed,
             lazy=svc_config.lazy,
             singleton=svc_config.singleton,
             **svc_config.options,

@@ -6,11 +6,15 @@ from collections import defaultdict
 from datetime import datetime
 from functools import wraps
 from pathlib import Path
-from typing import Callable, Dict, Optional
+from typing import Any, Callable, Dict, Optional
 
 
 class Telemetry:
     """Coleta métricas de operação do sistema."""
+
+    # Anotações dos atributos de instância (resolve var-annotated no __init__)
+    metrics: list[dict[str, Any]]
+    counters: defaultdict[str, int]
 
     def __init__(self, log_dir: str = "logs"):
         self.log_dir = Path(log_dir)
@@ -20,7 +24,7 @@ class Telemetry:
         self.counters = defaultdict(int)
         self._session_id = datetime.now().strftime("%Y%m%d_%H%M%S")
 
-    def record_time(self, name: str, tags: Optional[Dict] = None):
+    def record_time(self, name: str, tags: Optional[Dict[str, Any]] = None):
         """Decorator para medir tempo de execução."""
 
         def decorator(func: Callable) -> Callable:
@@ -61,8 +65,13 @@ class Telemetry:
 
         return decorator
 
-    def increment(self, name: str, value: int = 1, tags: Optional[Dict] = None):
+    def increment(
+        self, name: str | None = None, value: int = 1, tags: Optional[Dict[str, Any]] = None
+    ) -> None:
         """Incrementa um contador manualmente."""
+        if name is None:
+            name = "unknown"
+
         self.counters[name] += value
         self.metrics.append(
             {
@@ -98,7 +107,7 @@ class Telemetry:
 telemetry = Telemetry()
 
 
-def monitor(name: str = None):
+def monitor(name: str | None = None):
     """Decorator de atalho para telemetry.record_time."""
 
     def decorator(func):

@@ -42,7 +42,7 @@ async def clear_service_cache(request: Request, name: str):
 
 
 @router.get("/services/{name}/preload")
-async def preload_service(request: Request, name: str, lang: str = None):
+async def preload_service(request: Request, name: str, lang: str | None = None):
     """
     Pré-carrega um serviço/modelo.
     """

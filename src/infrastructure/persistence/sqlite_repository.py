@@ -168,7 +168,7 @@ class SQLiteDocumentoRepository(RepositorioDocumento):
             cursor = conn.cursor()
 
             query = "SELECT * FROM documentos WHERE 1=1"
-            params = []
+            params: list[object] = []
 
             if centro:
                 query += " AND centro = ?"
@@ -192,7 +192,7 @@ class SQLiteDocumentoRepository(RepositorioDocumento):
             cursor = conn.cursor()
 
             query = "SELECT COUNT(*) FROM documentos WHERE 1=1"
-            params = []
+            params: list[object] = []
 
             if centro:
                 query += " AND centro = ?"
