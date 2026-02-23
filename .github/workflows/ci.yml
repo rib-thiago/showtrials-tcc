@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
@@ -61,19 +61,11 @@ jobs:
         poetry run python -c "import wordcloud; print('✅ wordcloud')"
     # ===== FIM DA CORREÇÃO =====
 
-    - name: Lint with ruff
-      run: poetry run ruff check src/
-
-    - name: Type check with mypy
-      run: poetry run mypy src/ || echo "⚠️ MyPy warnings (ignorado por enquanto)"
-
-    - name: Test with pytest
-      run: poetry run pytest src/tests/ -v --cov=src --cov-report=xml --cov-fail-under=45
+    - name: Quality pipeline (taskipy)
+      run: poetry run task pre-push
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v4
       with:
         file: ./coverage.xml
-        fail_ci_if_error: false
-        token: ${{ secrets.CODECOV_TOKEN }}
       continue-on-error: true

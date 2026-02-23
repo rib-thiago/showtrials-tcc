@@ -4,11 +4,21 @@ Testes de telemetria para a entidade Traducao.
 """
 
 from datetime import datetime
+from typing import Any, Callable
 from unittest.mock import MagicMock
 
 import pytest
 
 import src.domain.entities.traducao as trad_module
+
+
+def _noop_monitor(_: str) -> Callable[[Callable[..., Any]], Callable[..., Any]]:
+    """Monitor no-op: retorna um decorator que não altera a função."""
+
+    def decorator(func: Callable[..., Any]) -> Callable[..., Any]:
+        return func
+
+    return decorator
 
 
 class TestTraducaoTelemetry:
@@ -17,7 +27,7 @@ class TestTraducaoTelemetry:
     def setup_method(self):
         """Reconfigura o módulo antes de cada teste."""
         trad_module._telemetry = None
-        trad_module._monitor = lambda x: (lambda f: f)
+        trad_module._monitor = _noop_monitor
 
     def test_telemetria_criacao(self):
         """Verifica se a criação registra telemetria."""

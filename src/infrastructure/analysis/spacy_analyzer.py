@@ -8,7 +8,7 @@ import logging
 import re
 import time
 from collections import Counter
-from datetime import datetime  # <-- IMPORT ADICIONADO!
+from datetime import datetime
 from typing import Dict, List
 
 import spacy
@@ -150,7 +150,7 @@ class SpacyAnalyzer:
 
     def _agrupar_entidades(self, entidades: List[Entidade]) -> Dict[str, List[str]]:
         """Agrupa entidades por tipo."""
-        grupos = {}
+        grupos: Dict[str, List[str]] = {}
         for ent in entidades:
             tipo_pt = self.TIPOS_ENTIDADE.get(ent.tipo, ent.tipo)
             if tipo_pt not in grupos:

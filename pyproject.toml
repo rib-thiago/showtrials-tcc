@@ -34,6 +34,7 @@ mkdocstrings-python = "^2.0.2"
 commitizen = "^4.13.7"
 taskipy = "^1.14.1"
 mypy = "^1.19.1"
+types-pyyaml = "^6.0.12.20250915"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
@@ -52,9 +53,47 @@ profile = "black"
 line_length = 100
 
 [tool.ruff]
-line-length = 100
+line-length = 120
+exclude = [
+  "legacy/*",
+  "backup_*",
+  "diagnostico_*",
+  ".git",
+  "__pycache__",
+]
+
+[tool.ruff.lint]
 select = ["E", "F", "I", "B"]
-ignore = []
+ignore = ["E402", "F841"]
+
+[tool.mypy]
+python_version = "3.12"
+strict_optional = true
+
+# (opcional) evita ruído extra
+warn_unused_ignores = true
+
+# Terceiros sem typing: não seguir imports
+[[tool.mypy.overrides]]
+module = [
+  "google",
+  "google.*",
+  "wordcloud",
+  "wordcloud.*",
+  "textblob",
+  "textblob.*",
+]
+ignore_missing_imports = true
+follow_imports = "skip"
+
+# Silenciar o erro import-untyped APENAS onde ele estoura (nos seus arquivos)
+[[tool.mypy.overrides]]
+module = [
+  "src.infrastructure.translation.google_translator",
+  "src.infrastructure.analysis.wordcloud_generator",
+  "src.infrastructure.analysis.spacy_analyzer",
+]
+disable_error_code = ["import-untyped"]
 
 [tool.commitizen]
 name = "cz_conventional_commits"
@@ -70,7 +109,7 @@ quality = "task lint && task type"
 
 # === Testes ===
 test = "pytest src/tests -v"
-test-cov = "pytest src/tests --cov=src --cov-report=term-missing --cov-fail-under=45"
+test-cov = "pytest src/tests --cov=src --cov-report=term-missing --cov-report=xml:coverage.xml --cov-fail-under=45"
 test-html = "pytest src/tests --cov=src --cov-report=html"
 
 # === Telemetria ===

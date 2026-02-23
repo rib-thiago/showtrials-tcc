@@ -14,7 +14,7 @@ templates = Jinja2Templates(directory=Path(__file__).parent.parent / "templates"
 
 @router.get("/")
 async def listar_documentos(
-    request: Request, pagina: int = 1, centro: str = None, tipo: str = None
+    request: Request, pagina: int = 1, centro: str | None = None, tipo: str | None = None
 ):
     """
     Lista documentos com paginação.
