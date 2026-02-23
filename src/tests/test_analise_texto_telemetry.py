@@ -4,11 +4,21 @@ Testes de telemetria para os Value Objects de análise de texto.
 """
 
 from datetime import datetime
+from typing import Any, Callable
 from unittest.mock import MagicMock
 
 import pytest
 
 import src.domain.value_objects.analise_texto as analise_module
+
+
+def _noop_monitor(_: str) -> Callable[[Callable[..., Any]], Callable[..., Any]]:
+    """Monitor no-op: retorna um decorator que não altera a função."""
+
+    def decorator(func: Callable[..., Any]) -> Callable[..., Any]:
+        return func
+
+    return decorator
 
 
 class TestAnaliseTextoTelemetry:
@@ -17,7 +27,7 @@ class TestAnaliseTextoTelemetry:
     def setup_method(self):
         """Reconfigura o módulo antes de cada teste."""
         analise_module._telemetry = None
-        analise_module._monitor = lambda x: (lambda f: f)
+        analise_module._monitor = _noop_monitor
 
     def test_telemetria_criacao_entidade(self):
         """Verifica se criação de entidade registra telemetria."""

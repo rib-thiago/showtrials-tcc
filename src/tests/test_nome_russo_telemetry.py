@@ -3,11 +3,21 @@
 Testes de telemetria para o NomeRusso.
 """
 
+from typing import Any, Callable
 from unittest.mock import MagicMock
 
 import pytest
 
 import src.domain.value_objects.nome_russo as nr_module
+
+
+def _noop_monitor(_: str) -> Callable[[Callable[..., Any]], Callable[..., Any]]:
+    """Monitor no-op: retorna um decorator que não altera a função."""
+
+    def decorator(func: Callable[..., Any]) -> Callable[..., Any]:
+        return func
+
+    return decorator
 
 
 class TestNomeRussoTelemetry:
@@ -16,7 +26,7 @@ class TestNomeRussoTelemetry:
     def setup_method(self):
         """Reconfigura o módulo antes de cada teste."""
         nr_module._telemetry = None
-        nr_module._monitor = lambda x: (lambda f: f)
+        nr_module._monitor = _noop_monitor
 
     def test_telemetria_criacao(self):
         """Verifica se a criação de nome registra telemetria."""
