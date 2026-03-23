@@ -113,9 +113,11 @@ Executar:
 poetry run task type
 ```
 
-Estado atual no CI:
+Estado atual no pipeline oficial:
 
-* O step de MyPy **não é gate** (o job não falha por erro de tipo). Isso é intencional enquanto o projeto limpa/estabiliza o baseline de tipagem.
+* O pipeline oficial executa `poetry run task pre-push`.
+* Como `task pre-push` inclui `task check`, e `task check` inclui `task type`, o MyPy participa do gate de qualidade atual.
+* Em outras palavras: se `task type` falhar dentro do pipeline oficial, o fluxo falha.
 
 ## Pre-commit
 
@@ -149,12 +151,16 @@ O CI roda em:
 
 ### Pipeline no CI (espelho das tasks)
 
-O workflow executa, em ordem:
+O workflow executa:
 
-* `poetry run task lint`
-* `poetry run task type` (**não-gate**, atualmente)
-* `poetry run task test-cov` (gera `coverage.xml`)
-* Upload do `coverage.xml` no Codecov
+* `poetry run task pre-push`
+
+Como consequência, o CI cobre o pipeline oficial agregado, incluindo:
+
+* `task check`
+* `task test-cov`
+
+Na prática, isso garante que o GitHub Actions use a mesma entrada principal definida para o fluxo local.
 
 ## Dependências NLP no CI (nota técnica)
 
@@ -164,11 +170,16 @@ Isso existe porque, no estado atual do projeto, essas dependências **não estã
 
 ## Como reproduzir localmente o que o CI faz
 
-Rodar exatamente os mesmos comandos do CI:
+Rodar exatamente a mesma entrada principal usada no CI:
 
 ```bash
-poetry run task lint
-poetry run task type
+poetry run task pre-push
+```
+
+Se quiser inspecionar partes do pipeline separadamente, use também:
+
+```bash
+poetry run task check
 poetry run task test-cov
 ```
 
@@ -178,7 +189,7 @@ poetry run task test-cov
 * [x] `task check` executa lint + type + tests
 * [x] CI executa o mesmo pipeline via Taskipy (tasks oficiais)
 * [x] Cobertura gera `coverage.xml` e é consumida pelo Codecov
-* [ ] MyPy sem erros no target definido (`src/`) **(pendente se a política for “zero erros”)**
+* [x] MyPy executado pelo pipeline oficial via `task check`
 * [x] Configurações principais consolidadas (Ruff no `pyproject.toml`; hooks atualizados)
 * [x] Documentação mínima dos comandos oficiais (este documento)
 
