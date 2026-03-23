@@ -56,7 +56,8 @@ class TestMigrations:
         # Criar tabela sem metadados
         conn = sqlite3.connect(db_temporario)
         cursor = conn.cursor()
-        cursor.execute("""
+        cursor.execute(
+            """
             CREATE TABLE documentos (
                 id INTEGER PRIMARY KEY,
                 centro TEXT,
@@ -65,7 +66,8 @@ class TestMigrations:
                 texto TEXT,
                 data_coleta TEXT
             )
-        """)
+        """
+        )
         conn.commit()
         conn.close()
 

@@ -3,6 +3,7 @@
 Testes para o Service Registry.
 """
 
+
 import pytest
 
 from src.infrastructure.registry import ServiceRegistry
