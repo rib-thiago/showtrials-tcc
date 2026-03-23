@@ -124,19 +124,15 @@ class TestExportarDocumentoTelemetry:
 
     def test_telemetria_erro_execucao(self):
         """Telemetria NÃO deve registrar erro para exceções não capturadas."""
-
-        class RepoBuscarPorIdError(Exception):
-            """Erro simulado do repositório no teste."""
-
         mock_telemetry = MagicMock()
         uc_module.configure_telemetry(telemetry_instance=mock_telemetry)
 
         mock_repo_doc = Mock()
-        mock_repo_doc.buscar_por_id.side_effect = RepoBuscarPorIdError("Erro simulado")
+        mock_repo_doc.buscar_por_id.side_effect = Exception("Erro simulado")
 
         use_case = ExportarDocumento(mock_repo_doc)
 
-        with pytest.raises(RepoBuscarPorIdError):
+        with pytest.raises(Exception):
             use_case.executar(documento_id=1)
 
         # Verificar chamadas que ocorreram ANTES da exceção

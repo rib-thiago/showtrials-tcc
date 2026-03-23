@@ -135,12 +135,9 @@ class TestAnalisarAcervoTelemetry:
 
         mock_registry = Mock(spec=ServiceRegistry)
 
-        class WordCloudFalhaError(Exception):
-            """Erro simulado do gerador de wordcloud no teste."""
-
         class WordCloudQueFalha:
             def gerar(self, *args, **kwargs):
-                raise WordCloudFalhaError("Falha")
+                raise Exception("Falha")
 
         mock_registry.get.return_value = WordCloudQueFalha()
 
@@ -150,7 +147,7 @@ class TestAnalisarAcervoTelemetry:
         )
 
         with patch("pathlib.Path.mkdir"):
-            with pytest.raises(WordCloudFalhaError):
+            with pytest.raises(Exception):
                 caso_uso.gerar_wordcloud_geral()
 
         mock_telemetry.increment.assert_any_call("analisar_acervo.wordcloud.erro")

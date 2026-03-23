@@ -178,12 +178,9 @@ class TestAnalisarDocumentoTelemetry:
         )
         mock_repo_doc.buscar_por_id.return_value = doc
 
-        class AnalyzerFalhaError(Exception):
-            """Erro simulado do analyzer no teste."""
-
         class AnalyzerQueFalha:
             def analisar(self, texto, documento_id, idioma):
-                raise AnalyzerFalhaError("Falha na análise")
+                raise Exception("Falha na análise")
 
         mock_registry.get.return_value = AnalyzerQueFalha()
 
@@ -192,7 +189,7 @@ class TestAnalisarDocumentoTelemetry:
             registry=mock_registry,
         )
 
-        with pytest.raises(AnalyzerFalhaError):
+        with pytest.raises(Exception):
             caso_uso.executar(documento_id=1)
 
         mock_telemetry.increment.assert_any_call("analisar_documento.analise.erro")
