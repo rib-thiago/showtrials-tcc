@@ -129,7 +129,7 @@ class AnalisarAcervo:
 
         # Concatenar textos (limitado)
         texto_completo = ""
-        for i, doc in enumerate(documentos[:100]):  # Limitar para performance
+        for doc in documentos[:100]:  # Limitar para performance
             texto_completo += doc.texto[:5000] + "\n"
 
         nome_arquivo = f"wordcloud_acervo_{idioma}_{datetime.now().strftime('%Y%m%d')}.png"

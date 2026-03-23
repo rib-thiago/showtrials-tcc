@@ -147,7 +147,7 @@ class TestAnalisarAcervoTelemetry:
         )
 
         with patch("pathlib.Path.mkdir"):
-            with pytest.raises(Exception):
+            with pytest.raises(RuntimeError):
                 caso_uso.gerar_wordcloud_geral()
 
         mock_telemetry.increment.assert_any_call("analisar_acervo.wordcloud.erro")

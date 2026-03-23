@@ -38,11 +38,11 @@ async def clear_service_cache(request: Request, name: str):
         registry.clear_cache(name)
         return {"status": "ok", "message": f"Cache limpo para {name}"}
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail=str(e)) from e
 
 
 @router.get("/services/{name}/preload")
-async def preload_service(request: Request, name: str, lang: str = None):
+async def preload_service(request: Request, name: str, lang: str | None = None):
     """
     Pré-carrega um serviço/modelo.
     """
@@ -58,4 +58,4 @@ async def preload_service(request: Request, name: str, lang: str = None):
         return {"status": "ok", "message": f"Serviço {name} já está disponível"}
 
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail=str(e)) from e

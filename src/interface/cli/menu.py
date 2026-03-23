@@ -45,7 +45,7 @@ class MenuCentro:
     """Menu para escolha de centro."""
 
     @staticmethod
-    def mostrar() -> str:
+    def mostrar() -> str | None:
         """Exibe opções de centro."""
         console.print()
         console.print("[bold cyan]Centros disponíveis:[/bold cyan]")

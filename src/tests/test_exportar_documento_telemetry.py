@@ -132,7 +132,7 @@ class TestExportarDocumentoTelemetry:
 
         use_case = ExportarDocumento(mock_repo_doc)
 
-        with pytest.raises(Exception):
+        with pytest.raises(RuntimeError):
             use_case.executar(documento_id=1)
 
         # Verificar chamadas que ocorreram ANTES da exceção

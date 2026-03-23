@@ -4,11 +4,21 @@ Testes de telemetria para a entidade Documento.
 """
 
 from datetime import datetime
+from typing import Any, Callable
 from unittest.mock import MagicMock
 
 import pytest
 
 import src.domain.entities.documento as doc_module
+
+
+def _noop_monitor(_: str) -> Callable[[Callable[..., Any]], Callable[..., Any]]:
+    """Monitor no-op: retorna um decorator que não altera a função."""
+
+    def decorator(func: Callable[..., Any]) -> Callable[..., Any]:
+        return func
+
+    return decorator
 
 
 class TestDocumentoTelemetry:
@@ -17,7 +27,7 @@ class TestDocumentoTelemetry:
     def setup_method(self):
         """Reconfigura o módulo antes de cada teste."""
         doc_module._telemetry = None
-        doc_module._monitor = lambda x: (lambda f: f)
+        doc_module._monitor = _noop_monitor
 
     def test_telemetria_criacao(self):
         """Verifica se a criação registra telemetria."""

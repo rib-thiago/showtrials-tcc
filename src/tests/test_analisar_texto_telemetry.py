@@ -189,7 +189,7 @@ class TestAnalisarDocumentoTelemetry:
             registry=mock_registry,
         )
 
-        with pytest.raises(Exception):
+        with pytest.raises(RuntimeError):
             caso_uso.executar(documento_id=1)
 
         mock_telemetry.increment.assert_any_call("analisar_documento.analise.erro")
