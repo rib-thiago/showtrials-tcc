@@ -177,6 +177,11 @@ Depois de ganhar confianca:
 - usar nivel 3 em issues de escopo fechado
 - usar nivel 4 quando o fluxo estiver estavel
 
+Regra adicional importante:
+
+- o avancar para **nivel 3** ou **nivel 4** deve ocorrer apenas quando isso for **explicitamente solicitado**
+- na ausencia de pedido explicito de execucao, o comportamento padrao deve permanecer em **analise** ou **planejamento assistido**
+
 ---
 
 ## Contrato de Uso do Codex
@@ -192,6 +197,9 @@ Estas regras devem orientar cada rodada de trabalho.
 - O Codex deve explicitar impactos arquiteturais quando existirem.
 - O Codex deve distinguir fatos, inferencias e recomendacoes.
 - O Codex deve registrar o que verificou e o que assumiu.
+- O Codex deve tratar **codigo e Git** como fontes primarias para estado implementado.
+- O Codex deve tratar **issues GitHub** como fonte primaria para intencao arquitetural e backlog ativo.
+- O Codex nao deve tratar documentacao isolada como prova suficiente de implementacao sem validacao adicional.
 
 ### Regras para Mudancas de Codigo
 
@@ -222,6 +230,22 @@ Este documento nao substitui `FASE*.md`, mas funciona como rastreabilidade opera
 - registrar o que foi analisado
 - descrever o que foi feito
 - indicar proximo passo
+
+### Relacao com `docs/ai/`
+
+Quando a rodada envolver:
+
+- leitura ampla de contexto
+- reconciliacao entre codigo, docs, Git e issues
+- correcao de narrativa arquitetural
+- consolidacao de entendimento para sessoes futuras
+
+o registro da rodada deve considerar explicitamente os documentos em `docs/ai/` como camada de memoria operacional.
+
+Regra pratica:
+
+- `docs/ai/` serve para captura e consolidacao de contexto
+- `docs/planejamento/rodadas/` serve para registrar a execucao da rodada, suas decisoes e seu fechamento operacional
 
 ### Quando gerar
 
@@ -280,6 +304,14 @@ Cada documento de rodada deve responder:
 5. Houve mudanca em codigo, docs, Git ou GitHub?
 6. Qual e o proximo passo mais recomendado?
 
+Quando a rodada for de engenharia de contexto, o documento deve registrar tambem, sempre que fizer sentido:
+
+- fontes examinadas por tipo
+- comandos Git e GitHub relevantes
+- distincao entre implementado, transicao e planejado
+- consistencia ou inconsistencias entre `docs/ai/`
+- estado final da branch e do working tree
+
 ---
 
 ## Relacao entre Rodadas e FASEs
@@ -322,13 +354,18 @@ Passos:
 1. Informar area ou arquivos
 2. Pedir mapa mental ou diagnostico
 3. Validar entendimento
-4. Registrar rodada
+4. Se a leitura for ampla, consolidar ou revisar `docs/ai/`
+5. Registrar rodada
 
 Prompt exemplo:
 
 ```text
 Leia estes arquivos e me devolva um mapa do contexto, sem editar nada.
 ```
+
+Observacao pratica:
+
+- quando o tema for grande ou tiver alta incerteza, preferir uma sessao separada apenas para captura de contexto antes de qualquer execucao
 
 ### Fluxo 2 - Planejamento de Issue
 
@@ -342,7 +379,8 @@ Passos:
 1. Informar issue, docs e contexto
 2. Pedir plano em ordem de execucao
 3. Validar escopo
-4. Registrar rodada
+4. Se necessario, confrontar a issue com `docs/ai/`, Git e issues relacionadas
+5. Registrar rodada
 
 Prompt exemplo:
 
@@ -356,14 +394,16 @@ Usar quando:
 
 - o escopo ja esta claro
 - a branch correta existe ou sera criada
+- houve pedido explicito para avancar para execucao
 
 Passos:
 
 1. Informar issue e restricoes
 2. Codex implementa
 3. Codex roda verificacoes
-4. Codex registra rodada
-5. Codex prepara resumo para PR
+4. Codex faz analise critica antes de commit
+5. Codex registra rodada
+6. Codex prepara resumo para PR
 
 Prompt exemplo:
 
@@ -402,6 +442,7 @@ Prompts simples e repetiveis funcionam melhor.
 - "Leia estes arquivos e me situe."
 - "Explique esta parte do projeto."
 - "Compare documentacao e implementacao."
+- "Use Git e issues como fonte primaria e me diga o que e fato vs plano."
 
 ### Para diagnostico
 
@@ -414,6 +455,7 @@ Prompts simples e repetiveis funcionam melhor.
 - "Qual deve ser a ordem de ataque?"
 - "Quebre esta issue em tarefas seguras."
 - "Qual o menor passo util daqui?"
+- "Analise criticamente o conjunto antes de qualquer commit."
 
 ### Para execucao
 
@@ -447,6 +489,7 @@ Prompts simples e repetiveis funcionam melhor.
 - uso de working tree muito suja
 - tarefas com muitas mudancas paralelas nao registradas
 - escolhas de produto que dependem da sua intencao de TCC
+- rodadas que misturam captura de contexto, execucao e fechamento Git no mesmo bloco sem separacao clara
 
 Nesses casos, o Codex deve:
 
@@ -478,6 +521,12 @@ Antes de qualquer trabalho relevante, o Codex deve tentar responder:
 4. Ha PR aberto ou trabalho em revisao que deveria ser tratado antes?
 5. Esta rodada e de leitura, planejamento, execucao ou revisao?
 6. Precisa gerar documento de rodada? Se sim, qual sera o identificador?
+7. Esta rodada deve primeiro consolidar ou revisar `docs/ai/` antes de qualquer implementacao?
+8. Ha necessidade de separar a sessao atual em:
+   - captura de contexto
+   - planejamento
+   - execucao
+   - fechamento Git/documentacao
 
 ---
 
@@ -491,21 +540,36 @@ Ao final de cada rodada, o Codex deve entregar:
 - proximo passo recomendado
 - referencia ao documento de rodada gerado, quando aplicavel
 
+Antes de qualquer commit relevante, o Codex deve preferir uma analise critica final do conjunto alterado para verificar:
+
+- consistencia entre arquivos
+- escopo real da mudanca
+- necessidade de commits atomicos
+- diferenca entre fato confirmado e inferencia residual
+- aderencia a governanca e ao `quality_flow.md`
+
 Se houve mudanca em codigo:
 
 - arquivos afetados
 - verificacoes executadas
 - limitacoes do que nao foi possivel validar
 
+Se houve mudanca documental ampla:
+
+- documentos centrais revisados
+- nivel de confiabilidade do conjunto
+- pontos ainda dependentes de validacao manual
+- estado final da branch e do working tree
+
 ---
 
 ## Estrategia Recomendada para as Proximas Semanas
 
-### Etapa 1 - Consolidar Operacao
+### Etapa 1 - Consolidar Contexto e Operacao
 
-- revisar PR `#18`
-- ajustar board e status
-- alinhar milestone e labels restantes
+- manter `docs/ai/` coerente com codigo, Git, issues e CI real
+- revisar consistencia temporal entre estado atual, status operacional e handoff
+- alinhar branch, issue, milestone e board quando houver impacto formal
 
 ### Etapa 2 - Entrar na Engine com Passos Pequenos
 
@@ -518,7 +582,7 @@ Se houve mudanca em codigo:
 
 - gerar documentos de rodada
 - consolidar FASE quando houver entregavel maior
-- manter coerencia entre docs, issues, board e codigo
+- manter coerencia entre docs, issues, board, Git e codigo
 
 ---
 
@@ -527,9 +591,9 @@ Se houve mudanca em codigo:
 No momento inicial de uso do Codex neste projeto:
 
 - usar o Codex primeiro como analista e planejador
-- depois como executor em issues de escopo estrito
+- depois como executor em issues de escopo estrito, apenas com pedido explicito
 - registrar cada rodada importante
-- so avancar para execucao estrutural apos alinhamento do board e do PR pendente
+- so avancar para execucao estrutural apos alinhamento de escopo, governanca e contexto suficiente
 
 ---
 
