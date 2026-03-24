@@ -289,16 +289,49 @@ Também foi corrigido o entendimento operacional do momento atual:
 - o conjunto de documentos alterados já é mais amplo e mais sensível do que um bootstrap mínimo
 - o principal risco atual não é mistura com código de produto, mas inconsistência interna entre documentos `docs/ai/`
 
+## 4.6 Fechamento operacional da rodada
+
+Ao longo do encerramento da rodada, o trabalho deixou de ser apenas uma revisão local e passou a ter fechamento operacional completo no repositório.
+
+Marcos confirmados:
+
+- criação da issue documental `#23` `Contexto: consolidar docs/ai e alinhamento operacional para sessões com Codex`
+- classificação da issue com label `type:docs`
+- manutenção deliberada da issue **sem milestone**, por se tratar de frente transversal de contexto/documentação, e não entrega direta da engine
+- criação do commit final `1cd0a36` `docs: registrar fechamento da rodada e atualizar manual de colaboracao`
+- push bem-sucedido da branch `docs/ai-context-bootstrap`
+- abertura do PR `#24` `Docs: consolidar docs/ai e fechamento operacional da rodada de contexto`
+
+Conclusão operacional corrigida:
+
+- a rodada terminou **formalmente enquadrada**
+- a branch deixou de estar apenas “pronta para commit” e passou a estar **publicada e em PR**
+
+## 4.7 Documento de rodada e manual de colaboração
+
+Esta rodada também produziu dois artefatos operacionais importantes fora de `docs/ai/`:
+
+- `docs/planejamento/rodadas/RODADA_20260323_04.md`, registrando formalmente a rodada concluída
+- atualização de `docs/projeto/manual_colaboracao_codex.md`, incorporando aprendizados reais desta sessão
+
+Os pontos mais importantes adicionados ao manual foram:
+
+- uso de `docs/ai/` como camada de captura de contexto
+- uso de Git e issues como fontes primárias
+- recomendação de sessões separadas quando houver muita incerteza
+- análise crítica antes de commit
+- regra explícita de que níveis 3 e 4 de autonomia só devem ocorrer com pedido explícito
+
 ## 5. Lacunas e incertezas remanescentes
 
 ## 5.1 Pontos ainda dependentes de validação manual
 
 Continuam dependendo de validação manual:
 
-- enquadramento formal da branch `docs/ai-context-bootstrap`
-- existência ou não de issue própria para esta frente
-- decisão sobre como organizar os commits
-- revisão editorial cruzada final dos documentos `docs/ai/`
+- revisão crítica futura do conteúdo de `docs/ai/` já publicado em PR
+- decisão futura sobre merge, revisão e eventual ajuste pós-review do PR `#24`
+- validação manual do estado recente das execuções de CI no GitHub
+- revisão editorial cruzada final dos documentos `docs/ai/`, especialmente se houver nova rodada
 
 ## 5.2 Pontos em que a evidência continua insuficiente
 
@@ -324,67 +357,82 @@ Ainda podem merecer revisão futura, especialmente se a intenção for preparar 
 Também vale atenção futura para:
 
 - revisão cruzada final entre `00`, `01`, `03`, `06`, `07` e `09`
+- sincronização temporal de `03_current_state.md` e `09_operational_status.md` com o estado pós-push/PR
 
-## 6. Próximos passos recomendados
+## 6. Consistência atual dos `docs/ai/`
 
-## 6.1 Revisão crítica final dos `docs/ai/`
+Os documentos `docs/ai/` parecem, **em grande parte, consistentes entre si**.
 
-Antes de qualquer consolidação, o mais seguro é revisar em conjunto:
+O núcleo mais importante está coerente:
 
 - `docs/ai/00_project_context.md`
 - `docs/ai/01_architecture.md`
 - `docs/ai/03_current_state.md`
 - `docs/ai/06_git_history.md`
-- `docs/ai/07_sources_examined.md`
-- `docs/ai/09_operational_status.md`
-
-Objetivo:
-
-- garantir que todos contem a mesma história em níveis diferentes
-- evitar que um documento reintroduza inferências já corrigidas em outro
-
-## 6.2 Revisar os documentos ainda potencialmente menos revalidados
-
-Prioridade prática:
-
-- `docs/ai/02_governance.md`
 - `docs/ai/08_quality_and_ci.md`
+- `docs/ai/07_sources_examined.md`
+- `docs/ai/05_session_handoff.md`
 
-Motivo:
+Esses documentos contam a mesma história principal:
 
-- eles já passaram por revalidação complementar nesta rodada, mas ainda merecem atenção futura se houver nova checagem de enforcement remoto ou de práticas reais no GitHub
+- ShowTrials é o sistema implementado
+- há transição parcial real
+- a engine é direção futura
+- `CraftText` não está formalmente confirmado
+- Git/issues corrigem leituras antes otimistas demais
 
-## 6.3 Organizar commits atômicos
+Mas eles **não estão 100% consistentes como conjunto final**, por dois motivos claros:
 
-Antes de commitar, decidir conscientemente entre:
+1. `docs/ai/09_operational_status.md` está temporalmente defasado.
+   - Ele ainda descreve o momento pré-commit.
+   - Hoje isso já não é verdade, porque a branch já tem issue, commit final, push e PR.
 
-- um commit documental único, amplo, mas com mensagem fiel ao escopo real
-- ou múltiplos commits atômicos, por exemplo:
-  1. contexto/histórico/estado
-  2. arquitetura
-  3. fontes e status operacional
+2. `docs/ai/03_current_state.md` ainda carrega um trecho que diz que faltava, “nesta sessão”, inspeção direta do workflow atual de CI.
+   - Isso ficou superado depois da leitura de `.github/workflows/ci.yml` e da revisão de `docs/ai/08_quality_and_ci.md`.
 
-Se optar por commit único, a mensagem não deve sugerir apenas criação de estrutura vazia; ela deve refletir revisão baseada em evidência.
+Também há uma lacuna neutra:
 
-## 6.4 Verificações manuais antes de consolidar a branch
+- `docs/ai/04_active_issue.md` está vazio.
 
-Antes de consolidar a branch, o ideal é verificar manualmente:
+Leitura conservadora final:
 
-- se esta frente terá issue própria
-- se o escopo está coerente com a governança atual
-- se `docs/ai-context-bootstrap` continua representando bem a branch
-- se não há conflito editorial com documentos recentes de colaboração com Codex
-- se o conjunto `docs/ai/` está consistente o suficiente para ser congelado em commit
+- **consistência conceitual: boa**
+- **consistência operacional/temporal: ainda incompleta**
+- o conjunto ficou muito mais alinhado do que no início da rodada, mas ainda não está totalmente sincronizado no retrato do “agora”
 
-## 6.5 Próximos passos técnicos adicionais, se a investigação continuar
+## 7. Próximos passos recomendados
 
-Caso a investigação prossiga em outra sessão, os próximos passos de maior valor são:
+## 7.1 Revisão pós-PR dos pontos temporalmente defasados
+
+Se o trabalho for retomado em outra sessão, os primeiros ajustes de maior valor são:
+
+- atualizar `docs/ai/09_operational_status.md` para refletir o estado pós-push e pós-PR
+- ajustar `docs/ai/03_current_state.md` para remover a referência desatualizada sobre falta de inspeção do workflow de CI
+- decidir se `docs/ai/04_active_issue.md` deve passar a registrar a issue `#23`
+
+## 7.2 Acompanhamento da issue e do PR
+
+O trabalho agora está formalmente exposto no GitHub:
+
+- issue `#23`: `Contexto: consolidar docs/ai e alinhamento operacional para sessões com Codex`
+- PR `#24`: `Docs: consolidar docs/ai e fechamento operacional da rodada de contexto`
+
+Os próximos passos naturais são:
+
+1. acompanhar review e comentários do PR `#24`
+2. validar o comportamento do CI remoto nesse PR
+3. responder eventuais solicitações de ajuste
+4. só então decidir merge e encerramento da issue `#23`
+
+## 7.3 Revisões futuras de maior valor
+
+Caso haja nova rodada de engenharia de contexto, os próximos aprofundamentos mais úteis são:
 
 1. verificar o estado recente das execuções do CI no GitHub e sua aderência prática ao workflow já lido
 2. aprofundar PRs relevantes, especialmente `#19`
-3. verificar se existe issue formal para a frente `docs/ai/`
-4. avaliar se `docs/ai/04_active_issue.md` deve ser preenchido
-5. revisar `02_governance.md` e `08_quality_and_ci.md` com o mesmo rigor aplicado a `01_architecture.md`
+3. revisar `02_governance.md` e `08_quality_and_ci.md` com o mesmo rigor aplicado a `01_architecture.md`
+4. ampliar validação de Web, registry e telemetria
+5. revisar sincronização entre `docs/ai/` e o manual de colaboração, se novos padrões surgirem
 
 ## Refinamentos futuros não bloqueantes
 
@@ -454,4 +502,8 @@ Ao final desta rodada, o estado mais fiel para reabertura futura é:
 - existe transição parcial real via registry/factories/configuração de serviços
 - a direção futura para engine de pipeline está formalizada em docs e issues
 - a associação dessa direção ao nome `CraftText` continua não confirmada como fato consolidado
-- o working tree local está restrito a `docs/ai/`, sem staging, e com necessidade de revisão final antes de qualquer commit
+- a issue documental `#23` foi criada com `type:docs` e permaneceu sem milestone
+- o documento de rodada `docs/planejamento/rodadas/RODADA_20260323_04.md` foi criado
+- `docs/projeto/manual_colaboracao_codex.md` foi atualizado com aprendizados reais da sessão
+- a branch `docs/ai-context-bootstrap` recebeu o commit final `1cd0a36`, foi pushada para `origin` e está em PR aberto `#24`
+- o working tree local está limpo
