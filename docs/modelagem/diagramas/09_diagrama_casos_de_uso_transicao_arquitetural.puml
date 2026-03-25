@@ -1,5 +1,5 @@
 @startuml
-left to right direction
+top to bottom direction
 skinparam shadowing false
 skinparam packageStyle rectangle
 skinparam actorStyle awesome
@@ -16,8 +16,8 @@ actor "usuario" as Usuario
 actor "usuario operador" as UsuarioOperador
 actor "usuario configurador" as UsuarioConfigurador
 
-UsuarioOperador --|> Usuario
-UsuarioConfigurador --|> Usuario
+UsuarioOperador -up-|> Usuario
+UsuarioConfigurador -up-|> Usuario
 
 rectangle "Transicao arquitetural" {
   usecase "ConfigurarPipeline" as UC_ConfigurarPipeline
