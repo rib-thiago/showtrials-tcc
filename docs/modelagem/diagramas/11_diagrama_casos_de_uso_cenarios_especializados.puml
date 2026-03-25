@@ -17,7 +17,6 @@ actor "usuario configurador" as UsuarioConfigurador
 rectangle "Cenarios especializados da engine futura" {
   usecase "ExecutarPipelineDocumental" as UC_ExecutarPipelineDocumental
   usecase "ConsultarResultadosDePipeline" as UC_ConsultarResultadosDePipeline
-  --
   usecase "ProcessarPDFcomOCR" as UC_ProcessarPDFcomOCR
   usecase "ExecutarPipelineDeTraducao" as UC_ExecutarPipelineDeTraducao
   usecase "ExecutarPipelineDeRaspagemEAnalise" as UC_ExecutarPipelineDeRaspagemEAnalise
