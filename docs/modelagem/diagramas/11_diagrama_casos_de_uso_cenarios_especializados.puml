@@ -1,0 +1,35 @@
+@startuml
+top to bottom direction
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam actorStyle awesome
+skinparam usecase {
+  BackgroundColor white
+  BorderColor #444444
+  ArrowColor #666666
+}
+skinparam rectangle {
+  BorderColor #444444
+}
+
+actor "usuario configurador" as UsuarioConfigurador
+
+rectangle "Cenarios especializados da engine futura" {
+  usecase "ExecutarPipelineDocumental" as UC_ExecutarPipelineDocumental
+  usecase "ConsultarResultadosDePipeline" as UC_ConsultarResultadosDePipeline
+  --
+  usecase "ProcessarPDFcomOCR" as UC_ProcessarPDFcomOCR
+  usecase "ExecutarPipelineDeTraducao" as UC_ExecutarPipelineDeTraducao
+  usecase "ExecutarPipelineDeRaspagemEAnalise" as UC_ExecutarPipelineDeRaspagemEAnalise
+  usecase "ExecutarPipelinePorID" as UC_ExecutarPipelinePorID
+}
+
+UsuarioConfigurador --> UC_ExecutarPipelineDocumental
+UsuarioConfigurador --> UC_ConsultarResultadosDePipeline
+
+UC_ProcessarPDFcomOCR -up-|> UC_ExecutarPipelineDocumental
+UC_ExecutarPipelineDeTraducao -up-|> UC_ExecutarPipelineDocumental
+UC_ExecutarPipelineDeRaspagemEAnalise -up-|> UC_ExecutarPipelineDocumental
+UC_ExecutarPipelinePorID -up-|> UC_ExecutarPipelineDocumental
+
+@enduml
