@@ -1,51 +1,67 @@
-# Documento de Requisitos — Versão Inicial
+# Documento de Requisitos — Documento Integrador
 
 ## 1. Introdução
 
-Este documento inicia a elicitação e análise de requisitos da nova frente de **Modelagem, Análise e Padrões de Projeto** do projeto historicamente conhecido como **ShowTrials**.
+Este documento consolida a frente de elicitação e análise de requisitos da nova trilha de **Modelagem, Análise e Padrões de Projeto** do projeto historicamente conhecido como **ShowTrials**.
 
-O objetivo desta frente não é apenas produzir artefatos acadêmicos isolados. O objetivo é estruturar, com rigor técnico e acadêmico, a evolução do sistema atual em direção a uma arquitetura mais configurável, orientada a pipelines e capaz de combinar diferentes ferramentas de processamento documental.
+Seu papel não é substituir os insumos já produzidos sobre o sistema atual e sobre a evolução para engine. Seu papel é integrar, organizar e priorizar esses insumos para sustentar os próximos artefatos da frente, especialmente:
 
-Este documento não trata apenas do sistema futuro. Ele organiza três dimensões complementares:
-
-- o sistema atual implementado
-- a transição arquitetural pretendida
-- o sistema-alvo futuro
+- casos de uso
+- visão arquitetural 4+1
+- modelo C4
+- UML complementar
+- rastreabilidade futura com backlog e issues
 
 ## 2. Objetivo do documento
 
 Este documento tem como objetivos:
 
-- registrar os requisitos iniciais do sistema
-- explicitar stakeholders, objetivos e restrições
-- descrever o problema que o sistema resolve hoje
-- descrever o problema adicional que a evolução para engine pretende resolver
-- criar base para:
-  - casos de uso
-  - visão arquitetural 4+1
-  - modelo C4
-  - UML complementar
-  - rastreabilidade futura com backlog e issues
+- consolidar a base atual de requisitos da frente
+- separar explicitamente sistema atual, transição e sistema-alvo
+- registrar stakeholders, atores, problemas, restrições e prioridades
+- integrar os requisitos já identificados no sistema atual e na evolução para engine
+- preparar a derivação posterior de casos de uso e artefatos arquiteturais
 
-## 3. Escopo do sistema
+## 3. Escopo e recorte da frente
 
-O escopo desta frente não se limita ao ShowTrials atual nem apenas à engine futura.
-
-O recorte adotado neste documento é composto por três planos:
+O recorte adotado neste documento é composto por três planos complementares:
 
 ### 3.1 Sistema atual
 
-O sistema atual corresponde ao projeto historicamente conhecido como **ShowTrials**, concebido inicialmente como ferramenta para extrair e manipular conteúdos obtidos a partir do site `showtrials.ru` e de documentos digitalizados.
+O sistema atual corresponde ao projeto historicamente conhecido como **ShowTrials**, concebido inicialmente como ferramenta para coletar, armazenar, traduzir, consultar e analisar documentos digitalizados.
 
-### 3.2 Evolução do sistema
+### 3.2 Transição arquitetural
 
-A evolução do sistema corresponde à transformação progressiva dessa aplicação documento-cêntrica em uma arquitetura mais configurável, flexível e orientada a fluxos de trabalho.
+A transição corresponde à evolução incremental dessa aplicação documento-cêntrica para uma arquitetura mais configurável, modular e orientada a pipelines, sem reescrever o projeto do zero.
 
 ### 3.3 Sistema-alvo
 
-O sistema-alvo corresponde a uma engine ou plataforma configurável de processamento documental, capaz de combinar serviços e ferramentas em pipelines adequados a diferentes tarefas e contextos de uso.
+O sistema-alvo corresponde a uma engine ou plataforma configurável de processamento documental, capaz de combinar fontes, processadores e sinks em fluxos de trabalho ajustados ao objetivo do usuário.
 
-## 4. Observação sobre nomenclatura
+## 4. Base de evidência e documentos de apoio
+
+Este documento se apoia explicitamente nos seguintes insumos principais:
+
+- [01_documento_de_requisitos_showtrials_atual.md](/home/thiago/coleta_showtrials/docs/modelagem/insumos/01_documento_de_requisitos_showtrials_atual.md)
+- [02_documento_de_requisitos_evolucao_engine.md](/home/thiago/coleta_showtrials/docs/modelagem/insumos/02_documento_de_requisitos_evolucao_engine.md)
+
+Também utiliza como base complementar:
+
+- documentos de contexto em `docs/ai/`
+- documentos de fase do projeto
+- código central do sistema
+- histórico Git consolidado
+- issues da trilha de evolução para engine
+
+Função metodológica deste documento:
+
+- o documento do ShowTrials atual consolida a leitura retrospectiva do sistema implementado
+- o documento da evolução para engine consolida a leitura prospectiva do sistema-alvo
+- este documento integra, compara, organiza e prioriza esses dois planos
+
+## 5. Nomenclatura e glossário inicial
+
+### 5.1 Observação sobre nomenclatura
 
 O nome do sistema ainda não está definitivamente consolidado para esta nova frente.
 
@@ -60,267 +76,375 @@ Para fins deste documento:
 - `ShowTrials` será usado como nome do sistema atual
 - `engine futura` será usada como designação provisória da arquitetura-alvo
 
-## 5. Problema e motivação
+### 5.2 Glossário inicial
 
-### 5.1 Problema resolvido pelo sistema atual
+- `ShowTrials`: nome histórico do sistema atual implementado
+- `engine futura`: arquitetura-alvo configurável de processamento documental
+- `pipeline`: fluxo configurável de execução composto por etapas ordenadas
+- `step`: etapa individual de um pipeline
+- `source`: componente responsável por obtenção ou entrada de dados documentais
+- `processor`: componente responsável por transformação ou análise de dados
+- `sink`: componente responsável por persistência, exportação ou saída dos resultados
+- `acervo`: conjunto persistido de documentos e produtos derivados
+- `colecao tematica`: agrupamento documental definido por critério temático ou analítico
+- `usuario pesquisador/historiador`: ator principal do sistema atual, orientado ao trabalho sobre documentos
+- `usuario configurador`: ator principal do sistema futuro, orientado à composição de fluxos
+- `contexto de pipeline`: estrutura de execução que transporta documentos, artefatos e estado ao longo do pipeline
+- `produto derivado`: resultado adicional gerado pelo processamento de um documento, como tradução, análise ou visualização
 
-O sistema atual surgiu para apoiar o estudo de documentos digitalizados, em especial documentos em russo, fornecendo ferramentas para:
+## 6. Stakeholders e atores
 
-- coleta de textos a partir de fontes digitais
-- persistência dos conteúdos para uso posterior
-- tradução
-- consulta ao acervo
-- análises básicas sobre os documentos
-
-O problema central do ShowTrials atual é a necessidade de **ler, manipular, extrair e analisar informações de documentos digitalizados** com menos trabalho manual e mais apoio computacional.
-
-### 5.2 Motivação da evolução arquitetural
-
-A evolução para engine não nasce apenas de insuficiências técnicas tradicionais, mas sobretudo de:
-
-- necessidade de maior ergonomia dos fluxos de trabalho
-- necessidade de compor ferramentas diferentes conforme o objetivo do usuário
-- necessidade de suportar novas fontes e novos processos
-- necessidade de carregar apenas os recursos necessários
-- necessidade de reduzir custo de inicialização e consumo de memória
-- necessidade de tornar a arquitetura mais configurável e reutilizável
-
-A introdução de `ServiceRegistry` com lazy loading foi um passo concreto nessa direção e reforçou a percepção de que o projeto pode evoluir para uma arquitetura mais flexível.
-
-## 6. Stakeholders
+### 6.1 Stakeholders
 
 Os stakeholders iniciais identificados são:
 
 - autor/desenvolvedor do projeto
-- usuário pesquisador/historiador
-- usuário geral que trabalha com documentos digitalizados
-- usuário configurador da engine
+- usuario pesquisador/historiador
+- usuario geral que trabalha com documentos digitalizados
+- usuario configurador da engine
 - mantenedor futuro do sistema
-- banca/professor, como stakeholder acadêmico indireto
+- banca/professor, como stakeholder academico indireto
 
-## 7. Perfis de ator
+### 6.2 Perfis de ator
 
-### 7.1 Ator principal do sistema atual
+#### 6.2.1 Ator principal do sistema atual
 
-No sistema atual, o ator principal é o **usuário pesquisador/historiador**, que utiliza o sistema para coletar, armazenar, consultar, traduzir e analisar documentos.
+No sistema atual, o ator principal é o **usuario pesquisador/historiador**, que utiliza o sistema para coletar, armazenar, consultar, traduzir e analisar documentos.
 
-### 7.2 Ator principal do sistema futuro
+#### 6.2.2 Ator principal do sistema futuro
 
-No sistema futuro, o ator principal tende a ser o **usuário configurador da engine**, responsável por ajustar ferramentas, fluxos e pipelines conforme o objetivo da tarefa.
+No sistema futuro, o ator principal tende a ser o **usuario configurador da engine**, responsavel por ajustar ferramentas, fluxos e pipelines conforme o objetivo da tarefa.
 
-Entretanto, essa mudança não elimina o ator anterior. Em vez disso, indica uma evolução do perfil de uso:
+Essa mudanca nao elimina o ator anterior. Em vez disso, indica uma evolucao do perfil de uso:
 
-- o usuário do sistema passa a precisar também de capacidade de configuração e composição de fluxos
+- o usuario do sistema passa a precisar tambem de capacidade de configuracao e composicao de fluxos
 
-## 8. Objetivos dos usuários
+## 7. Problema e motivação
 
-Os objetivos principais identificados são:
+### 7.1 Problema resolvido pelo sistema atual
 
-### 8.1 No sistema atual
+O sistema atual surgiu para apoiar o estudo de documentos digitalizados, em especial documentos em russo, fornecendo ferramentas para:
 
-- coletar conteúdos de fontes digitais
-- extrair texto de documentos
-- persistir conteúdo para uso futuro
-- consultar o acervo documental
-- traduzir documentos
-- consultar traduções
-- realizar análises estatísticas e linguísticas básicas
+- coleta de textos a partir de fontes digitais
+- persistencia dos conteudos para uso posterior
+- traducao
+- consulta ao acervo
+- analises basicas sobre os documentos
 
-### 8.2 No sistema futuro
+O problema central do ShowTrials atual e a necessidade de **ler, manipular, extrair e analisar informacoes de documentos digitalizados** com menos trabalho manual e mais apoio computacional.
 
-- configurar ferramentas conforme o objetivo da tarefa
-- selecionar quais serviços devem ser usados
-- compor fluxos de trabalho configuráveis
-- executar pipelines diferentes para tarefas diferentes
-- reutilizar recursos de processamento documental de forma flexível
-- manter o sistema usável, robusto e bem documentado
+### 7.2 Motivacao da evolucao arquitetural
 
-## 9. Capacidades centrais do sistema atual
+A evolucao para engine nao nasce apenas de insuficiencias tecnicas tradicionais, mas sobretudo de:
 
-As capacidades atuais mais relevantes são:
+- necessidade de maior ergonomia dos fluxos de trabalho
+- necessidade de compor ferramentas diferentes conforme o objetivo do usuario
+- necessidade de suportar novas fontes e novos processos
+- necessidade de carregar apenas os recursos necessarios
+- necessidade de reduzir custo de inicializacao e consumo de memoria
+- necessidade de tornar a arquitetura mais configuravel e reutilizavel
+
+A introducao de `ServiceRegistry` com lazy loading foi um passo concreto nessa direcao e reforcou a percepcao de que o projeto pode evoluir para uma arquitetura mais flexivel.
+
+## 8. Sistema atual: ShowTrials
+
+As capacidades atuais mais relevantes identificadas ate aqui sao:
 
 - coleta de texto de sites
-- extração de texto a partir de documentos txt
-- tradução de documentos com API do Google
-- persistência em banco de dados
+- extracao de texto a partir de documentos txt
+- traducao de documentos com API do Google
+- persistencia em banco de dados
 - suporte a NLP
 - consultas ao acervo
 - interface CLI
 - interface Web com FastAPI
 
-## 10. Estado percebido das capacidades atuais
+O sistema atual deve ser entendido como uma base funcional e util, mas com maturidade desigual entre suas capacidades. A traducao aparece como area mais satisfatoria, enquanto coleta, extracao, consultas mais amplas, Web e generalizacao arquitetural ainda conservam carater de MVP ou prova de conceito.
 
-### 10.1 Capacidade mais satisfatória
+## 9. Limitações do sistema atual
 
-- tradução de textos
+As principais limitacoes estruturais observadas sao:
 
-### 10.2 Capacidades mais limitadas ou frágeis
+- arquitetura dominante ainda documento-centrica e orientada a persistencia
+- pouca generalidade para multiplas fontes e processos
+- forte orquestracao imperativa em casos de uso
+- dificuldade de compor fluxos diferentes sem reuso ad hoc
+- maturidade desigual entre CLI e Web
+- ausencia de modelo dominante de pipeline configuravel
 
-- coleta
-- extração
-- consultas mais amplas ao acervo
-- uso da Web
-- integração mais madura entre recursos
-- generalização arquitetural das funcionalidades
+Essas limitacoes nao anulam o valor do sistema atual. Elas explicam por que a evolucao para engine se tornou desejavel.
 
-O sistema atual deve ser entendido como MVP ou prova de conceito em várias dessas dimensões.
+## 10. Transição arquitetural
 
-## 11. Necessidades da engine futura
+A transicao arquitetural deve:
 
-A engine futura deve ser capaz de apoiar diferentes tarefas documentais por meio de recursos configuráveis.
+- ocorrer de forma incremental, sem reescrita total
+- preservar continuidade com a base atual do projeto
+- manter CLI e Web como interfaces relevantes
+- introduzir separacao mais clara entre transformacao e persistencia
+- permitir migracao gradual de fluxos reais do ShowTrials para a nova arquitetura
+- usar a base atual como origem de migracao, e nao como descartavel
 
-Capacidades desejadas mencionadas até aqui:
+Essa transicao e um plano proprio dentro da frente de requisitos. Ela nao se reduz ao sistema atual nem coincide integralmente com o sistema-alvo.
 
-- compatibilidade com múltiplos bancos de dados
+## 11. Sistema-alvo: engine futura
+
+A engine futura deve ser capaz de apoiar diferentes tarefas documentais por meio de recursos configuraveis.
+
+Capacidades desejadas mencionadas ate aqui:
+
+- compatibilidade com multiplos bancos de dados
 - OCR
 - raspagem de sites
-- extração de texto de PDF
-- manipulação de PDF
+- extracao de texto de PDF
+- manipulacao de PDF
 - tratamento de imagens para apoiar OCR
-- tradução robusta com fallbacks
-- análises NLP e estatísticas
-- criação de coleções temáticas
-- árvores de relacionamento
-- visualizações e gráficos
-- carregamento configurável e sob demanda
-- execução não bloqueante
+- traducao robusta com fallbacks
+- analises NLP e estatisticas
+- criacao de colecoes tematicas
+- arvores de relacionamento
+- visualizacoes e graficos
+- carregamento configuravel e sob demanda
+- execucao nao bloqueante
 - processos e filas em segundo plano
-- distribuição em versões distintas, como Web-only ou completa com CLI
+- distribuicao em versoes distintas, como Web-only ou completa com CLI
 
-## 12. Requisitos funcionais iniciais
+No nivel arquitetural, o sistema-alvo ja possui direcao suficientemente clara para modelagem:
 
-Os requisitos abaixo são iniciais e ainda deverão ser refinados.
+- configuracao externa de pipelines
+- uso de contexto explicito de execucao
+- separacao entre sources, processors e sinks
+- deslocamento da persistencia para sinks
+- pipeline linear minimo no MVP
+- suporte futuro a `Iterable` e evolucoes mais amplas
 
-### RF01
+## 12. Requisitos funcionais integrados
 
-O sistema deve permitir coletar ou obter conteúdo textual a partir de fontes documentais digitais.
+Os requisitos funcionais abaixo estao organizados por blocos para integrar sistema atual, transicao e sistema-alvo.
 
-### RF02
+### 12.1 Aquisicao documental
 
-O sistema deve permitir persistir conteúdos documentais e produtos derivados em banco de dados.
+- o sistema deve permitir coletar ou obter conteudo textual a partir de fontes documentais digitais
+- o sistema deve permitir obter conteudo a partir de paginas web, arquivos textuais, PDFs e imagens, conforme o grau de maturidade da arquitetura
+- o sistema futuro deve suportar OCR e novas formas de entrada documental de maneira configuravel
 
-### RF03
+### 12.2 Persistencia e organizacao
 
-O sistema deve permitir consultar documentos e conteúdos persistidos.
+- o sistema deve permitir persistir documentos e metadados principais
+- o sistema deve permitir persistir traducoes associadas aos documentos
+- o sistema deve permitir persistir produtos derivados de processamento e analise
+- o sistema futuro deve permitir multiplos destinos de persistencia e saida
 
-### RF04
+### 12.3 Consulta e uso do acervo
 
-O sistema deve permitir traduzir documentos e persistir traduções.
+- o sistema deve permitir consultar documentos e conteudos persistidos
+- o sistema deve permitir listar documentos, traducoes e resultados associados
+- o sistema deve permitir evolucao futura para colecoes tematicas e relacoes documentais mais ricas
 
-### RF05
+### 12.4 Traducao
 
-O sistema deve permitir aplicar ferramentas de análise textual e estatística aos documentos.
+- o sistema deve permitir traduzir documentos
+- o sistema deve permitir persistir traducoes
+- o sistema futuro deve permitir traducao robusta com fallbacks
+- o sistema futuro deve permitir evolucao para traducao segmentada e revisao de traducao
 
-### RF06
+### 12.5 Analise e enriquecimento
 
-O sistema futuro deve permitir configurar diferentes fluxos de trabalho documentais.
+- o sistema deve permitir aplicar ferramentas de analise textual e estatistica aos documentos
+- o sistema deve permitir extracao de entidades e outros produtos analiticos
+- o sistema futuro deve permitir compor etapas de NLP, estatistica, classificacao e enriquecimento no pipeline
 
-### RF07
+### 12.6 Configuracao de pipeline
 
-O sistema futuro deve permitir compor pipelines com ferramentas distintas conforme o objetivo do usuário.
+- o sistema futuro deve permitir configurar diferentes fluxos de trabalho documentais
+- o sistema futuro deve permitir representar pipelines por configuracao externa
+- o sistema futuro deve permitir salvar, recuperar e versionar configuracoes de pipeline
+- o sistema futuro deve permitir carregar apenas os servicos necessarios para uma determinada execucao
 
-### RF08
+### 12.7 Execucao de pipeline
 
-O sistema futuro deve permitir carregar apenas os serviços necessários para uma determinada execução.
+- o sistema futuro deve permitir compor pipelines com ferramentas distintas conforme o objetivo do usuario
+- o sistema futuro deve permitir combinar etapas como coleta, OCR, traducao, analise, persistencia e exportacao
+- o sistema futuro deve possuir contexto explicito de execucao
+- o sistema futuro deve permitir evolucao para tarefas em segundo plano, filas e execucao nao bloqueante
 
-### RF09
+### 12.8 Persistencia e saida no sistema-alvo
 
-O sistema futuro deve permitir combinar etapas como coleta, OCR, tradução, análise, persistência e exportação.
+- o sistema futuro deve permitir concentrar persistencia e exportacao em sinks
+- o sistema futuro deve permitir persistir documentos e produtos derivados sem acoplar essa responsabilidade aos transformadores
+- o sistema futuro deve permitir saidas diversas, incluindo banco de dados e artefatos exportaveis
 
-### RF10
+### 12.9 Operacao e interfaces
 
-O sistema futuro deve permitir tratar diferentes tipos de entrada documental, como páginas web, PDFs e imagens.
+- o sistema deve preservar CLI como interface relevante
+- o sistema deve preservar Web como interface relevante
+- o sistema futuro deve permitir diferentes distribuicoes do produto, como versao Web-only e versao completa com CLI
 
-### RF11
+## 13. Requisitos não funcionais integrados
 
-O sistema futuro deve permitir persistir não apenas documentos, mas também produtos de processamento e análise.
+### 13.1 Usabilidade
 
-### RF12
+- o sistema deve buscar facilidade de uso para o trabalho documental
+- o sistema futuro deve favorecer ergonomia na configuracao e execucao dos fluxos
+- a combinacao de flexibilidade e facilidade de uso deve ser perseguida como diretriz de produto
 
-O sistema futuro deve permitir executar tarefas em segundo plano, sem bloquear o uso do sistema.
+### 13.2 Desempenho e consumo de recursos
 
-## 13. Requisitos não funcionais iniciais
+- o sistema deve permitir uso eficiente de recursos
+- a arquitetura futura deve evitar carregamento desnecessario de servicos pesados
+- o carregamento sob demanda deve ser favorecido quando aplicavel
 
-### RNF01
+### 13.3 Modularidade e extensibilidade
 
-O sistema deve manter evolução incremental sem reescrita completa do zero.
+- a arquitetura futura deve favorecer extensibilidade e composicao de ferramentas
+- o sistema deve favorecer modularidade e reuso de componentes
+- a evolucao deve apoiar incorporacao de novas fontes, processadores e sinks
 
-### RNF02
+### 13.4 Manutenibilidade
 
-O sistema deve preservar, tanto quanto possível, continuidade com a base atual do projeto.
+- o sistema deve buscar facilidade de manutencao
+- a arquitetura deve preservar separacao de responsabilidades
+- a evolucao deve favorecer testabilidade e clareza das responsabilidades
 
-### RNF03
+### 13.5 Configurabilidade
 
-O sistema deve permanecer em Python.
+- o sistema futuro deve ser configuravel de forma explicita e reproduzivel
+- as configuracoes de pipeline devem ser claras o suficiente para reutilizacao e governanca futura
 
-### RNF04
+### 13.6 Compatibilidade evolutiva
 
-O sistema deve preservar interfaces CLI e Web como partes relevantes da solução.
+- o sistema deve manter evolucao incremental sem reescrita completa do zero
+- o sistema deve preservar, tanto quanto possivel, continuidade com a base atual do projeto
+- a transicao nao deve tornar imediatamente obsoletas as capacidades centrais ja existentes
 
-### RNF05
+### 13.7 Documentacao e rastreabilidade
 
-O sistema futuro deve ser configurável e ergonomicamente utilizável.
+- a documentacao do sistema deve ser forte o suficiente para apoiar desenvolvimento, manutencao e avaliacao academica
+- a evolucao da frente deve manter rastreabilidade entre rodadas, documentos e proximos artefatos
 
-### RNF06
+### 13.8 Tecnologia e plataforma
 
-O sistema deve buscar facilidade de manutenção.
+- o sistema deve permanecer em Python
+- CLI e Web devem continuar como partes relevantes da solucao
+- a base atual deve ser preservada como origem de migracao para a arquitetura futura
 
-### RNF07
+## 14. Requisitos de transição
 
-A arquitetura futura deve favorecer extensibilidade e composição de ferramentas.
+Os requisitos de transicao abaixo sao centrais no projeto:
 
-### RNF08
+- a evolucao deve ocorrer de forma incremental
+- a base atual do ShowTrials deve servir como origem de migracao para a nova arquitetura
+- pelo menos um fluxo real ja existente deve poder ser migrado para a execucao orientada por pipeline
+- CLI e Web devem permanecer validas durante a transicao
+- a separacao entre transformacao e persistencia deve ser introduzida sem apagar de imediato os casos de uso atuais
+- casos de uso e componentes atuais podem atuar como adaptadores durante a transicao
 
-A documentação do sistema deve ser forte o suficiente para apoiar desenvolvimento, manutenção e avaliação acadêmica.
+## 15. Restrições
 
-### RNF09
+As restricoes identificadas ate aqui sao:
 
-O sistema deve permitir uso eficiente de recursos, evitando carregamento desnecessário de serviços pesados.
+- esta fase e de modelagem e documentacao, nao de implementacao
+- o projeto deve manter aderencia a governanca ja consolidada
+- a evolucao deve ser incremental
+- o projeto nao deve ser reescrito do zero
+- os artefatos academicos devem ser produzidos com rigor e profundidade
+- o prazo final do projeto e novembro de 2026
 
-## 14. Restrições
+## 16. Fora de escopo
 
-As restrições identificadas até aqui são:
+Nesta fase especifica, ficam fora de escopo:
 
-- esta fase é de modelagem e documentação, não de implementação
-- o projeto deve manter aderência à governança já consolidada
-- a evolução deve ser incremental
-- o projeto não deve ser reescrito do zero
-- os artefatos acadêmicos devem ser produzidos com rigor e profundidade
-- o prazo final do projeto é novembro de 2026
+- implementacao imediata da engine
+- reescrita do codigo de produto
+- substituicao completa da base atual
+- decisoes finais de branding ou nome do sistema
+- refinamento tecnico detalhado de todos os diagramas antes da analise de requisitos
+- execucao distribuida e outras capacidades avancadas antes da consolidacao do MVP estrutural
 
-## 15. Fora de escopo desta fase
+## 17. Priorização inicial
 
-Nesta fase específica, ficam fora de escopo:
+### 17.1 Essencial para o sistema atual
 
-- implementação imediata da engine
-- reescrita do código de produto
-- substituição completa da base atual
-- decisões finais de branding ou nome do sistema
-- refinamento técnico detalhado de todos os diagramas antes da análise de requisitos
+- persistencia documental
+- traducao
+- consulta ao acervo
+- analise textual e estatistica basica
+- preservacao de CLI e Web como interfaces relevantes
 
-## 16. Questões em aberto
+### 17.2 Essencial para a transicao
+
+- evolucao incremental sem reescrita total
+- preservacao da base atual como origem de migracao
+- separacao crescente entre transformacao e persistencia
+- introducao de contexto de execucao e composicao mais clara de fluxos
+
+### 17.3 Essencial para o MVP da engine
+
+- pipeline configuravel
+- configuracao externa
+- composicao de steps
+- suporte minimo a sources, processors e sinks
+- carregamento sob demanda de servicos
+- migracao de pelo menos um fluxo real para a nova arquitetura
+
+### 17.4 Desejavel depois
+
+- multiplos bancos como capacidade mais madura
+- visualizacoes e grafos mais ricos
+- colecoes tematicas mais sofisticadas
+- filas e operacao em background mais robustas
+- distribuicoes de produto mais refinadas
+
+### 17.5 Fora do escopo atual
+
+- implementacao imediata de toda a engine
+- fechamento definitivo de branding
+- exploracao detalhada de todos os diagramas antes de consolidar requisitos
+
+## 18. Relação preliminar com casos de uso
+
+Os requisitos ja permitem antecipar candidatos fortes a casos de uso:
+
+- coletar ou acessar conteudo documental
+- consultar acervo documental
+- traduzir documento
+- analisar documento
+- analisar acervo
+- configurar pipeline
+- executar pipeline
+- revisar traducao segmentada
+- processar PDF com OCR
+
+Essa relacao ainda e preliminar e sera detalhada em artefato proprio posterior.
+
+## 19. Relação preliminar com arquitetura futura
+
+Os requisitos levantados ja apontam drivers claros para os proximos artefatos arquiteturais:
+
+- a necessidade de separar sistema atual, transicao e sistema-alvo dialoga com a visao 4+1
+- a necessidade de explicitar interfaces, containers e componentes dialoga com o modelo C4
+- a necessidade de configurar e executar pipelines aponta para modelagem mais detalhada de componentes como contexto, sources, processors e sinks
+
+Este documento, portanto, passa a funcionar como base de requisitos para os proximos documentos de arquitetura.
+
+## 20. Questões em aberto
 
 Ainda precisam ser definidas ou refinadas:
 
 - nome oficial do sistema ou da arquitetura-alvo
-- glossário formal do projeto
+- ampliacao e estabilizacao do glossario formal do projeto
 - fronteira exata do sistema em cada tipo de artefato
-- priorização detalhada dos requisitos da engine
-- definição mais precisa do MVP da engine
-- relação futura entre requisitos e backlog técnico
+- priorizacao mais detalhada dos requisitos da engine
+- definicao mais precisa do MVP da engine
+- relacao futura entre requisitos, casos de uso e backlog tecnico
 
-## 17. Próximo passo recomendado
+## 21. Próximos passos
 
-O próximo passo recomendado é:
+Os proximos passos recomendados sao:
 
-- consolidar esta primeira elicitação
-- transformar esta base em uma versão mais estruturada do Documento de Requisitos
-- derivar:
-  - glossário inicial
-  - stakeholders e atores
-  - primeiro conjunto organizado de requisitos
-- só então avançar para:
-  - casos de uso
-  - diagrama de casos de uso
-  - 4+1
-  - C4
+- consolidar esta versao integradora do Documento de Requisitos
+- usar este documento como base para abrir a frente de casos de uso
+- derivar mapa inicial de atores e casos de uso
+- preparar, em seguida, os artefatos de arquitetura 4+1 e C4
+
+Este documento nao encerra a frente de requisitos. Ele estabelece uma base mais rigorosa e mais util para a evolucao disciplinada dos proximos artefatos.
