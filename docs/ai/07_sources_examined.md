@@ -258,6 +258,55 @@ Foi inferido diretamente que:
 - o principal marco arquitetural implementado é a reorganização para arquitetura em camadas em `src/`
 - a engine de pipeline não aparece como implementação consolidada no histórico de `src/`
 - a governança formal atual surge tardiamente no histórico, principalmente em `docs/flows/` e `docs/projeto/`
+
+## 12. Fontes adicionais examinadas na consolidação do contexto de modelagem
+
+Em etapa posterior, para consolidar o contexto da frente de modelagem, foram relidos integralmente:
+
+### 12.1 Frente `docs/modelagem/`
+
+- todos os documentos em `docs/modelagem/fundamentos/`
+- todos os documentos em `docs/modelagem/requisitos/principais/`
+- todos os documentos em `docs/modelagem/requisitos/apoio/`
+- todos os documentos em `docs/modelagem/analise/principais/`
+- todos os documentos em `docs/modelagem/analise/diagramas/`
+- todos os documentos em `docs/modelagem/arquitetura/ponte/`
+- todos os documentos em `docs/modelagem/arquitetura/visao_4mais1/`
+- todos os documentos em `docs/modelagem/arquitetura/c4/`
+- todos os documentos em `docs/modelagem/arquitetura/padroes/`
+- todos os documentos em `docs/modelagem/diagramas/especificacoes/`
+- todos os documentos em `docs/modelagem/revisao/`
+
+Tambem foram considerados como parte relevante dessa leitura:
+
+- arquivos `PlantUML` em `docs/modelagem/diagramas/fontes/`
+- diagramas renderizados em `docs/modelagem/diagramas/renderizados/`
+
+### 12.2 Artefatos transversais ligados à estabilização da frente
+
+- `docs/projeto/politica_de_diagramas_versionaveis.md`
+- `docs/planejamento/captura/00_como_usar_a_captura_continua.md`
+- `docs/planejamento/captura/01_insights_brutos.md`
+- `docs/planejamento/captura/02_dividas_em_triagem.md`
+- `docs/planejamento/captura/03_candidatos_a_backlog.md`
+
+### 12.3 Rodadas da frente e da estabilização
+
+Foram relidas as rodadas de produção e estabilização da frente de modelagem, com especial atenção para:
+
+- abertura da frente e requisitos iniciais (`RODADA_20260324_01` a `RODADA_20260324_06`)
+- casos de uso, matrizes e ponte arquitetural (`RODADA_20260325_01` a `RODADA_20260325_18`)
+- estabilização formal da frente (`RODADA_20260325_26` a `RODADA_20260325_38`)
+- produção do bloco `4+1`, do bloco `C4`, do bloco UML complementar e do bloco de padrões (`RODADA_20260326_01` a `RODADA_20260326_25`)
+
+### 12.4 Resultado dessa releitura
+
+Essa releitura foi usada para:
+
+- reconstruir a linha completa da frente de modelagem
+- identificar decisões centrais já consolidadas
+- distinguir o que foi materializado do que permaneceu como dívida controlada
+- produzir um documento próprio de contexto consolidado da modelagem para retomadas futuras em outras sessões
 - os arquivos:
   - `docs/projeto/manual_colaboracao_codex.md`
   - `docs/planejamento/rodadas/TEMPLATE_RODADA.md`

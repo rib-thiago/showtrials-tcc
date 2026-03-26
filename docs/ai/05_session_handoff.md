@@ -1,5 +1,83 @@
 # Session Handoff
 
+## Atualização posterior relevante — Frente de Modelagem estabilizada
+
+Após o fechamento descrito neste handoff original, o projeto avançou por uma frente ampla de **modelagem, análise, arquitetura, UML complementar e saneamento documental**, conduzida na branch:
+
+- `docs/modelagem-analise-projeto`
+
+Essa frente foi posteriormente estabilizada e submetida a PR próprio:
+
+- PR `#26` `docs: estabiliza frente de modelagem do projeto`
+
+### O que essa frente produziu
+
+Em termos consolidados, a frente produziu:
+
+- fundamentos e estratégia operacional da frente
+- documento mestre de requisitos e insumos de apoio
+- catálogo, diagramas e especificações textuais de casos de uso
+- matrizes de rastreabilidade
+- bloco de ponte arquitetural
+- bloco `4+1`
+- bloco `C4`
+- bloco UML complementar parcialmente materializado
+- bloco de padrões de projeto
+- revisão crítica, conferência de aderência, saneamento e encerramento controlado
+
+### O que foi decidido de forma importante
+
+As decisões mais relevantes consolidadas nessa frente foram:
+
+- tratar a frente como **documentação consolidada final**, deixando o histórico para Git e rodadas
+- manter [03_documento_de_requisitos.md](/home/thiago/coleta_showtrials/docs/modelagem/requisitos/principais/03_documento_de_requisitos.md) como **documento-mestre vivo**
+- adotar a taxonomia normativa de atores:
+  - `usuario`
+  - `usuario operador`
+  - `usuario configurador`
+- tratar a terminologia antiga como equivalência histórica, e não como terminologia normativa
+- estabilizar `Documento` como entidade central do legado, mas não como único centro semântico da arquitetura futura
+- reorganizar `docs/modelagem/` por fase de engenharia
+- formalizar política de diagramas versionáveis:
+  - `Mermaid` como padrão default
+  - `PlantUML` como exceção preferencial para UML formal
+- deslocar a revisão humana da frente para o contexto do PR, e não para nova etapa documental prévia
+
+### Estado final da frente
+
+Ao final da estabilização:
+
+- a frente foi considerada documentalmente estabilizada
+- o bloco UML complementar foi parcialmente materializado em:
+  - classes de domínio
+  - componentes
+  - atividades de pipelines
+- os quatro diagramas de casos de uso e os três diagramas UML materializados ganharam versões renderizadas em `SVG` para leitura no GitHub
+- as pendências remanescentes foram enquadradas como dívida controlada ou backlog posterior
+
+### Dívidas controladas remanescentes
+
+Permaneceram como dívida controlada, entre outras:
+
+- materialização futura dos diagramas `33`, `35`, `36`, `37` e `39`
+- refinamentos semânticos finos de domínio
+- revisão exaustiva de rastros históricos de caminhos antigos de `docs/modelagem/`
+- reclassificação mais ampla entre roadmap arquitetural, backlog ativo e blocos prospectivos já modelados
+
+### Documento de contexto específico
+
+Para retomadas futuras deste tema, foi criado também:
+
+- [10_modelagem_contexto_consolidado.md](10_modelagem_contexto_consolidado.md)
+
+Esse novo documento deve ser tratado como o principal ponto de entrada para qualquer nova sessão que precise resgatar:
+
+- o contexto da frente de modelagem
+- seu estado final
+- suas decisões centrais
+- suas dívidas controladas
+- sua relação com futuras discussões de backlog, governança e processo
+
 ## 1. Objetivo desta rodada
 
 Esta rodada teve como objetivo principal **refinar e corrigir a captura anterior de contexto** para reduzir inferências excessivas e aproximar os documentos `docs/ai/` do que está efetivamente sustentado por:
