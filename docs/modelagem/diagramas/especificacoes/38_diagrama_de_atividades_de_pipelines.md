@@ -19,6 +19,7 @@ Nesta estabilização, o diagrama correspondente foi **materializado em PlantUML
 - [24_visao_de_processo_4mais1.md](/home/thiago/coleta_showtrials/docs/modelagem/arquitetura/visao_4mais1/24_visao_de_processo_4mais1.md)
 - [13_especificacoes_textuais_de_casos_de_uso_prioritarios.md](/home/thiago/coleta_showtrials/docs/modelagem/analise/principais/13_especificacoes_textuais_de_casos_de_uso_prioritarios.md)
 - [38_diagrama_de_atividades_de_pipelines.puml](../fontes/38_diagrama_de_atividades_de_pipelines.puml)
+- [38_diagrama_de_atividades_de_pipelines.svg](../renderizados/38_diagrama_de_atividades_de_pipelines.svg)
 
 ## 3. Atividades centrais a representar
 

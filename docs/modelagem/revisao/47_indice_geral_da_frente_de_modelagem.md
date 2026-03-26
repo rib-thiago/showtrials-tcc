@@ -108,10 +108,20 @@ Nesta estabilização, o bloco UML complementar foi **parcialmente materializado
 
 - [32_diagrama_de_classes_de_dominio.md](/home/thiago/coleta_showtrials/docs/modelagem/diagramas/especificacoes/32_diagrama_de_classes_de_dominio.md)
 - [32_diagrama_de_classes_de_dominio.puml](/home/thiago/coleta_showtrials/docs/modelagem/diagramas/fontes/32_diagrama_de_classes_de_dominio.puml)
+- [32_diagrama_de_classes_de_dominio.svg](/home/thiago/coleta_showtrials/docs/modelagem/diagramas/renderizados/32_diagrama_de_classes_de_dominio.svg)
 - [34_diagrama_de_componentes.md](/home/thiago/coleta_showtrials/docs/modelagem/diagramas/especificacoes/34_diagrama_de_componentes.md)
 - [34_diagrama_de_componentes.puml](/home/thiago/coleta_showtrials/docs/modelagem/diagramas/fontes/34_diagrama_de_componentes.puml)
+- [34_diagrama_de_componentes.svg](/home/thiago/coleta_showtrials/docs/modelagem/diagramas/renderizados/34_diagrama_de_componentes.svg)
 - [38_diagrama_de_atividades_de_pipelines.md](/home/thiago/coleta_showtrials/docs/modelagem/diagramas/especificacoes/38_diagrama_de_atividades_de_pipelines.md)
 - [38_diagrama_de_atividades_de_pipelines.puml](/home/thiago/coleta_showtrials/docs/modelagem/diagramas/fontes/38_diagrama_de_atividades_de_pipelines.puml)
+- [38_diagrama_de_atividades_de_pipelines.svg](/home/thiago/coleta_showtrials/docs/modelagem/diagramas/renderizados/38_diagrama_de_atividades_de_pipelines.svg)
+
+### 9.1.1 Casos de uso com visualizacao renderizada
+
+- [08_diagrama_casos_de_uso_sistema_atual.svg](/home/thiago/coleta_showtrials/docs/modelagem/diagramas/renderizados/08_diagrama_casos_de_uso_sistema_atual.svg)
+- [09_diagrama_casos_de_uso_transicao_arquitetural.svg](/home/thiago/coleta_showtrials/docs/modelagem/diagramas/renderizados/09_diagrama_casos_de_uso_transicao_arquitetural.svg)
+- [10_diagrama_casos_de_uso_sistema_alvo.svg](/home/thiago/coleta_showtrials/docs/modelagem/diagramas/renderizados/10_diagrama_casos_de_uso_sistema_alvo.svg)
+- [11_diagrama_casos_de_uso_cenarios_especializados.svg](/home/thiago/coleta_showtrials/docs/modelagem/diagramas/renderizados/11_diagrama_casos_de_uso_cenarios_especializados.svg)
 
 ### 9.2 Artefatos ainda preparatórios
 

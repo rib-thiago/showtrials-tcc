@@ -14,6 +14,7 @@ Nesta estabilização, o diagrama correspondente foi **materializado em PlantUML
 - [30_c4_modelo_de_componentes.md](/home/thiago/coleta_showtrials/docs/modelagem/arquitetura/c4/30_c4_modelo_de_componentes.md)
 - estrutura atual do código em `src/`
 - [34_diagrama_de_componentes.puml](../fontes/34_diagrama_de_componentes.puml)
+- [34_diagrama_de_componentes.svg](../renderizados/34_diagrama_de_componentes.svg)
 
 ## 3. Componentes principais a representar
 

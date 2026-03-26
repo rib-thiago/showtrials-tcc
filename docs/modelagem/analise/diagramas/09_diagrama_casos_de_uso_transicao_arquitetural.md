@@ -82,6 +82,7 @@ Embora os dois casos sejam fortemente relacionados, eles ainda representam inten
 O diagrama foi registrado em:
 
 - [09_diagrama_casos_de_uso_transicao_arquitetural.puml](../../diagramas/fontes/09_diagrama_casos_de_uso_transicao_arquitetural.puml)
+- [09_diagrama_casos_de_uso_transicao_arquitetural.svg](../../diagramas/renderizados/09_diagrama_casos_de_uso_transicao_arquitetural.svg)
 
 ## 8. Dívidas técnicas registradas
 

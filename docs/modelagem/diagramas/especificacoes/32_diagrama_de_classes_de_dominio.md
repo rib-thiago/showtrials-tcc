@@ -21,6 +21,7 @@ Nesta estabilização, o diagrama correspondente foi **materializado em PlantUML
 - [21_glossario_arquitetural_e_tecnico.md](/home/thiago/coleta_showtrials/docs/modelagem/arquitetura/ponte/21_glossario_arquitetural_e_tecnico.md)
 - [31_c4_modelo_de_codigo.md](/home/thiago/coleta_showtrials/docs/modelagem/arquitetura/c4/31_c4_modelo_de_codigo.md)
 - [32_diagrama_de_classes_de_dominio.puml](../fontes/32_diagrama_de_classes_de_dominio.puml)
+- [32_diagrama_de_classes_de_dominio.svg](../renderizados/32_diagrama_de_classes_de_dominio.svg)
 
 ## 3. Classes centrais do domínio atual
 

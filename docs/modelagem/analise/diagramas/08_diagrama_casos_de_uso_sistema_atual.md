@@ -73,6 +73,7 @@ Essa foi considerada a relação mais segura e mais útil para a legibilidade do
 O diagrama foi registrado em:
 
 - [08_diagrama_casos_de_uso_sistema_atual.puml](../../diagramas/fontes/08_diagrama_casos_de_uso_sistema_atual.puml)
+- [08_diagrama_casos_de_uso_sistema_atual.svg](../../diagramas/renderizados/08_diagrama_casos_de_uso_sistema_atual.svg)
 
 ## 7. Dívidas técnicas registradas
 

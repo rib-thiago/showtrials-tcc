@@ -79,6 +79,7 @@ Essa organização busca preservar legibilidade no PlantUML sem inflar o diagram
 O diagrama foi registrado em:
 
 - [10_diagrama_casos_de_uso_sistema_alvo.puml](../../diagramas/fontes/10_diagrama_casos_de_uso_sistema_alvo.puml)
+- [10_diagrama_casos_de_uso_sistema_alvo.svg](../../diagramas/renderizados/10_diagrama_casos_de_uso_sistema_alvo.svg)
 
 ## 8. Dívidas técnicas registradas
 

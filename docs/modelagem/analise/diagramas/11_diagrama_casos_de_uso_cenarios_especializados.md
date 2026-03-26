@@ -97,6 +97,7 @@ Essa estratégia busca facilitar a leitura da generalização e evitar que o cas
 O diagrama foi registrado em:
 
 - [11_diagrama_casos_de_uso_cenarios_especializados.puml](../../diagramas/fontes/11_diagrama_casos_de_uso_cenarios_especializados.puml)
+- [11_diagrama_casos_de_uso_cenarios_especializados.svg](../../diagramas/renderizados/11_diagrama_casos_de_uso_cenarios_especializados.svg)
 
 ## 8. Dívidas técnicas registradas
 

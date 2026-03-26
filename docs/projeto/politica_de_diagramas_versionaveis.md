@@ -55,6 +55,7 @@ Na frente de modelagem, os diagramas passam a obedecer a organizacao abaixo:
 
 - `docs/modelagem/diagramas/fontes/`
 - `docs/modelagem/diagramas/especificacoes/`
+- `docs/modelagem/diagramas/renderizados/`
 
 ### 5.1 Fontes
 
@@ -72,6 +73,13 @@ Devem ficar em `docs/modelagem/diagramas/especificacoes/`:
 - documentos de leitura
 - especificacoes textuais preparatorias de diagramas
 - artefatos que explicam o objetivo e o escopo de um diagrama ainda nao materializado
+
+### 5.3 Renderizados
+
+Devem ficar em `docs/modelagem/diagramas/renderizados/`:
+
+- artefatos derivados de leitura humana, como `SVG`
+- versoes exportadas destinadas a facilitar consulta no GitHub ou em documentacao navegavel
 
 ## 6. Artefatos derivados
 
