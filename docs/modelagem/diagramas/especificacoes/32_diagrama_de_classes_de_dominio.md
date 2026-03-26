@@ -10,7 +10,7 @@ Seu objetivo é identificar:
 - relações principais entre entidades, value objects e contratos
 - lacunas entre o domínio atual e o domínio futuro da engine
 
-Nesta etapa, o artefato deve ser lido como **especificação textual preparatória** do diagrama, e não como o diagrama materializado em si.
+Nesta estabilização, o diagrama correspondente foi **materializado em PlantUML**, e este documento passa a funcionar como leitura explicativa e delimitadora do seu recorte.
 
 ## 2. Base de evidência utilizada
 
@@ -20,6 +20,7 @@ Nesta etapa, o artefato deve ser lido como **especificação textual preparatór
 - `src/domain/interfaces/`
 - [21_glossario_arquitetural_e_tecnico.md](/home/thiago/coleta_showtrials/docs/modelagem/arquitetura/ponte/21_glossario_arquitetural_e_tecnico.md)
 - [31_c4_modelo_de_codigo.md](/home/thiago/coleta_showtrials/docs/modelagem/arquitetura/c4/31_c4_modelo_de_codigo.md)
+- [32_diagrama_de_classes_de_dominio.puml](../fontes/32_diagrama_de_classes_de_dominio.puml)
 
 ## 3. Classes centrais do domínio atual
 
@@ -80,6 +81,8 @@ O diagrama deve ser organizado em dois subconjuntos:
 - relação futura entre `Documento`, `Colecao` e produtos derivados
 - modelagem concreta de estados e resultados revisados por humano
 
-## 9. Próximos passos
+## 9. Situação do artefato nesta estabilização
 
-- abrir o diagrama de classes da engine
+- o diagrama de classes de domínio foi materializado em `PlantUML`
+- o recorte mantém separação explícita entre núcleo factual atual e núcleo evolutivo futuro
+- a materialização do diagrama de classes da engine permanece em etapa posterior

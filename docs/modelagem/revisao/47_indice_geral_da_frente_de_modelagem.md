@@ -100,17 +100,25 @@ Para diferentes objetivos de leitura, recomenda-se:
 - [30_c4_modelo_de_componentes.md](/home/thiago/coleta_showtrials/docs/modelagem/arquitetura/c4/30_c4_modelo_de_componentes.md)
 - [31_c4_modelo_de_codigo.md](/home/thiago/coleta_showtrials/docs/modelagem/arquitetura/c4/31_c4_modelo_de_codigo.md)
 
-## 9. UML complementar preparatório
+## 9. UML complementar
 
-Nesta etapa, os artefatos abaixo devem ser lidos como recortes e especificações textuais do bloco UML complementar, e não como conjunto plenamente materializado de diagramas finais.
+Nesta estabilização, o bloco UML complementar foi **parcialmente materializado**. Os artefatos abaixo se distribuem em dois grupos:
+
+### 9.1 Diagramas já materializados
 
 - [32_diagrama_de_classes_de_dominio.md](/home/thiago/coleta_showtrials/docs/modelagem/diagramas/especificacoes/32_diagrama_de_classes_de_dominio.md)
-- [33_diagrama_de_classes_da_engine.md](/home/thiago/coleta_showtrials/docs/modelagem/diagramas/especificacoes/33_diagrama_de_classes_da_engine.md)
+- [32_diagrama_de_classes_de_dominio.puml](/home/thiago/coleta_showtrials/docs/modelagem/diagramas/fontes/32_diagrama_de_classes_de_dominio.puml)
 - [34_diagrama_de_componentes.md](/home/thiago/coleta_showtrials/docs/modelagem/diagramas/especificacoes/34_diagrama_de_componentes.md)
+- [34_diagrama_de_componentes.puml](/home/thiago/coleta_showtrials/docs/modelagem/diagramas/fontes/34_diagrama_de_componentes.puml)
+- [38_diagrama_de_atividades_de_pipelines.md](/home/thiago/coleta_showtrials/docs/modelagem/diagramas/especificacoes/38_diagrama_de_atividades_de_pipelines.md)
+- [38_diagrama_de_atividades_de_pipelines.puml](/home/thiago/coleta_showtrials/docs/modelagem/diagramas/fontes/38_diagrama_de_atividades_de_pipelines.puml)
+
+### 9.2 Artefatos ainda preparatórios
+
+- [33_diagrama_de_classes_da_engine.md](/home/thiago/coleta_showtrials/docs/modelagem/diagramas/especificacoes/33_diagrama_de_classes_da_engine.md)
 - [35_diagrama_de_pacotes.md](/home/thiago/coleta_showtrials/docs/modelagem/diagramas/especificacoes/35_diagrama_de_pacotes.md)
 - [36_diagrama_de_sequencia_fluxos_atuais.md](/home/thiago/coleta_showtrials/docs/modelagem/diagramas/especificacoes/36_diagrama_de_sequencia_fluxos_atuais.md)
 - [37_diagrama_de_sequencia_fluxos_da_engine.md](/home/thiago/coleta_showtrials/docs/modelagem/diagramas/especificacoes/37_diagrama_de_sequencia_fluxos_da_engine.md)
-- [38_diagrama_de_atividades_de_pipelines.md](/home/thiago/coleta_showtrials/docs/modelagem/diagramas/especificacoes/38_diagrama_de_atividades_de_pipelines.md)
 - [39_diagrama_de_estados_da_execucao_de_pipeline.md](/home/thiago/coleta_showtrials/docs/modelagem/diagramas/especificacoes/39_diagrama_de_estados_da_execucao_de_pipeline.md)
 
 ## 10. Padrões de projeto

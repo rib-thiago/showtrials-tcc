@@ -73,7 +73,7 @@ Devem permanecer como dívida controlada, sem impedir o fechamento desta frente:
 - posição final de `ExecutarPipelinePorID`
 - refinamento semântico mais fino entre `Documento`, `Colecao`, resultados derivados e artefatos derivados
 - parte da modelagem prospectiva da engine ainda não refletida como backlog técnico ativo
-- eventual materialização completa dos diagramas do bloco UML complementar que não forem produzidos agora
+- eventual materialização completa dos diagramas remanescentes do bloco UML complementar que não foram produzidos nesta estabilização
 
 ### Justificativa
 
@@ -137,6 +137,16 @@ Ao final desta etapa, a frente passa a ter:
 - um limite mais controlado para o fechamento
 - base operacional para executar as correções da próxima etapa sem reabrir análise indefinidamente
 
-## 11. Próximo passo
+## 11. Atualização posterior relevante
 
-Avançar para a **Etapa 6**, executando apenas as correções classificadas aqui como obrigatórias para estabilização da frente.
+Durante a estabilização, foi adotada a decisão de **materializar um subconjunto mínimo e estratégico** do bloco UML complementar:
+
+- diagrama de classes de domínio
+- diagrama de componentes
+- diagrama de atividades de pipelines
+
+Os demais artefatos do bloco permanecem como especificações textuais preparatórias e continuam enquadrados como dívida controlada ou materialização futura.
+
+## 12. Próximo passo
+
+Consolidar o fechamento controlado da frente e decidir explicitamente o tratamento posterior dos artefatos UML complementares ainda não materializados.

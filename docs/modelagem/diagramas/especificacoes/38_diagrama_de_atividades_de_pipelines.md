@@ -12,12 +12,13 @@ Seu objetivo é mostrar a lógica de alto nível da atividade:
 - persistir
 - revisar
 
-Nesta etapa, o artefato deve ser lido como **especificação textual preparatória** do diagrama, e não como o diagrama materializado em si.
+Nesta estabilização, o diagrama correspondente foi **materializado em PlantUML**, e este documento passa a funcionar como leitura textual do fluxo que o diagrama representa.
 
 ## 2. Base de evidência utilizada
 
 - [24_visao_de_processo_4mais1.md](/home/thiago/coleta_showtrials/docs/modelagem/arquitetura/visao_4mais1/24_visao_de_processo_4mais1.md)
 - [13_especificacoes_textuais_de_casos_de_uso_prioritarios.md](/home/thiago/coleta_showtrials/docs/modelagem/analise/principais/13_especificacoes_textuais_de_casos_de_uso_prioritarios.md)
+- [38_diagrama_de_atividades_de_pipelines.puml](../fontes/38_diagrama_de_atividades_de_pipelines.puml)
 
 ## 3. Atividades centrais a representar
 
@@ -48,6 +49,8 @@ O diagrama deve mostrar:
 - detalhamento futuro de atividades em background
 - eventual separação de atividades por tipo especializado de pipeline
 
-## 7. Próximos passos
+## 7. Situação do artefato nesta estabilização
 
-- avaliar o diagrama de estados
+- o diagrama de atividades de pipelines foi materializado em `PlantUML`
+- o recorte manteve foco em fluxo de alto nível, sem detalhar cenários especializados ou execução em background
+- o diagrama de estados continua como artefato preparatório para decisão posterior

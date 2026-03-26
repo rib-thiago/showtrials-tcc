@@ -6,13 +6,14 @@ Este documento registra o recorte do **diagrama de componentes** da frente.
 
 Seu objetivo é mostrar, em linguagem UML, os componentes principais da solução e suas dependências mais relevantes.
 
-Nesta etapa, o artefato deve ser lido como **especificação textual preparatória** do diagrama, e não como o diagrama materializado em si.
+Nesta estabilização, o diagrama correspondente foi **materializado em PlantUML**, e este documento passa a funcionar como leitura explicativa do recorte escolhido.
 
 ## 2. Base de evidência utilizada
 
 - [22_visao_logica_4mais1.md](/home/thiago/coleta_showtrials/docs/modelagem/arquitetura/visao_4mais1/22_visao_logica_4mais1.md)
 - [30_c4_modelo_de_componentes.md](/home/thiago/coleta_showtrials/docs/modelagem/arquitetura/c4/30_c4_modelo_de_componentes.md)
 - estrutura atual do código em `src/`
+- [34_diagrama_de_componentes.puml](../fontes/34_diagrama_de_componentes.puml)
 
 ## 3. Componentes principais a representar
 
@@ -55,6 +56,8 @@ Sem misturar:
 - fronteira concreta entre orquestração legada e engine
 - eventual separação futura entre resultados derivados e revisão
 
-## 8. Próximos passos
+## 8. Situação do artefato nesta estabilização
 
-- abrir o diagrama de pacotes
+- o diagrama de componentes foi materializado em `PlantUML`
+- o recorte distingue componentes já implementados dos blocos futuros exigidos pela frente
+- o diagrama de pacotes permanece como artefato preparatório para etapa posterior
