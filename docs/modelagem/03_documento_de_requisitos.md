@@ -68,8 +68,8 @@ O nome do sistema ainda não está definitivamente consolidado para esta nova fr
 Situação atual:
 
 - `ShowTrials` é o nome histórico e mais fortemente ligado ao sistema implementado
-- `CraftText` foi considerado como nome possível para a fase de engine, mas ainda não está consolidado
 - a nomenclatura futura permanece em aberto
+- os candidatos atuais para a nomenclatura futura são `DocFlow`, `FluxDoc` e `Archivum`
 
 Para fins deste documento:
 
@@ -87,10 +87,12 @@ Para fins deste documento:
 - `sink`: componente responsável por persistência, exportação ou saída dos resultados
 - `acervo`: conjunto persistido de documentos e produtos derivados
 - `colecao tematica`: agrupamento documental definido por critério temático ou analítico
-- `usuario pesquisador/historiador`: ator principal do sistema atual, orientado ao trabalho sobre documentos
-- `usuario configurador`: ator principal do sistema futuro, orientado à composição de fluxos
+- `usuario`: categoria geral de ator humano do sistema
+- `usuario operador`: ator mais aderente ao sistema atual, orientado ao trabalho direto com documentos e resultados
+- `usuario configurador`: ator mais aderente ao sistema futuro, orientado à composição e ajuste de fluxos
+- `documento`: unidade documental central do sistema atual e principal portador de conteúdo, metadados e vínculos persistidos no legado
 - `contexto de pipeline`: estrutura de execução que transporta documentos, artefatos e estado ao longo do pipeline
-- `produto derivado`: resultado adicional gerado pelo processamento de um documento, como tradução, análise ou visualização
+- `produto derivado`: resultado adicional gerado pelo processamento de documentos ou coleções, como tradução, análise ou visualização
 
 ## 6. Stakeholders e atores
 
@@ -99,21 +101,29 @@ Para fins deste documento:
 Os stakeholders iniciais identificados são:
 
 - autor/desenvolvedor do projeto
-- usuario pesquisador/historiador
 - usuario geral que trabalha com documentos digitalizados
-- usuario configurador da engine
 - mantenedor futuro do sistema
 - banca/professor, como stakeholder academico indireto
 
 ### 6.2 Perfis de ator
 
-#### 6.2.1 Ator principal do sistema atual
+#### 6.2.1 Categoria geral
 
-No sistema atual, o ator principal é o **usuario pesquisador/historiador**, que utiliza o sistema para coletar, armazenar, consultar, traduzir e analisar documentos.
+A categoria geral de ator humano adotada nesta frente é:
 
-#### 6.2.2 Ator principal do sistema futuro
+- `usuario`
 
-No sistema futuro, o ator principal tende a ser o **usuario configurador da engine**, responsavel por ajustar ferramentas, fluxos e pipelines conforme o objetivo da tarefa.
+#### 6.2.2 Ator mais aderente ao sistema atual
+
+No sistema atual, o ator mais aderente é o **usuario operador**, que utiliza o sistema para coletar, armazenar, consultar, traduzir e analisar documentos.
+
+Equivalência histórica importante:
+
+- a formulação `usuario pesquisador/historiador` representa, nesta frente, a leitura histórica mais próxima do que passou a ser tratado como `usuario operador`
+
+#### 6.2.3 Ator mais aderente ao sistema futuro
+
+No sistema futuro, o ator mais aderente tende a ser o **usuario configurador**, responsavel por ajustar ferramentas, fluxos e pipelines conforme o objetivo da tarefa.
 
 Essa mudanca nao elimina o ator anterior. Em vez disso, indica uma evolucao do perfil de uso:
 
@@ -233,12 +243,14 @@ Os requisitos funcionais abaixo estao organizados por blocos para integrar siste
 - o sistema deve permitir persistir documentos e metadados principais
 - o sistema deve permitir persistir traducoes associadas aos documentos
 - o sistema deve permitir persistir produtos derivados de processamento e analise
+- o sistema deve permitir evolucao futura para persistencia de colecoes e outros agrupamentos analiticos relevantes
 - o sistema futuro deve permitir multiplos destinos de persistencia e saida
 
 ### 12.3 Consulta e uso do acervo
 
 - o sistema deve permitir consultar documentos e conteudos persistidos
 - o sistema deve permitir listar documentos, traducoes e resultados associados
+- o sistema deve permitir consultar resultados derivados e agrupamentos documentais relevantes, conforme a maturidade da evolucao
 - o sistema deve permitir evolucao futura para colecoes tematicas e relacoes documentais mais ricas
 
 ### 12.4 Traducao
@@ -252,6 +264,7 @@ Os requisitos funcionais abaixo estao organizados por blocos para integrar siste
 
 - o sistema deve permitir aplicar ferramentas de analise textual e estatistica aos documentos
 - o sistema deve permitir extracao de entidades e outros produtos analiticos
+- o sistema deve permitir gerar resultados derivados distinguiveis do documento original
 - o sistema futuro deve permitir compor etapas de NLP, estatistica, classificacao e enriquecimento no pipeline
 
 ### 12.6 Configuracao de pipeline
@@ -271,7 +284,7 @@ Os requisitos funcionais abaixo estao organizados por blocos para integrar siste
 ### 12.8 Persistencia e saida no sistema-alvo
 
 - o sistema futuro deve permitir concentrar persistencia e exportacao em sinks
-- o sistema futuro deve permitir persistir documentos e produtos derivados sem acoplar essa responsabilidade aos transformadores
+- o sistema futuro deve permitir persistir documentos, colecoes e produtos derivados sem acoplar essa responsabilidade aos transformadores
 - o sistema futuro deve permitir saidas diversas, incluindo banco de dados e artefatos exportaveis
 
 ### 12.9 Operacao e interfaces

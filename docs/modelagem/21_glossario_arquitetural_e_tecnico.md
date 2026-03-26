@@ -96,13 +96,27 @@ Componente responsável por conectar uma interface ou implementação concreta a
 
 ## 6. Termos de persistência e resultados
 
+### Documento
+
+Unidade documental central do sistema atual e principal portador de conteúdo, metadados e vínculos persistidos no legado.
+
+Na arquitetura futura, `Documento` continua relevante, mas deixa de ser o único centro semântico do sistema, passando a coexistir com abstrações como `Colecao`, `Contexto de execução` e `Produto derivado`.
+
+### Colecao
+
+Agrupamento documental persistível ou analítico, formado por documentos relacionados por critério temático, operacional ou interpretativo.
+
+### Resultado derivado
+
+Resultado lógico produzido a partir do processamento de documentos ou coleções, independentemente de sua materialização final.
+
 ### Persistência configurável
 
 Capacidade de controlar, conforme configuração, se e como resultados serão registrados.
 
 ### Produto derivado
 
-Resultado adicional gerado a partir do processamento de documento, como tradução, análise, visualização ou artefato exportado.
+Resultado adicional gerado a partir do processamento de documento ou coleção, como tradução, análise, visualização ou artefato exportado.
 
 ### Resultado automático
 
@@ -172,7 +186,7 @@ Recorte mais próximo da implementação, usado para detalhar internamente compo
 
 ### Documento
 
-Termo central do projeto que permanece em estabilização conceitual. Historicamente representa a abstração documental principal do sistema atual, mas ainda exige refinamento para a futura arquitetura.
+Termo central do projeto cuja formulação principal já pode ser estabilizada como unidade documental do legado, mas que ainda exige refinamento em sua relação com `Colecao`, `Contexto de execução` e resultados derivados na arquitetura futura.
 
 ### Resultado derivado vs artefato derivado
 
