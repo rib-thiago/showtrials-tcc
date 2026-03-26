@@ -1,0 +1,47 @@
+# Automacao Operacional com Taskipy
+
+## Objetivo
+
+Este documento registra a automacao operacional do projeto baseada em `taskipy`.
+
+Seu objetivo e:
+
+- concentrar comandos recorrentes de qualidade, teste e execucao
+- servir como referencia tecnica complementar aos protocolos operacionais
+- evitar que detalhes de automacao fiquem misturados ao protocolo principal de Git
+
+## Contexto
+
+O projeto incorporou `taskipy` como mecanismo de automacao de tarefas recorrentes e, em momentos posteriores, passou a reforcar esse uso como parte importante do pipeline local.
+
+Essa automacao nao substitui a governanca nem o protocolo de Git, mas apoia sua execucao pratica.
+
+## Tarefas Relevantes Atuais
+
+Com base no estado atual de [pyproject.toml](/home/thiago/coleta_showtrials/pyproject.toml), as tarefas principais incluem:
+
+- `task lint`
+- `task type`
+- `task format`
+- `task quality`
+- `task test`
+- `task test-cov`
+- `task test-html`
+- `task check`
+- `task pre-push`
+- `task docs`
+
+## Relacao com o Fluxo de Trabalho
+
+As tarefas acima ajudam principalmente em:
+
+- verificacoes antes de abrir pull request
+- verificacoes antes de push
+- padronizacao de comandos de qualidade
+- reducao de variacao manual no fluxo local
+
+## Observacao Importante
+
+O uso de `taskipy` possui lastro real no historico do projeto, mas sua automacao detalhada pode evoluir.
+
+Por isso, este documento deve ser lido como guia tecnico do estado atual da automacao, e nao como politica imutavel.
