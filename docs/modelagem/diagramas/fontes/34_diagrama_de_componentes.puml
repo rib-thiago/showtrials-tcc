@@ -1,0 +1,60 @@
+@startuml
+title Diagrama de Componentes
+
+skinparam componentStyle rectangle
+skinparam shadowing false
+
+package "Interfaces" {
+  [CLI]
+  [Web]
+}
+
+package "Aplicacao" {
+  [Casos de Uso]
+  [Orquestracao Legacy]
+}
+
+package "Dominio" {
+  [Entidades e Value Objects]
+  [Contratos de Repositorio]
+}
+
+package "Infraestrutura Atual" {
+  [SQLiteDocumentoRepository]
+  [SQLiteTraducaoRepository]
+  [ServiceRegistry]
+  [Factories de Servico]
+  [Integracoes Externas]
+}
+
+package "Engine Futura" {
+  [Catalogo e Configuracao de Pipeline]
+  [Execucao de Pipeline]
+  [Resultados Derivados e Revisao]
+}
+
+[CLI] --> [Casos de Uso]
+[Web] --> [Casos de Uso]
+[Casos de Uso] --> [Orquestracao Legacy]
+[Casos de Uso] --> [Entidades e Value Objects]
+[Casos de Uso] --> [Contratos de Repositorio]
+[Orquestracao Legacy] --> [ServiceRegistry]
+[Orquestracao Legacy] --> [Integracoes Externas]
+
+[SQLiteDocumentoRepository] ..|> [Contratos de Repositorio]
+[SQLiteTraducaoRepository] ..|> [Contratos de Repositorio]
+[Factories de Servico] --> [Integracoes Externas]
+[ServiceRegistry] --> [Factories de Servico]
+
+[Execucao de Pipeline] --> [Entidades e Value Objects]
+[Execucao de Pipeline] --> [Contratos de Repositorio]
+[Execucao de Pipeline] --> [ServiceRegistry]
+[Catalogo e Configuracao de Pipeline] --> [Execucao de Pipeline]
+[Resultados Derivados e Revisao] --> [Execucao de Pipeline]
+
+note bottom of "Engine Futura"
+Blocos futuros exigidos pela frente,
+mas ainda nao implementados
+end note
+
+@enduml

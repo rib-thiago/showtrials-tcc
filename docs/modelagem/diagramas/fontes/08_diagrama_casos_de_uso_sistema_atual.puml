@@ -1,0 +1,57 @@
+@startuml
+left to right direction
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam actorStyle awesome
+skinparam usecase {
+  BackgroundColor white
+  BorderColor #444444
+  ArrowColor #666666
+}
+skinparam rectangle {
+  BorderColor #444444
+}
+
+actor "usuario operador" as UsuarioOperador
+
+rectangle "ShowTrials atual" {
+  package "Consulta e navegacao" {
+    usecase "ListarDocumentos" as UC_ListarDocumentos
+    usecase "ObterDocumento" as UC_ObterDocumento
+  }
+
+  package "Preparacao e enriquecimento" {
+    usecase "ClassificarDocumento" as UC_ClassificarDocumento
+  }
+
+  package "Traducao" {
+    usecase "TraduzirDocumento" as UC_TraduzirDocumento
+    usecase "ListarTraducoes" as UC_ListarTraducoes
+  }
+
+  package "Analise" {
+    usecase "AnalisarDocumento" as UC_AnalisarDocumento
+    usecase "AnalisarAcervo" as UC_AnalisarAcervo
+    usecase "ObterEstatisticas" as UC_ObterEstatisticas
+  }
+
+  package "Saida e consolidacao" {
+    usecase "ExportarDocumento" as UC_ExportarDocumento
+    usecase "GerarRelatorio" as UC_GerarRelatorio
+  }
+}
+
+UsuarioOperador --> UC_ListarDocumentos
+UsuarioOperador --> UC_ObterDocumento
+UsuarioOperador --> UC_ClassificarDocumento
+UsuarioOperador --> UC_TraduzirDocumento
+UsuarioOperador --> UC_ListarTraducoes
+UsuarioOperador --> UC_AnalisarDocumento
+UsuarioOperador --> UC_AnalisarAcervo
+UsuarioOperador --> UC_ObterEstatisticas
+UsuarioOperador --> UC_ExportarDocumento
+UsuarioOperador --> UC_GerarRelatorio
+
+UC_GerarRelatorio ..> UC_ObterEstatisticas : <<include>>
+
+@enduml
