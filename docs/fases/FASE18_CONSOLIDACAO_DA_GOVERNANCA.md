@@ -8,6 +8,8 @@ Ele nao deve ser lido como politica vigente principal. A politica vigente deve s
 
 - [politica_de_governanca.md](/home/thiago/coleta_showtrials/docs/flows/politica_de_governanca.md)
 
+Este artefato foi criado durante a frente atual de saneamento documental para recepcionar, como registro historico, conteudo que estava misturado ao corpo normativo da politica de governanca.
+
 ## Objetivo da Intervencao
 
 Consolidar regras de governanca para orientar a execucao do projeto com foco arquitetural, rastreabilidade e controle de escopo.
@@ -22,6 +24,8 @@ No momento da consolidacao, o projeto ja contava com:
 - necessidade de unificar foco e fluxo de trabalho
 
 Esse estado contextual funcionou como motivacao para explicitar formalmente a politica de governanca.
+
+A referencia a `MVP - Engine de Pipeline` deve ser lida aqui como contexto historico do momento de formalizacao da governanca e nao como marcador da data de criacao deste artefato de fase, que foi produzido posteriormente na frente de saneamento.
 
 ## Diagnostico que Motivou a Consolidacao
 

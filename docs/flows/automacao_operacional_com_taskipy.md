@@ -40,6 +40,24 @@ As tarefas acima ajudam principalmente em:
 - padronizacao de comandos de qualidade
 - reducao de variacao manual no fluxo local
 
+## Dividas Tecnicas Relacionadas
+
+O documento legado de qualidade mencionava comandos e rotinas que nao estao confirmados no estado atual de `taskipy`.
+
+Esses itens devem ser tratados como divida tecnica ou candidatos a futura implementacao, e nao como fluxo vigente:
+
+- `task check-file`
+- `task lint-file`
+- `task type-file`
+- `task test-file`
+- `task cov-file`
+- `task check-structural`
+- `task check-scope`
+- `task validate-issue`
+- `task check-milestone`
+
+Enquanto nao houver lastro no `pyproject.toml` ou em outra fonte primaria suficiente, esses comandos nao devem ser tratados como automacao efetivamente disponivel.
+
 ## Observacao Importante
 
 O uso de `taskipy` possui lastro real no historico do projeto, mas sua automacao detalhada pode evoluir.
