@@ -12,6 +12,12 @@ Seu objetivo e:
 - apontar achados iniciais de saneamento obrigatorio
 - servir de base para a etapa seguinte de classificacao semantica por arquivo
 
+Este inventario inicial nao encerra a analise semantica da frente.
+
+Ele registra uma primeira consolidacao do universo legado a partir de leitura dirigida por amostragem, realizada apenas para construir a base auditavel da etapa seguinte.
+
+A classificacao semantica definitiva desta frente devera cobrir todos os arquivos do recorte legado, arquivo a arquivo, ainda que a execucao ocorra em blocos operacionais.
+
 ## 2. Recorte formal utilizado
 
 Para esta etapa, foi considerado como documentacao legada o conjunto de arquivos Markdown:
@@ -40,6 +46,11 @@ Este inventario inicial foi construído a partir de:
 - leitura inicial de documentos-raiz
 - leitura dirigida de amostras representativas dos grupos `fases`, `flows`, `projeto` e `metricas`
 - confronto metodologico com o branch `docs/ai-context-bootstrap`
+
+Observacao metodologica:
+
+- a amostragem usada nesta etapa teve funcao exploratoria e inventariante
+- ela nao substitui a revisao semantica integral que sera realizada na Etapa 3
 
 ## 4. Cronologia basica do legado
 
@@ -243,6 +254,7 @@ Esses pontos pertencem as etapas seguintes da frente.
 
 Executar a Etapa 3 da frente:
 
-- classificar semanticamente cada arquivo legado relevante
+- classificar semanticamente cada arquivo legado do recorte, sem excecao
 - distinguir o que e politica, flow, historico, diagnostico, planejamento, contexto ou navegacao
+- organizar essa classificacao em blocos operacionais para manter controle de execucao e commits atomicos
 - preparar a futura arquitetura documental alvo com base nessa classificacao

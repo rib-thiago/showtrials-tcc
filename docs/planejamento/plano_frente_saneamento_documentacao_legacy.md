@@ -32,6 +32,8 @@ Este plano se apoia em:
 - Git, codigo e issues prevalecem sobre documentacao isolada quando houver conflito factual
 - o branch `docs/ai-context-bootstrap` deve ser consultado sempre que possivel antes de novas frentes ou recontextualizacoes relevantes
 - descobertas novas devem ser classificadas, e nao incorporadas automaticamente ao escopo
+- a revisao semantica do legado deve cobrir todos os arquivos do recorte, e nao apenas amostras representativas
+- blocos de arquivos sao unidade operacional de execucao e commit, nao mecanismo de reducao de escopo
 
 ## 4. Escopo da frente
 
@@ -52,11 +54,12 @@ Ficam fora do escopo direto:
 Esta frente devera ser considerada encerrada quando:
 
 - houver inventario auditavel do legado
-- cada documento tiver estatuto semantico claro
+- cada documento do recorte legado tiver estatuto semantico claro
 - as correcoes estruturais obrigatorias tiverem sido executadas
 - a arquitetura documental alvo tiver sido implementada ou mapeada integralmente
 - o remanescente estiver classificado entre divida controlada e backlog posterior
 - houver documento final de saneamento da frente e documento de rodada correspondente
+- nenhum arquivo legado do inventario permanecer sem decisao explicita
 
 ## 6. Etapas operacionais
 
@@ -113,15 +116,15 @@ Distinguir claramente politica, governanca, flow operacional, diagnostico, plane
 
 **Escopo**
 
-Leitura integral dos documentos inventariados e comparacao com a estrutura disciplinada consolidada em `docs/modelagem/`.
+Leitura integral e classificacao individual de todos os documentos inventariados, organizada por blocos operacionais e comparada com a estrutura disciplinada consolidada em `docs/modelagem/`.
 
 **Entregavel**
 
-Matriz de classificacao documental com proposta de manutencao, promocao, rebaixamento, fusao, desmembramento ou arquivamento.
+Matriz de classificacao documental por arquivo, com proposta de manutencao, promocao, rebaixamento, fusao, desmembramento ou arquivamento.
 
 **Criterio de conclusao**
 
-Todo documento legado possui natureza documental explicitada.
+Todo documento legado do inventario possui natureza documental explicitada e decisao preliminar registrada.
 
 **Justificativa**
 
@@ -259,4 +262,4 @@ Por isso, esta frente deve operar apoiando-se nas tres camadas:
 
 ## 9. Proximo passo
 
-Executar a Etapa 2, produzindo o inventario auditavel do legado documental.
+Executar a Etapa 3 em blocos completos, classificando semanticamente todos os arquivos do legado inventariado.
