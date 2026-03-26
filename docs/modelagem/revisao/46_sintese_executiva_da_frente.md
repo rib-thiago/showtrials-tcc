@@ -36,10 +36,8 @@ A frente consolidou principalmente:
 
 Ainda não está fechado:
 
-- saneamento completo de governança e Git
-- revisão humana integral da frente
-- decisão sobre quais dívidas já devem ser atacadas
-- preparação de PR
+- classificação final das pendências remanescentes entre dívida controlada e backlog posterior
+- preparação formal da abertura de PR
 
 ## 5. Estado da frente neste momento
 
@@ -47,13 +45,14 @@ Neste momento, a frente pode ser considerada:
 
 - amplamente produzida
 - conceitualmente forte
-- ainda em fase de fechamento crítico
+- documentalmente estabilizada
+- em fase final de encerramento controlado antes do PR
 
 ## 6. Próximos passos
 
-Os próximos passos corretos não são abrir PR, mas:
+Os próximos passos corretos são:
 
-- revisar criticamente a frente inteira
-- saneá-la
-- reavaliar dívidas
-- só depois decidir o fechamento operacional
+- consolidar o fechamento controlado da frente
+- registrar explicitamente o que permanece como dívida controlada
+- separar o que deverá ser backlogizado depois
+- abrir o PR para revisão humana e decisão de aceite ou recusa

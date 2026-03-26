@@ -45,7 +45,7 @@ O critério usado foi:
 
 ## 4. Itens classificados como `corrigir agora`
 
-Devem ser corrigidos ainda nesta estabilização:
+Foram corrigidos nesta estabilização:
 
 - reorganização estrutural de `docs/modelagem/` para refletir processo de engenharia de software
 - ajuste dos links internos e do índice geral após a reorganização
@@ -80,7 +80,7 @@ Devem permanecer como dívida controlada, sem impedir o fechamento desta frente:
 Esses pontos permanecem relevantes, mas hoje:
 
 - não invalidam o núcleo já estabilizado da frente
-- não impedem revisão humana integral
+- não impedem a revisão humana no contexto do PR
 - podem ser tratados como dívida consciente e documentada
 
 ## 6. Itens classificados como `backlogizar depois`
@@ -112,7 +112,7 @@ Permanecem fora do escopo desta estabilização:
 
 ## 8. Plano de execução das correções obrigatórias
 
-As correções obrigatórias devem seguir esta ordem:
+As correções obrigatórias seguiram esta ordem:
 
 1. reorganização estrutural de `docs/modelagem/`
 2. ajuste de links, referências e índice geral
@@ -122,12 +122,11 @@ As correções obrigatórias devem seguir esta ordem:
 
 ## 9. Questões que permanecem para decisão humana
 
-As questões abaixo permanecem dependentes de decisão humana nas próximas etapas:
+As questões abaixo permanecem dependentes de decisão humana no fluxo posterior ao fechamento desta frente:
 
-- estrutura final exata dos diretórios após a reorganização
-- forma concreta do mecanismo transversal de captura contínua
-- grau de materialização que o bloco UML complementar ainda terá nesta frente
-- momento oportuno para transformar certos elementos prospectivos da engine em novas issues
+- quando e como os diagramas `33`, `35`, `36`, `37` e `39` deverão ser materializados
+- em que momento certos elementos prospectivos da engine devem ser promovidos a novas issues
+- quando conduzir a reclassificação mais ampla entre roadmap arquitetural, backlog ativo e blocos prospectivos já modelados
 
 ## 10. Resultado esperado desta classificação
 
@@ -149,4 +148,4 @@ Os demais artefatos do bloco permanecem como especificações textuais preparat�
 
 ## 12. Próximo passo
 
-Consolidar o fechamento controlado da frente e decidir explicitamente o tratamento posterior dos artefatos UML complementares ainda não materializados.
+Consolidar o encerramento controlado da frente, registrar o conjunto final de dívidas controladas e preparar a abertura de PR.

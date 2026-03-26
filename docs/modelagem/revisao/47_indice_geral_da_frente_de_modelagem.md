@@ -6,10 +6,10 @@ Este documento organiza um **índice geral navegável** da frente de modelagem.
 
 Seu objetivo é facilitar:
 
-- revisão humana integral
+- revisão humana no contexto do PR
 - navegação por etapa
 - localização rápida de artefatos
-- preparação futura de saneamento e fechamento operacional
+- entendimento do estado consolidado da frente
 
 ## 2. Como navegar nesta documentação
 
@@ -23,6 +23,8 @@ Os diretórios principais devem ser lidos assim:
 - `arquitetura/`: reúne a ponte entre requisitos e arquitetura, o bloco `4+1`, o bloco `C4` e a análise de padrões
 - `diagramas/`: separa arquivos-fonte gráficos em `fontes/` e especificações textuais preparatórias em `especificacoes/`
 - `revisao/`: concentra revisão crítica, dívidas, síntese executiva, índice geral, conferência de aderência e saneamento da frente
+
+Esta estrutura já reflete o estado consolidado da estabilização e deve ser usada como base de leitura para a revisão do PR.
 
 ### 2.1 Percursos recomendados
 
@@ -47,6 +49,16 @@ Para diferentes objetivos de leitura, recomenda-se:
   - `arquitetura/padroes/40-43`
 - foco em fechamento crítico:
   - `revisao/44-50`
+
+### 2.2 Estado consolidado da frente
+
+No estado atual:
+
+- a frente está estruturalmente reorganizada por fase de engenharia
+- os critérios de estabilização, a conferência de aderência e o documento de saneamento já foram produzidos
+- o bloco UML complementar foi parcialmente materializado em três diagramas estratégicos
+- os diagramas principais já possuem visualização renderizada para leitura no GitHub
+- as pendências remanescentes estão restritas a dívida controlada e backlog posterior, não a lacunas estruturais da frente
 
 ## 3. Abertura da frente
 
@@ -147,7 +159,7 @@ Nesta estabilização, o bloco UML complementar foi **parcialmente materializado
 
 ## 12. Uso recomendado deste índice
 
-Para revisão crítica humana, a ordem recomendada é:
+Para revisão humana do PR, a ordem recomendada é:
 
 1. requisitos e insumos
 2. casos de uso
@@ -157,6 +169,8 @@ Para revisão crítica humana, a ordem recomendada é:
 6. UML complementar
 7. padrões
 8. fechamento crítico
+
+Ao final dessa leitura, a decisão esperada já não é “continuar produzindo a frente”, mas avaliar se o estado estabilizado está apto para aceite em PR.
 
 ## 13. Politica transversal relacionada
 

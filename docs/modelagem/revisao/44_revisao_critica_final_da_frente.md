@@ -2,20 +2,20 @@
 
 ## 1. Objetivo do documento
 
-Este documento registra a **primeira consolidação da revisão crítica final** da frente de modelagem.
+Este documento registra a **revisão crítica final consolidada** da frente de modelagem.
 
 Seu objetivo é:
 
 - revisar criticamente o conjunto produzido
 - explicitar coerências, lacunas, tensões e contradições
 - registrar desvios metodológicos e de governança já identificados
-- preparar a revisão humana integral que ainda será conduzida sobre a frente completa
+- apoiar o fechamento controlado da frente antes da abertura de PR
 
 ## 2. Base de evidência utilizada
 
 Esta revisão se apoia em:
 
-- todos os artefatos da frente de `01` a `43`
+- todos os artefatos da frente de `01` a `50`
 - rodadas correspondentes já registradas em `docs/planejamento/rodadas/`
 - histórico Git da branch `docs/modelagem-analise-projeto`
 - branch de contexto `docs/ai-context-bootstrap`
@@ -107,13 +107,13 @@ Risco residual:
 
 As principais inferências adotadas nesta revisão foram:
 
-- a frente está conceitualmente forte, mas não metodologicamente “encerrada”
-- a maior parte dos problemas identificados agora é de governança fina, padronização e saneamento, e não de colapso conceitual
-- a revisão humana integral ainda é indispensável antes de qualquer PR
+- a frente está conceitualmente forte e metodologicamente muito mais estabilizada do que no início do fechamento crítico
+- a maior parte dos problemas remanescentes é de classificação de pendências, dívida controlada e preparação de PR, e não de colapso conceitual
+- o fechamento disciplinado da frente depende mais de consolidar o estado atual do que de abrir novas frentes de revisão
 
 ## 8. Suposições operacionais
 
-- esta revisão não substitui a fase posterior de releitura completa e saneamento conduzida junto com o usuário
+- esta revisão continua sendo um artefato vivo de avaliação crítica, mas agora já se apoia nas etapas de saneamento, reorganização estrutural e materialização parcial do bloco UML complementar
 
 ## 9. Dívidas técnicas e documentais remanescentes
 
@@ -121,13 +121,12 @@ As principais dívidas remanescentes são:
 
 - saneamento das mensagens de commit como memória documental desta frente
 - revisão de conformidade de documentos e rodadas
-- reavaliação de diretórios, organização e encadeamento dos artefatos
-- decisão sobre quais dívidas já podem ser atacadas antes do PR
+- acompanhamento das dívidas controladas remanescentes
+- decisão de backlogização posterior dos pontos que excedem o fechamento desta frente
 
 ## 10. Próximos passos
 
 Os próximos passos recomendados são:
 
-- consolidar a lista explícita de dívidas técnicas e documentais da frente
-- produzir uma síntese executiva da frente
-- organizar um índice geral para facilitar a revisão humana integral
+- consolidar a classificação final entre correções já executadas, dívidas controladas e backlog posterior
+- encerrar a frente em estado suficientemente estabilizado para submissão a PR

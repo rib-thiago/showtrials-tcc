@@ -8,7 +8,7 @@ Seu objetivo é:
 
 - reunir num único lugar os pontos ainda abertos
 - separar dívidas de conteúdo, governança, arquitetura e Git
-- facilitar decisão posterior sobre o que já pode ser atacado
+- facilitar a distinção entre dívida controlada da frente e backlog posterior do projeto
 
 ## 2. Base de evidência utilizada
 
@@ -36,13 +36,12 @@ Seu objetivo é:
 
 - normalização fina da estrutura interna de alguns documentos produzidos mais cedo na frente
 - revisão de padronização entre artefatos da mesma etapa
-- revisão de organização de diretórios e agrupamentos documentais
 - revisão das primeiras rodadas do intervalo que ficaram mais fracas em governança
+- revisão exaustiva de rastros históricos de caminhos anteriores de `docs/modelagem/` em artefatos menos centrais
 
 ## 6. Dívidas de Git e governança
 
 - reavaliar o histórico de commits desta frente como memória documental
-- decidir se haverá apenas correção por cima ou algum saneamento histórico mais profundo
 - garantir padrão estável de mensagem documental até o fechamento final da frente
 
 ## 7. Classificação preliminar
@@ -52,8 +51,7 @@ Seu objetivo é:
 Tendem a ser atacáveis:
 
 - normalizações documentais
-- padronização de rodadas
-- revisão de coerência e organização interna dos artefatos
+- revisão de coerência e organização interna dos artefatos ainda não consolidados
 
 ### 7.2 Melhor tratadas como backlog futuro
 
@@ -61,17 +59,20 @@ Tendem a ser melhor tratadas depois:
 
 - implementação real de background
 - plugin system explícito
-- separações físicas mais fortes
+- reclassificação entre roadmap arquitetural amplo, backlog técnico ativo e blocos prospectivos já modelados
 
 ## 8. Inferências adotadas
 
 - boa parte das dívidas remanescentes hoje é mais documental e de governança do que de conceito bruto
-- a decisão sobre o que atacar antes do PR deve ser feita na revisão humana, não automaticamente
+- a estabilização já resolveu as dívidas estruturais obrigatórias e reduziu o restante a um conjunto mais controlado
 
 ## 9. Suposições operacionais
 
-- esta lista será usada como inventário base da fase de saneamento posterior
+- esta lista deve funcionar como inventário vivo das dívidas que permanecem conscientes após a estabilização da frente
 
-## 10. Próximos passos
+## 10. Encaminhamento após a estabilização
 
-- produzir a síntese executiva da frente
+Após a estabilização da frente:
+
+- as dívidas que não impedem PR permanecem como dívida controlada
+- os itens mais estratégicos e expansivos devem ser reavaliados para backlogização posterior
