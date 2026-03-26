@@ -102,3 +102,7 @@ Para revisão crítica humana, a ordem recomendada é:
 6. UML complementar
 7. padrões
 8. fechamento crítico
+
+## 12. Politica transversal relacionada
+
+- [politica_de_diagramas_versionaveis.md](/home/thiago/coleta_showtrials/docs/projeto/politica_de_diagramas_versionaveis.md)
