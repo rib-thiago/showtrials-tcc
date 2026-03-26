@@ -63,3 +63,9 @@ Enquanto nao houver lastro no `pyproject.toml` ou em outra fonte primaria sufici
 O uso de `taskipy` possui lastro real no historico do projeto, mas sua automacao detalhada pode evoluir.
 
 Por isso, este documento deve ser lido como guia tecnico do estado atual da automacao, e nao como politica imutavel.
+
+## Documentos Relacionados
+
+- [Politica de Governanca do Projeto](politica_de_governanca.md)
+- [Protocolo de Git do Projeto](protocolo_de_git.md)
+- [Protocolo de Qualidade do Projeto](protocolo_de_qualidade.md)

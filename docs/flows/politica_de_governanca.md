@@ -150,6 +150,7 @@ O formato obrigatorio de branch e:
 - `feature/<descricao>`
 - `docs/<descricao>`
 - `refactor/<descricao>`
+- `bug/<descricao>`
 
 Exemplos:
 
@@ -179,5 +180,6 @@ Mudancas estruturais:
 
 ## Documentos Relacionados
 
-- [Protocolo de Git do Projeto](git_flow.md)
-- [Protocolo de Qualidade do Projeto](quality_flow.md)
+- [Protocolo de Git do Projeto](protocolo_de_git.md)
+- [Protocolo de Qualidade do Projeto](protocolo_de_qualidade.md)
+- [Automacao Operacional com Taskipy](automacao_operacional_com_taskipy.md)

@@ -45,6 +45,8 @@ Antes de considerar uma mudanca pronta para merge, verificar no minimo:
 - ausencia de efeitos colaterais nao documentados
 - responsabilidade no modulo correto
 
+Parte dessas verificacoes pode ser apoiada pela automacao operacional atualmente disponivel, sem substituir a revisao tecnica necessaria antes de pull request e merge.
+
 ## Tipagem e Clareza Estrutural
 
 Os criterios minimos incluem:
