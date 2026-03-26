@@ -10,6 +10,8 @@ Seu objetivo é explicitar a sequência principal dos casos de uso:
 - `ExecutarPipelineDocumental`
 - `RevisarTraducao`
 
+Nesta etapa, o artefato deve ser lido como **especificação textual preparatória** do diagrama, e não como o diagrama materializado em si.
+
 ## 2. Base de evidência utilizada
 
 - [13_especificacoes_textuais_de_casos_de_uso_prioritarios.md](/home/thiago/coleta_showtrials/docs/modelagem/13_especificacoes_textuais_de_casos_de_uso_prioritarios.md)

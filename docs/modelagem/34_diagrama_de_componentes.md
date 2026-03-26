@@ -6,6 +6,8 @@ Este documento registra o recorte do **diagrama de componentes** da frente.
 
 Seu objetivo é mostrar, em linguagem UML, os componentes principais da solução e suas dependências mais relevantes.
 
+Nesta etapa, o artefato deve ser lido como **especificação textual preparatória** do diagrama, e não como o diagrama materializado em si.
+
 ## 2. Base de evidência utilizada
 
 - [22_visao_logica_4mais1.md](/home/thiago/coleta_showtrials/docs/modelagem/22_visao_logica_4mais1.md)

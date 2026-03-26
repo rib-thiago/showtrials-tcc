@@ -10,6 +10,8 @@ Seu objetivo é identificar:
 - relações principais entre entidades, value objects e contratos
 - lacunas entre o domínio atual e o domínio futuro da engine
 
+Nesta etapa, o artefato deve ser lido como **especificação textual preparatória** do diagrama, e não como o diagrama materializado em si.
+
 ## 2. Base de evidência utilizada
 
 - `src/domain/entities/documento.py`

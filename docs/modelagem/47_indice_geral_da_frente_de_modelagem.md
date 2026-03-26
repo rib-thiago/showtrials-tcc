@@ -63,7 +63,9 @@ Seu objetivo é facilitar:
 - [30_c4_modelo_de_componentes.md](/home/thiago/coleta_showtrials/docs/modelagem/30_c4_modelo_de_componentes.md)
 - [31_c4_modelo_de_codigo.md](/home/thiago/coleta_showtrials/docs/modelagem/31_c4_modelo_de_codigo.md)
 
-## 8. UML complementar
+## 8. UML complementar preparatório
+
+Nesta etapa, os artefatos abaixo devem ser lidos como recortes e especificações textuais do bloco UML complementar, e não como conjunto plenamente materializado de diagramas finais.
 
 - [32_diagrama_de_classes_de_dominio.md](/home/thiago/coleta_showtrials/docs/modelagem/32_diagrama_de_classes_de_dominio.md)
 - [33_diagrama_de_classes_da_engine.md](/home/thiago/coleta_showtrials/docs/modelagem/33_diagrama_de_classes_da_engine.md)
@@ -72,7 +74,7 @@ Seu objetivo é facilitar:
 - [36_diagrama_de_sequencia_fluxos_atuais.md](/home/thiago/coleta_showtrials/docs/modelagem/36_diagrama_de_sequencia_fluxos_atuais.md)
 - [37_diagrama_de_sequencia_fluxos_da_engine.md](/home/thiago/coleta_showtrials/docs/modelagem/37_diagrama_de_sequencia_fluxos_da_engine.md)
 - [38_diagrama_de_atividades_de_pipelines.md](/home/thiago/coleta_showtrials/docs/modelagem/38_diagrama_de_atividades_de_pipelines.md)
-- [39_diagrama_de_estados_se_fizer_sentido.md](/home/thiago/coleta_showtrials/docs/modelagem/39_diagrama_de_estados_se_fizer_sentido.md)
+- [39_diagrama_de_estados_da_execucao_de_pipeline.md](/home/thiago/coleta_showtrials/docs/modelagem/39_diagrama_de_estados_da_execucao_de_pipeline.md)
 
 ## 9. Padrões de projeto
 

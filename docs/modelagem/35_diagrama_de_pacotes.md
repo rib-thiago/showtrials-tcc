@@ -10,6 +10,8 @@ Seu objetivo é mostrar:
 - como a direção de dependências deve permanecer organizada
 - como a engine futura se encaixa na estrutura atual
 
+Nesta etapa, o artefato deve ser lido como **especificação textual preparatória** do diagrama, e não como o diagrama materializado em si.
+
 ## 2. Base de evidência utilizada
 
 - [23_visao_de_desenvolvimento_4mais1.md](/home/thiago/coleta_showtrials/docs/modelagem/23_visao_de_desenvolvimento_4mais1.md)

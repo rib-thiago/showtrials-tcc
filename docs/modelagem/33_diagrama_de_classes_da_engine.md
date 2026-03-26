@@ -6,6 +6,8 @@ Este documento registra o recorte do **diagrama de classes da engine**.
 
 Seu objetivo é explicitar as classes e contratos mínimos esperados para a futura engine de pipeline.
 
+Nesta etapa, o artefato deve ser lido como **especificação textual preparatória** do diagrama, e não como o diagrama materializado em si.
+
 ## 2. Base de evidência utilizada
 
 - [20_decisoes_arquiteturais_iniciais.md](/home/thiago/coleta_showtrials/docs/modelagem/20_decisoes_arquiteturais_iniciais.md)

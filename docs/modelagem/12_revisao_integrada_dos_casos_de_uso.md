@@ -2,7 +2,7 @@
 
 ## 1. Objetivo do documento
 
-Este documento registra a revisão integrada da frente de **casos de uso** após a consolidação dos seus principais artefatos:
+Este documento registra a revisão integrada, em caráter **vivo**, da frente de **casos de uso** após a consolidação dos seus principais artefatos:
 
 - catálogo inicial de casos de uso
 - diagrama do sistema atual
@@ -16,7 +16,7 @@ Seu objetivo é avaliar o conjunto já produzido, identificando:
 - lacunas ainda abertas
 - ambiguidades conceituais
 - dívidas técnicas de modelagem
-- ajustes recomendados antes da especificação textual dos casos prioritários
+- ajustes recomendados para a estabilização da subfrente de casos de uso
 
 ## 2. Base de evidência analisada
 
@@ -27,6 +27,10 @@ Esta revisão se apoia principalmente em:
 - [09_diagrama_casos_de_uso_transicao_arquitetural.md](/home/thiago/coleta_showtrials/docs/modelagem/09_diagrama_casos_de_uso_transicao_arquitetural.md)
 - [10_diagrama_casos_de_uso_sistema_alvo.md](/home/thiago/coleta_showtrials/docs/modelagem/10_diagrama_casos_de_uso_sistema_alvo.md)
 - [11_diagrama_casos_de_uso_cenarios_especializados.md](/home/thiago/coleta_showtrials/docs/modelagem/11_diagrama_casos_de_uso_cenarios_especializados.md)
+- [13_especificacoes_textuais_de_casos_de_uso_prioritarios.md](13_especificacoes_textuais_de_casos_de_uso_prioritarios.md)
+- [14_especificacoes_textuais_de_casos_de_uso_secundarios.md](14_especificacoes_textuais_de_casos_de_uso_secundarios.md)
+- [15_matriz_atores_casos_de_uso_requisitos.md](15_matriz_atores_casos_de_uso_requisitos.md)
+- [16_matriz_casos_de_uso_para_diagramas_e_insumos.md](16_matriz_casos_de_uso_para_diagramas_e_insumos.md)
 - [03_documento_de_requisitos.md](/home/thiago/coleta_showtrials/docs/modelagem/03_documento_de_requisitos.md)
 - insumos anteriores de atores, objetivos, fronteira e capacidades
 
@@ -106,34 +110,34 @@ De forma análoga, a generalização entre casos de uso só apareceu no diagrama
 
 Apesar da solidez geral do conjunto, permanecem lacunas importantes.
 
-### 5.1 Ausência de especificações textuais
+### 5.1 Consolidação semântica ainda incompleta nas especificações textuais
 
-O conjunto atual já permite boa leitura estrutural, mas ainda não oferece descrição textual completa de:
+As especificações textuais prioritárias e secundárias já foram produzidas, o que reduziu uma das principais lacunas da etapa anterior.
 
-- fluxo principal
-- pré-condições
-- pós-condições
-- variações
-- exceções
+Mesmo assim, permanecem pontos que exigem consolidação semântica mais fina, especialmente em torno de:
 
-Essa é a principal lacuna imediata da frente.
+- `Documento`
+- `RevisarTraducao`
+- `ExecutarPipelinePorID`
+- `ObterEstatisticas`
 
-### 5.2 Falta de rastreabilidade mais explícita
+Ou seja, a lacuna atual já não é mais de ausência de especificações, mas de estabilização conceitual do que elas descrevem.
 
-Embora a coerência geral exista, ainda não há artefato próprio ligando explicitamente:
+### 5.2 Rastreabilidade ampliada, mas ainda não completa até backlog e código
 
-- requisitos
-- atores
-- casos de uso
-- diagramas
+As matrizes [15_matriz_atores_casos_de_uso_requisitos.md](15_matriz_atores_casos_de_uso_requisitos.md) e [16_matriz_casos_de_uso_para_diagramas_e_insumos.md](16_matriz_casos_de_uso_para_diagramas_e_insumos.md) ampliaram de forma relevante a rastreabilidade da subfrente.
 
-Essa lacuna justifica a futura criação de matrizes de rastreabilidade.
+Mesmo assim, ainda não existe, nesta camada, ligação mais fina e sistemática entre:
 
-### 5.3 Falta de revisão cruzada formal entre os diagramas
+- casos de uso e backlog de issues
+- casos de uso e trechos mais específicos do código
+- grau de força da evidência usada em cada vínculo
 
-Até aqui, os diagramas foram construídos incrementalmente e com boa coerência, mas ainda falta um momento mais explícito de verificação conjunta do conjunto como sistema.
+### 5.3 Revisão cruzada ampliada, mas com ambiguidades remanescentes
 
-Este documento começa esse trabalho, mas ainda não substitui uma futura matriz mais operacional.
+A revisão cruzada do conjunto foi fortalecida pelas especificações textuais e pelas matrizes de rastreabilidade.
+
+Ainda assim, alguns casos mantêm posição semântica em aberto no conjunto, o que impede considerar a subfrente plenamente encerrada sem saneamento adicional.
 
 ## 6. Ambiguidades ainda abertas
 
@@ -173,7 +177,7 @@ No estágio atual, essa ambiguidade ainda não inviabiliza os diagramas, mas pre
 
 ## 7. Dívidas técnicas de modelagem
 
-As principais dívidas técnicas/documentais desta subfrente são:
+As principais dívidas técnicas/documentais desta subfrente, no estado atual, são:
 
 - revisar a granularidade de `ObterEstatisticas`
 - decidir a posição final de `RevisarTraducao`
@@ -182,16 +186,16 @@ As principais dívidas técnicas/documentais desta subfrente são:
 - avaliar a entrada futura de papel colaborativo ou administrativo
 - aprofundar o conceito de `documento` antes das etapas arquiteturais mais detalhadas
 
-## 8. Ajustes sugeridos antes das especificações textuais
+## 8. Ajustes sugeridos para a estabilização da subfrente
 
-Antes da abertura do documento de especificações textuais, recomenda-se:
+Considerando o estado atual da frente, recomenda-se:
 
-- manter o conjunto atual de diagramas como base estável
-- não redesenhar os diagramas sem necessidade forte
-- usar a revisão crítica aqui registrada como guia para escolher prioridades
-- detalhar primeiro os casos de uso mais maduros e mais centrais
+- manter o conjunto de diagramas de casos de uso como base estável
+- usar esta revisão como artefato vivo de controle da subfrente
+- preservar como dívida o que ainda depende de maior amadurecimento arquitetural
+- evitar rediscutir casos já suficientemente estabilizados sem nova evidência forte
 
-Também se recomenda não tentar resolver, antes do tempo, todas as ambiguidades remanescentes. Algumas delas serão tratadas com mais precisão quando os fluxos textuais forem escritos.
+Também se recomenda não tentar resolver, nesta camada, toda ambiguidade futura da engine. O foco deve permanecer no saneamento do que é estruturalmente necessário para estabilizar a frente.
 
 ## 9. Casos prioritários para detalhamento textual
 
@@ -214,9 +218,8 @@ e permite testar, desde já, a consistência entre o que existe hoje e o que est
 
 ## 10. Próximos passos
 
-Os próximos passos recomendados a partir desta revisão são:
+Os próximos passos recomendados a partir desta revisão viva são:
 
-- abrir o artefato de especificações textuais dos casos prioritários
-- depois registrar uma segunda rodada com casos secundários, se necessário
-- criar matrizes de rastreabilidade entre atores, requisitos e casos de uso
-- usar o resultado dessas especificações como ponte para os próximos artefatos arquiteturais
+- usar este documento como base de conferência da subfrente de casos de uso durante o saneamento da frente
+- tratar as ambiguidades remanescentes como entrada para a revisão crítica e o documento de saneamento consolidado
+- conectar esta revisão ao restante da estabilização documental da frente, sem reabrir desnecessariamente a camada de casos de uso

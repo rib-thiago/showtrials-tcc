@@ -18,7 +18,7 @@ A frente produziu:
 - drivers, decisões e glossário arquitetural
 - bloco `4+1`
 - bloco C4
-- bloco UML complementar
+- bloco preparatório de UML complementar
 - bloco inicial de padrões de projeto
 - bloco inicial de revisão crítica e dívidas
 
@@ -30,6 +30,7 @@ A frente consolidou principalmente:
 - centralidade da separação entre configuração e execução
 - importância de persistência configurável, resultados derivados e revisão humana
 - coerência entre casos de uso e arquitetura
+- recortes preparatórios para o futuro bloco UML complementar
 
 ## 4. O que ainda não está “fechado”
 

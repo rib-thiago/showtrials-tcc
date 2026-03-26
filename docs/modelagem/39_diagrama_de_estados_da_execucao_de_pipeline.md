@@ -4,6 +4,8 @@
 
 Este documento registra a avaliação e o recorte do **diagrama de estados** da frente.
 
+Nesta etapa, o artefato deve ser lido como **especificação textual preparatória** do diagrama, e não como o diagrama materializado em si.
+
 ## 2. Decisão metodológica
 
 Nesta frente, concluiu-se que **faz sentido** manter um diagrama de estados, mas com recorte focalizado:
