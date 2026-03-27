@@ -38,6 +38,18 @@ A fase [FASE 11 - CI: Estabilizacao do Pipeline de Integracao Continua](../fases
 
 Esse workaround foi importante para restaurar reproducibilidade pratica do CI, mas tambem cristalizou uma divida tecnica de dependencia hibrida.
 
+## Execucao Local de Testes e NLP
+
+Na pratica, o mesmo arranjo do CI ainda precisa ser considerado quando se quer:
+
+- executar a suite completa de testes
+- usar analise de texto em ambiente local
+- gerar wordclouds e outros artefatos dependentes do bloco NLP
+
+Sem esse complemento, o ambiente gerado apenas por `poetry install` pode nao reproduzir integralmente o comportamento esperado para NLP e testes.
+
+Tambem e importante notar que, mesmo com o workaround aplicado, a fase inicial de coleta da suite pode parecer lenta por causa de imports pesados de modulos como `spacy`, `matplotlib`, `wordcloud` e integracoes de traducao. Essa lentidao inicial nao deve ser confundida automaticamente com travamento.
+
 ## Limites e Riscos do Estado Atual
 
 Os principais limites do estado atual sao:
@@ -66,6 +78,7 @@ Enquanto essa issue permanecer aberta, qualquer mudanca nesse bloco deve ser tra
 
 - [FASE 8 - Analise de Texto](../fases/FASE8_ANALISE_TEXTO.md)
 - [FASE 11 - CI: Estabilizacao do Pipeline de Integracao Continua](../fases/FASE11_CI.md)
+- [Guia de Contribuicao](../contributing.md)
 - [Guia de Dependencias do Projeto](../flows/guia_de_dependencias.md)
 - [Issue #1 - Migrar dependencias NLP para Poetry](https://github.com/rib-thiago/showtrials-tcc/issues/1)
 - `pyproject.toml`

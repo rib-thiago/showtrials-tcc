@@ -1,310 +1,139 @@
-# ShowTrials - Sistema de Gestão de Documentos Históricos
+# ShowTrials
 
 <div align="center">
 
 ![Python](https://img.shields.io/badge/python-3.12-blue)
 ![CI](https://github.com/rib-thiago/showtrials-tcc/actions/workflows/ci.yml/badge.svg)
 ![License](https://img.shields.io/badge/license-MIT-green)
-![Coverage](https://img.shields.io/badge/coverage-48%25-yellow)
+![Coverage](https://img.shields.io/badge/coverage-75.51%25-yellowgreen)
 ![Code style](https://img.shields.io/badge/code%20style-black-000000.svg)
 ![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.129.0-009688)
 ![SQLite](https://img.shields.io/badge/SQLite-3-003B57)
 
-**Sistema para coleta, armazenamento, tradução e análise de documentos históricos**
+Sistema para coleta, armazenamento, traducao e analise de documentos historicos do acervo ShowTrials.
 
-[📚 Documentação](docs/) | [🚀 Instalação](#instalação) | [📊 Estatísticas](#estatísticas) | [🤝 Contribuir](#contribuindo)
+[Documentacao](docs/index.md) | [Changelog](docs/changelog.md) | [Contribuicao](docs/contributing.md)
 
 </div>
 
----
+## O que o projeto faz hoje
 
-## ✨ Funcionalidades
+- coleta e persiste documentos historicos em SQLite
+- classifica documentos por tipo e organiza metadados do acervo
+- traduz documentos com integracao ao Google Cloud Translation
+- executa analise textual, incluindo entidades, sentimentos e nuvens de palavras
+- oferece interface CLI e interface web baseada em FastAPI
+- gera exportacoes e relatorios do acervo
 
-### 📋 **Gestão de Documentos**
-- Coleta automatizada de documentos do site showtrials.ru
-- Classificação automática por tipo (interrogatório, carta, acareação, etc)
-- Extração de metadados (pessoas, datas, anexos)
-- Armazenamento estruturado em SQLite
+## Estado atual do projeto
 
-### 🌐 **Tradução Multilíngue**
-- Integração com Google Cloud Translation API
-- Suporte a 4 idiomas (Inglês, Português, Espanhol, Francês)
-- Persistência de traduções no banco de dados
-- Alternância entre original/tradução com um comando
+O repositorio combina um sistema funcional ja implementado com uma frente arquitetural de evolucao para uma engine mais configuravel. A leitura publica mais segura hoje e:
 
-### 🔍 **Análise de Texto**
-- Extração de entidades (pessoas, locais, organizações)
-- Análise de sentimentos (polaridade e subjetividade)
-- Estatísticas textuais detalhadas
-- Geração de nuvens de palavras
+- sistema atual e fluxo tecnico: este `README`, [overview](docs/overview.md) e [changelog](docs/changelog.md)
+- documentacao geral: [index](docs/index.md)
+- direcionamento arquitetural imediato: [Direcionamento Arquitetural do MVP da Engine](docs/projeto/direcionamento_arquitetural_engine_mvp.md)
+- visao ampla e roadmap: [Visao Ampla do Projeto](docs/projeto/visao_do_projeto.md) e [Roadmap Arquitetural Amplo](docs/projeto/roadmap_arquitetural.md)
 
-### 🖥️ **Múltiplas Interfaces**
-- **CLI**: Interface de linha de comando com navegação interativa
-- **Web**: Interface web moderna com FastAPI e templates
-- **API**: Endpoints REST para integração
+## Arquitetura em alto nivel
 
-### 📊 **Relatórios e Exportação**
-- Relatórios detalhados do acervo
-- Exportação para TXT com metadados
-- Estatísticas completas e gráficos interativos
+O sistema atual segue uma separacao em camadas, enquanto a documentacao arquitetural mais recente prepara a transicao para uma engine mais extensivel.
 
----
+```text
+Interface -> Application -> Domain -> Infrastructure
 
-## 🏗️ **Arquitetura**
-
-O projeto segue os princípios da **Clean Architecture** com 4 camadas:
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    INTERFACE LAYER                           │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐        │
-│  │     CLI     │  │  Web (API)  │  │   Web UI    │        │
-│  │   (Rich)    │  │  (FastAPI)  │  │ (Templates) │        │
-│  └─────────────┘  └─────────────┘  └─────────────┘        │
-└─────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌─────────────────────────────────────────────────────────────┐
-│                   APPLICATION LAYER                          │
-│  ┌─────────────────────────────────────────────────────┐   │
-│  │              Casos de Uso                            │   │
-│  │  • ListarDocumentos    • TraduzirDocumento          │   │
-│  │  • ObterDocumento      • ListarTraducoes            │   │
-│  │  • ClassificarDocumento • AnalisarTexto             │   │
-│  │  • ObterEstatisticas   • AnalisarAcervo             │   │
-│  │  • ExportarDocumento   • GerarRelatorio             │   │
-│  └─────────────────────────────────────────────────────┘   │
-└─────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌─────────────────────────────────────────────────────────────┐
-│                      DOMAIN LAYER                            │
-│  ┌─────────────┐  ┌─────────────────┐  ┌─────────────┐    │
-│  │  Entidades  │  │  Value Objects  │  │ Interfaces  │    │
-│  │ • Documento │  │ • TipoDocumento │  │ Repositorio │    │
-│  │ • Traducao  │  │ • NomeRusso     │  │   Documento │    │
-│  │             │  │ • AnaliseTexto  │  │   Traducao  │    │
-│  └─────────────┘  └─────────────────┘  └─────────────┘    │
-└─────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌─────────────────────────────────────────────────────────────┐
-│                  INFRASTRUCTURE LAYER                        │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐        │
-│  │  SQLite     │  │   Google    │  │   SpaCy/    │        │
-│  │ Repositório │  │  Translate  │  │   TextBlob  │        │
-│  └─────────────┘  └─────────────┘  └─────────────┘        │
-└─────────────────────────────────────────────────────────────┘
+CLI/Web/API -> Casos de uso -> Entidades e interfaces -> SQLite, traducao, NLP
 ```
 
----
+## Como comecar
 
-## 🚀 **Instalação**
+### Pre-requisitos
 
-### Pré-requisitos
 - Python 3.12+
 - Poetry
 - Git
 
-### Passos
+### Instalacao basica
 
 ```bash
-# 1. Clonar o repositório
-git clone https://github.com/seu-usuario/showtrials.git
-cd showtrials
-
-# 2. Instalar dependências
+git clone https://github.com/rib-thiago/showtrials-tcc.git
+cd showtrials-tcc
 poetry install
-
-# 3. Ativar ambiente virtual
-poetry shell
-
-# 4. Configurar variáveis de ambiente
 cp .env.example .env
-# Edite .env com suas chaves de API
-
-# 5. Inicializar banco de dados
-python scripts/migrar_dados_existentes.py
-
-# 6. Executar a aplicação
-python run.py        # CLI
-# ou
-python web_run.py    # Web (acesse http://localhost:8000)
 ```
 
----
+Se voce pretende usar analise de texto, gerar wordclouds ou executar a suite completa de testes, consulte primeiro [Dependencias NLP: Estado Atual e Transicao](docs/projeto/dependencias_nlp_estado_e_transicao.md), porque o bloco NLP ainda exige um workaround complementar ao `poetry install`.
 
-## 📖 **Como Usar**
-
-### Interface CLI
+### Execucao
 
 ```bash
-python run.py
+poetry run task run-cli
+poetry run task run-web
+poetry run task docs
 ```
 
-**Menu principal:**
-```
-  [1] 📋 Listar todos os documentos
-  [2] 🏛️  Listar por centro
-  [3] 👁️  Visualizar documento
-  [4] 📊 Estatísticas
-  [5] 📈 Relatórios avançados
-  [6] 🔍 Análise de texto
-  [7] 🔄 Sair
-```
+- `task run-cli`: inicia a interface de linha de comando
+- `task run-web`: inicia a interface web
+- `task docs`: sobe a documentacao local com MkDocs
 
-**Comandos durante visualização:**
-- `t` - Alternar entre original/tradução
-- `n` - Nova tradução
-- `e` - Exportar documento
-- `Enter` - Voltar
+## Testes e qualidade
 
-### Interface Web
+Comandos atuais do projeto:
 
 ```bash
-python web_run.py
-# Acesse http://localhost:8000
+poetry run task lint
+poetry run task type
+poetry run task test
+poetry run task test-cov
+poetry run task pre-push
 ```
 
----
+Suite validada localmente em `2026-03-27` com:
 
-## 🧪 **Testes**
+- `235` testes passando
+- cobertura total de `75.51%`
 
-```bash
-# Executar todos os testes
-poetry run pytest tests/ -v
+Se a execucao envolver modulos de NLP, a coleta inicial dos testes pode demorar perceptivelmente por imports pesados. Consulte [docs/contributing.md](docs/contributing.md) para o fluxo recomendado.
 
-# Com cobertura
-poetry run pytest --cov=src tests/
+## Estrutura principal
 
-# Gerar relatório HTML de cobertura
-poetry run pytest --cov=src --cov-report=html tests/
-open htmlcov/index.html
+```text
+src/
+  application/
+  domain/
+  infrastructure/
+  interface/
+  tests/
+docs/
+  fases/
+  flows/
+  modelagem/
+  planejamento/
+  projeto/
+data/
+scripts/
+run.py
+web_run.py
+pyproject.toml
 ```
 
-**Cobertura atual:** 48 testes automatizados
+## Documentacao
 
----
+- [Pagina inicial da documentacao](docs/index.md)
+- [Visao geral](docs/overview.md)
+- [Guia de contribuicao](docs/contributing.md)
+- [Changelog](docs/changelog.md)
+- [Guia de documentacao do projeto](docs/flows/guia_de_documentacao_do_projeto.md)
+- [Guia de atualizacao do changelog](docs/flows/guia_de_atualizacao_do_changelog.md)
 
-## 📁 **Estrutura do Projeto**
+## Historico e rastreabilidade
 
-```
-.
-├── src/                          # Código fonte principal
-│   ├── domain/                   # Camada de domínio
-│   ├── application/              # Camada de aplicação
-│   ├── infrastructure/           # Camada de infraestrutura
-│   └── interface/                # Camada de interface (CLI/Web)
-├── tests/                        # Testes automatizados
-├── docs/                         # Documentação
-│   ├── FASE1_DOMAIN.md
-│   ├── FASE2_APPLICATION.md
-│   ├── FASE3_INFRASTRUCTURE.md
-│   ├── FASE4_CLI.md
-│   ├── FASE5_TRADUCAO.md
-│   ├── FASE6_EXPORTACAO.md
-│   ├── FASE7_RELATORIOS.md
-│   ├── FASE8_ANALISE_TEXTO.md
-│   └── FASE9_WEB_INTERFACE.md
-├── scripts/                       # Scripts utilitários
-│   └── migrar_dados_existentes.py
-├── data/                          # Banco de dados SQLite
-│   └── showtrials.db
-├── exportados/                    # Documentos exportados
-├── relatorios/                    # Relatórios gerados
-├── analises/                       # Nuvens de palavras
-├── legacy/                         # Código legado (backup)
-├── pyproject.toml                  # Dependências e configurações
-├── poetry.lock                     # Lock file
-├── .pre-commit-config.yaml         # Git hooks
-├── .ruff.toml                      # Configuração do Ruff
-├── .env.example                    # Exemplo de variáveis de ambiente
-├── run.py                          # Ponto de entrada da CLI
-├── web_run.py                      # Ponto de entrada da Web
-└── README.md                       # Este arquivo
-```
+O historico detalhado do projeto fica distribuido entre:
 
----
+- [Changelog](docs/changelog.md), para marcos publicos resumidos
+- [docs/fases](docs/fases), para historicos consolidados de intervencoes
+- [docs/planejamento/rodadas](docs/planejamento/rodadas), para execucao curta e rastreavel
 
-## 🤝 **Contribuindo**
+## Licenca
 
-1. Faça um fork do projeto
-2. Crie uma branch (`git checkout -b feature/nova-funcionalidade`)
-3. Commit suas mudanças (`git commit -m 'feat: adiciona nova funcionalidade'`)
-4. Push para a branch (`git push origin feature/nova-funcionalidade`)
-5. Abra um Pull Request
-
-### Padrões de Commit
-
-- `feat`: Nova funcionalidade
-- `fix`: Correção de bug
-- `docs`: Documentação
-- `style`: Formatação
-- `refactor`: Refatoração
-- `test`: Testes
-- `chore`: Tarefas de manutenção
-
----
-
-## 📚 **Documentação Detalhada**
-
-- [FASE 1 - Domain Layer](docs/FASE1_DOMAIN.md) - Entidades e regras de negócio
-- [FASE 2 - Application Layer](docs/FASE2_APPLICATION.md) - Casos de uso e DTOs
-- [FASE 3 - Infrastructure Layer](docs/FASE3_INFRASTRUCTURE.md) - Repositórios e serviços
-- [FASE 4 - CLI Interface](docs/FASE4_CLI.md) - Interface de linha de comando
-- [FASE 5 - Tradução Avançada](docs/FASE5_TRADUCAO.md) - Tradução e alternância
-- [FASE 6 - Exportação](docs/FASE6_EXPORTACAO.md) - Exportação de documentos
-- [FASE 7 - Relatórios](docs/FASE7_RELATORIOS.md) - Relatórios e estatísticas
-- [FASE 8 - Análise de Texto](docs/FASE8_ANALISE_TEXTO.md) - NLP e entidades
-- [FASE 9 - Web Interface](docs/FASE9_WEB_INTERFACE.md) - Interface web
-
----
-
-## 🛠️ **Tecnologias Utilizadas**
-
-| Categoria | Tecnologias |
-|-----------|-------------|
-| **Linguagem** | Python 3.12 |
-| **Gerenciamento** | Poetry |
-| **Banco de Dados** | SQLite |
-| **CLI** | Rich |
-| **Web** | FastAPI, Jinja2, Bootstrap, Chart.js |
-| **Tradução** | Google Cloud Translation API |
-| **Análise de Texto** | spaCy, TextBlob, NLTK, WordCloud, Matplotlib |
-| **Qualidade** | Black, isort, Ruff, pre-commit |
-| **Testes** | pytest, pytest-cov |
-
----
-
-## 📄 **Licença**
-
-Este projeto é desenvolvido para fins acadêmicos. Todos os documentos pertencem aos seus respectivos arquivos históricos.
-
-Fonte: [showtrials.ru](http://showtrials.ru)
-
----
-
-## 👤 **Autor**
-
-**Thiago Ribeiro**
-- Email: mackandalls@gmail.com
-- GitHub: [@thiago](https://github.com/seu-usuario)
-- Projeto de TCC - [Instituição]
-
----
-
-## 🙏 **Agradecimentos**
-
-- Aos arquivos históricos que tornaram esta pesquisa possível
-- À comunidade open source pelas ferramentas utilizadas
-- Aos orientadores e colaboradores do projeto
-
----
-
-<div align="center">
-  <sub>Built with ❤️ for historical research</sub>
-  <br>
-  <sub>© 2026 Thiago Ribeiro</sub>
-</div>
-```
+Projeto sob licenca MIT.
