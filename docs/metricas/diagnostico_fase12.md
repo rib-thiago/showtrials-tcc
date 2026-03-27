@@ -1,129 +1,100 @@
-# Diagnóstico: Problemas de Telemetria no TipoDocumento (FASE 12)
+# Diagnostico Historico da Divergencia de Telemetria em TipoDocumento
 
-<div align="center">
+## Natureza do Documento
 
-**Análise detalhada dos 4 testes falhando e inconsistência de padrões em `tipo_documento.py`**
+Este documento registra historicamente o diagnostico da divergencia de
+telemetria identificada em `src/domain/value_objects/tipo_documento.py`.
 
-</div>
+Ele deve ser lido como diagnostico historico de uma incompatibilidade tecnica
+de epoca, e nao como descricao viva do estado atual da telemetria no projeto.
 
-## 📅 **Informações do Diagnóstico**
+## Problema Diagnosticado
 
-| Item | Descrição |
-|------|-----------|
-| **Data** | 19/02/2026 |
-| **Autor** | Thiago Ribeiro |
-| **Fase relacionada** | [FASE 12](../fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md) |
-| **Issue principal** | [#3](https://github.com/rib-thiago/showtrials-tcc/issues/3) |
-| **Arquivo afetado** | `src/domain/value_objects/tipo_documento.py` |
-| **Testes falhando** | 4 (test_tipo_documento_telemetry.py) |
+O arquivo `tipo_documento.py` seguia, naquele momento, um padrao de
+instrumentacao diferente do padrao que se consolidava no restante do projeto.
 
----
+A divergencia mais visivel era a ausencia de:
 
-## 🔍 **O QUE ESTAVA ACONTECENDO**
+- variavel global `_telemetry`
+- funcao `configure_telemetry(...)`
+- verificacoes condicionais do tipo `if _telemetry:`
 
-### Análise do Problema
+Essa diferenca gerava atrito tecnico com os testes e com a uniformidade da
+instrumentacao.
 
-1. **`tipo_documento.py`** tinha um padrão de telemetria **DIFERENTE** dos outros arquivos:
-   - Usava `try/except ImportError` com fallback
-   - Tinha decorator `@monitor`
-   - **NÃO TINHA** o padrão `_telemetry` e `configure_telemetry`
+## Evidencias Principais
 
-2. **`test_tipo_documento_telemetry.py`** esperava o padrão consolidado:
-   - Chamava `td_module.configure_telemetry()`
-   - Esperava que `_telemetry` fosse uma variável global
+### Divergencia de Padrao
 
+O diagnostico historico identificou a diferenca entre:
 
-### 📊 **Comparação de Padrões**
+- o padrao consolidado da epoca, baseado em `_telemetry` e
+  `configure_telemetry(...)`;
+- a implementacao de `tipo_documento.py`, que usava abordagem distinta com
+  decorator e fallback de importacao.
 
-| Característica | Padrão do Projeto | `tipo_documento.py` |
-|----------------|-------------------|---------------------|
-| Variável `_telemetry` | ✅ Sim | ❌ Não |
-| Função `configure_telemetry` | ✅ Sim | ❌ Não |
-| Decorator `@monitor` | ❌ Não | ✅ Sim |
-| `if _telemetry:` nos métodos | ✅ Sim | ❌ Não |
+### Sintoma Observado
 
+O sintoma tecnico mais direto aparecia assim:
 
-```python
-# Padrão do Projeto
-_telemetry = None
-
-def configure_telemetry(telemetry_instance=None):
-    global _telemetry
-    _telemetry = telemetry_instance
-
-# No método:
-if _telemetry:
-    _telemetry.increment("...")
+```text
+AttributeError: module 'src.domain.value_objects.tipo_documento'
+has no attribute 'configure_telemetry'
 ```
 
-```python
-# tipo_documento.py
-try:
-    from src.infrastructure.telemetry import monitor as telemetry_monitor
-    TELEMETRY_AVAILABLE = True
-    monitor = telemetry_monitor
-except ImportError:
-    TELEMETRY_AVAILABLE = False
-    def monitor(name: Optional[str] = None) -> Callable:
-        def decorator(func: Callable) -> Callable:
-            return func
-        return decorator
-```
+Isso indicava incompatibilidade entre o modulo e a expectativa dos testes
+relacionados a telemetria.
 
-### 🔴 **Consequência**
+## Causa Raiz Identificada
 
-```python
-E   AttributeError: module 'src.domain.value_objects.tipo_documento' has no attribute 'configure_telemetry'
-```
----
+A causa raiz identificada no periodo foi que `tipo_documento.py` nao havia sido
+atualizado para acompanhar o padrao de telemetria que vinha sendo adotado em
+outros modulos do projeto.
 
-## 📊 **Estado Atual do Diagnóstico**
+O problema, portanto, nao era apenas um teste quebrado, mas uma divergencia de
+instrumentacao entre partes semanticamente proximas do codigo.
 
-```
-📁 ARQUIVO: src/domain/value_objects/tipo_documento.py
-🔴 TESTES FALHANDO: 4 (todos de telemetria)
-📈 COBERTURA: 83%
-🎯 META: 45% (já ultrapassada)
-```
+## Solucao Historica Aplicada
 
----
+A correcao historica substituiu a abordagem anterior por uma implementacao mais
+alinhada ao padrao predominante da epoca:
 
-## 🔬 **Causa Raiz**
+- introducao de `_telemetry`
+- introducao de `configure_telemetry(...)`
+- uso de chamadas condicionais de telemetria em pontos relevantes
 
-O arquivo `tipo_documento.py` nunca foi atualizado para seguir o padrão de telemetria consolidado nas fases anteriores (FASE 5, FASE 8).
+O lastro tecnico principal dessa correcao esta em:
 
----
+- [`1b91b23`](https://github.com/rib-thiago/showtrials-tcc/commit/1b91b23660024bef1aa4cb073906db4a70a35d7b) - `fix: padroniza telemetria em tipo_documento.py`
+- [FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md](/home/thiago/coleta_showtrials/docs/fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md)
 
-## ✅ **Solução Aplicada**
+## Impacto Historico
 
-A correção foi implementada na [FASE 12](../fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md), substituindo o padrão antigo pelo consolidado:
+Historicamente, este diagnostico importa por tres motivos:
 
-1. Removido decorator `@monitor`
-2. Adicionada variável global `_telemetry`
-3. Adicionada função `configure_telemetry()`
-4. Adicionadas verificações `if _telemetry:` nos métodos
+- mostrou que a consolidacao da telemetria no projeto nao era totalmente
+  uniforme;
+- justificou a correcao aplicada na fase correspondente;
+- registrou um momento de endurecimento tecnico em torno de testes e
+  instrumentacao.
 
----
+## Limites de Leitura no Estado Atual
 
-## 📈 **Resultado**
+Este documento nao deve ser lido como fonte viva principal para:
 
-Após a correção:
-- ✅ 4 testes de telemetria passando
-- ✅ Cobertura mantida em 83%
-- ✅ Padrão unificado com o resto do projeto
+- definicao normativa de telemetria;
+- estado atual dos testes do modulo;
+- backlog atual de qualidade;
+- associacao formal com issue tecnica especifica.
 
----
+Para isso, a leitura mais forte hoje deve ser feita em:
 
-## 🔗 **Links Relacionados**
+- [FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md](/home/thiago/coleta_showtrials/docs/fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md)
+- [guia_de_telemetria.md](/home/thiago/coleta_showtrials/docs/flows/guia_de_telemetria.md)
+- [protocolo_de_qualidade.md](/home/thiago/coleta_showtrials/docs/flows/protocolo_de_qualidade.md)
 
-- [FASE 12 - Implementação da correção](../fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md)
-- [Commit da correção](https://github.com/rib-thiago/showtrials-tcc/commit/1b91b23) (exemplo - ajustar hash real)
-- [Issue #3 - FASE 17](https://github.com/rib-thiago/showtrials-tcc/issues/3)
+## Documentos Relacionados
 
----
-
-<div align="center">
-  <sub>Diagnóstico mantido para referência histórica</sub>
-  <br>
-  <sub>✅ Problema resolvido na FASE 12</sub>
-</div>
+- [FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md](/home/thiago/coleta_showtrials/docs/fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md)
+- [guia_de_telemetria.md](/home/thiago/coleta_showtrials/docs/flows/guia_de_telemetria.md)
+- [protocolo_de_qualidade.md](/home/thiago/coleta_showtrials/docs/flows/protocolo_de_qualidade.md)
