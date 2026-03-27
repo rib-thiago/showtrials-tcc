@@ -1,127 +1,119 @@
 # Politica de Diagramas Versionaveis
 
-## 1. Objetivo
+## Objetivo
 
-Este documento define a politica do projeto para **diagramas versionaveis**, com foco em:
+Esta politica define como o projeto trata diagramas versionaveis, com foco em:
 
-- legibilidade humana
-- fonte versionada em codigo sempre que possivel
-- escolha disciplinada de ferramenta
-- organizacao coerente dos artefatos no repositorio
+- legibilidade humana;
+- fonte versionada no repositorio sempre que possivel;
+- escolha disciplinada de ferramenta;
+- organizacao coerente dos artefatos.
 
 Seu objetivo nao e impor formalismo maximo em todos os casos, mas garantir que novos diagramas sejam produzidos com criterio, rastreabilidade e utilidade real.
 
-## 2. Principios
+## Principios
 
 Os diagramas do projeto devem seguir os principios abaixo:
 
-- a fonte do diagrama deve ser mantida no repositorio sempre que possivel
-- leitura humana tem prioridade pratica
-- a ferramenta deve ser escolhida conforme o tipo de diagrama e o objetivo do artefato
-- documentos textuais de apoio ou especificacao podem coexistir com diagramas sem serem confundidos com eles
-- diagramas nao devem ser produzidos apenas como ornamentacao documental
+- a fonte do diagrama deve ser mantida no repositorio sempre que possivel;
+- leitura humana tem prioridade pratica;
+- a ferramenta deve ser escolhida conforme o tipo de diagrama e o objetivo do artefato;
+- documentos textuais de apoio ou especificacao podem coexistir com diagramas sem serem confundidos com eles;
+- diagramas nao devem ser produzidos apenas como ornamentacao documental.
 
-## 3. Ferramentas adotadas
+## Ferramentas Adotadas
 
-### 3.1 Padrao default
+### Padrao default
 
 O projeto adota **Mermaid** como ferramenta default para diagramas versionaveis.
 
-### 3.2 Excecao para UML formal
+### Excecao para UML formal
 
 O projeto adota **PlantUML** como excecao preferencial quando houver necessidade de UML mais formal e Mermaid nao sustentar bem o caso.
 
-## 4. Criterios de uso por tipo de diagrama
+## Criterios de Uso
 
-### 4.1 Usar Mermaid preferencialmente para
+### Usar Mermaid preferencialmente para
 
-- fluxos
-- processos
-- diagramas explicativos
-- visoes em que a renderizacao nativa no GitHub traga ganho relevante de leitura
+- fluxos;
+- processos;
+- diagramas explicativos;
+- visoes em que a renderizacao nativa no GitHub traga ganho relevante de leitura.
 
-### 4.2 Usar PlantUML preferencialmente para
+### Usar PlantUML preferencialmente para
 
-- casos de uso
-- diagramas de classes
-- diagramas de sequencia
-- diagramas de atividades
-- diagramas de estados
-- cenarios em que a precisao UML seja mais importante que a renderizacao nativa no GitHub
+- casos de uso;
+- diagramas de classes;
+- diagramas de sequencia;
+- diagramas de atividades;
+- diagramas de estados;
+- cenarios em que a precisao UML seja mais importante que a renderizacao nativa no GitHub.
 
-## 5. Organizacao dos artefatos no repositorio
+## Organizacao dos Artefatos
 
-Na frente de modelagem, os diagramas passam a obedecer a organizacao abaixo:
+Os diagramas versionaveis do bloco de modelagem obedecem a organizacao abaixo:
 
 - `docs/modelagem/diagramas/fontes/`
 - `docs/modelagem/diagramas/especificacoes/`
 - `docs/modelagem/diagramas/renderizados/`
 
-### 5.1 Fontes
+### Fontes
 
 Devem ficar em `docs/modelagem/diagramas/fontes/`:
 
-- arquivos `.mmd`
-- arquivos `.puml`
-- outros arquivos-fonte equivalentes adotados pelo projeto
+- arquivos `.mmd`;
+- arquivos `.puml`;
+- outros arquivos-fonte equivalentes adotados pelo projeto.
 
-### 5.2 Especificacoes
+### Especificacoes
 
 Devem ficar em `docs/modelagem/diagramas/especificacoes/`:
 
-- documentos de recorte
-- documentos de leitura
-- especificacoes textuais preparatorias de diagramas
-- artefatos que explicam o objetivo e o escopo de um diagrama ainda nao materializado
+- documentos de recorte;
+- documentos de leitura;
+- especificacoes textuais preparatorias de diagramas;
+- artefatos que explicam o objetivo e o escopo de um diagrama ainda nao materializado.
 
-### 5.3 Renderizados
+### Renderizados
 
 Devem ficar em `docs/modelagem/diagramas/renderizados/`:
 
-- artefatos derivados de leitura humana, como `SVG`
-- versoes exportadas destinadas a facilitar consulta no GitHub ou em documentacao navegavel
+- artefatos derivados de leitura humana, como `SVG`;
+- versoes exportadas destinadas a facilitar consulta no GitHub ou em documentacao navegavel.
 
-## 6. Artefatos derivados
+## Artefatos Derivados
 
 O projeto pode versionar artefatos derivados, como `SVG`, quando houver ganho real de leitura humana.
 
 Nesse caso:
 
-- o artefato derivado nao substitui a fonte
-- a fonte continua sendo a referencia principal
-- o derivado e opcional, e nao obrigatorio
+- o artefato derivado nao substitui a fonte;
+- a fonte continua sendo a referencia principal;
+- o derivado e opcional, e nao obrigatorio.
 
-## 7. Regra para o bloco UML complementar atual
+## Regras para o Bloco Atual
 
 Na situacao atual da frente de modelagem:
 
-- os artefatos `32-39` permanecem classificados como especificacoes textuais preparatorias de diagramas
-- esta politica nao implica materializacao imediata desses diagramas
-- a decisao sobre materializacao futura deve ocorrer apenas em etapa propria do plano de estabilizacao
+- os artefatos `32-39` permanecem classificados como especificacoes textuais preparatorias de diagramas;
+- esta politica nao implica materializacao imediata desses diagramas;
+- a decisao sobre materializacao futura deve ocorrer apenas em etapa propria do plano de estabilizacao.
 
-## 8. Regra para novos diagramas
+## Regra para Novos Diagramas
 
 Antes de criar um novo diagrama, deve-se:
 
-1. confirmar a necessidade do diagrama
-2. definir claramente seu objetivo
-3. escolher a ferramenta segundo esta politica
-4. registrar a fonte no diretorio adequado
-5. evitar duplicacao desnecessaria com documentacao textual ja suficiente
+1. confirmar a necessidade do diagrama;
+2. definir claramente seu objetivo;
+3. escolher a ferramenta segundo esta politica;
+4. registrar a fonte no diretorio adequado;
+5. evitar duplicacao desnecessaria com documentacao textual ja suficiente.
 
-## 9. Relacao com a governanca do projeto
+## Relacao com a Governanca do Projeto
 
 Esta politica existe para:
 
-- melhorar a consistencia entre os diagramas do projeto
-- evitar escolha ad hoc de ferramenta a cada novo artefato
-- preservar a rastreabilidade entre fonte, especificacao e leitura humana
-- reduzir o risco de diagramas bonitos, mas pouco uteis
-
-## 10. Proximo uso esperado
-
-Esta politica deve orientar:
-
-- a eventual materializacao futura do bloco UML complementar
-- a producao de novos diagramas em frentes de arquitetura, implementacao e revisao
-- a manutencao dos diagramas ja existentes no repositorio
+- melhorar a consistencia entre os diagramas do projeto;
+- evitar escolha ad hoc de ferramenta a cada novo artefato;
+- preservar a rastreabilidade entre fonte, especificacao e leitura humana;
+- reduzir o risco de diagramas bonitos, mas pouco uteis.
