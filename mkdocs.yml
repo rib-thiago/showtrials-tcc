@@ -58,52 +58,74 @@ nav:
   - Visão Geral: overview.md
   - Arquitetura: ARCHITECTURE.md
 
-  - Fases do Projeto:
-    - FASE 1 - Domain: fases/FASE1_DOMAIN.md
-    - FASE 2 - Application: fases/FASE2_APPLICATION.md
-    - FASE 3 - Infrastructure: fases/FASE3_INFRASTRUCTURE.md
-    - FASE 4 - CLI: fases/FASE4_CLI.md
-    - FASE 5 - Tradução: fases/FASE5_TRADUCAO.md
-    - FASE 6 - Exportação: fases/FASE6_EXPORTACAO.md
-    - FASE 7 - Relatórios: fases/FASE7_RELATORIOS.md
-    - FASE 8 - Análise de Texto: fases/FASE8_ANALISE_TEXTO.md
-    - FASE 9 - Web Interface: fases/FASE9_WEB_INTERFACE.md
-    - FASE 10 - Service Registry: fases/FASE10_SERVICE_REGISTRY.md
-    - FASE 11 - CI: fases/FASE11_CI.md
-    - FASE 12 - Telemetria TipoDocumento: fases/FASE12.md
-    - FASE 13 - Limpeza: fases/FASE13.md
-    - FASE 14 - ExportarDocumento: fases/FASE14.md
-    - FASE 15 - GerarRelatorio: fases/FASE15.md
-    - FASE 16 - ListarDocumentos: fases/FASE16.md
-    - FASE 17 - Padronização Documentação: fases/FASE17.md
+  - Historico de Fases:
+    - FASE 01 - Dominio: historico/fases/FASE01_FUNDACAO_DA_CAMADA_DE_DOMINIO.md
+    - FASE 02 - Aplicacao: historico/fases/FASE02_FUNDACAO_DA_CAMADA_DE_APLICACAO.md
+    - FASE 03 - Infraestrutura: historico/fases/FASE03_FUNDACAO_DA_CAMADA_DE_INFRAESTRUTURA.md
+    - FASE 04 - Interface CLI: historico/fases/FASE04_FUNDACAO_DA_INTERFACE_CLI.md
+    - FASE 05 - Traducao: historico/fases/FASE05_INTRODUCAO_DO_SUBSISTEMA_DE_TRADUCAO.md
+    - FASE 06 - Exportacao: historico/fases/FASE06_INTRODUCAO_DO_SUBSISTEMA_DE_EXPORTACAO.md
+    - FASE 07 - Relatorios: historico/fases/FASE07_INTRODUCAO_DO_SUBSISTEMA_DE_RELATORIOS.md
+    - FASE 08 - Analise de Texto: historico/fases/FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO.md
+    - FASE 09 - Interface Web: historico/fases/FASE09_INTRODUCAO_DA_INTERFACE_WEB.md
+    - FASE 10 - Service Registry: historico/fases/FASE10_INTRODUCAO_DO_SERVICE_REGISTRY_E_DO_LAZY_LOADING.md
+    - FASE 11 - CI: historico/fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI.md
+    - FASE 12 - Telemetria em TipoDocumento: historico/fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md
+    - FASE 13 - Limpeza do Repositorio: historico/fases/FASE13_LIMPEZA_E_ORGANIZACAO_DO_REPOSITORIO.md
+    - FASE 14 - ExportarDocumento: historico/fases/FASE14_TELEMETRIA_E_TESTES_EM_EXPORTAR_DOCUMENTO.md
+    - FASE 15 - GerarRelatorio: historico/fases/FASE15_TELEMETRIA_E_TESTES_EM_GERAR_RELATORIO.md
+    - FASE 16 - ListarDocumentos: historico/fases/FASE16_TELEMETRIA_E_EXPANSAO_DE_TESTES_EM_LISTAR_DOCUMENTOS.md
+    - FASE 17 - Reorganizacao Documental: historico/fases/FASE17_PRIMEIRA_REORGANIZACAO_DOCUMENTAL_AMPLA.md
+    - FASE 18 - Governanca: historico/fases/FASE18_CONSOLIDACAO_DA_GOVERNANCA.md
+    - FASE 19 - Fluxo de Qualidade: historico/fases/FASE19_CONSOLIDACAO_DO_FLUXO_DE_QUALIDADE.md
 
-  - Flows de Trabalho:
-    - Git Flow: flows/git_flow.md
-    - Quality Flow: flows/quality_flow.md
-    - Telemetry Flow: flows/telemetry_flow.md
-    - Code Review Flow: flows/code_review_flow.md
-    - Dependencies Flow: flows/dependencies_flow.md
-    - Debug Flow: flows/debug_flow.md
-    - Documentation Flow: flows/documentation_flow.md
-    - Refactoring Flow: flows/refactoring_flow.md
-    - Emergency Flow: flows/emergency_flow.md
+  - Politicas:
+    - Governanca: politicas/politica_de_governanca.md
+
+  - Protocolos:
+    - Git: protocolos/protocolo_de_git.md
+    - Qualidade: protocolos/protocolo_de_qualidade.md
+
+  - Guias:
+    - Automacao com Taskipy: guias/automacao_operacional_com_taskipy.md
+    - Atualizacao do Changelog: guias/guia_de_atualizacao_do_changelog.md
+    - Auto-Revisao: guias/guia_de_auto_revisao.md
+    - Correcao Urgente: guias/guia_de_correcao_urgente.md
+    - Debug: guias/guia_de_debug.md
+    - Dependencias: guias/guia_de_dependencias.md
+    - Documentacao do Projeto: guias/guia_de_documentacao_do_projeto.md
+    - Manutencao do Site Documental: guias/guia_de_manutencao_do_site_documental.md
+    - Refatoracao: guias/guia_de_refatoracao.md
+    - Telemetria: guias/guia_de_telemetria.md
+    - GitHub Projects CLI: guias/guia_github_projects_cli.md
 
   - Documentos do Projeto:
     - Visão do Projeto: projeto/visao_do_projeto.md
     - Análise Arquitetural: projeto/analise_arquitetural.md
     - Roadmap Arquitetural: projeto/roadmap_arquitetural.md
     - Manual de Gestão: projeto/manual_gestao.md
-    - Plano de Issues: projeto/plano_issues_documentacao.md
-    - Questionário: projeto/questionario_levantamento_requisitos.md
 
-  - Métricas e Diagnósticos:
+  - Modelagem:
+    - Indice Geral da Frente: modelagem/revisao/47_indice_geral_da_frente_de_modelagem.md
+    - Sintese Executiva da Frente: modelagem/revisao/46_sintese_executiva_da_frente.md
+    - Conferencia de Aderencia ao Projeto Real: modelagem/revisao/49_conferencia_de_aderencia_ao_projeto_real.md
+    - Documento de Requisitos: modelagem/requisitos/principais/03_documento_de_requisitos.md
+
+  - Metricas e Diagnosticos:
     - Cobertura de Testes: metricas/cobertura.md
-    - Diagnóstico CI: metricas/diagnostico_ci.md
-    - Diagnóstico Telemetria: metricas/diagnostico_fase12.md
+    - Diagnóstico CI: historico/diagnosticos/diagnostico_ci.md
+    - Diagnóstico Telemetria: historico/diagnosticos/diagnostico_fase12.md
+
+  - Historico de Planejamento:
+    - Plano de Issues da Documentacao: historico/planejamento/plano_issues_documentacao.md
+    - Questionario de Levantamento de Requisitos: historico/planejamento/questionario_levantamento_requisitos.md
+    - Plano da Issue 2: historico/planejamento/plano_issue2_revisao_documentacao.md
 
   - Planejamento:
-    - Plano da Issue 2: planejamento/plano_issue2_revisao_documentacao.md
-    - Template de Documentação: planejamento/TEMPLATE_FASE.md
+    - Inventario Inicial da Documentacao Legacy: planejamento/inventario_inicial_documentacao_legacy.md
+    - Plano da Frente de Saneamento: planejamento/plano_frente_saneamento_documentacao_legacy.md
+    - Plano operacional da reorganizacao semantica: planejamento/plano_operacional_da_reorganizacao_semantica_dos_diretorios.md
+    - Captura Continua: planejamento/captura/00_como_usar_a_captura_continua.md
 
   - Como Contribuir: contributing.md
   - Changelog: changelog.md

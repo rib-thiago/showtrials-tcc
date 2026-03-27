@@ -1,84 +1,67 @@
-# ShowTrials - Documentação
-
-
-**Sistema para coleta, armazenamento, tradução e análise de documentos históricos**
-
-
+# ShowTrials - Documentacao
 
 ![Python](https://img.shields.io/badge/python-3.12-blue)
 ![CI](https://github.com/rib-thiago/showtrials-tcc/actions/workflows/ci.yml/badge.svg)
-![Coverage](https://img.shields.io/badge/coverage-45%25-yellow)
+![Coverage](https://img.shields.io/badge/coverage-75.51%25-yellowgreen)
 ![Docs](https://img.shields.io/badge/docs-mkdocs-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+ShowTrials e um projeto para coleta, armazenamento, traducao e analise de documentos historicos, com documentacao tecnica e arquitetural em evolucao.
 
+## O que voce encontra aqui
 
-## 📚 Sobre o Projeto
+Nesta documentacao voce encontra:
 
-ShowTrials é um sistema desenvolvido para pesquisadores e historiadores que necessitam acessar, analisar e traduzir documentos históricos dos processos políticos de Moscou e Leningrado (1934-1935).
+- visao geral do sistema atual
+- orientacoes de contribuicao e manutencao documental
+- historico resumido de marcos do projeto
+- documentos de projeto, modelagem, fases e rodadas
 
-O sistema automatiza a coleta de documentos, organiza o acervo em banco de dados relacional, oferece interfaces para visualização e análise, e integra serviços de tradução automática.
+## Comece por aqui
 
-## 🎯 Funcionalidades
+- [Visao Geral](overview.md)
+- [Guia de Contribuicao](contributing.md)
+- [Changelog](changelog.md)
+- [Repositorio no GitHub](https://github.com/rib-thiago/showtrials-tcc)
 
-| Categoria | Funcionalidades |
-|-----------|-----------------|
-| **Gestão** | Coleta, classificação, metadados, busca |
-| **Tradução** | 4 idiomas, persistência, alternância |
-| **Análise** | Entidades, sentimentos, estatísticas, wordcloud |
-| **Interfaces** | CLI (Rich), Web (FastAPI), API REST |
-| **Relatórios** | Estatísticas, exportação TXT, gráficos |
+## Estado atual do projeto
 
-## 🏗️ Arquitetura
+O projeto combina:
 
-O projeto segue **Clean Architecture** com 4 camadas independentes:
+- um sistema funcional ja implementado para trabalho com o acervo
+- uma frente arquitetural de evolucao para uma engine mais configuravel
+- um historico documental estruturado por fases, rodadas e marcos publicos
 
-- **Domain**: Regras de negócio puras (sem dependências)
-- **Application**: Casos de uso e orquestração
-- **Infrastructure**: Repositórios e serviços externos
-- **Interface**: CLI, Web e API
+## Trilhas de leitura
 
-## 📊 Estatísticas
+### Uso e entrada publica
 
-- **Documentos**: 519
-- **Traduções**: 16
-- **Testes**: 48 automatizados
-- **Cobertura**: 45%
-- **Linhas de código**: ~3.500
-- **Fases concluídas**: 10
-
-## 🚀 Comece Aqui
-
-- [Visão Geral](overview.md)
-- [Arquitetura](ARCHITECTURE.md)
-- [Contribuir](contributing.md)
+- [Repositorio no GitHub](https://github.com/rib-thiago/showtrials-tcc)
+- [Visao Geral](overview.md)
 - [Changelog](changelog.md)
 
-## 📁 Navegação Rápida
+### Arquitetura e evolucao
 
-### Fases do Projeto
+- [Direcionamento Arquitetural do MVP da Engine](projeto/direcionamento_arquitetural_engine_mvp.md)
+- [Visao Ampla do Projeto](projeto/visao_do_projeto.md)
+- [Roadmap Arquitetural Amplo](projeto/roadmap_arquitetural.md)
 
-- [FASE 1 - Domain Layer](fases/FASE1_DOMAIN.md)
-- [FASE 2 - Application Layer](fases/FASE2_APPLICATION.md)
-- [FASE 3 - Infrastructure Layer](fases/FASE3_INFRASTRUCTURE.md)
-- [FASE 4 - CLI Interface](fases/FASE4_CLI.md)
-- [FASE 5 - Tradução Avançada](fases/FASE5_TRADUCAO.md)
-- [FASE 6 - Exportação](fases/FASE6_EXPORTACAO.md)
-- [FASE 7 - Relatórios](fases/FASE7_RELATORIOS.md)
-- [FASE 8 - Análise de Texto](fases/FASE8_ANALISE_TEXTO.md)
-- [FASE 9 - Web Interface](fases/FASE9_WEB_INTERFACE.md)
-- [FASE 10 - Service Registry](fases/FASE10_SERVICE_REGISTRY.md)
+### Contribuicao e operacao
 
-## 👤 Autor
+- [Guia de Contribuicao](contributing.md)
+- [Guia de Documentacao do Projeto](guias/guia_de_documentacao_do_projeto.md)
+- [Guia de Atualizacao do Changelog](guias/guia_de_atualizacao_do_changelog.md)
 
-**Thiago Ribeiro** - Projeto de TCC
+### Historico e rastreabilidade
 
-[GitHub](https://github.com/rib-thiago) | [Email](mailto:mackandalls@gmail.com)
+- [Changelog](changelog.md)
+- [Plano operacional da reorganizacao semantica](planejamento/plano_operacional_da_reorganizacao_semantica_dos_diretorios.md)
+- [Regime Documental de Fases e Rodadas](projeto/regime_documental_de_fases_e_rodadas.md)
 
----
+## Historico e rastreabilidade
 
-<div align="center">
-  <sub>Documentação gerada com MkDocs</sub>
-  <br>
-  <sub>© 2026 Thiago Ribeiro</sub>
-</div>
+Para leitura historica mais detalhada:
+
+- use o [Changelog](changelog.md) para marcos notaveis resumidos
+- use o bloco `docs/historico/fases/` para historicos consolidados de intervencoes
+- use o bloco `docs/planejamento/rodadas/` para execucao curta e rastreavel
