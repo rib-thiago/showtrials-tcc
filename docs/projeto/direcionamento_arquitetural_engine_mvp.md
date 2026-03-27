@@ -205,14 +205,14 @@ Ele nao deve ser lido como:
 
 Para leitura complementar:
 
-- [roadmap_arquitetural.md](/home/thiago/coleta_showtrials/docs/projeto/roadmap_arquitetural.md) preserva o horizonte mais amplo;
-- [visao_do_projeto.md](/home/thiago/coleta_showtrials/docs/projeto/visao_do_projeto.md) preserva a formulacao ampla do projeto;
-- [49_conferencia_de_aderencia_ao_projeto_real.md](/home/thiago/coleta_showtrials/docs/modelagem/revisao/49_conferencia_de_aderencia_ao_projeto_real.md) ajuda a distinguir o que ja esta sustentado, o que esta backlogizado e o que ainda e hipotese.
+- [roadmap_arquitetural.md](../projeto/roadmap_arquitetural.md) preserva o horizonte mais amplo;
+- [visao_do_projeto.md](../projeto/visao_do_projeto.md) preserva a formulacao ampla do projeto;
+- [49_conferencia_de_aderencia_ao_projeto_real.md](../modelagem/revisao/49_conferencia_de_aderencia_ao_projeto_real.md) ajuda a distinguir o que ja esta sustentado, o que esta backlogizado e o que ainda e hipotese.
 
 ## Documentos Relacionados
 
-- [analise_arquitetural.md](/home/thiago/coleta_showtrials/docs/projeto/analise_arquitetural.md)
-- [roadmap_arquitetural.md](/home/thiago/coleta_showtrials/docs/projeto/roadmap_arquitetural.md)
-- [visao_do_projeto.md](/home/thiago/coleta_showtrials/docs/projeto/visao_do_projeto.md)
-- [20_decisoes_arquiteturais_iniciais.md](/home/thiago/coleta_showtrials/docs/modelagem/arquitetura/ponte/20_decisoes_arquiteturais_iniciais.md)
-- [49_conferencia_de_aderencia_ao_projeto_real.md](/home/thiago/coleta_showtrials/docs/modelagem/revisao/49_conferencia_de_aderencia_ao_projeto_real.md)
+- [analise_arquitetural.md](../projeto/analise_arquitetural.md)
+- [roadmap_arquitetural.md](../projeto/roadmap_arquitetural.md)
+- [visao_do_projeto.md](../projeto/visao_do_projeto.md)
+- [20_decisoes_arquiteturais_iniciais.md](../modelagem/arquitetura/ponte/20_decisoes_arquiteturais_iniciais.md)
+- [49_conferencia_de_aderencia_ao_projeto_real.md](../modelagem/revisao/49_conferencia_de_aderencia_ao_projeto_real.md)

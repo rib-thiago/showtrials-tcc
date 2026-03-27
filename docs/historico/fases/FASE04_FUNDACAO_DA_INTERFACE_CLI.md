@@ -102,9 +102,9 @@ preservando uma leitura limpa da arquitetura.
 
 ## Documentos Relacionados
 
-- [FASE02_FUNDACAO_DA_CAMADA_DE_APLICACAO.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE02_FUNDACAO_DA_CAMADA_DE_APLICACAO.md)
-- [FASE03_FUNDACAO_DA_CAMADA_DE_INFRAESTRUTURA.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE03_FUNDACAO_DA_CAMADA_DE_INFRAESTRUTURA.md)
-- [FASE09_INTRODUCAO_DA_INTERFACE_WEB.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE09_INTRODUCAO_DA_INTERFACE_WEB.md)
-- [ARCHITECTURE.md](/home/thiago/coleta_showtrials/docs/ARCHITECTURE.md)
-- [analise_arquitetural.md](/home/thiago/coleta_showtrials/docs/projeto/analise_arquitetural.md)
-- [direcionamento_arquitetural_engine_mvp.md](/home/thiago/coleta_showtrials/docs/projeto/direcionamento_arquitetural_engine_mvp.md)
+- [FASE02_FUNDACAO_DA_CAMADA_DE_APLICACAO.md](../../historico/fases/FASE02_FUNDACAO_DA_CAMADA_DE_APLICACAO.md)
+- [FASE03_FUNDACAO_DA_CAMADA_DE_INFRAESTRUTURA.md](../../historico/fases/FASE03_FUNDACAO_DA_CAMADA_DE_INFRAESTRUTURA.md)
+- [FASE09_INTRODUCAO_DA_INTERFACE_WEB.md](../../historico/fases/FASE09_INTRODUCAO_DA_INTERFACE_WEB.md)
+- [ARCHITECTURE.md](../../ARCHITECTURE.md)
+- [analise_arquitetural.md](../../projeto/analise_arquitetural.md)
+- [direcionamento_arquitetural_engine_mvp.md](../../projeto/direcionamento_arquitetural_engine_mvp.md)

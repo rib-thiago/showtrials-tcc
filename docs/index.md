@@ -22,7 +22,7 @@ Nesta documentacao voce encontra:
 - [Visao Geral](overview.md)
 - [Guia de Contribuicao](contributing.md)
 - [Changelog](changelog.md)
-- [README do repositorio](/home/thiago/coleta_showtrials/README.md)
+- [Repositorio no GitHub](https://github.com/rib-thiago/showtrials-tcc)
 
 ## Estado atual do projeto
 
@@ -36,7 +36,7 @@ O projeto combina:
 
 ### Uso e entrada publica
 
-- [README do repositorio](/home/thiago/coleta_showtrials/README.md)
+- [Repositorio no GitHub](https://github.com/rib-thiago/showtrials-tcc)
 - [Visao Geral](overview.md)
 - [Changelog](changelog.md)
 

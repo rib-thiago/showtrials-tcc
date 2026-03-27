@@ -264,7 +264,7 @@ A decisao recomendada a partir deste ponto e:
 
 ## 11. Documentos relacionados
 
-- [proposta_arquitetura_documental_alvo.md](/home/thiago/coleta_showtrials/docs/planejamento/proposta_arquitetura_documental_alvo.md)
-- [reanalise_etapa_4_publicacao_e_arquitetura_documental.md](/home/thiago/coleta_showtrials/docs/planejamento/reanalise_etapa_4_publicacao_e_arquitetura_documental.md)
-- [plano_frente_saneamento_documentacao_legacy.md](/home/thiago/coleta_showtrials/docs/planejamento/plano_frente_saneamento_documentacao_legacy.md)
-- [regime_documental_de_fases_e_rodadas.md](/home/thiago/coleta_showtrials/docs/projeto/regime_documental_de_fases_e_rodadas.md)
+- [proposta_arquitetura_documental_alvo.md](../planejamento/proposta_arquitetura_documental_alvo.md)
+- [reanalise_etapa_4_publicacao_e_arquitetura_documental.md](../planejamento/reanalise_etapa_4_publicacao_e_arquitetura_documental.md)
+- [plano_frente_saneamento_documentacao_legacy.md](../planejamento/plano_frente_saneamento_documentacao_legacy.md)
+- [regime_documental_de_fases_e_rodadas.md](../projeto/regime_documental_de_fases_e_rodadas.md)

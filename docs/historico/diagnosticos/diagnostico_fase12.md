@@ -66,7 +66,7 @@ alinhada ao padrao predominante da epoca:
 O lastro tecnico principal dessa correcao esta em:
 
 - [`1b91b23`](https://github.com/rib-thiago/showtrials-tcc/commit/1b91b23660024bef1aa4cb073906db4a70a35d7b) - `fix: padroniza telemetria em tipo_documento.py`
-- [FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md)
+- [FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md](../../historico/fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md)
 
 ## Impacto Historico
 
@@ -89,12 +89,12 @@ Este documento nao deve ser lido como fonte viva principal para:
 
 Para isso, a leitura mais forte hoje deve ser feita em:
 
-- [FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md)
-- [guia_de_telemetria.md](/home/thiago/coleta_showtrials/docs/guias/guia_de_telemetria.md)
-- [protocolo_de_qualidade.md](/home/thiago/coleta_showtrials/docs/protocolos/protocolo_de_qualidade.md)
+- [FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md](../../historico/fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md)
+- [guia_de_telemetria.md](../../guias/guia_de_telemetria.md)
+- [protocolo_de_qualidade.md](../../protocolos/protocolo_de_qualidade.md)
 
 ## Documentos Relacionados
 
-- [FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md)
-- [guia_de_telemetria.md](/home/thiago/coleta_showtrials/docs/guias/guia_de_telemetria.md)
-- [protocolo_de_qualidade.md](/home/thiago/coleta_showtrials/docs/protocolos/protocolo_de_qualidade.md)
+- [FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md](../../historico/fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md)
+- [guia_de_telemetria.md](../../guias/guia_de_telemetria.md)
+- [protocolo_de_qualidade.md](../../protocolos/protocolo_de_qualidade.md)

@@ -76,7 +76,7 @@ Antes de considerar a correcao urgente pronta para integracao, verificar no mini
 - esta frente nao confirmou lastro suficiente para tratar merge direto na `main` como pratica consolidada de correcoes urgentes
 - esta frente tambem nao confirmou lastro suficiente para tratar tags patch e releases GitHub como passo obrigatorio em toda correcao urgente
 - labels especificas de hotfix, estrategia de release e politica formal de incidentes ainda exigem discussao posterior de processo
-- qualquer decisao sobre versionamento, tags e release deve ser lida em conjunto com [Versionamento e Releases](/home/thiago/coleta_showtrials/docs/projeto/versionamento_e_releases.md)
+- qualquer decisao sobre versionamento, tags e release deve ser lida em conjunto com [Versionamento e Releases](../projeto/versionamento_e_releases.md)
 
 ## Documentos Relacionados
 
@@ -84,5 +84,5 @@ Antes de considerar a correcao urgente pronta para integracao, verificar no mini
 - [Protocolo de Git do Projeto](../protocolos/protocolo_de_git.md)
 - [Protocolo de Qualidade do Projeto](../protocolos/protocolo_de_qualidade.md)
 - [Guia de Debug do Projeto](guia_de_debug.md)
-- [Versionamento e Releases](/home/thiago/coleta_showtrials/docs/projeto/versionamento_e_releases.md)
+- [Versionamento e Releases](../projeto/versionamento_e_releases.md)
 - [Git Flow - Hotfix branches](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow#hotfix-branches)

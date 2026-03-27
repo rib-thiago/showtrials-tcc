@@ -6,7 +6,7 @@ Este documento registra historicamente a consolidacao da governanca do projeto c
 
 Ele nao deve ser lido como politica vigente principal. A politica vigente deve ser consultada em:
 
-- [politica_de_governanca.md](/home/thiago/coleta_showtrials/docs/politicas/politica_de_governanca.md)
+- [politica_de_governanca.md](../../politicas/politica_de_governanca.md)
 
 Este artefato foi criado durante a frente atual de saneamento documental para recepcionar, como registro historico, conteudo que estava misturado ao corpo normativo da politica de governanca.
 
@@ -52,7 +52,7 @@ Na consolidacao da governanca, foram formalizadas diretrizes para:
 
 O principal artefato normativo resultante desta intervencao foi:
 
-- [politica_de_governanca.md](/home/thiago/coleta_showtrials/docs/politicas/politica_de_governanca.md)
+- [politica_de_governanca.md](../../politicas/politica_de_governanca.md)
 
 ## Impactos sobre o Fluxo de Trabalho
 

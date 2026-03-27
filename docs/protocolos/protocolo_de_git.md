@@ -139,4 +139,4 @@ Antes de concluir o merge, verificar no minimo:
 - [Politica de Governanca do Projeto](../politicas/politica_de_governanca.md)
 - [Protocolo de Qualidade do Projeto](protocolo_de_qualidade.md)
 - [Automacao Operacional com Taskipy](../guias/automacao_operacional_com_taskipy.md)
-- [Versionamento e Releases](/home/thiago/coleta_showtrials/docs/projeto/versionamento_e_releases.md)
+- [Versionamento e Releases](../projeto/versionamento_e_releases.md)

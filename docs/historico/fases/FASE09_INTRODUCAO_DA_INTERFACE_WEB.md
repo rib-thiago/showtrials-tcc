@@ -119,14 +119,14 @@ evolucao futura do sistema.
 
 Para a leitura atual mais forte do projeto, devem ser considerados tambem:
 
-- [ARCHITECTURE.md](/home/thiago/coleta_showtrials/docs/ARCHITECTURE.md)
-- [direcionamento_arquitetural_engine_mvp.md](/home/thiago/coleta_showtrials/docs/projeto/direcionamento_arquitetural_engine_mvp.md)
-- [analise_arquitetural.md](/home/thiago/coleta_showtrials/docs/projeto/analise_arquitetural.md)
-- [visao_do_projeto.md](/home/thiago/coleta_showtrials/docs/projeto/visao_do_projeto.md)
+- [ARCHITECTURE.md](../../ARCHITECTURE.md)
+- [direcionamento_arquitetural_engine_mvp.md](../../projeto/direcionamento_arquitetural_engine_mvp.md)
+- [analise_arquitetural.md](../../projeto/analise_arquitetural.md)
+- [visao_do_projeto.md](../../projeto/visao_do_projeto.md)
 
 ## Documentos Relacionados
 
-- [FASE04_FUNDACAO_DA_INTERFACE_CLI.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE04_FUNDACAO_DA_INTERFACE_CLI.md)
-- [FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO.md)
-- [ARCHITECTURE.md](/home/thiago/coleta_showtrials/docs/ARCHITECTURE.md)
-- [direcionamento_arquitetural_engine_mvp.md](/home/thiago/coleta_showtrials/docs/projeto/direcionamento_arquitetural_engine_mvp.md)
+- [FASE04_FUNDACAO_DA_INTERFACE_CLI.md](../../historico/fases/FASE04_FUNDACAO_DA_INTERFACE_CLI.md)
+- [FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO.md](../../historico/fases/FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO.md)
+- [ARCHITECTURE.md](../../ARCHITECTURE.md)
+- [direcionamento_arquitetural_engine_mvp.md](../../projeto/direcionamento_arquitetural_engine_mvp.md)

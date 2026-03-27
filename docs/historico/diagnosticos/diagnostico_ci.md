@@ -61,7 +61,7 @@ dependencias NLP necessarias para destravar o pipeline.
 O lastro tecnico principal dessa solucao esta em:
 
 - [`c87fc9e`](https://github.com/rib-thiago/showtrials-tcc/commit/c87fc9eac947b9748c53beaed12de293d173203a) - `fix: adiciona dependências NLP via pip no CI`
-- [FASE11_ESTABILIZACAO_INICIAL_DO_CI.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI.md)
+- [FASE11_ESTABILIZACAO_INICIAL_DO_CI.md](../../historico/fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI.md)
 
 ## Impacto Historico
 
@@ -83,13 +83,13 @@ Este documento nao deve ser lido como fonte viva principal para:
 
 Para isso, a leitura mais forte hoje deve ser feita em:
 
-- [dependencias_nlp_estado_e_transicao.md](/home/thiago/coleta_showtrials/docs/projeto/dependencias_nlp_estado_e_transicao.md)
-- [FASE11_ESTABILIZACAO_INICIAL_DO_CI.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI.md)
-- [contributing.md](/home/thiago/coleta_showtrials/docs/contributing.md)
+- [dependencias_nlp_estado_e_transicao.md](../../projeto/dependencias_nlp_estado_e_transicao.md)
+- [FASE11_ESTABILIZACAO_INICIAL_DO_CI.md](../../historico/fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI.md)
+- [contributing.md](../../contributing.md)
 
 ## Documentos Relacionados
 
-- [FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO.md)
-- [FASE11_ESTABILIZACAO_INICIAL_DO_CI.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI.md)
-- [dependencias_nlp_estado_e_transicao.md](/home/thiago/coleta_showtrials/docs/projeto/dependencias_nlp_estado_e_transicao.md)
-- [guia_de_dependencias.md](/home/thiago/coleta_showtrials/docs/guias/guia_de_dependencias.md)
+- [FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO.md](../../historico/fases/FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO.md)
+- [FASE11_ESTABILIZACAO_INICIAL_DO_CI.md](../../historico/fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI.md)
+- [dependencias_nlp_estado_e_transicao.md](../../projeto/dependencias_nlp_estado_e_transicao.md)
+- [guia_de_dependencias.md](../../guias/guia_de_dependencias.md)

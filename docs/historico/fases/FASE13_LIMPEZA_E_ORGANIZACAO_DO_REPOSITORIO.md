@@ -122,14 +122,14 @@ documentacao, scripts, dependencias ou manutencao estrutural.
 
 Para a leitura atual mais forte desses temas, devem ser considerados tambem:
 
-- [Guia de Documentacao do Projeto](/home/thiago/coleta_showtrials/docs/guias/guia_de_documentacao_do_projeto.md)
-- [Guia de Manutencao do Site Documental](/home/thiago/coleta_showtrials/docs/guias/guia_de_manutencao_do_site_documental.md)
-- [manual_gestao.md](/home/thiago/coleta_showtrials/docs/projeto/manual_gestao.md)
-- [FASE17_PRIMEIRA_REORGANIZACAO_DOCUMENTAL_AMPLA.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE17_PRIMEIRA_REORGANIZACAO_DOCUMENTAL_AMPLA.md)
+- [Guia de Documentacao do Projeto](../../guias/guia_de_documentacao_do_projeto.md)
+- [Guia de Manutencao do Site Documental](../../guias/guia_de_manutencao_do_site_documental.md)
+- [manual_gestao.md](../../projeto/manual_gestao.md)
+- [FASE17_PRIMEIRA_REORGANIZACAO_DOCUMENTAL_AMPLA.md](../../historico/fases/FASE17_PRIMEIRA_REORGANIZACAO_DOCUMENTAL_AMPLA.md)
 
 ## Documentos Relacionados
 
-- [FASE11_ESTABILIZACAO_INICIAL_DO_CI.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI.md)
-- [FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md)
-- [FASE17_PRIMEIRA_REORGANIZACAO_DOCUMENTAL_AMPLA.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE17_PRIMEIRA_REORGANIZACAO_DOCUMENTAL_AMPLA.md)
-- [manual_gestao.md](/home/thiago/coleta_showtrials/docs/projeto/manual_gestao.md)
+- [FASE11_ESTABILIZACAO_INICIAL_DO_CI.md](../../historico/fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI.md)
+- [FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md](../../historico/fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md)
+- [FASE17_PRIMEIRA_REORGANIZACAO_DOCUMENTAL_AMPLA.md](../../historico/fases/FASE17_PRIMEIRA_REORGANIZACAO_DOCUMENTAL_AMPLA.md)
+- [manual_gestao.md](../../projeto/manual_gestao.md)

@@ -126,14 +126,14 @@ Este documento nao deve ser lido como:
 
 A leitura mais forte do estado atual e da intencao tecnica imediata deve ser feita em conjunto com:
 
-- [direcionamento_arquitetural_engine_mvp.md](/home/thiago/coleta_showtrials/docs/projeto/direcionamento_arquitetural_engine_mvp.md)
-- [roadmap_arquitetural.md](/home/thiago/coleta_showtrials/docs/projeto/roadmap_arquitetural.md), com leitura cautelosa
-- [49_conferencia_de_aderencia_ao_projeto_real.md](/home/thiago/coleta_showtrials/docs/modelagem/revisao/49_conferencia_de_aderencia_ao_projeto_real.md)
-- [46_sintese_executiva_da_frente.md](/home/thiago/coleta_showtrials/docs/modelagem/revisao/46_sintese_executiva_da_frente.md)
+- [direcionamento_arquitetural_engine_mvp.md](../projeto/direcionamento_arquitetural_engine_mvp.md)
+- [roadmap_arquitetural.md](../projeto/roadmap_arquitetural.md), com leitura cautelosa
+- [49_conferencia_de_aderencia_ao_projeto_real.md](../modelagem/revisao/49_conferencia_de_aderencia_ao_projeto_real.md)
+- [46_sintese_executiva_da_frente.md](../modelagem/revisao/46_sintese_executiva_da_frente.md)
 
 ## Documentos Relacionados
 
-- [direcionamento_arquitetural_engine_mvp.md](/home/thiago/coleta_showtrials/docs/projeto/direcionamento_arquitetural_engine_mvp.md)
-- [roadmap_arquitetural.md](/home/thiago/coleta_showtrials/docs/projeto/roadmap_arquitetural.md)
-- [49_conferencia_de_aderencia_ao_projeto_real.md](/home/thiago/coleta_showtrials/docs/modelagem/revisao/49_conferencia_de_aderencia_ao_projeto_real.md)
-- [46_sintese_executiva_da_frente.md](/home/thiago/coleta_showtrials/docs/modelagem/revisao/46_sintese_executiva_da_frente.md)
+- [direcionamento_arquitetural_engine_mvp.md](../projeto/direcionamento_arquitetural_engine_mvp.md)
+- [roadmap_arquitetural.md](../projeto/roadmap_arquitetural.md)
+- [49_conferencia_de_aderencia_ao_projeto_real.md](../modelagem/revisao/49_conferencia_de_aderencia_ao_projeto_real.md)
+- [46_sintese_executiva_da_frente.md](../modelagem/revisao/46_sintese_executiva_da_frente.md)

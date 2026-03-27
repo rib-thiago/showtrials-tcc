@@ -64,7 +64,7 @@ Na leitura atual do projeto, essa aproximacao precisa ser reinterpretada:
 - documento de fase e historico consolidado;
 - rodada e registro operacional curto.
 
-Essa leitura atual esta formalizada em [regime_documental_de_fases_e_rodadas.md](/home/thiago/coleta_showtrials/docs/projeto/regime_documental_de_fases_e_rodadas.md) e articulada com [politica_de_governanca.md](/home/thiago/coleta_showtrials/docs/politicas/politica_de_governanca.md).
+Essa leitura atual esta formalizada em [regime_documental_de_fases_e_rodadas.md](../../projeto/regime_documental_de_fases_e_rodadas.md) e articulada com [politica_de_governanca.md](../../politicas/politica_de_governanca.md).
 
 ## O Que se Materializou
 
@@ -106,8 +106,8 @@ Ele nao deve ser lido como:
 
 ## Documentos Relacionados
 
-- [manual_gestao.md](/home/thiago/coleta_showtrials/docs/projeto/manual_gestao.md)
-- [politica_de_governanca.md](/home/thiago/coleta_showtrials/docs/politicas/politica_de_governanca.md)
-- [guia_de_documentacao_do_projeto.md](/home/thiago/coleta_showtrials/docs/guias/guia_de_documentacao_do_projeto.md)
-- [regime_documental_de_fases_e_rodadas.md](/home/thiago/coleta_showtrials/docs/projeto/regime_documental_de_fases_e_rodadas.md)
-- [versionamento_e_releases.md](/home/thiago/coleta_showtrials/docs/projeto/versionamento_e_releases.md)
+- [manual_gestao.md](../../projeto/manual_gestao.md)
+- [politica_de_governanca.md](../../politicas/politica_de_governanca.md)
+- [guia_de_documentacao_do_projeto.md](../../guias/guia_de_documentacao_do_projeto.md)
+- [regime_documental_de_fases_e_rodadas.md](../../projeto/regime_documental_de_fases_e_rodadas.md)
+- [versionamento_e_releases.md](../../projeto/versionamento_e_releases.md)

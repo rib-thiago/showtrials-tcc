@@ -101,8 +101,8 @@ geral do sistema.
 
 ## Documentos Relacionados
 
-- [FASE01_FUNDACAO_DA_CAMADA_DE_DOMINIO.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE01_FUNDACAO_DA_CAMADA_DE_DOMINIO.md)
-- [FASE03_FUNDACAO_DA_CAMADA_DE_INFRAESTRUTURA.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE03_FUNDACAO_DA_CAMADA_DE_INFRAESTRUTURA.md)
-- [ARCHITECTURE.md](/home/thiago/coleta_showtrials/docs/ARCHITECTURE.md)
-- [analise_arquitetural.md](/home/thiago/coleta_showtrials/docs/projeto/analise_arquitetural.md)
-- [direcionamento_arquitetural_engine_mvp.md](/home/thiago/coleta_showtrials/docs/projeto/direcionamento_arquitetural_engine_mvp.md)
+- [FASE01_FUNDACAO_DA_CAMADA_DE_DOMINIO.md](../../historico/fases/FASE01_FUNDACAO_DA_CAMADA_DE_DOMINIO.md)
+- [FASE03_FUNDACAO_DA_CAMADA_DE_INFRAESTRUTURA.md](../../historico/fases/FASE03_FUNDACAO_DA_CAMADA_DE_INFRAESTRUTURA.md)
+- [ARCHITECTURE.md](../../ARCHITECTURE.md)
+- [analise_arquitetural.md](../../projeto/analise_arquitetural.md)
+- [direcionamento_arquitetural_engine_mvp.md](../../projeto/direcionamento_arquitetural_engine_mvp.md)

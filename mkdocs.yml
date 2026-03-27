@@ -105,6 +105,12 @@ nav:
     - Roadmap Arquitetural: projeto/roadmap_arquitetural.md
     - Manual de Gestão: projeto/manual_gestao.md
 
+  - Modelagem:
+    - Indice Geral da Frente: modelagem/revisao/47_indice_geral_da_frente_de_modelagem.md
+    - Sintese Executiva da Frente: modelagem/revisao/46_sintese_executiva_da_frente.md
+    - Conferencia de Aderencia ao Projeto Real: modelagem/revisao/49_conferencia_de_aderencia_ao_projeto_real.md
+    - Documento de Requisitos: modelagem/requisitos/principais/03_documento_de_requisitos.md
+
   - Metricas e Diagnosticos:
     - Cobertura de Testes: metricas/cobertura.md
     - Diagnóstico CI: historico/diagnosticos/diagnostico_ci.md
@@ -116,7 +122,10 @@ nav:
     - Plano da Issue 2: historico/planejamento/plano_issue2_revisao_documentacao.md
 
   - Planejamento:
+    - Inventario Inicial da Documentacao Legacy: planejamento/inventario_inicial_documentacao_legacy.md
+    - Plano da Frente de Saneamento: planejamento/plano_frente_saneamento_documentacao_legacy.md
     - Plano operacional da reorganizacao semantica: planejamento/plano_operacional_da_reorganizacao_semantica_dos_diretorios.md
+    - Captura Continua: planejamento/captura/00_como_usar_a_captura_continua.md
 
   - Como Contribuir: contributing.md
   - Changelog: changelog.md

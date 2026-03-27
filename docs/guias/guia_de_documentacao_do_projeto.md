@@ -89,13 +89,13 @@ Problemas comuns:
 
 ## Quando Consultar Outros Guias
 
-- consultar [Regime Documental de Fases e Rodadas](/home/thiago/coleta_showtrials/docs/projeto/regime_documental_de_fases_e_rodadas.md) para regras de historico, rodadas e rastreabilidade de intervencoes
+- consultar [Regime Documental de Fases e Rodadas](../projeto/regime_documental_de_fases_e_rodadas.md) para regras de historico, rodadas e rastreabilidade de intervencoes
 - consultar [Guia de Manutencao do Site Documental](guia_de_manutencao_do_site_documental.md) para build, navegacao e publicacao via MkDocs
 - consultar [Politica de Governanca do Projeto](../politicas/politica_de_governanca.md) e os protocolos correlatos quando a atualizacao documental afetar fluxo operacional ou criterios normativos
 
 ## Documentos Relacionados
 
-- [Regime Documental de Fases e Rodadas](/home/thiago/coleta_showtrials/docs/projeto/regime_documental_de_fases_e_rodadas.md)
+- [Regime Documental de Fases e Rodadas](../projeto/regime_documental_de_fases_e_rodadas.md)
 - [Guia de Manutencao do Site Documental](guia_de_manutencao_do_site_documental.md)
-- [Guia de Contribuicao](/home/thiago/coleta_showtrials/docs/contributing.md)
-- [Changelog](/home/thiago/coleta_showtrials/docs/changelog.md)
+- [Guia de Contribuicao](../contributing.md)
+- [Changelog](../changelog.md)

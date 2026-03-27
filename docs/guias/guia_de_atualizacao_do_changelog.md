@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Este guia define como manter [changelog.md](/home/thiago/coleta_showtrials/docs/changelog.md) como artefato publico, resumido e fiel aos marcos reais do projeto.
+Este guia define como manter [changelog.md](../changelog.md) como artefato publico, resumido e fiel aos marcos reais do projeto.
 
 ## Papel do Changelog no Projeto
 
@@ -80,7 +80,7 @@ O changelog deve apontar para essas camadas quando a rastreabilidade fina for im
 
 ## Documentos Relacionados
 
-- [Changelog](/home/thiago/coleta_showtrials/docs/changelog.md)
-- [Guia de Documentacao do Projeto](/home/thiago/coleta_showtrials/docs/guias/guia_de_documentacao_do_projeto.md)
-- [Regime Documental de Fases e Rodadas](/home/thiago/coleta_showtrials/docs/projeto/regime_documental_de_fases_e_rodadas.md)
-- [Versionamento e Releases](/home/thiago/coleta_showtrials/docs/projeto/versionamento_e_releases.md)
+- [Changelog](../changelog.md)
+- [Guia de Documentacao do Projeto](../guias/guia_de_documentacao_do_projeto.md)
+- [Regime Documental de Fases e Rodadas](../projeto/regime_documental_de_fases_e_rodadas.md)
+- [Versionamento e Releases](../projeto/versionamento_e_releases.md)

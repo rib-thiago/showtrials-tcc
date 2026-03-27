@@ -103,9 +103,9 @@ O direcionamento tecnico imediato da engine nao esta definido por este documento
 
 Hoje, a leitura mais forte do caminho imediato passa por:
 
-- [direcionamento_arquitetural_engine_mvp.md](/home/thiago/coleta_showtrials/docs/projeto/direcionamento_arquitetural_engine_mvp.md)
+- [direcionamento_arquitetural_engine_mvp.md](../projeto/direcionamento_arquitetural_engine_mvp.md)
 - backlog ativo da milestone `MVP - Engine de Pipeline`
-- [49_conferencia_de_aderencia_ao_projeto_real.md](/home/thiago/coleta_showtrials/docs/modelagem/revisao/49_conferencia_de_aderencia_ao_projeto_real.md)
+- [49_conferencia_de_aderencia_ao_projeto_real.md](../modelagem/revisao/49_conferencia_de_aderencia_ao_projeto_real.md)
 
 Assim, este roadmap deve ser lido como camada mais ampla e propositiva, enquanto o direcionamento MVP funciona como camada mais forte da intencao tecnica imediata.
 
@@ -126,8 +126,8 @@ Ele deve ser lido como:
 
 ## Documentos Relacionados
 
-- [direcionamento_arquitetural_engine_mvp.md](/home/thiago/coleta_showtrials/docs/projeto/direcionamento_arquitetural_engine_mvp.md)
-- [analise_arquitetural.md](/home/thiago/coleta_showtrials/docs/projeto/analise_arquitetural.md)
-- [visao_do_projeto.md](/home/thiago/coleta_showtrials/docs/projeto/visao_do_projeto.md)
-- [49_conferencia_de_aderencia_ao_projeto_real.md](/home/thiago/coleta_showtrials/docs/modelagem/revisao/49_conferencia_de_aderencia_ao_projeto_real.md)
-- [46_sintese_executiva_da_frente.md](/home/thiago/coleta_showtrials/docs/modelagem/revisao/46_sintese_executiva_da_frente.md)
+- [direcionamento_arquitetural_engine_mvp.md](../projeto/direcionamento_arquitetural_engine_mvp.md)
+- [analise_arquitetural.md](../projeto/analise_arquitetural.md)
+- [visao_do_projeto.md](../projeto/visao_do_projeto.md)
+- [49_conferencia_de_aderencia_ao_projeto_real.md](../modelagem/revisao/49_conferencia_de_aderencia_ao_projeto_real.md)
+- [46_sintese_executiva_da_frente.md](../modelagem/revisao/46_sintese_executiva_da_frente.md)

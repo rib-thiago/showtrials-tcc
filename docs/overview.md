@@ -43,7 +43,7 @@ Para a leitura mais forte do horizonte tecnico atual, consulte:
 
 ### Entrada publica
 
-- [README do repositorio](/home/thiago/coleta_showtrials/README.md)
+- [Repositorio no GitHub](https://github.com/rib-thiago/showtrials-tcc)
 - [Pagina inicial da documentacao](index.md)
 - [Changelog](changelog.md)
 
@@ -68,5 +68,5 @@ Para a leitura mais forte do horizonte tecnico atual, consulte:
 Para contribuir:
 
 - comece por [Guia de Contribuicao](contributing.md)
-- consulte o [README do repositorio](/home/thiago/coleta_showtrials/README.md) para instalacao e comandos atuais
+- consulte o [repositorio no GitHub](https://github.com/rib-thiago/showtrials-tcc) para instalacao e comandos atuais
 - acompanhe mudancas publicas relevantes no [Changelog](changelog.md)

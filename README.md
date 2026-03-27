@@ -135,7 +135,7 @@ pyproject.toml
 O historico detalhado do projeto fica distribuido entre:
 
 - [Changelog](docs/changelog.md), para marcos publicos resumidos
-- [docs/fases](docs/fases), para historicos consolidados de intervencoes
+- [docs/historico/fases](docs/historico/fases), para historicos consolidados de intervencoes
 - [docs/planejamento/rodadas](docs/planejamento/rodadas), para execucao curta e rastreavel
 
 ## Licenca

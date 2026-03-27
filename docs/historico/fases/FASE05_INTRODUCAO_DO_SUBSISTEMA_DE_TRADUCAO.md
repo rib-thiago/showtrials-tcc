@@ -126,10 +126,10 @@ A leitura atual deve considerar em conjunto:
 
 ## Documentos Relacionados
 
-- [FASE04_FUNDACAO_DA_INTERFACE_CLI.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE04_FUNDACAO_DA_INTERFACE_CLI.md)
-- [FASE06_INTRODUCAO_DO_SUBSISTEMA_DE_EXPORTACAO.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE06_INTRODUCAO_DO_SUBSISTEMA_DE_EXPORTACAO.md)
-- [ARCHITECTURE.md](/home/thiago/coleta_showtrials/docs/ARCHITECTURE.md)
-- [analise_arquitetural.md](/home/thiago/coleta_showtrials/docs/projeto/analise_arquitetural.md)
-- [direcionamento_arquitetural_engine_mvp.md](/home/thiago/coleta_showtrials/docs/projeto/direcionamento_arquitetural_engine_mvp.md)
-- [guia_de_dependencias.md](/home/thiago/coleta_showtrials/docs/guias/guia_de_dependencias.md)
-- [dependencias_nlp_estado_e_transicao.md](/home/thiago/coleta_showtrials/docs/projeto/dependencias_nlp_estado_e_transicao.md)
+- [FASE04_FUNDACAO_DA_INTERFACE_CLI.md](../../historico/fases/FASE04_FUNDACAO_DA_INTERFACE_CLI.md)
+- [FASE06_INTRODUCAO_DO_SUBSISTEMA_DE_EXPORTACAO.md](../../historico/fases/FASE06_INTRODUCAO_DO_SUBSISTEMA_DE_EXPORTACAO.md)
+- [ARCHITECTURE.md](../../ARCHITECTURE.md)
+- [analise_arquitetural.md](../../projeto/analise_arquitetural.md)
+- [direcionamento_arquitetural_engine_mvp.md](../../projeto/direcionamento_arquitetural_engine_mvp.md)
+- [guia_de_dependencias.md](../../guias/guia_de_dependencias.md)
+- [dependencias_nlp_estado_e_transicao.md](../../projeto/dependencias_nlp_estado_e_transicao.md)

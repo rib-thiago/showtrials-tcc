@@ -84,5 +84,5 @@ Isso significa:
 ## Documentos Relacionados
 
 - [Guia de Documentacao do Projeto](guia_de_documentacao_do_projeto.md)
-- [Regime Documental de Fases e Rodadas](/home/thiago/coleta_showtrials/docs/projeto/regime_documental_de_fases_e_rodadas.md)
-- [Guia de Contribuicao](/home/thiago/coleta_showtrials/docs/contributing.md)
+- [Regime Documental de Fases e Rodadas](../projeto/regime_documental_de_fases_e_rodadas.md)
+- [Guia de Contribuicao](../contributing.md)

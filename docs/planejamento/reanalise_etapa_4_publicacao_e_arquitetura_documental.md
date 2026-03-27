@@ -41,9 +41,9 @@ Foram consideradas nesta reanalise:
 - `docs/changelog.md`
 - `docs/flows/GOVERNANCA.md`
 - `docs/projeto/politica_de_diagramas_versionaveis.md`
-- [05_session_handoff.md](/home/thiago/coleta_showtrials/docs/ai/05_session_handoff.md), via branch `docs/ai-context-bootstrap`
-- [10_modelagem_contexto_consolidado.md](/home/thiago/coleta_showtrials/docs/ai/10_modelagem_contexto_consolidado.md), via branch `docs/ai-context-bootstrap`
-- [manual_colaboracao_codex.md](/home/thiago/coleta_showtrials/docs/projeto/manual_colaboracao_codex.md), via branch `docs/ai-context-bootstrap`
+- `docs/ai/05_session_handoff.md`, consultado historicamente via branch `docs/ai-context-bootstrap`
+- `docs/ai/10_modelagem_contexto_consolidado.md`, consultado historicamente via branch `docs/ai-context-bootstrap`
+- `docs/projeto/manual_colaboracao_codex.md`, consultado historicamente via branch `docs/ai-context-bootstrap`
 
 ## 4. Consequencia metodologica principal
 

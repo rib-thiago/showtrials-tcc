@@ -89,7 +89,7 @@ do dominio.
 
 ## Documentos Relacionados
 
-- [FASE02_FUNDACAO_DA_CAMADA_DE_APLICACAO.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE02_FUNDACAO_DA_CAMADA_DE_APLICACAO.md)
-- [visao_do_projeto.md](/home/thiago/coleta_showtrials/docs/projeto/visao_do_projeto.md)
-- [direcionamento_arquitetural_engine_mvp.md](/home/thiago/coleta_showtrials/docs/projeto/direcionamento_arquitetural_engine_mvp.md)
-- [ARCHITECTURE.md](/home/thiago/coleta_showtrials/docs/ARCHITECTURE.md)
+- [FASE02_FUNDACAO_DA_CAMADA_DE_APLICACAO.md](../../historico/fases/FASE02_FUNDACAO_DA_CAMADA_DE_APLICACAO.md)
+- [visao_do_projeto.md](../../projeto/visao_do_projeto.md)
+- [direcionamento_arquitetural_engine_mvp.md](../../projeto/direcionamento_arquitetural_engine_mvp.md)
+- [ARCHITECTURE.md](../../ARCHITECTURE.md)

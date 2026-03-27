@@ -46,8 +46,8 @@ Mesmo nao sendo mais um instrumento ativo, o questionario preserva eixos que for
 
 As perguntas mais relevantes deste levantamento foram posteriormente absorvidas e retrabalhadas em artefatos mais maduros da frente de modelagem, especialmente:
 
-- [03_documento_de_requisitos.md](/home/thiago/coleta_showtrials/docs/modelagem/requisitos/principais/03_documento_de_requisitos.md)
-- [04_mapa_de_stakeholders_atores_e_objetivos.md](/home/thiago/coleta_showtrials/docs/modelagem/requisitos/apoio/04_mapa_de_stakeholders_atores_e_objetivos.md)
+- [03_documento_de_requisitos.md](../../modelagem/requisitos/principais/03_documento_de_requisitos.md)
+- [04_mapa_de_stakeholders_atores_e_objetivos.md](../../modelagem/requisitos/apoio/04_mapa_de_stakeholders_atores_e_objetivos.md)
 
 Nesses documentos, a elicitacao deixa de aparecer como lista aberta de perguntas e passa a ser tratada como conjunto mais integrado de requisitos, atores, objetivos e restricoes.
 
@@ -61,6 +61,6 @@ Este arquivo nao deve ser usado hoje como questionario vigente do projeto. Sua l
 
 ## Documentos Relacionados
 
-- [03_documento_de_requisitos.md](/home/thiago/coleta_showtrials/docs/modelagem/requisitos/principais/03_documento_de_requisitos.md)
-- [04_mapa_de_stakeholders_atores_e_objetivos.md](/home/thiago/coleta_showtrials/docs/modelagem/requisitos/apoio/04_mapa_de_stakeholders_atores_e_objetivos.md)
-- [47_indice_geral_da_frente_de_modelagem.md](/home/thiago/coleta_showtrials/docs/modelagem/revisao/47_indice_geral_da_frente_de_modelagem.md)
+- [03_documento_de_requisitos.md](../../modelagem/requisitos/principais/03_documento_de_requisitos.md)
+- [04_mapa_de_stakeholders_atores_e_objetivos.md](../../modelagem/requisitos/apoio/04_mapa_de_stakeholders_atores_e_objetivos.md)
+- [47_indice_geral_da_frente_de_modelagem.md](../../modelagem/revisao/47_indice_geral_da_frente_de_modelagem.md)

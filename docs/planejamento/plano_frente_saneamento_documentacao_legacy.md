@@ -19,9 +19,9 @@ Este plano se apoia em:
 - `docs/ai/05_session_handoff.md` no branch `docs/ai-context-bootstrap`
 - `docs/ai/10_modelagem_contexto_consolidado.md` no branch `docs/ai-context-bootstrap`
 - `docs/projeto/manual_colaboracao_codex.md` no branch `docs/ai-context-bootstrap`
-- [01_insights_brutos.md](/home/thiago/coleta_showtrials/docs/planejamento/captura/01_insights_brutos.md)
-- [48_criterios_de_estabilizacao_da_frente.md](/home/thiago/coleta_showtrials/docs/modelagem/fundamentos/48_criterios_de_estabilizacao_da_frente.md)
-- [50_documento_de_saneamento_da_frente.md](/home/thiago/coleta_showtrials/docs/modelagem/revisao/50_documento_de_saneamento_da_frente.md)
+- [01_insights_brutos.md](../planejamento/captura/01_insights_brutos.md)
+- [48_criterios_de_estabilizacao_da_frente.md](../modelagem/fundamentos/48_criterios_de_estabilizacao_da_frente.md)
+- [50_documento_de_saneamento_da_frente.md](../modelagem/revisao/50_documento_de_saneamento_da_frente.md)
 - historico Git de `docs/`
 - codigo em `src/`, quando necessario para aderencia factual
 

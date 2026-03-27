@@ -121,10 +121,10 @@ A leitura atual deve considerar em conjunto:
 
 ## Documentos Relacionados
 
-- [FASE06_INTRODUCAO_DO_SUBSISTEMA_DE_EXPORTACAO.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE06_INTRODUCAO_DO_SUBSISTEMA_DE_EXPORTACAO.md)
-- [FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO.md)
-- [ARCHITECTURE.md](/home/thiago/coleta_showtrials/docs/ARCHITECTURE.md)
-- [analise_arquitetural.md](/home/thiago/coleta_showtrials/docs/projeto/analise_arquitetural.md)
-- [direcionamento_arquitetural_engine_mvp.md](/home/thiago/coleta_showtrials/docs/projeto/direcionamento_arquitetural_engine_mvp.md)
-- [cobertura.md](/home/thiago/coleta_showtrials/docs/metricas/cobertura.md)
-- [diagnostico_ci.md](/home/thiago/coleta_showtrials/docs/historico/diagnosticos/diagnostico_ci.md)
+- [FASE06_INTRODUCAO_DO_SUBSISTEMA_DE_EXPORTACAO.md](../../historico/fases/FASE06_INTRODUCAO_DO_SUBSISTEMA_DE_EXPORTACAO.md)
+- [FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO.md](../../historico/fases/FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO.md)
+- [ARCHITECTURE.md](../../ARCHITECTURE.md)
+- [analise_arquitetural.md](../../projeto/analise_arquitetural.md)
+- [direcionamento_arquitetural_engine_mvp.md](../../projeto/direcionamento_arquitetural_engine_mvp.md)
+- [cobertura.md](../../metricas/cobertura.md)
+- [diagnostico_ci.md](../../historico/diagnosticos/diagnostico_ci.md)

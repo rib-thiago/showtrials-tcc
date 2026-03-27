@@ -22,7 +22,7 @@ poetry run task test-cov
 ```
 
 O resultado operacional que sustentou esse snapshot foi registrado em
-[RODADA_20260327_53.md](/home/thiago/coleta_showtrials/docs/planejamento/rodadas/RODADA_20260327_53.md).
+[RODADA_20260327_53.md](../planejamento/rodadas/RODADA_20260327_53.md).
 
 ## Como Atualizar a Medicao
 
@@ -53,11 +53,11 @@ Marcos historicos principais da evolucao registrada neste bloco:
 
 Fases historicas mais diretamente relacionadas a essa evolucao:
 
-- [FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md)
-- [FASE13_LIMPEZA_E_ORGANIZACAO_DO_REPOSITORIO.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE13_LIMPEZA_E_ORGANIZACAO_DO_REPOSITORIO.md)
-- [FASE14_TELEMETRIA_E_TESTES_EM_EXPORTAR_DOCUMENTO.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE14_TELEMETRIA_E_TESTES_EM_EXPORTAR_DOCUMENTO.md)
-- [FASE15_TELEMETRIA_E_TESTES_EM_GERAR_RELATORIO.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE15_TELEMETRIA_E_TESTES_EM_GERAR_RELATORIO.md)
-- [FASE16_TELEMETRIA_E_EXPANSAO_DE_TESTES_EM_LISTAR_DOCUMENTOS.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE16_TELEMETRIA_E_EXPANSAO_DE_TESTES_EM_LISTAR_DOCUMENTOS.md)
+- [FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md](../historico/fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md)
+- [FASE13_LIMPEZA_E_ORGANIZACAO_DO_REPOSITORIO.md](../historico/fases/FASE13_LIMPEZA_E_ORGANIZACAO_DO_REPOSITORIO.md)
+- [FASE14_TELEMETRIA_E_TESTES_EM_EXPORTAR_DOCUMENTO.md](../historico/fases/FASE14_TELEMETRIA_E_TESTES_EM_EXPORTAR_DOCUMENTO.md)
+- [FASE15_TELEMETRIA_E_TESTES_EM_GERAR_RELATORIO.md](../historico/fases/FASE15_TELEMETRIA_E_TESTES_EM_GERAR_RELATORIO.md)
+- [FASE16_TELEMETRIA_E_EXPANSAO_DE_TESTES_EM_LISTAR_DOCUMENTOS.md](../historico/fases/FASE16_TELEMETRIA_E_EXPANSAO_DE_TESTES_EM_LISTAR_DOCUMENTOS.md)
 
 ## Limites de Leitura
 
@@ -74,8 +74,8 @@ frentes tecnicas ativas.
 
 ## Documentos Relacionados
 
-- [contributing.md](/home/thiago/coleta_showtrials/docs/contributing.md)
-- [protocolo_de_qualidade.md](/home/thiago/coleta_showtrials/docs/protocolos/protocolo_de_qualidade.md)
-- [diagnostico_ci.md](/home/thiago/coleta_showtrials/docs/historico/diagnosticos/diagnostico_ci.md)
-- [diagnostico_fase12.md](/home/thiago/coleta_showtrials/docs/historico/diagnosticos/diagnostico_fase12.md)
-- [RODADA_20260327_53.md](/home/thiago/coleta_showtrials/docs/planejamento/rodadas/RODADA_20260327_53.md)
+- [contributing.md](../contributing.md)
+- [protocolo_de_qualidade.md](../protocolos/protocolo_de_qualidade.md)
+- [diagnostico_ci.md](../historico/diagnosticos/diagnostico_ci.md)
+- [diagnostico_fase12.md](../historico/diagnosticos/diagnostico_fase12.md)
+- [RODADA_20260327_53.md](../planejamento/rodadas/RODADA_20260327_53.md)

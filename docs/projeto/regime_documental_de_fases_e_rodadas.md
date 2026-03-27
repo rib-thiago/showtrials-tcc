@@ -92,6 +92,6 @@ Significa, sim, adotar uma regua de leitura e saneamento segundo a qual document
 
 ## Documentos Relacionados
 
-- [Guia de Documentacao do Projeto](/home/thiago/coleta_showtrials/docs/guias/guia_de_documentacao_do_projeto.md)
-- [Padrao Minimo Documental da Etapa 5](/home/thiago/coleta_showtrials/docs/planejamento/padrao_minimo_documental_etapa_5.md)
-- [Plano Operacional da Frente de Saneamento da Documentacao Legada](/home/thiago/coleta_showtrials/docs/planejamento/plano_frente_saneamento_documentacao_legacy.md)
+- [Guia de Documentacao do Projeto](../guias/guia_de_documentacao_do_projeto.md)
+- [Padrao Minimo Documental da Etapa 5](../planejamento/padrao_minimo_documental_etapa_5.md)
+- [Plano Operacional da Frente de Saneamento da Documentacao Legada](../planejamento/plano_frente_saneamento_documentacao_legacy.md)
