@@ -1,335 +1,140 @@
-# Arquitetura do Sistema ShowTrials
+# Arquitetura do Sistema Atual
 
-<div align="center">
+## Objetivo
 
-**Clean Architecture aplicada a um sistema de gestão de documentos históricos**
+Este documento apresenta a arquitetura em alto nivel do sistema atual do ShowTrials.
 
-</div>
+Seu papel aqui e:
 
-## 📋 **Visão Geral**
+- explicar a organizacao principal do codigo ja implementado
+- dar uma leitura publica e introdutoria da separacao em camadas
+- servir de ponte para os documentos arquiteturais mais fortes do bloco `docs/projeto/`
 
-O ShowTrials é um sistema para coleta, armazenamento, tradução e análise de documentos históricos dos processos de Moscou e Leningrado (1934-1935). Foi desenvolvido seguindo os princípios da **Clean Architecture** (Arquitetura Limpa), proposta por Robert C. Martin (Uncle Bob).
+Ele nao deve ser lido como o direcionamento arquitetural mais forte da evolucao futura da engine.
 
-Esta arquitetura foi escolhida por:
+## Visao Geral
 
-- **Isolar o núcleo do negócio** de detalhes de infraestrutura
-- **Facilitar testes** através de injeção de dependência
-- **Permitir evolução** com mínimo impacto
-- **Separar responsabilidades** de forma clara
-- **Garantir que as regras de negócio** sejam independentes de UI, banco de dados ou frameworks
+O sistema atual foi estruturado com separacao entre interface, aplicacao, dominio e infraestrutura.
 
----
+Essa organizacao sustenta:
 
-## 🏗️ **As Quatro Camadas**
+- casos de uso documentais
+- persistencia em SQLite
+- traducao e analise textual
+- interface CLI e interface web
 
+## Camadas Principais
+
+```text
+INTERFACE -> APPLICATION -> DOMAIN -> INFRASTRUCTURE
 ```
+
+```text
 ┌─────────────────────────────────────────────────────────────┐
-│                    INTERFACE LAYER                           │
-│  (CLI, Web, API - adaptadores para o mundo externo)        │
+│                    INTERFACE LAYER                         │
+│  CLI, Web e adaptadores para interacao externa            │
 └─────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌─────────────────────────────────────────────────────────────┐
-│                   APPLICATION LAYER                          │
-│  (Casos de uso, orquestração, DTOs)                         │
+│                   APPLICATION LAYER                        │
+│  Casos de uso, orquestracao e DTOs                        │
 └─────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌─────────────────────────────────────────────────────────────┐
-│                      DOMAIN LAYER                            │
-│  (Entidades, Value Objects, regras de negócio)              │
+│                      DOMAIN LAYER                          │
+│  Entidades, value objects e interfaces                    │
 └─────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌─────────────────────────────────────────────────────────────┐
-│                  INFRASTRUCTURE LAYER                        │
-│  (Repositórios, serviços externos, implementações)          │
+│                  INFRASTRUCTURE LAYER                      │
+│  Repositorios, servicos externos e configuracao           │
 └─────────────────────────────────────────────────────────────┘
 ```
 
----
+### Domain
 
-### 1. Domain Layer (Núcleo)
+Em `src/domain/`, ficam:
 
-**Localização:** `src/domain/`
+- entidades como `Documento` e `Traducao`
+- value objects como `TipoDocumento`, `NomeRusso` e `AnaliseTexto`
+- contratos que desacoplam o nucleo de implementacoes concretas
 
-**Responsabilidade:** Conter as regras de negócio puras, sem qualquer dependência externa.
+### Application
 
-**Componentes:**
-- **Entities**: Objetos com identidade (Documento, Traducao)
-- **Value Objects**: Objetos imutáveis (TipoDocumento, NomeRusso, AnaliseTexto)
-- **Interfaces (Ports)**: Contratos para camadas externas (RepositorioDocumento)
+Em `src/application/`, ficam:
 
-**Princípios:**
-- Nenhum import de frameworks
-- Nenhuma menção a banco de dados
-- Totalmente testável com mocks
+- casos de uso
+- DTOs
+- orquestracao do fluxo entre repositorios, servicos e regras do sistema
 
-**Exemplo:**
-```python
-@dataclass
-class Documento:
-    id: Optional[int]
-    titulo: str
-    texto: str
+### Interface
 
-    @property
-    def tamanho(self) -> int:
-        return len(self.texto)  # Regra de negócio pura
+Em `src/interface/`, ficam:
+
+- CLI
+- Web
+- adaptadores de entrada e saida
+
+### Infrastructure
+
+Em `src/infrastructure/`, ficam:
+
+- repositorios SQLite
+- integracao com traducao
+- componentes de NLP
+- configuracao e `ServiceRegistry`
+
+## Fluxo Geral de Dados
+
+```text
+Usuario -> Interface -> Caso de Uso -> Interface de Repositorio
+                                     -> Servico/Infraestrutura
 ```
 
----
+Leitura resumida do sistema atual:
 
-### 2. Application Layer (Aplicação)
-
-**Localização:** `src/application/`
-
-**Responsabilidade:** Orquestrar os casos de uso do sistema.
-
-**Componentes:**
-- **Use Cases**: Cada operação do sistema (ListarDocumentos, TraduzirDocumento)
-- **DTOs**: Objetos para transferência de dados (DocumentoDTO)
-- **Serviços de aplicação**: Coordenação entre repositórios e serviços
-
-**Princípios:**
-- Depende apenas de interfaces do domínio
-- Não conhece implementações concretas
-- Contém a lógica de aplicação (não confundir com regras de negócio)
-
-**Exemplo:**
-```python
-class ListarDocumentos:
-    def __init__(self, repo: RepositorioDocumento):
-        self.repo = repo
-
-    def executar(self, pagina: int) -> List[DocumentoDTO]:
-        offset = (pagina - 1) * 15
-        documentos = self.repo.listar(offset, 15)
-        return [DocumentoDTO.from_domain(d) for d in documentos]
+```text
+Banco -> Documento -> Mutacao -> Banco
 ```
 
----
+Essa leitura ajuda a entender por que o sistema atual e documento-centrico e orientado a persistencia, mesmo antes da transicao para a engine de pipeline.
 
-### 3. Interface Layer (Adaptadores)
+## Service Registry e Dependencias
 
-**Localização:** `src/interface/`
+O sistema utiliza `ServiceRegistry` para organizar servicos e reduzir acoplamento direto entre pontos de entrada e componentes concretos.
 
-**Responsabilidade:** Traduzir entre o mundo externo e a aplicação.
+Leitura sintetica:
 
-**Componentes:**
-- **CLI**: Interface de linha de comando com Rich
-- **Web**: API FastAPI e templates HTML
-- **Presenters**: Formatadores de saída
-- **Comandos**: Ações do usuário
-
-**Princípios:**
-- Não contém lógica de negócio
-- Depende de casos de uso e DTOs
-- Pode ter múltiplas implementações (CLI e Web)
-
-**Exemplo:**
-```python
-class ComandoListar:
-    def __init__(self, listar_use_case: ListarDocumentos):
-        self.use_case = listar_use_case
-
-    def executar(self):
-        resultados = self.use_case.executar(pagina=1)
-        self.mostrar_tabela(resultados)  # Formatação específica da CLI
+```text
+Configuracao -> Factories -> ServiceRegistry -> Casos de Uso e Interfaces
 ```
 
----
+Esse arranjo ajuda no crescimento incremental do sistema atual, embora nao deva ser confundido com a futura arquitetura da engine.
 
-### 4. Infrastructure Layer (Infraestrutura)
+## Estado Atual e Evolucao
 
-**Localização:** `src/infrastructure/`
+Este documento descreve a arquitetura do sistema atual.
 
-**Responsabilidade:** Implementar as interfaces definidas nas camadas internas.
+Para a evolucao futura, a leitura mais forte hoje deve ser feita em:
 
-**Componentes:**
-- **Repositórios**: Implementações SQLite
-- **Serviços externos**: Google Translate, SpaCy
-- **Configurações**: Settings, variáveis de ambiente
-- **Service Registry**: Gerenciamento de serviços
+- [Direcionamento Arquitetural do MVP da Engine](projeto/direcionamento_arquitetural_engine_mvp.md)
+- [Analise Arquitetural da Transicao para a Engine](projeto/analise_arquitetural.md)
+- [Visao Ampla do Projeto](projeto/visao_do_projeto.md)
+- [Conferencia de Aderencia ao Projeto Real](modelagem/revisao/49_conferencia_de_aderencia_ao_projeto_real.md)
 
-**Princípios:**
-- Contém detalhes técnicos (SQL, HTTP)
-- Implementa as interfaces do domínio
-- Pode ser substituída sem afetar as camadas internas
+Esses documentos distinguem com mais rigor:
 
-**Exemplo:**
-```python
-class SQLiteDocumentoRepository(RepositorioDocumento):
-    def listar(self, offset, limite):
-        with self._conexao() as conn:
-            cursor = conn.cursor()
-            cursor.execute("SELECT * FROM documentos LIMIT ? OFFSET ?",
-                         (limite, offset))
-            return [self._row_para_entidade(row) for row in cursor]
-```
+- o que ja existe no sistema atual
+- o que e direcionamento arquitetural vivo
+- o que permanece como horizonte amplo ou hipotese de transicao
 
----
+## Documentos Relacionados
 
-## 🔄 **Fluxo de Dados**
-
-```
-[Usuário] → [Interface] → [Caso de Uso] → [Repositório (interface)]
-    ↑          ↓              ↓                    ↓
-    └──── [Presenter] ← [DTO] ← [Entidade] ← [Implementação concreta]
-```
-
-**Exemplo com Listar Documentos:**
-
-1. Usuário digita '1' no menu CLI
-2. `ComandoListar` chama `listar_use_case.executar()`
-3. Caso de uso calcula offset e chama `repo.listar()`
-4. Repositório SQLite busca dados no banco
-5. Dados são convertidos para entidades do domínio
-6. Caso de uso converte entidades para DTOs
-7. Presenter formata DTOs em tabela colorida
-8. Usuário vê o resultado
-
----
-
-## 📦 **Service Registry e Injeção de Dependência**
-
-```
-[ServiceRegistry] ← [Config YAML]
-        ↓
-    [Factories]
-        ↓
-    [Serviços]
-        ↓
-    [Casos de Uso]
-```
-
-**Vantagens:**
-- Lazy loading: serviços só carregam quando usados
-- Configurável via YAML
-- Estatísticas de uso
-- Fácil adicionar novos serviços
-
----
-
-## 🧪 **Estratégia de Testes**
-
-```
-┌─────────────────┐
-│   Unit Tests    │ → Domain (18 testes)
-│   (isolados)    │ → Application (10 testes)
-└─────────────────┘
-        ↓
-┌─────────────────┐
-│ Integration     │ → Infrastructure (20 testes)
-│ Tests           │ → Repositórios, APIs
-└─────────────────┘
-        ↓
-┌─────────────────┐
-│   Manual Tests  │ → CLI (36 cenários)
-│   (end-to-end)  │ → Web (36 cenários)
-└─────────────────┘
-```
-
-**Total:** 48 testes automatizados + validação manual
-
----
-
-## 📊 **Diagrama de Camadas com Componentes**
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                        INTERFACE LAYER                           │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐          │
-│  │     CLI      │  │   Web App    │  │     API      │          │
-│  │   (Rich)     │  │  (FastAPI)   │  │   (REST)     │          │
-│  └──────────────┘  └──────────────┘  └──────────────┘          │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐          │
-│  │  Presenters  │  │   Commands   │  │   Templates   │          │
-│  └──────────────┘  └──────────────┘  └──────────────┘          │
-└─────────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                      APPLICATION LAYER                           │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐          │
-│  │ ListarDocs   │  │ TraduzirDoc  │  │ AnalisarDoc  │          │
-│  ├──────────────┤  ├──────────────┤  ├──────────────┤          │
-│  │ ExportarDoc  │  │ GerarRelat   │  │ ObterStats   │          │
-│  └──────────────┘  └──────────────┘  └──────────────┘          │
-│  ┌─────────────────────────────────────────────────────┐        │
-│  │                     DTOs                             │        │
-│  │  (DocumentoDTO, TraducaoDTO, EstatisticasDTO)       │        │
-│  └─────────────────────────────────────────────────────┘        │
-└─────────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                         DOMAIN LAYER                              │
-│  ┌──────────────┐  ┌──────────────────┐  ┌──────────────┐      │
-│  │   Entidades  │  │   Value Objects  │  │  Interfaces  │      │
-│  │  • Documento │  │  • TipoDocumento │  │ • RepoDoc    │      │
-│  │  • Traducao  │  │  • NomeRusso     │  │ • RepoTrad   │      │
-│  │              │  │  • AnaliseTexto  │  │              │      │
-│  └──────────────┘  └──────────────────┘  └──────────────┘      │
-└─────────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                     INFRASTRUCTURE LAYER                          │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐          │
-│  │   SQLite     │  │   Google     │  │    SpaCy     │          │
-│  │  Repositórios│  │  Translate   │  │   Analyzer   │          │
-│  └──────────────┘  └──────────────┘  └──────────────┘          │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐          │
-│  │   WordCloud  │  │   Service    │  │  Configuração│          │
-│  │   Generator  │  │   Registry   │  │    (YAML)    │          │
-│  └──────────────┘  └──────────────┘  └──────────────┘          │
-└─────────────────────────────────────────────────────────────────┘
-```
-
----
-
-## 📈 **Métricas da Arquitetura**
-
-| Camada | Arquivos | Testes | Dependências Externas |
-|--------|----------|--------|----------------------|
-| **Domain** | 8 | 18 | Nenhuma |
-| **Application** | 12 | 10 | Domain apenas |
-| **Interface** | 25+ | Manual | Application |
-| **Infrastructure** | 15 | 20 | Application + externas |
-
-**Total:** 60+ arquivos, 48 testes automatizados
-
----
-
-## 🎯 **Benefícios da Arquitetura**
-
-1. **Manutenibilidade**: Mudanças em uma camada não afetam as outras
-2. **Testabilidade**: Cada camada pode ser testada isoladamente
-3. **Flexibilidade**: Trocar banco de dados não afeta o domínio
-4. **Clareza**: Responsabilidades bem definidas
-5. **Evolução**: Novas funcionalidades são casos de uso adicionais
-
----
-
-## 📚 **Referências**
-
-- Martin, R. C. (2017). *Clean Architecture: A Craftsman's Guide to Software Structure and Design*
-- Martin, R. C. (2003). *Agile Software Development: Principles, Patterns, and Practices*
-
----
-
-## 👤 **Autor**
-
-**Thiago Ribeiro** - Projeto de TCC
-
----
-
-<div align="center">
-  <sub>Documento de Arquitetura - Versão 1.0</sub>
-  <br>
-  <sub>Fevereiro de 2026</sub>
-</div>
-```
-
----
+- [Visao Geral](overview.md)
+- [README do repositorio](/home/thiago/coleta_showtrials/README.md)
+- [Direcionamento Arquitetural do MVP da Engine](projeto/direcionamento_arquitetural_engine_mvp.md)
+- [Analise Arquitetural da Transicao para a Engine](projeto/analise_arquitetural.md)
+- [Visao Ampla do Projeto](projeto/visao_do_projeto.md)
