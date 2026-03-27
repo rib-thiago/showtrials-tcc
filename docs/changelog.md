@@ -19,7 +19,7 @@ Ele complementa, mas nao substitui, o historico detalhado distribuido entre Git,
 - saneamento profundo do bloco `docs/flows/`, com estabilizacao de politicas, protocolos e guias operacionais;
 - saneamento e reclassificacao do bloco principal de `docs/projeto/`, separando documentos vivos, documentos historicos e documentos de transicao;
 - formalizacao do regime documental entre fases e rodadas em [regime_documental_de_fases_e_rodadas.md](/home/thiago/coleta_showtrials/docs/projeto/regime_documental_de_fases_e_rodadas.md);
-- consolidacao de guias transversais como [guia_de_documentacao_do_projeto.md](/home/thiago/coleta_showtrials/docs/flows/guia_de_documentacao_do_projeto.md) e [guia_de_manutencao_do_site_documental.md](/home/thiago/coleta_showtrials/docs/flows/guia_de_manutencao_do_site_documental.md);
+- consolidacao de guias transversais como [guia_de_documentacao_do_projeto.md](/home/thiago/coleta_showtrials/docs/guias/guia_de_documentacao_do_projeto.md) e [guia_de_manutencao_do_site_documental.md](/home/thiago/coleta_showtrials/docs/guias/guia_de_manutencao_do_site_documental.md);
 - reclassificacao de artefatos historicos e preparatorios, como o plano de issues da documentacao e o questionario de levantamento de requisitos.
 
 ### Operacao

@@ -50,8 +50,8 @@ Para a leitura mais forte do horizonte tecnico atual, consulte:
 ### Contribuicao e operacao
 
 - [Guia de Contribuicao](contributing.md)
-- [Guia de Documentacao do Projeto](flows/guia_de_documentacao_do_projeto.md)
-- [Guia de Atualizacao do Changelog](flows/guia_de_atualizacao_do_changelog.md)
+- [Guia de Documentacao do Projeto](guias/guia_de_documentacao_do_projeto.md)
+- [Guia de Atualizacao do Changelog](guias/guia_de_atualizacao_do_changelog.md)
 
 ### Projeto e arquitetura
 

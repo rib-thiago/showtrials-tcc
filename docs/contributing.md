@@ -36,9 +36,9 @@ O projeto ainda usa um arranjo hibrido para parte das dependencias de NLP. Para 
 
 Para as regras de governanca e Git, consulte:
 
-- [Politica de Governanca](flows/politica_de_governanca.md)
-- [Protocolo de Git](flows/protocolo_de_git.md)
-- [Guia de Auto-Revisao](flows/guia_de_auto_revisao.md)
+- [Politica de Governanca](politicas/politica_de_governanca.md)
+- [Protocolo de Git](protocolos/protocolo_de_git.md)
+- [Guia de Auto-Revisao](guias/guia_de_auto_revisao.md)
 
 ## Comandos atuais do projeto
 
@@ -75,16 +75,16 @@ Quando o ambiente NLP esta corretamente preparado, a suite completa roda normalm
 
 Antes de abrir um PR, use como referencia:
 
-- [Protocolo de Qualidade](flows/protocolo_de_qualidade.md)
-- [Guia de Auto-Revisao](flows/guia_de_auto_revisao.md)
-- [Guia de Debug](flows/guia_de_debug.md), se a mudanca exigir investigacao adicional
+- [Protocolo de Qualidade](protocolos/protocolo_de_qualidade.md)
+- [Guia de Auto-Revisao](guias/guia_de_auto_revisao.md)
+- [Guia de Debug](guias/guia_de_debug.md), se a mudanca exigir investigacao adicional
 
 ## Documentacao
 
 Para alteracoes documentais:
 
-- [Guia de Documentacao do Projeto](flows/guia_de_documentacao_do_projeto.md)
-- [Guia de Atualizacao do Changelog](flows/guia_de_atualizacao_do_changelog.md)
+- [Guia de Documentacao do Projeto](guias/guia_de_documentacao_do_projeto.md)
+- [Guia de Atualizacao do Changelog](guias/guia_de_atualizacao_do_changelog.md)
 - [Regime Documental de Fases e Rodadas](projeto/regime_documental_de_fases_e_rodadas.md)
 
 ## Commits
@@ -100,7 +100,7 @@ O projeto segue Conventional Commits. Tipos comuns:
 
 ## Documentos relacionados
 
-- [Politica de Governanca](flows/politica_de_governanca.md)
-- [Protocolo de Git](flows/protocolo_de_git.md)
-- [Protocolo de Qualidade](flows/protocolo_de_qualidade.md)
+- [Politica de Governanca](politicas/politica_de_governanca.md)
+- [Protocolo de Git](protocolos/protocolo_de_git.md)
+- [Protocolo de Qualidade](protocolos/protocolo_de_qualidade.md)
 - [Dependencias NLP: Estado Atual e Transicao](projeto/dependencias_nlp_estado_e_transicao.md)

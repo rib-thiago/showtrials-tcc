@@ -6,10 +6,10 @@ Este documento registra historicamente a intervencao que adicionou telemetria, c
 
 Ele nao deve ser lido como guia operacional vigente de implementacao, merge, cobertura ou tipagem. Esses assuntos hoje devem ser consultados principalmente em:
 
-- [Guia de Telemetria do Projeto](../flows/guia_de_telemetria.md)
-- [Protocolo de Qualidade](../flows/protocolo_de_qualidade.md)
-- [Protocolo de Git](../flows/protocolo_de_git.md)
-- [Guia de Auto-Revisao](../flows/guia_de_auto_revisao.md)
+- [Guia de Telemetria do Projeto](../guias/guia_de_telemetria.md)
+- [Protocolo de Qualidade](../protocolos/protocolo_de_qualidade.md)
+- [Protocolo de Git](../protocolos/protocolo_de_git.md)
+- [Guia de Auto-Revisao](../guias/guia_de_auto_revisao.md)
 
 ## Objetivo da Intervencao
 
@@ -90,6 +90,6 @@ O commit principal associado registra como resultado:
 - [FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md](FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md)
 - [FASE14_TELEMETRIA_E_TESTES_EM_EXPORTAR_DOCUMENTO.md](FASE14_TELEMETRIA_E_TESTES_EM_EXPORTAR_DOCUMENTO.md)
 - [FASE16_TELEMETRIA_E_EXPANSAO_DE_TESTES_EM_LISTAR_DOCUMENTOS.md](FASE16_TELEMETRIA_E_EXPANSAO_DE_TESTES_EM_LISTAR_DOCUMENTOS.md)
-- [Guia de Telemetria do Projeto](../flows/guia_de_telemetria.md)
-- [Protocolo de Qualidade](../flows/protocolo_de_qualidade.md)
-- [Guia de Auto-Revisao](../flows/guia_de_auto_revisao.md)
+- [Guia de Telemetria do Projeto](../guias/guia_de_telemetria.md)
+- [Protocolo de Qualidade](../protocolos/protocolo_de_qualidade.md)
+- [Guia de Auto-Revisao](../guias/guia_de_auto_revisao.md)

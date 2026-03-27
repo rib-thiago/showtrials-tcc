@@ -131,5 +131,5 @@ A leitura atual deve considerar em conjunto:
 - [ARCHITECTURE.md](/home/thiago/coleta_showtrials/docs/ARCHITECTURE.md)
 - [analise_arquitetural.md](/home/thiago/coleta_showtrials/docs/projeto/analise_arquitetural.md)
 - [direcionamento_arquitetural_engine_mvp.md](/home/thiago/coleta_showtrials/docs/projeto/direcionamento_arquitetural_engine_mvp.md)
-- [guia_de_dependencias.md](/home/thiago/coleta_showtrials/docs/flows/guia_de_dependencias.md)
+- [guia_de_dependencias.md](/home/thiago/coleta_showtrials/docs/guias/guia_de_dependencias.md)
 - [dependencias_nlp_estado_e_transicao.md](/home/thiago/coleta_showtrials/docs/projeto/dependencias_nlp_estado_e_transicao.md)

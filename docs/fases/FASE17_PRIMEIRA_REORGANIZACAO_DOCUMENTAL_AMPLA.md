@@ -6,8 +6,8 @@ Este documento registra historicamente a primeira grande reorganizacao documenta
 
 Ele nao deve ser lido como fonte normativa principal do regime documental atual. Hoje, a leitura vigente sobre documentacao, fases e rodadas deve ser feita principalmente em:
 
-- [Guia de Documentacao do Projeto](../flows/guia_de_documentacao_do_projeto.md)
-- [Guia de Manutencao do Site Documental](../flows/guia_de_manutencao_do_site_documental.md)
+- [Guia de Documentacao do Projeto](../guias/guia_de_documentacao_do_projeto.md)
+- [Guia de Manutencao do Site Documental](../guias/guia_de_manutencao_do_site_documental.md)
 - [Regime Documental de Fases e Rodadas](../projeto/regime_documental_de_fases_e_rodadas.md)
 
 ## Objetivo da Intervencao
@@ -102,8 +102,8 @@ Esta fase nao deve ser lida hoje como:
 
 Ela deve ser lida como historico de uma reorganizacao importante, cuja interpretacao atual precisa ser complementada por:
 
-- [Guia de Documentacao do Projeto](../flows/guia_de_documentacao_do_projeto.md)
-- [Guia de Manutencao do Site Documental](../flows/guia_de_manutencao_do_site_documental.md)
+- [Guia de Documentacao do Projeto](../guias/guia_de_documentacao_do_projeto.md)
+- [Guia de Manutencao do Site Documental](../guias/guia_de_manutencao_do_site_documental.md)
 - [Regime Documental de Fases e Rodadas](../projeto/regime_documental_de_fases_e_rodadas.md)
 - [plano_issues_documentacao.md](../projeto/plano_issues_documentacao.md), hoje reclassificado como plano historico
 
@@ -111,6 +111,6 @@ Ela deve ser lida como historico de uma reorganizacao importante, cuja interpret
 
 - [plano_issue2_revisao_documentacao.md](../planejamento/plano_issue2_revisao_documentacao.md)
 - [plano_issues_documentacao.md](../projeto/plano_issues_documentacao.md)
-- [Guia de Documentacao do Projeto](../flows/guia_de_documentacao_do_projeto.md)
-- [Guia de Manutencao do Site Documental](../flows/guia_de_manutencao_do_site_documental.md)
+- [Guia de Documentacao do Projeto](../guias/guia_de_documentacao_do_projeto.md)
+- [Guia de Manutencao do Site Documental](../guias/guia_de_manutencao_do_site_documental.md)
 - [Regime Documental de Fases e Rodadas](../projeto/regime_documental_de_fases_e_rodadas.md)

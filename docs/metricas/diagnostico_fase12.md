@@ -90,11 +90,11 @@ Este documento nao deve ser lido como fonte viva principal para:
 Para isso, a leitura mais forte hoje deve ser feita em:
 
 - [FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md](/home/thiago/coleta_showtrials/docs/fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md)
-- [guia_de_telemetria.md](/home/thiago/coleta_showtrials/docs/flows/guia_de_telemetria.md)
-- [protocolo_de_qualidade.md](/home/thiago/coleta_showtrials/docs/flows/protocolo_de_qualidade.md)
+- [guia_de_telemetria.md](/home/thiago/coleta_showtrials/docs/guias/guia_de_telemetria.md)
+- [protocolo_de_qualidade.md](/home/thiago/coleta_showtrials/docs/protocolos/protocolo_de_qualidade.md)
 
 ## Documentos Relacionados
 
 - [FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md](/home/thiago/coleta_showtrials/docs/fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md)
-- [guia_de_telemetria.md](/home/thiago/coleta_showtrials/docs/flows/guia_de_telemetria.md)
-- [protocolo_de_qualidade.md](/home/thiago/coleta_showtrials/docs/flows/protocolo_de_qualidade.md)
+- [guia_de_telemetria.md](/home/thiago/coleta_showtrials/docs/guias/guia_de_telemetria.md)
+- [protocolo_de_qualidade.md](/home/thiago/coleta_showtrials/docs/protocolos/protocolo_de_qualidade.md)

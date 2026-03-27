@@ -75,7 +75,7 @@ frentes tecnicas ativas.
 ## Documentos Relacionados
 
 - [contributing.md](/home/thiago/coleta_showtrials/docs/contributing.md)
-- [protocolo_de_qualidade.md](/home/thiago/coleta_showtrials/docs/flows/protocolo_de_qualidade.md)
+- [protocolo_de_qualidade.md](/home/thiago/coleta_showtrials/docs/protocolos/protocolo_de_qualidade.md)
 - [diagnostico_ci.md](/home/thiago/coleta_showtrials/docs/metricas/diagnostico_ci.md)
 - [diagnostico_fase12.md](/home/thiago/coleta_showtrials/docs/metricas/diagnostico_fase12.md)
 - [RODADA_20260327_53.md](/home/thiago/coleta_showtrials/docs/planejamento/rodadas/RODADA_20260327_53.md)

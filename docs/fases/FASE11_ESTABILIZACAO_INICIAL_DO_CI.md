@@ -7,7 +7,7 @@ Este documento registra historicamente a intervencao que estabilizou o pipeline 
 Ele nao deve ser lido como definicao vigente e definitiva do tratamento de dependencias NLP. O estado atual dessa questao deve ser consultado principalmente em:
 
 - [Dependencias NLP: Estado Atual e Transicao](../projeto/dependencias_nlp_estado_e_transicao.md)
-- [Guia de Dependencias do Projeto](../flows/guia_de_dependencias.md)
+- [Guia de Dependencias do Projeto](../guias/guia_de_dependencias.md)
 - [Guia de Contribuicao](../contributing.md)
 
 ## Objetivo da Intervencao
@@ -106,6 +106,6 @@ O documento vivo mais forte para essa questao hoje e [Dependencias NLP: Estado A
 
 - [FASE 8 - Analise de Texto](FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO.md)
 - [Dependencias NLP: Estado Atual e Transicao](../projeto/dependencias_nlp_estado_e_transicao.md)
-- [Guia de Dependencias do Projeto](../flows/guia_de_dependencias.md)
+- [Guia de Dependencias do Projeto](../guias/guia_de_dependencias.md)
 - [diagnostico_ci.md](../metricas/diagnostico_ci.md)
 - [Guia de Contribuicao](../contributing.md)

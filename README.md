@@ -106,7 +106,9 @@ src/
   tests/
 docs/
   fases/
-  flows/
+  politicas/
+  protocolos/
+  guias/
   modelagem/
   planejamento/
   projeto/
@@ -123,8 +125,8 @@ pyproject.toml
 - [Visao geral](docs/overview.md)
 - [Guia de contribuicao](docs/contributing.md)
 - [Changelog](docs/changelog.md)
-- [Guia de documentacao do projeto](docs/flows/guia_de_documentacao_do_projeto.md)
-- [Guia de atualizacao do changelog](docs/flows/guia_de_atualizacao_do_changelog.md)
+- [Guia de documentacao do projeto](docs/guias/guia_de_documentacao_do_projeto.md)
+- [Guia de atualizacao do changelog](docs/guias/guia_de_atualizacao_do_changelog.md)
 
 ## Historico e rastreabilidade
 

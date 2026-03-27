@@ -6,10 +6,10 @@ Este documento registra historicamente a intervencao que padronizou a telemetria
 
 Ele nao deve ser lido como guia operacional vigente de correcoes, testes ou fluxo Git. Esses assuntos hoje devem ser consultados principalmente em:
 
-- [Guia de Telemetria do Projeto](../flows/guia_de_telemetria.md)
-- [Guia de Debug do Projeto](../flows/guia_de_debug.md)
-- [Protocolo de Git](../flows/protocolo_de_git.md)
-- [Protocolo de Qualidade](../flows/protocolo_de_qualidade.md)
+- [Guia de Telemetria do Projeto](../guias/guia_de_telemetria.md)
+- [Guia de Debug do Projeto](../guias/guia_de_debug.md)
+- [Protocolo de Git](../protocolos/protocolo_de_git.md)
+- [Protocolo de Qualidade](../protocolos/protocolo_de_qualidade.md)
 
 ## Objetivo da Intervencao
 
@@ -28,7 +28,7 @@ O contexto mais imediato incluia:
 Hoje esse contexto deve ser lido em conjunto com:
 
 - [FASE 11 - CI: Estabilizacao do Pipeline de Integracao Continua](FASE11_ESTABILIZACAO_INICIAL_DO_CI.md)
-- [Guia de Telemetria do Projeto](../flows/guia_de_telemetria.md)
+- [Guia de Telemetria do Projeto](../guias/guia_de_telemetria.md)
 
 ## Problema Enfrentado
 
@@ -101,7 +101,7 @@ Como historico, esta fase registra um momento de consolidacao tecnica em que:
 ## Documentos Relacionados
 
 - [FASE 11 - CI: Estabilizacao do Pipeline de Integracao Continua](FASE11_ESTABILIZACAO_INICIAL_DO_CI.md)
-- [Guia de Telemetria do Projeto](../flows/guia_de_telemetria.md)
-- [Protocolo de Qualidade](../flows/protocolo_de_qualidade.md)
-- [Protocolo de Git](../flows/protocolo_de_git.md)
+- [Guia de Telemetria do Projeto](../guias/guia_de_telemetria.md)
+- [Protocolo de Qualidade](../protocolos/protocolo_de_qualidade.md)
+- [Protocolo de Git](../protocolos/protocolo_de_git.md)
 - [diagnostico_fase12.md](../metricas/diagnostico_fase12.md)

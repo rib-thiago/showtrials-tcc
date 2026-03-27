@@ -16,12 +16,12 @@ Ele nao substitui os documentos normativos e guias especializados. Seu papel e f
 
 Este manual consolida a visao geral da gestao operacional, mas os detalhes de cada dominio ficam nos artefatos especificos:
 
-- [politica_de_governanca.md](/home/thiago/coleta_showtrials/docs/flows/politica_de_governanca.md): regras de issues, labels, milestones e status.
-- [protocolo_de_git.md](/home/thiago/coleta_showtrials/docs/flows/protocolo_de_git.md): fluxo de branch, commit, pull request e merge.
-- [guia_github_projects_cli.md](/home/thiago/coleta_showtrials/docs/flows/guia_github_projects_cli.md): operacao do GitHub Project via `gh`.
-- [guia_de_auto_revisao.md](/home/thiago/coleta_showtrials/docs/flows/guia_de_auto_revisao.md): verificacao antes de PR e merge.
-- [protocolo_de_qualidade.md](/home/thiago/coleta_showtrials/docs/flows/protocolo_de_qualidade.md): criterios tecnicos minimos.
-- [guia_de_correcao_urgente.md](/home/thiago/coleta_showtrials/docs/flows/guia_de_correcao_urgente.md): tratamento de correcoes urgentes.
+- [politica_de_governanca.md](/home/thiago/coleta_showtrials/docs/politicas/politica_de_governanca.md): regras de issues, labels, milestones e status.
+- [protocolo_de_git.md](/home/thiago/coleta_showtrials/docs/protocolos/protocolo_de_git.md): fluxo de branch, commit, pull request e merge.
+- [guia_github_projects_cli.md](/home/thiago/coleta_showtrials/docs/guias/guia_github_projects_cli.md): operacao do GitHub Project via `gh`.
+- [guia_de_auto_revisao.md](/home/thiago/coleta_showtrials/docs/guias/guia_de_auto_revisao.md): verificacao antes de PR e merge.
+- [protocolo_de_qualidade.md](/home/thiago/coleta_showtrials/docs/protocolos/protocolo_de_qualidade.md): criterios tecnicos minimos.
+- [guia_de_correcao_urgente.md](/home/thiago/coleta_showtrials/docs/guias/guia_de_correcao_urgente.md): tratamento de correcoes urgentes.
 - [versionamento_e_releases.md](/home/thiago/coleta_showtrials/docs/projeto/versionamento_e_releases.md): versoes, tags e releases.
 - [regime_documental_de_fases_e_rodadas.md](/home/thiago/coleta_showtrials/docs/projeto/regime_documental_de_fases_e_rodadas.md): relacao entre historicos de fase e rodadas operacionais.
 
@@ -105,7 +105,7 @@ gh project field-list 1 --owner rib-thiago
 ```
 
 Para atualizar status de item, consultar o guia especifico:
-- [guia_github_projects_cli.md](/home/thiago/coleta_showtrials/docs/flows/guia_github_projects_cli.md)
+- [guia_github_projects_cli.md](/home/thiago/coleta_showtrials/docs/guias/guia_github_projects_cli.md)
 
 ### Branches e Pull Requests
 
@@ -117,20 +117,20 @@ gh pr view <numero>
 ```
 
 Para abertura, atualizacao e merge de PR:
-- [protocolo_de_git.md](/home/thiago/coleta_showtrials/docs/flows/protocolo_de_git.md)
+- [protocolo_de_git.md](/home/thiago/coleta_showtrials/docs/protocolos/protocolo_de_git.md)
 
 ### Revisao e qualidade
 
 Antes de integrar trabalho:
 
-- consultar [guia_de_auto_revisao.md](/home/thiago/coleta_showtrials/docs/flows/guia_de_auto_revisao.md)
-- confirmar aderencia a [protocolo_de_qualidade.md](/home/thiago/coleta_showtrials/docs/flows/protocolo_de_qualidade.md)
+- consultar [guia_de_auto_revisao.md](/home/thiago/coleta_showtrials/docs/guias/guia_de_auto_revisao.md)
+- confirmar aderencia a [protocolo_de_qualidade.md](/home/thiago/coleta_showtrials/docs/protocolos/protocolo_de_qualidade.md)
 
 ### Correcao urgente e releases
 
 Quando o trabalho envolver contingencia ou versao:
 
-- consultar [guia_de_correcao_urgente.md](/home/thiago/coleta_showtrials/docs/flows/guia_de_correcao_urgente.md)
+- consultar [guia_de_correcao_urgente.md](/home/thiago/coleta_showtrials/docs/guias/guia_de_correcao_urgente.md)
 - consultar [versionamento_e_releases.md](/home/thiago/coleta_showtrials/docs/projeto/versionamento_e_releases.md)
 
 ## Nota Historica da Reescrita
@@ -145,11 +145,11 @@ Este manual substitui uma versao anterior que refletia um regime operacional mai
 
 ## Documentos Relacionados
 
-- [politica_de_governanca.md](/home/thiago/coleta_showtrials/docs/flows/politica_de_governanca.md)
-- [protocolo_de_git.md](/home/thiago/coleta_showtrials/docs/flows/protocolo_de_git.md)
-- [guia_github_projects_cli.md](/home/thiago/coleta_showtrials/docs/flows/guia_github_projects_cli.md)
-- [guia_de_auto_revisao.md](/home/thiago/coleta_showtrials/docs/flows/guia_de_auto_revisao.md)
-- [protocolo_de_qualidade.md](/home/thiago/coleta_showtrials/docs/flows/protocolo_de_qualidade.md)
-- [guia_de_correcao_urgente.md](/home/thiago/coleta_showtrials/docs/flows/guia_de_correcao_urgente.md)
+- [politica_de_governanca.md](/home/thiago/coleta_showtrials/docs/politicas/politica_de_governanca.md)
+- [protocolo_de_git.md](/home/thiago/coleta_showtrials/docs/protocolos/protocolo_de_git.md)
+- [guia_github_projects_cli.md](/home/thiago/coleta_showtrials/docs/guias/guia_github_projects_cli.md)
+- [guia_de_auto_revisao.md](/home/thiago/coleta_showtrials/docs/guias/guia_de_auto_revisao.md)
+- [protocolo_de_qualidade.md](/home/thiago/coleta_showtrials/docs/protocolos/protocolo_de_qualidade.md)
+- [guia_de_correcao_urgente.md](/home/thiago/coleta_showtrials/docs/guias/guia_de_correcao_urgente.md)
 - [versionamento_e_releases.md](/home/thiago/coleta_showtrials/docs/projeto/versionamento_e_releases.md)
 - [regime_documental_de_fases_e_rodadas.md](/home/thiago/coleta_showtrials/docs/projeto/regime_documental_de_fases_e_rodadas.md)

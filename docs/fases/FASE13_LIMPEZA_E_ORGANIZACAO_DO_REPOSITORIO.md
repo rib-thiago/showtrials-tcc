@@ -122,8 +122,8 @@ documentacao, scripts, dependencias ou manutencao estrutural.
 
 Para a leitura atual mais forte desses temas, devem ser considerados tambem:
 
-- [Guia de Documentacao do Projeto](/home/thiago/coleta_showtrials/docs/flows/guia_de_documentacao_do_projeto.md)
-- [Guia de Manutencao do Site Documental](/home/thiago/coleta_showtrials/docs/flows/guia_de_manutencao_do_site_documental.md)
+- [Guia de Documentacao do Projeto](/home/thiago/coleta_showtrials/docs/guias/guia_de_documentacao_do_projeto.md)
+- [Guia de Manutencao do Site Documental](/home/thiago/coleta_showtrials/docs/guias/guia_de_manutencao_do_site_documental.md)
 - [manual_gestao.md](/home/thiago/coleta_showtrials/docs/projeto/manual_gestao.md)
 - [FASE17_PRIMEIRA_REORGANIZACAO_DOCUMENTAL_AMPLA.md](/home/thiago/coleta_showtrials/docs/fases/FASE17_PRIMEIRA_REORGANIZACAO_DOCUMENTAL_AMPLA.md)
 

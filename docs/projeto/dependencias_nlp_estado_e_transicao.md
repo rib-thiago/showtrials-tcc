@@ -79,7 +79,7 @@ Enquanto essa issue permanecer aberta, qualquer mudanca nesse bloco deve ser tra
 - [FASE 8 - Analise de Texto](../fases/FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO.md)
 - [FASE 11 - CI: Estabilizacao do Pipeline de Integracao Continua](../fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI.md)
 - [Guia de Contribuicao](../contributing.md)
-- [Guia de Dependencias do Projeto](../flows/guia_de_dependencias.md)
+- [Guia de Dependencias do Projeto](../guias/guia_de_dependencias.md)
 - [Issue #1 - Migrar dependencias NLP para Poetry](https://github.com/rib-thiago/showtrials-tcc/issues/1)
 - `pyproject.toml`
 - `.github/workflows/ci.yml`

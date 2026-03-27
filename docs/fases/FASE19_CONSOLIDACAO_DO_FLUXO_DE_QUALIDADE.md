@@ -6,7 +6,7 @@ Este documento registra historicamente a consolidacao do fluxo de qualidade como
 
 Ele nao deve ser lido como protocolo vigente principal. O protocolo vigente deve ser consultado em:
 
-- [protocolo_de_qualidade.md](/home/thiago/coleta_showtrials/docs/flows/protocolo_de_qualidade.md)
+- [protocolo_de_qualidade.md](/home/thiago/coleta_showtrials/docs/protocolos/protocolo_de_qualidade.md)
 
 Este artefato foi criado durante a frente atual de saneamento documental para recepcionar, como registro historico, conteudo do antigo `quality_flow.md` que refletia o endurecimento do fluxo de qualidade em um momento especifico do projeto.
 
