@@ -1,161 +1,111 @@
-# FASE 11 - CI: Estabilização do Pipeline de Integração Contínua
+# Historico da Fase 11 - Estabilizacao Inicial do CI
 
-<div align="center">
+## Natureza do Documento
 
-**Implementação da solução temporária para dependências NLP no GitHub Actions**
+Este documento registra historicamente a intervencao que estabilizou o pipeline inicial de integracao continua do projeto diante do problema das dependencias de NLP no CI.
 
-</div>
+Ele nao deve ser lido como definicao vigente e definitiva do tratamento de dependencias NLP. O estado atual dessa questao deve ser consultado principalmente em:
 
-## 📅 **Informações da Fase**
+- [Dependencias NLP: Estado Atual e Transicao](../projeto/dependencias_nlp_estado_e_transicao.md)
+- [Guia de Dependencias do Projeto](../flows/guia_de_dependencias.md)
+- [Guia de Contribuicao](../contributing.md)
 
-| Item | Descrição |
-|------|-----------|
-| **Status** | ✅ Concluída |
-| **Data de Conclusão** | 19/02/2026 |
-| **Artefatos** | `.github/workflows/ci.yml` (modificado) |
-| **Dependências** | FASE 8 (Análise de Texto), FASE 10 (Service Registry) |
-| **Issue principal** | [#CI](https://github.com/rib-thiago/showtrials-tcc/issues/CI) |
-| **Commit principal** | [`c87fc9e`](https://github.com/rib-thiago/showtrials-tcc/commit/c87fc9eac947b9748c53beaed12de293d173203a) |
+## Objetivo da Intervencao
 
-> **Nota:** O diagnóstico completo desta fase está documentado em [`metricas/diagnostico_ci.md`](../metricas/diagnostico_ci.md)
+Desbloquear o pipeline de CI que havia passado a falhar por ausencia de dependencias de NLP no ambiente do GitHub Actions.
 
----
+## Contexto
 
-## 🎯 **Objetivo**
+O problema surgiu depois da introducao das funcionalidades de analise de texto, que passaram a depender de:
 
-Corrigir as falhas no pipeline de CI que estavam impedindo todos os merges das branches `type/*`, causadas pela ausência das dependências de NLP (spacy, numpy, etc.) no ambiente do GitHub Actions.
+- `numpy`
+- `spacy`
+- modelos de idioma do `spacy`
+- bibliotecas auxiliares como `textblob`, `nltk`, `wordcloud` e `matplotlib`
 
----
+O ambiente local e o ambiente do CI deixaram de se comportar de forma equivalente, e o pipeline passou a falhar com erros de importacao ligados ao bloco NLP.
 
-## 📁 **Arquivo Modificado**
+## Problema Enfrentado
 
-```bash
-.github/
-└── workflows/
-    └── ci.yml  # Modificado para incluir instalação via pip
-```
+O nucleo do problema era que o fluxo padrao de `poetry install` nao bastava, naquele momento, para reproduzir no CI o conjunto de dependencias exigido pelo bloco de analise de texto.
 
----
+Historicamente, isso impactava:
 
-## 🧩 **Componentes Implementados**
+- execucao da suite automatizada
+- verificacoes de merge
+- confianca no pipeline
 
-### Modificação no GitHub Actions Workflow
+## Solucao Aplicada
 
-**Antes:**
-```yaml
-- name: Install dependencies
-  run: poetry install --no-interaction
-```
+A intervencao historica adicionou ao workflow de CI um complemento via `pip` dentro do ambiente do Poetry para instalar o bloco NLP e baixar modelos do `spacy`.
 
-**Depois:**
-```yaml
-- name: Install Poetry dependencies
-  run: poetry install --no-interaction
+Como historico, a solucao aplicada pode ser resumida assim:
 
-- name: Install NLP dependencies (pip)
-  run: |
-    poetry run pip install numpy==1.26.0
-    poetry run pip install spacy==3.7.5
-    poetry run pip install textblob nltk wordcloud matplotlib
-    poetry run python -m spacy download en_core_web_sm
-    poetry run python -m spacy download ru_core_news_sm
-```
+- `poetry install` para o ambiente principal
+- `pip install` complementar para as dependencias NLP
+- download dos modelos `en_core_web_sm` e `ru_core_news_sm`
 
----
+Essa decisao destravou o pipeline, mas ao mesmo tempo consolidou uma forma hibrida de gerenciamento de dependencias que permaneceu como divida tecnica posterior.
 
-## 🧪 **Testes**
+## Artefatos Afetados
 
-### Verificação da Solução
+Com lastro direto no commit principal identificado:
 
-```bash
-# Após a modificação, todos os testes voltaram a passar no CI
-poetry run pytest src/tests/ -v
-```
+- `.github/workflows/ci.yml`
 
-**Resultado no GitHub Actions:**
-```
-All checks passed! ✅
-```
+Artefatos historicamente relacionados:
 
----
+- [diagnostico_ci.md](../metricas/diagnostico_ci.md)
+- [Dependencias NLP: Estado Atual e Transicao](../projeto/dependencias_nlp_estado_e_transicao.md)
 
-## 📊 **Métricas da Fase**
+## Rastreabilidade Git e GitHub
 
-| Métrica | Antes | Depois | Evolução |
-|---------|-------|--------|----------|
-| **Merges bloqueados** | 12 | 0 | ✅ Desbloqueado |
-| **Testes falhando no CI** | 4+ | 0 | ✅ Resolvido |
-| **Tempo de CI** | ~3min | ~4min | ⚠️ +1min (pip install) |
+### Commit principal
 
----
+- [`c87fc9e`](https://github.com/rib-thiago/showtrials-tcc/commit/c87fc9eac947b9748c53beaed12de293d173203a) - `fix: adiciona dependências NLP via pip no CI`
 
-## 📚 **Princípios Aplicados**
+### Branch principal
 
-| Princípio | Aplicação |
-|-----------|-----------|
-| **Fail Fast** | Diagnóstico rápido identificou causa raiz |
-| **Technical Debt** | Solução temporária documentada com TODO |
-| **Reproducibility** | Ambiente CI replicado localmente |
+- `fix/ci-dependencies-pip`
 
----
+### Issue principal historica
 
-## 🔗 **Integração com Fases**
+- `#CI`, conforme registrado na mensagem do commit principal e no documento legado
 
-| Fase | Relacionamento |
-|------|----------------|
-| **FASE 8** | Dependências de NLP foram introduzidas |
-| **FASE 10** | Service Registry já estava estável |
-| **Issue #1** | TODO: Migrar NLP para Poetry |
+### Issue relacionada ainda aberta
 
----
+- [#1 - Migrar dependencias NLP para Poetry](https://github.com/rib-thiago/showtrials-tcc/issues/1)
 
-## 🔄 **Evolução do Código**
+### Pull Request
 
-### Antes (CI quebrado)
-```yaml
-# Apenas poetry install, NLP ausente
-- run: poetry install
-- run: pytest  # FALHA: ModuleNotFoundError: spacy
-```
+- nenhum pull request foi identificado com seguranca a partir do commit principal analisado
 
-### Depois (CI funcionando)
-```yaml
-# Poetry + pip install das dependências NLP
-- run: poetry install
-- run: poetry run pip install numpy==1.26.0 spacy==3.7.5
-- run: poetry run python -m spacy download en_core_web_sm
-- run: pytest  # ✅ PASS
-```
+## Impacto Tecnico
 
----
+Como historico, esta fase registra um momento em que:
 
-## 🔍 **Lições Aprendidas**
+- o CI deixou de ficar bloqueado pelo bloco NLP
+- o projeto recuperou capacidade pratica de verificar a suite automatizada no GitHub Actions
+- o tratamento do problema deixou de ser implícito e passou a ficar documentado
 
-1. **Ambientes diferentes, problemas diferentes** - O que funciona local pode falhar no CI
-2. **Documente soluções temporárias** - O TODO list evitou que o problema fosse esquecido
-3. **Commits descritivos salvam** - A mensagem do commit `c87fc9e` já documentava a decisão
-4. **Separe diagnóstico de solução** - O diagnóstico detalhado agora vive em `metricas/`
+Ao mesmo tempo, a fase tambem marca a origem de uma divida tecnica importante:
 
----
+- a estabilizacao do CI foi obtida por um workaround hibrido, e nao por resolucao definitiva no `pyproject.toml`
 
-## 📋 **Issues Relacionadas**
+## Relacao com o Estado Atual das Dependencias NLP
 
-- [#1](https://github.com/rib-thiago/showtrials-tcc/issues/1) - Migrar dependências NLP para Poetry (futuro)
-- [#CI](https://github.com/rib-thiago/showtrials-tcc/issues/CI) - CI quebrado (resolvido)
+Hoje, a leitura correta desta fase e:
 
----
+- ela documenta a estabilizacao inicial do CI
+- ela nao resolve definitivamente o gerenciamento do bloco NLP
+- ela explica por que a issue [#1 - Migrar dependencias NLP para Poetry](https://github.com/rib-thiago/showtrials-tcc/issues/1) continua relevante
 
-## 👤 **Autor**
+O documento vivo mais forte para essa questao hoje e [Dependencias NLP: Estado Atual e Transicao](../projeto/dependencias_nlp_estado_e_transicao.md).
 
-**Thiago Ribeiro** - Projeto de TCC
+## Documentos Relacionados
 
----
-
-<div align="center">
-  <sub>FASE 11 concluída em 19/02/2026</sub>
-  <br>
-  <sub>✅ CI estabilizado • 🚧 TODO: Migrar para Poetry (Issue #1)</sub>
-</div>
-```
-
----
+- [FASE 8 - Analise de Texto](FASE8_ANALISE_TEXTO.md)
+- [Dependencias NLP: Estado Atual e Transicao](../projeto/dependencias_nlp_estado_e_transicao.md)
+- [Guia de Dependencias do Projeto](../flows/guia_de_dependencias.md)
+- [diagnostico_ci.md](../metricas/diagnostico_ci.md)
+- [Guia de Contribuicao](../contributing.md)
