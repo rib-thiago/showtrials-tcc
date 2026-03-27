@@ -126,8 +126,8 @@ A leitura atual deve considerar em conjunto:
 
 ## Documentos Relacionados
 
-- [FASE04_FUNDACAO_DA_INTERFACE_CLI.md](/home/thiago/coleta_showtrials/docs/fases/FASE04_FUNDACAO_DA_INTERFACE_CLI.md)
-- [FASE06_INTRODUCAO_DO_SUBSISTEMA_DE_EXPORTACAO.md](/home/thiago/coleta_showtrials/docs/fases/FASE06_INTRODUCAO_DO_SUBSISTEMA_DE_EXPORTACAO.md)
+- [FASE04_FUNDACAO_DA_INTERFACE_CLI.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE04_FUNDACAO_DA_INTERFACE_CLI.md)
+- [FASE06_INTRODUCAO_DO_SUBSISTEMA_DE_EXPORTACAO.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE06_INTRODUCAO_DO_SUBSISTEMA_DE_EXPORTACAO.md)
 - [ARCHITECTURE.md](/home/thiago/coleta_showtrials/docs/ARCHITECTURE.md)
 - [analise_arquitetural.md](/home/thiago/coleta_showtrials/docs/projeto/analise_arquitetural.md)
 - [direcionamento_arquitetural_engine_mvp.md](/home/thiago/coleta_showtrials/docs/projeto/direcionamento_arquitetural_engine_mvp.md)

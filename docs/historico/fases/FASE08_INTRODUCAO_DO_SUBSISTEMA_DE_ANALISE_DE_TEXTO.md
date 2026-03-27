@@ -120,16 +120,16 @@ A leitura atual deve considerar em conjunto:
 
 - [guia_de_dependencias.md](/home/thiago/coleta_showtrials/docs/guias/guia_de_dependencias.md)
 - [dependencias_nlp_estado_e_transicao.md](/home/thiago/coleta_showtrials/docs/projeto/dependencias_nlp_estado_e_transicao.md)
-- [FASE11_ESTABILIZACAO_INICIAL_DO_CI.md](/home/thiago/coleta_showtrials/docs/fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI.md)
+- [FASE11_ESTABILIZACAO_INICIAL_DO_CI.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI.md)
 - os documentos arquiteturais saneados.
 
 ## Documentos Relacionados
 
-- [FASE07_INTRODUCAO_DO_SUBSISTEMA_DE_RELATORIOS.md](/home/thiago/coleta_showtrials/docs/fases/FASE07_INTRODUCAO_DO_SUBSISTEMA_DE_RELATORIOS.md)
-- [FASE09_INTRODUCAO_DA_INTERFACE_WEB.md](/home/thiago/coleta_showtrials/docs/fases/FASE09_INTRODUCAO_DA_INTERFACE_WEB.md)
+- [FASE07_INTRODUCAO_DO_SUBSISTEMA_DE_RELATORIOS.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE07_INTRODUCAO_DO_SUBSISTEMA_DE_RELATORIOS.md)
+- [FASE09_INTRODUCAO_DA_INTERFACE_WEB.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE09_INTRODUCAO_DA_INTERFACE_WEB.md)
 - [ARCHITECTURE.md](/home/thiago/coleta_showtrials/docs/ARCHITECTURE.md)
 - [analise_arquitetural.md](/home/thiago/coleta_showtrials/docs/projeto/analise_arquitetural.md)
 - [direcionamento_arquitetural_engine_mvp.md](/home/thiago/coleta_showtrials/docs/projeto/direcionamento_arquitetural_engine_mvp.md)
 - [guia_de_dependencias.md](/home/thiago/coleta_showtrials/docs/guias/guia_de_dependencias.md)
 - [dependencias_nlp_estado_e_transicao.md](/home/thiago/coleta_showtrials/docs/projeto/dependencias_nlp_estado_e_transicao.md)
-- [FASE11_ESTABILIZACAO_INICIAL_DO_CI.md](/home/thiago/coleta_showtrials/docs/fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI.md)
+- [FASE11_ESTABILIZACAO_INICIAL_DO_CI.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI.md)

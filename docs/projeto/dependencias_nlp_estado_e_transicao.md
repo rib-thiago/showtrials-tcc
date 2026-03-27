@@ -6,7 +6,7 @@ Este documento consolida o estado atual das dependencias NLP do projeto, o histo
 
 ## Contexto Historico
 
-O problema surgiu na implementacao da analise de texto, registrada em [FASE 8 - Analise de Texto](../fases/FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO.md).
+O problema surgiu na implementacao da analise de texto, registrada em [FASE 8 - Analise de Texto](../historico/fases/FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO.md).
 
 Naquela fase, o projeto encontrou conflitos praticos ligados a:
 
@@ -30,7 +30,7 @@ Esse estado nao deve ser lido como politica definitiva. Ele representa um estado
 
 ## Workaround Vigente no CI
 
-A fase [FASE 11 - CI: Estabilizacao do Pipeline de Integracao Continua](../fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI.md) documenta a solucao que destravou o pipeline:
+A fase [FASE 11 - CI: Estabilizacao do Pipeline de Integracao Continua](../historico/fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI.md) documenta a solucao que destravou o pipeline:
 
 - `poetry install` para o ambiente principal
 - complemento com instalacao das dependencias NLP
@@ -76,8 +76,8 @@ Enquanto essa issue permanecer aberta, qualquer mudanca nesse bloco deve ser tra
 
 ## Referencias e Rastreabilidade
 
-- [FASE 8 - Analise de Texto](../fases/FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO.md)
-- [FASE 11 - CI: Estabilizacao do Pipeline de Integracao Continua](../fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI.md)
+- [FASE 8 - Analise de Texto](../historico/fases/FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO.md)
+- [FASE 11 - CI: Estabilizacao do Pipeline de Integracao Continua](../historico/fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI.md)
 - [Guia de Contribuicao](../contributing.md)
 - [Guia de Dependencias do Projeto](../guias/guia_de_dependencias.md)
 - [Issue #1 - Migrar dependencias NLP para Poetry](https://github.com/rib-thiago/showtrials-tcc/issues/1)

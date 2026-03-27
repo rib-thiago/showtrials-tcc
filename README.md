@@ -105,7 +105,9 @@ src/
   interface/
   tests/
 docs/
-  fases/
+  historico/
+    fases/
+    diagnosticos/
   politicas/
   protocolos/
   guias/

@@ -39,7 +39,7 @@ Como historico, a fase registra principalmente estes problemas:
 
 A intervencao historica consolidou, entre outros movimentos:
 
-- reorganizacao fisica inicial de arquivos em subpastas como `docs/fases/` e `docs/metricas/`
+- reorganizacao fisica inicial de arquivos em subpastas como `docs/historico/fases/` e `docs/metricas/`
 - separacao entre diagnosticos e historicos de implementacao em alguns casos
 - correcao de links internos
 - primeira tentativa de consolidar melhor a navegacao documental

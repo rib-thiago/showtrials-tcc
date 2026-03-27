@@ -55,13 +55,13 @@ Para a leitura mais forte do horizonte tecnico atual, consulte:
 
 ### Projeto e arquitetura
 
-- [docs/projeto](projeto/)
-- [docs/modelagem](modelagem/)
+- [Visao Ampla do Projeto](projeto/visao_do_projeto.md)
+- [Indice geral da frente de modelagem](modelagem/revisao/47_indice_geral_da_frente_de_modelagem.md)
 
 ### Historico
 
-- [docs/fases](fases/)
-- [docs/planejamento/rodadas](planejamento/rodadas/)
+- [Changelog](changelog.md)
+- [Plano operacional da reorganizacao semantica](planejamento/plano_operacional_da_reorganizacao_semantica_dos_diretorios.md)
 
 ## Como contribuir e acompanhar a evolucao
 

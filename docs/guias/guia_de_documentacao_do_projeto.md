@@ -25,7 +25,7 @@ Para regras especificas sobre historicos de fase, rodadas operacionais e manuten
 Hoje o projeto convive com pelo menos quatro grupos principais de documentacao:
 
 - documentacao viva de projeto, como README, changelog e guias em `docs/guias/`
-- documentacao historica de intervencoes em `docs/fases/`
+- documentacao historica de intervencoes em `docs/historico/fases/`
 - registros operacionais curtos em `docs/planejamento/rodadas/`
 - documentacao publica navegavel via MkDocs
 

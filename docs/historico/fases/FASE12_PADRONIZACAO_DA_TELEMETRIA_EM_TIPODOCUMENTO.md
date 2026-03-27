@@ -59,7 +59,7 @@ Com lastro direto no commit principal identificado:
 
 Artefatos historicamente relacionados:
 
-- [diagnostico_fase12.md](../metricas/diagnostico_fase12.md)
+- [diagnostico_fase12.md](../diagnosticos/diagnostico_fase12.md)
 - [FASE11_ESTABILIZACAO_INICIAL_DO_CI.md](FASE11_ESTABILIZACAO_INICIAL_DO_CI.md)
 
 ## Rastreabilidade Git e GitHub
@@ -104,4 +104,4 @@ Como historico, esta fase registra um momento de consolidacao tecnica em que:
 - [Guia de Telemetria do Projeto](../guias/guia_de_telemetria.md)
 - [Protocolo de Qualidade](../protocolos/protocolo_de_qualidade.md)
 - [Protocolo de Git](../protocolos/protocolo_de_git.md)
-- [diagnostico_fase12.md](../metricas/diagnostico_fase12.md)
+- [diagnostico_fase12.md](../diagnosticos/diagnostico_fase12.md)

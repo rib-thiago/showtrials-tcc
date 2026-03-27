@@ -53,11 +53,11 @@ Marcos historicos principais da evolucao registrada neste bloco:
 
 Fases historicas mais diretamente relacionadas a essa evolucao:
 
-- [FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md](/home/thiago/coleta_showtrials/docs/fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md)
-- [FASE13_LIMPEZA_E_ORGANIZACAO_DO_REPOSITORIO.md](/home/thiago/coleta_showtrials/docs/fases/FASE13_LIMPEZA_E_ORGANIZACAO_DO_REPOSITORIO.md)
-- [FASE14_TELEMETRIA_E_TESTES_EM_EXPORTAR_DOCUMENTO.md](/home/thiago/coleta_showtrials/docs/fases/FASE14_TELEMETRIA_E_TESTES_EM_EXPORTAR_DOCUMENTO.md)
-- [FASE15_TELEMETRIA_E_TESTES_EM_GERAR_RELATORIO.md](/home/thiago/coleta_showtrials/docs/fases/FASE15_TELEMETRIA_E_TESTES_EM_GERAR_RELATORIO.md)
-- [FASE16_TELEMETRIA_E_EXPANSAO_DE_TESTES_EM_LISTAR_DOCUMENTOS.md](/home/thiago/coleta_showtrials/docs/fases/FASE16_TELEMETRIA_E_EXPANSAO_DE_TESTES_EM_LISTAR_DOCUMENTOS.md)
+- [FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md)
+- [FASE13_LIMPEZA_E_ORGANIZACAO_DO_REPOSITORIO.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE13_LIMPEZA_E_ORGANIZACAO_DO_REPOSITORIO.md)
+- [FASE14_TELEMETRIA_E_TESTES_EM_EXPORTAR_DOCUMENTO.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE14_TELEMETRIA_E_TESTES_EM_EXPORTAR_DOCUMENTO.md)
+- [FASE15_TELEMETRIA_E_TESTES_EM_GERAR_RELATORIO.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE15_TELEMETRIA_E_TESTES_EM_GERAR_RELATORIO.md)
+- [FASE16_TELEMETRIA_E_EXPANSAO_DE_TESTES_EM_LISTAR_DOCUMENTOS.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE16_TELEMETRIA_E_EXPANSAO_DE_TESTES_EM_LISTAR_DOCUMENTOS.md)
 
 ## Limites de Leitura
 
@@ -76,6 +76,6 @@ frentes tecnicas ativas.
 
 - [contributing.md](/home/thiago/coleta_showtrials/docs/contributing.md)
 - [protocolo_de_qualidade.md](/home/thiago/coleta_showtrials/docs/protocolos/protocolo_de_qualidade.md)
-- [diagnostico_ci.md](/home/thiago/coleta_showtrials/docs/metricas/diagnostico_ci.md)
-- [diagnostico_fase12.md](/home/thiago/coleta_showtrials/docs/metricas/diagnostico_fase12.md)
+- [diagnostico_ci.md](/home/thiago/coleta_showtrials/docs/historico/diagnosticos/diagnostico_ci.md)
+- [diagnostico_fase12.md](/home/thiago/coleta_showtrials/docs/historico/diagnosticos/diagnostico_fase12.md)
 - [RODADA_20260327_53.md](/home/thiago/coleta_showtrials/docs/planejamento/rodadas/RODADA_20260327_53.md)

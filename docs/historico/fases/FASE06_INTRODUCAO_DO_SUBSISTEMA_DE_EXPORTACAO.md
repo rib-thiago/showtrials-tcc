@@ -115,8 +115,8 @@ A leitura atual deve considerar em conjunto:
 
 ## Documentos Relacionados
 
-- [FASE05_INTRODUCAO_DO_SUBSISTEMA_DE_TRADUCAO.md](/home/thiago/coleta_showtrials/docs/fases/FASE05_INTRODUCAO_DO_SUBSISTEMA_DE_TRADUCAO.md)
-- [FASE07_INTRODUCAO_DO_SUBSISTEMA_DE_RELATORIOS.md](/home/thiago/coleta_showtrials/docs/fases/FASE07_INTRODUCAO_DO_SUBSISTEMA_DE_RELATORIOS.md)
+- [FASE05_INTRODUCAO_DO_SUBSISTEMA_DE_TRADUCAO.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE05_INTRODUCAO_DO_SUBSISTEMA_DE_TRADUCAO.md)
+- [FASE07_INTRODUCAO_DO_SUBSISTEMA_DE_RELATORIOS.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE07_INTRODUCAO_DO_SUBSISTEMA_DE_RELATORIOS.md)
 - [ARCHITECTURE.md](/home/thiago/coleta_showtrials/docs/ARCHITECTURE.md)
 - [analise_arquitetural.md](/home/thiago/coleta_showtrials/docs/projeto/analise_arquitetural.md)
 - [direcionamento_arquitetural_engine_mvp.md](/home/thiago/coleta_showtrials/docs/projeto/direcionamento_arquitetural_engine_mvp.md)

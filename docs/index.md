@@ -54,8 +54,8 @@ O projeto combina:
 
 ### Historico e rastreabilidade
 
-- [docs/fases](fases/)
-- [docs/planejamento/rodadas](planejamento/rodadas/)
+- [Changelog](changelog.md)
+- [Plano operacional da reorganizacao semantica](planejamento/plano_operacional_da_reorganizacao_semantica_dos_diretorios.md)
 - [Regime Documental de Fases e Rodadas](projeto/regime_documental_de_fases_e_rodadas.md)
 
 ## Historico e rastreabilidade
@@ -63,5 +63,5 @@ O projeto combina:
 Para leitura historica mais detalhada:
 
 - use o [Changelog](changelog.md) para marcos notaveis resumidos
-- use [docs/fases](fases/) para historicos consolidados de intervencoes
-- use [docs/planejamento/rodadas](planejamento/rodadas/) para execucao curta e rastreavel
+- use o bloco `docs/historico/fases/` para historicos consolidados de intervencoes
+- use o bloco `docs/planejamento/rodadas/` para execucao curta e rastreavel

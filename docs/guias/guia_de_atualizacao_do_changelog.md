@@ -11,7 +11,7 @@ O changelog registra mudancas notaveis em nivel publico e de consulta rapida.
 Ele nao substitui:
 
 - o historico fino de commits no Git;
-- os documentos de fase em `docs/fases/`;
+- os documentos de fase em `docs/historico/fases/`;
 - os documentos de rodada em `docs/planejamento/rodadas/`.
 
 Seu papel e destacar marcos suficientemente relevantes para ajudar leitura retrospectiva do projeto sem exigir reconstituicao completa do historico.
@@ -41,7 +41,7 @@ Nao entram no changelog:
 Ao atualizar o changelog, consultar preferencialmente:
 
 - historico Git;
-- `docs/fases/`;
+- `docs/historico/fases/`;
 - `docs/planejamento/rodadas/`;
 - documentos vivos relevantes em `docs/guias/`, `docs/projeto/` e `docs/modelagem/`.
 

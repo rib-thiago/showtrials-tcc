@@ -8,7 +8,7 @@ Este documento registra a conferência de aderência da frente de modelagem ao *
 - PRs relevantes
 - código-fonte atual em `src/`
 - documentação arquitetural anterior em `docs/projeto/`
-- documentação histórica de fases em `docs/fases/`
+- documentação histórica de fases em `docs/historico/fases/`
 
 Seu objetivo é distinguir, com rigor, entre:
 
@@ -33,9 +33,9 @@ Esta conferência se apoia principalmente em:
 - [docs/projeto/roadmap_arquitetural.md](/home/thiago/coleta_showtrials/docs/projeto/roadmap_arquitetural.md)
 - [docs/projeto/direcionamento_arquitetural_engine_mvp.md](/home/thiago/coleta_showtrials/docs/projeto/direcionamento_arquitetural_engine_mvp.md)
 - [docs/projeto/analise_arquitetural.md](/home/thiago/coleta_showtrials/docs/projeto/analise_arquitetural.md)
-- [FASE02_FUNDACAO_DA_CAMADA_DE_APLICACAO.md](/home/thiago/coleta_showtrials/docs/fases/FASE02_FUNDACAO_DA_CAMADA_DE_APLICACAO.md)
-- [FASE05_INTRODUCAO_DO_SUBSISTEMA_DE_TRADUCAO.md](/home/thiago/coleta_showtrials/docs/fases/FASE05_INTRODUCAO_DO_SUBSISTEMA_DE_TRADUCAO.md)
-- [FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO.md](/home/thiago/coleta_showtrials/docs/fases/FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO.md)
+- [FASE02_FUNDACAO_DA_CAMADA_DE_APLICACAO.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE02_FUNDACAO_DA_CAMADA_DE_APLICACAO.md)
+- [FASE05_INTRODUCAO_DO_SUBSISTEMA_DE_TRADUCAO.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE05_INTRODUCAO_DO_SUBSISTEMA_DE_TRADUCAO.md)
+- [FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO.md)
 - issue [#25](https://github.com/rib-thiago/showtrials-tcc/issues/25)
 - issues [#12](https://github.com/rib-thiago/showtrials-tcc/issues/12) a [#17](https://github.com/rib-thiago/showtrials-tcc/issues/17)
 - PRs abertas relevantes do repositório
@@ -125,7 +125,7 @@ No código atual, não há implementação factual dos principais elementos cent
 
 Esses elementos aparecem de forma consistente em documentação e backlog, mas não podem ser tratados como código já existente.
 
-## 5. Aderência a `docs/projeto/` e `docs/fases/`
+## 5. Aderência a `docs/projeto/` e `docs/historico/fases/`
 
 ### 5.1 Aderência forte aos documentos de fases do sistema atual
 

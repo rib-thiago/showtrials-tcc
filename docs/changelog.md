@@ -29,8 +29,8 @@ Ele complementa, mas nao substitui, o historico detalhado distribuido entre Git,
 
 ### Rastreabilidade
 
-- [FASE18_CONSOLIDACAO_DA_GOVERNANCA.md](/home/thiago/coleta_showtrials/docs/fases/FASE18_CONSOLIDACAO_DA_GOVERNANCA.md)
-- [FASE19_CONSOLIDACAO_DO_FLUXO_DE_QUALIDADE.md](/home/thiago/coleta_showtrials/docs/fases/FASE19_CONSOLIDACAO_DO_FLUXO_DE_QUALIDADE.md)
+- [FASE18_CONSOLIDACAO_DA_GOVERNANCA.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE18_CONSOLIDACAO_DA_GOVERNANCA.md)
+- [FASE19_CONSOLIDACAO_DO_FLUXO_DE_QUALIDADE.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE19_CONSOLIDACAO_DO_FLUXO_DE_QUALIDADE.md)
 - rodadas `32` a `52` em [docs/planejamento/rodadas/](/home/thiago/coleta_showtrials/docs/planejamento/rodadas)
 
 ## 2026-03-26 - Frente de modelagem, analise e padroes
@@ -64,7 +64,7 @@ Ele complementa, mas nao substitui, o historico detalhado distribuido entre Git,
 
 ### Rastreabilidade
 
-- [FASE17_PRIMEIRA_REORGANIZACAO_DOCUMENTAL_AMPLA.md](/home/thiago/coleta_showtrials/docs/fases/FASE17_PRIMEIRA_REORGANIZACAO_DOCUMENTAL_AMPLA.md)
+- [FASE17_PRIMEIRA_REORGANIZACAO_DOCUMENTAL_AMPLA.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE17_PRIMEIRA_REORGANIZACAO_DOCUMENTAL_AMPLA.md)
 
 ## 2026-02-17 a 2026-02-19 - Estabilizacao tecnica inicial
 
@@ -85,13 +85,13 @@ Ele complementa, mas nao substitui, o historico detalhado distribuido entre Git,
 
 ### Rastreabilidade
 
-- [FASE10_INTRODUCAO_DO_SERVICE_REGISTRY_E_DO_LAZY_LOADING.md](/home/thiago/coleta_showtrials/docs/fases/FASE10_INTRODUCAO_DO_SERVICE_REGISTRY_E_DO_LAZY_LOADING.md)
-- [FASE11_ESTABILIZACAO_INICIAL_DO_CI.md](/home/thiago/coleta_showtrials/docs/fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI.md)
-- [FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md](/home/thiago/coleta_showtrials/docs/fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md)
-- [FASE13_LIMPEZA_E_ORGANIZACAO_DO_REPOSITORIO.md](/home/thiago/coleta_showtrials/docs/fases/FASE13_LIMPEZA_E_ORGANIZACAO_DO_REPOSITORIO.md)
-- [FASE14_TELEMETRIA_E_TESTES_EM_EXPORTAR_DOCUMENTO.md](/home/thiago/coleta_showtrials/docs/fases/FASE14_TELEMETRIA_E_TESTES_EM_EXPORTAR_DOCUMENTO.md)
-- [FASE15_TELEMETRIA_E_TESTES_EM_GERAR_RELATORIO.md](/home/thiago/coleta_showtrials/docs/fases/FASE15_TELEMETRIA_E_TESTES_EM_GERAR_RELATORIO.md)
-- [FASE16_TELEMETRIA_E_EXPANSAO_DE_TESTES_EM_LISTAR_DOCUMENTOS.md](/home/thiago/coleta_showtrials/docs/fases/FASE16_TELEMETRIA_E_EXPANSAO_DE_TESTES_EM_LISTAR_DOCUMENTOS.md)
+- [FASE10_INTRODUCAO_DO_SERVICE_REGISTRY_E_DO_LAZY_LOADING.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE10_INTRODUCAO_DO_SERVICE_REGISTRY_E_DO_LAZY_LOADING.md)
+- [FASE11_ESTABILIZACAO_INICIAL_DO_CI.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI.md)
+- [FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md)
+- [FASE13_LIMPEZA_E_ORGANIZACAO_DO_REPOSITORIO.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE13_LIMPEZA_E_ORGANIZACAO_DO_REPOSITORIO.md)
+- [FASE14_TELEMETRIA_E_TESTES_EM_EXPORTAR_DOCUMENTO.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE14_TELEMETRIA_E_TESTES_EM_EXPORTAR_DOCUMENTO.md)
+- [FASE15_TELEMETRIA_E_TESTES_EM_GERAR_RELATORIO.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE15_TELEMETRIA_E_TESTES_EM_GERAR_RELATORIO.md)
+- [FASE16_TELEMETRIA_E_EXPANSAO_DE_TESTES_EM_LISTAR_DOCUMENTOS.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE16_TELEMETRIA_E_EXPANSAO_DE_TESTES_EM_LISTAR_DOCUMENTOS.md)
 
 ## 2026-02-15 a 2026-02-16 - Fundacao do sistema atual
 
@@ -113,12 +113,12 @@ Ele complementa, mas nao substitui, o historico detalhado distribuido entre Git,
 
 ### Rastreabilidade
 
-- [FASE01_FUNDACAO_DA_CAMADA_DE_DOMINIO.md](/home/thiago/coleta_showtrials/docs/fases/FASE01_FUNDACAO_DA_CAMADA_DE_DOMINIO.md)
-- [FASE02_FUNDACAO_DA_CAMADA_DE_APLICACAO.md](/home/thiago/coleta_showtrials/docs/fases/FASE02_FUNDACAO_DA_CAMADA_DE_APLICACAO.md)
-- [FASE03_FUNDACAO_DA_CAMADA_DE_INFRAESTRUTURA.md](/home/thiago/coleta_showtrials/docs/fases/FASE03_FUNDACAO_DA_CAMADA_DE_INFRAESTRUTURA.md)
-- [FASE04_FUNDACAO_DA_INTERFACE_CLI.md](/home/thiago/coleta_showtrials/docs/fases/FASE04_FUNDACAO_DA_INTERFACE_CLI.md)
-- [FASE05_INTRODUCAO_DO_SUBSISTEMA_DE_TRADUCAO.md](/home/thiago/coleta_showtrials/docs/fases/FASE05_INTRODUCAO_DO_SUBSISTEMA_DE_TRADUCAO.md)
-- [FASE06_INTRODUCAO_DO_SUBSISTEMA_DE_EXPORTACAO.md](/home/thiago/coleta_showtrials/docs/fases/FASE06_INTRODUCAO_DO_SUBSISTEMA_DE_EXPORTACAO.md)
-- [FASE07_INTRODUCAO_DO_SUBSISTEMA_DE_RELATORIOS.md](/home/thiago/coleta_showtrials/docs/fases/FASE07_INTRODUCAO_DO_SUBSISTEMA_DE_RELATORIOS.md)
-- [FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO.md](/home/thiago/coleta_showtrials/docs/fases/FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO.md)
-- [FASE09_INTRODUCAO_DA_INTERFACE_WEB.md](/home/thiago/coleta_showtrials/docs/fases/FASE09_INTRODUCAO_DA_INTERFACE_WEB.md)
+- [FASE01_FUNDACAO_DA_CAMADA_DE_DOMINIO.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE01_FUNDACAO_DA_CAMADA_DE_DOMINIO.md)
+- [FASE02_FUNDACAO_DA_CAMADA_DE_APLICACAO.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE02_FUNDACAO_DA_CAMADA_DE_APLICACAO.md)
+- [FASE03_FUNDACAO_DA_CAMADA_DE_INFRAESTRUTURA.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE03_FUNDACAO_DA_CAMADA_DE_INFRAESTRUTURA.md)
+- [FASE04_FUNDACAO_DA_INTERFACE_CLI.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE04_FUNDACAO_DA_INTERFACE_CLI.md)
+- [FASE05_INTRODUCAO_DO_SUBSISTEMA_DE_TRADUCAO.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE05_INTRODUCAO_DO_SUBSISTEMA_DE_TRADUCAO.md)
+- [FASE06_INTRODUCAO_DO_SUBSISTEMA_DE_EXPORTACAO.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE06_INTRODUCAO_DO_SUBSISTEMA_DE_EXPORTACAO.md)
+- [FASE07_INTRODUCAO_DO_SUBSISTEMA_DE_RELATORIOS.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE07_INTRODUCAO_DO_SUBSISTEMA_DE_RELATORIOS.md)
+- [FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO.md)
+- [FASE09_INTRODUCAO_DA_INTERFACE_WEB.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE09_INTRODUCAO_DA_INTERFACE_WEB.md)
