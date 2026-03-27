@@ -8,9 +8,7 @@ Ele complementa, mas nao substitui, o historico detalhado distribuido entre Git,
 
 ### Documentacao
 
-- polimento fino da navegacao documental publicada;
-- reducao progressiva de links absolutos herdados ao longo dos documentos vivos;
-- curadoria incremental de paginas ainda fora do `nav`, especialmente em `docs/modelagem/` e `docs/planejamento/`.
+- curadoria incremental de paginas historicas e tecnicas que permanecem fora do `nav`, especialmente em `docs/modelagem/` e `docs/planejamento/`, sem nova frente ampla de saneamento aberta neste momento.
 
 ## 2026-03-27 - Saneamento documental legado e consolidacao semantica
 
@@ -26,7 +24,9 @@ Ele complementa, mas nao substitui, o historico detalhado distribuido entre Git,
 - saneamento do bloco `docs/metricas/`, com separacao entre snapshot vivo de cobertura e diagnosticos historicos;
 - reorganizacao semantica da arvore `docs/`, com criacao e consolidacao de `docs/politicas/`, `docs/protocolos/`, `docs/guias/` e `docs/historico/`;
 - separacao final entre nucleo vivo de `docs/projeto/`, planejamento metodologico atual e planejamento historico;
-- alinhamento estrutural de `mkdocs.yml` ao estado real da documentacao, com `poetry run mkdocs build --strict` validado ao final do subciclo.
+- alinhamento estrutural de `mkdocs.yml` ao estado real da documentacao, com `poetry run mkdocs build --strict` validado ao final do subciclo;
+- polimento final de navegacao do site documental, com ampliacao controlada do `nav` e reducao de links absolutos herdados nos documentos mais expostos;
+- publicacao manual da documentacao saneada na branch `gh-pages`, tornando o site atualizado disponivel em `https://rib-thiago.github.io/showtrials-tcc/`.
 
 ### Operacao
 
@@ -38,7 +38,7 @@ Ele complementa, mas nao substitui, o historico detalhado distribuido entre Git,
 - [FASE18_CONSOLIDACAO_DA_GOVERNANCA.md](historico/fases/FASE18_CONSOLIDACAO_DA_GOVERNANCA.md)
 - [FASE19_CONSOLIDACAO_DO_FLUXO_DE_QUALIDADE.md](historico/fases/FASE19_CONSOLIDACAO_DO_FLUXO_DE_QUALIDADE.md)
 - [plano_operacional_da_reorganizacao_semantica_dos_diretorios.md](planejamento/plano_operacional_da_reorganizacao_semantica_dos_diretorios.md)
-- rodadas `32` a `82` em `docs/planejamento/rodadas/`
+- rodadas `32` a `84` em `docs/planejamento/rodadas/`
 
 ## 2026-03-26 - Frente de modelagem, analise e padroes
 
