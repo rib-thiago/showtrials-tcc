@@ -1,0 +1,42 @@
+@startuml
+title Diagrama de Atividades de Pipelines
+
+start
+
+if (Escolher pipeline existente?) then (sim)
+  :Selecionar pipeline;
+else (nao)
+  :Criar ou configurar pipeline;
+endif
+
+:Validar configuracao;
+if (Configuracao valida?) then (sim)
+else (nao)
+  :Registrar falha de configuracao;
+  stop
+endif
+
+:Fornecer entrada documental;
+:Executar steps do pipeline;
+
+if (Persistir resultados?) then (sim)
+  :Persistir produtos derivados;
+else (nao)
+endif
+
+if (Exige revisao/intervencao?) then (sim)
+  :Permitir leitura ou revisao humana;
+endif
+
+if (Execucao concluida?) then (sucesso)
+  :Retornar ou exibir resultados;
+  stop
+elseif (falha parcial)
+  :Registrar execucao parcial com erro;
+  stop
+else (falha total)
+  :Registrar falha total;
+  stop
+endif
+
+@enduml

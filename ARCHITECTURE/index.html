@@ -16,14 +16,14 @@
         <link rel="prev" href="../overview/">
       
       
-        <link rel="next" href="../fases/FASE1_DOMAIN/">
+        <link rel="next" href="../historico/fases/FASE01_FUNDACAO_DA_CAMADA_DE_DOMINIO/">
       
       
         
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#arquitetura-do-sistema-showtrials" class="md-skip">
+        <a href="#arquitetura-do-sistema-atual" class="md-skip">
           Pular para conteúdo
         </a>
       
@@ -288,11 +288,11 @@
     
     
       <li class="md-tabs__item">
-        <a href="../fases/FASE1_DOMAIN/" class="md-tabs__link">
+        <a href="../historico/fases/FASE01_FUNDACAO_DA_CAMADA_DE_DOMINIO/" class="md-tabs__link">
           
   
   
-  Fases do Projeto
+  Historico de Fases
 
         </a>
       </li>
@@ -308,11 +308,51 @@
     
     
       <li class="md-tabs__item">
-        <a href="../flows/git_flow/" class="md-tabs__link">
+        <a href="../politicas/politica_de_governanca/" class="md-tabs__link">
           
   
   
-  Flows de Trabalho
+  Politicas
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../protocolos/protocolo_de_git/" class="md-tabs__link">
+          
+  
+  
+  Protocolos
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../guias/automacao_operacional_com_taskipy/" class="md-tabs__link">
+          
+  
+  
+  Guias
 
         </a>
       </li>
@@ -348,11 +388,11 @@
     
     
       <li class="md-tabs__item">
-        <a href="../metricas/cobertura/" class="md-tabs__link">
+        <a href="../modelagem/revisao/47_indice_geral_da_frente_de_modelagem/" class="md-tabs__link">
           
   
   
-  Métricas e Diagnósticos
+  Modelagem
 
         </a>
       </li>
@@ -368,7 +408,47 @@
     
     
       <li class="md-tabs__item">
-        <a href="../planejamento/plano_issue2_revisao_documentacao/" class="md-tabs__link">
+        <a href="../metricas/cobertura/" class="md-tabs__link">
+          
+  
+  
+  Metricas e Diagnosticos
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../historico/planejamento/plano_issues_documentacao/" class="md-tabs__link">
+          
+  
+  
+  Historico de Planejamento
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../planejamento/inventario_inicial_documentacao_legacy/" class="md-tabs__link">
           
   
   
@@ -586,10 +666,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#visao-geral" class="md-nav__link">
+  <a href="#objetivo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📋 Visão Geral
+        Objetivo
       
     </span>
   </a>
@@ -597,22 +677,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#as-quatro-camadas" class="md-nav__link">
+  <a href="#visao-geral" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🏗️ As Quatro Camadas
+        Visao Geral
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🏗️ As Quatro Camadas">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#camadas-principais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Camadas Principais
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Camadas Principais">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-domain-layer-nucleo" class="md-nav__link">
+  <a href="#domain" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Domain Layer (Núcleo)
+        Domain
       
     </span>
   </a>
@@ -620,10 +711,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-application-layer-aplicacao" class="md-nav__link">
+  <a href="#application" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Application Layer (Aplicação)
+        Application
       
     </span>
   </a>
@@ -631,10 +722,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-interface-layer-adaptadores" class="md-nav__link">
+  <a href="#interface" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Interface Layer (Adaptadores)
+        Interface
       
     </span>
   </a>
@@ -642,10 +733,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-infrastructure-layer-infraestrutura" class="md-nav__link">
+  <a href="#infrastructure" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Infrastructure Layer (Infraestrutura)
+        Infrastructure
       
     </span>
   </a>
@@ -658,10 +749,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#fluxo-de-dados" class="md-nav__link">
+  <a href="#fluxo-geral-de-dados" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔄 Fluxo de Dados
+        Fluxo Geral de Dados
       
     </span>
   </a>
@@ -669,10 +760,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#service-registry-e-injecao-de-dependencia" class="md-nav__link">
+  <a href="#service-registry-e-dependencias" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📦 Service Registry e Injeção de Dependência
+        Service Registry e Dependencias
       
     </span>
   </a>
@@ -680,10 +771,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#estrategia-de-testes" class="md-nav__link">
+  <a href="#estado-atual-e-evolucao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧪 Estratégia de Testes
+        Estado Atual e Evolucao
       
     </span>
   </a>
@@ -691,54 +782,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#diagrama-de-camadas-com-componentes" class="md-nav__link">
+  <a href="#documentos-relacionados" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📊 Diagrama de Camadas com Componentes
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#metricas-da-arquitetura" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📈 Métricas da Arquitetura
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#beneficios-da-arquitetura" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🎯 Benefícios da Arquitetura
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#referencias" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📚 Referências
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#autor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        👤 Autor
+        Documentos Relacionados
       
     </span>
   </a>
@@ -783,7 +830,7 @@
   <span class="md-ellipsis">
     
   
-    Fases do Projeto
+    Historico de Fases
   
 
     
@@ -799,7 +846,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Fases do Projeto
+    Historico de Fases
   
 
           </label>
@@ -812,14 +859,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../fases/FASE1_DOMAIN/" class="md-nav__link">
+      <a href="../historico/fases/FASE01_FUNDACAO_DA_CAMADA_DE_DOMINIO/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    FASE 1 - Domain
+    FASE 01 - Dominio
   
 
     
@@ -840,14 +887,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../fases/FASE2_APPLICATION/" class="md-nav__link">
+      <a href="../historico/fases/FASE02_FUNDACAO_DA_CAMADA_DE_APLICACAO/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    FASE 2 - Application
+    FASE 02 - Aplicacao
   
 
     
@@ -868,14 +915,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../fases/FASE3_INFRASTRUCTURE/" class="md-nav__link">
+      <a href="../historico/fases/FASE03_FUNDACAO_DA_CAMADA_DE_INFRAESTRUTURA/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    FASE 3 - Infrastructure
+    FASE 03 - Infraestrutura
   
 
     
@@ -896,14 +943,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../fases/FASE4_CLI/" class="md-nav__link">
+      <a href="../historico/fases/FASE04_FUNDACAO_DA_INTERFACE_CLI/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    FASE 4 - CLI
+    FASE 04 - Interface CLI
   
 
     
@@ -924,14 +971,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../fases/FASE5_TRADUCAO/" class="md-nav__link">
+      <a href="../historico/fases/FASE05_INTRODUCAO_DO_SUBSISTEMA_DE_TRADUCAO/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    FASE 5 - Tradução
+    FASE 05 - Traducao
   
 
     
@@ -952,14 +999,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../fases/FASE6_EXPORTACAO/" class="md-nav__link">
+      <a href="../historico/fases/FASE06_INTRODUCAO_DO_SUBSISTEMA_DE_EXPORTACAO/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    FASE 6 - Exportação
+    FASE 06 - Exportacao
   
 
     
@@ -980,14 +1027,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../fases/FASE7_RELATORIOS/" class="md-nav__link">
+      <a href="../historico/fases/FASE07_INTRODUCAO_DO_SUBSISTEMA_DE_RELATORIOS/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    FASE 7 - Relatórios
+    FASE 07 - Relatorios
   
 
     
@@ -1008,14 +1055,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../fases/FASE8_ANALISE_TEXTO/" class="md-nav__link">
+      <a href="../historico/fases/FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    FASE 8 - Análise de Texto
+    FASE 08 - Analise de Texto
   
 
     
@@ -1036,14 +1083,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../fases/FASE9_WEB_INTERFACE/" class="md-nav__link">
+      <a href="../historico/fases/FASE09_INTRODUCAO_DA_INTERFACE_WEB/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    FASE 9 - Web Interface
+    FASE 09 - Interface Web
   
 
     
@@ -1064,7 +1111,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../fases/FASE10_SERVICE_REGISTRY/" class="md-nav__link">
+      <a href="../historico/fases/FASE10_INTRODUCAO_DO_SERVICE_REGISTRY_E_DO_LAZY_LOADING/" class="md-nav__link">
         
   
   
@@ -1092,7 +1139,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../fases/FASE11_CI/" class="md-nav__link">
+      <a href="../historico/fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI/" class="md-nav__link">
         
   
   
@@ -1120,14 +1167,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../fases/FASE12/" class="md-nav__link">
+      <a href="../historico/fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    FASE 12 - Telemetria TipoDocumento
+    FASE 12 - Telemetria em TipoDocumento
   
 
     
@@ -1148,14 +1195,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../fases/FASE13/" class="md-nav__link">
+      <a href="../historico/fases/FASE13_LIMPEZA_E_ORGANIZACAO_DO_REPOSITORIO/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    FASE 13 - Limpeza
+    FASE 13 - Limpeza do Repositorio
   
 
     
@@ -1176,7 +1223,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../fases/FASE14/" class="md-nav__link">
+      <a href="../historico/fases/FASE14_TELEMETRIA_E_TESTES_EM_EXPORTAR_DOCUMENTO/" class="md-nav__link">
         
   
   
@@ -1204,7 +1251,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../fases/FASE15/" class="md-nav__link">
+      <a href="../historico/fases/FASE15_TELEMETRIA_E_TESTES_EM_GERAR_RELATORIO/" class="md-nav__link">
         
   
   
@@ -1232,7 +1279,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../fases/FASE16/" class="md-nav__link">
+      <a href="../historico/fases/FASE16_TELEMETRIA_E_EXPANSAO_DE_TESTES_EM_LISTAR_DOCUMENTOS/" class="md-nav__link">
         
   
   
@@ -1260,14 +1307,70 @@
   
   
     <li class="md-nav__item">
-      <a href="../fases/FASE17/" class="md-nav__link">
+      <a href="../historico/fases/FASE17_PRIMEIRA_REORGANIZACAO_DOCUMENTAL_AMPLA/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    FASE 17 - Padronização Documentação
+    FASE 17 - Reorganizacao Documental
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../historico/fases/FASE18_CONSOLIDACAO_DA_GOVERNANCA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 18 - Governanca
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../historico/fases/FASE19_CONSOLIDACAO_DO_FLUXO_DE_QUALIDADE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 19 - Fluxo de Qualidade
   
 
     
@@ -1318,7 +1421,7 @@
   <span class="md-ellipsis">
     
   
-    Flows de Trabalho
+    Politicas
   
 
     
@@ -1334,7 +1437,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Flows de Trabalho
+    Politicas
   
 
           </label>
@@ -1347,238 +1450,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../flows/git_flow/" class="md-nav__link">
+      <a href="../politicas/politica_de_governanca/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Git Flow
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../flows/quality_flow/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Quality Flow
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../flows/telemetry_flow/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Telemetry Flow
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../flows/code_review_flow/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Code Review Flow
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../flows/dependencies_flow/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Dependencies Flow
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../flows/debug_flow/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Debug Flow
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../flows/documentation_flow/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Documentation Flow
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../flows/refactoring_flow/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Refactoring Flow
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../flows/emergency_flow/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Emergency Flow
+    Governanca
   
 
     
@@ -1629,7 +1508,7 @@
   <span class="md-ellipsis">
     
   
-    Documentos do Projeto
+    Protocolos
   
 
     
@@ -1642,6 +1521,488 @@
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Protocolos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../protocolos/protocolo_de_git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../protocolos/protocolo_de_qualidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qualidade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guias
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guias
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guias/automacao_operacional_com_taskipy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automacao com Taskipy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guias/guia_de_atualizacao_do_changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atualizacao do Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guias/guia_de_auto_revisao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-Revisao
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guias/guia_de_correcao_urgente/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Correcao Urgente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guias/guia_de_debug/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Debug
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guias/guia_de_dependencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dependencias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guias/guia_de_documentacao_do_projeto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentacao do Projeto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guias/guia_de_manutencao_do_site_documental/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manutencao do Site Documental
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guias/guia_de_refatoracao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Refatoracao
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guias/guia_de_telemetria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Telemetria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guias/guia_github_projects_cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GitHub Projects CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentos do Projeto
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1763,6 +2124,65 @@
 
               
             
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modelagem
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Modelagem
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
               
                 
   
@@ -1770,14 +2190,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../projeto/plano_issues_documentacao/" class="md-nav__link">
+      <a href="../modelagem/revisao/47_indice_geral_da_frente_de_modelagem/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Plano de Issues
+    Indice Geral da Frente
   
 
     
@@ -1798,14 +2218,70 @@
   
   
     <li class="md-nav__item">
-      <a href="../projeto/questionario_levantamento_requisitos/" class="md-nav__link">
+      <a href="../modelagem/revisao/46_sintese_executiva_da_frente/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Questionário
+    Sintese Executiva da Frente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modelagem/revisao/49_conferencia_de_aderencia_ao_projeto_real/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conferencia de Aderencia ao Projeto Real
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modelagem/requisitos/principais/03_documento_de_requisitos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documento de Requisitos
   
 
     
@@ -1846,17 +2322,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Métricas e Diagnósticos
+    Metricas e Diagnosticos
   
 
     
@@ -1867,12 +2343,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Métricas e Diagnósticos
+    Metricas e Diagnosticos
   
 
           </label>
@@ -1913,7 +2389,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../metricas/diagnostico_ci/" class="md-nav__link">
+      <a href="../historico/diagnosticos/diagnostico_ci/" class="md-nav__link">
         
   
   
@@ -1941,7 +2417,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../metricas/diagnostico_fase12/" class="md-nav__link">
+      <a href="../historico/diagnosticos/diagnostico_fase12/" class="md-nav__link">
         
   
   
@@ -1989,17 +2465,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
         
           
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Planejamento
+    Historico de Planejamento
   
 
     
@@ -2010,12 +2486,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Planejamento
+    Historico de Planejamento
   
 
           </label>
@@ -2028,14 +2504,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../planejamento/plano_issue2_revisao_documentacao/" class="md-nav__link">
+      <a href="../historico/planejamento/plano_issues_documentacao/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Plano da Issue 2
+    Plano de Issues da Documentacao
   
 
     
@@ -2056,14 +2532,213 @@
   
   
     <li class="md-nav__item">
-      <a href="../planejamento/TEMPLATE_FASE/" class="md-nav__link">
+      <a href="../historico/planejamento/questionario_levantamento_requisitos/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Template de Documentação
+    Questionario de Levantamento de Requisitos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../historico/planejamento/plano_issue2_revisao_documentacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plano da Issue 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Planejamento
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Planejamento
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../planejamento/inventario_inicial_documentacao_legacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inventario Inicial da Documentacao Legacy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../planejamento/plano_frente_saneamento_documentacao_legacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plano da Frente de Saneamento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../planejamento/plano_operacional_da_reorganizacao_semantica_dos_diretorios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plano operacional da reorganizacao semantica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../planejamento/captura/00_como_usar_a_captura_continua/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Captura Continua
   
 
     
@@ -2158,303 +2833,117 @@
   
 
 
-<h1 id="arquitetura-do-sistema-showtrials">Arquitetura do Sistema ShowTrials<a class="headerlink" href="#arquitetura-do-sistema-showtrials" title="Permanent link">&para;</a></h1>
-<div align="center">
-
-**Clean Architecture aplicada a um sistema de gestão de documentos históricos**
-
-</div>
-
-<h2 id="visao-geral">📋 <strong>Visão Geral</strong><a class="headerlink" href="#visao-geral" title="Permanent link">&para;</a></h2>
-<p>O ShowTrials é um sistema para coleta, armazenamento, tradução e análise de documentos históricos dos processos de Moscou e Leningrado (1934-1935). Foi desenvolvido seguindo os princípios da <strong>Clean Architecture</strong> (Arquitetura Limpa), proposta por Robert C. Martin (Uncle Bob).</p>
-<p>Esta arquitetura foi escolhida por:</p>
+<h1 id="arquitetura-do-sistema-atual">Arquitetura do Sistema Atual<a class="headerlink" href="#arquitetura-do-sistema-atual" title="Permanent link">&para;</a></h1>
+<h2 id="objetivo">Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">&para;</a></h2>
+<p>Este documento apresenta a arquitetura em alto nivel do sistema atual do ShowTrials.</p>
+<p>Seu papel aqui e:</p>
 <ul>
-<li><strong>Isolar o núcleo do negócio</strong> de detalhes de infraestrutura</li>
-<li><strong>Facilitar testes</strong> através de injeção de dependência</li>
-<li><strong>Permitir evolução</strong> com mínimo impacto</li>
-<li><strong>Separar responsabilidades</strong> de forma clara</li>
-<li><strong>Garantir que as regras de negócio</strong> sejam independentes de UI, banco de dados ou frameworks</li>
+<li>explicar a organizacao principal do codigo ja implementado</li>
+<li>dar uma leitura publica e introdutoria da separacao em camadas</li>
+<li>servir de ponte para os documentos arquiteturais mais fortes do bloco <code>docs/projeto/</code></li>
 </ul>
-<hr />
-<h2 id="as-quatro-camadas">🏗️ <strong>As Quatro Camadas</strong><a class="headerlink" href="#as-quatro-camadas" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>┌─────────────────────────────────────────────────────────────┐
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>│                    INTERFACE LAYER                           │
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>│  (CLI, Web, API - adaptadores para o mundo externo)        │
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>└─────────────────────────────────────────────────────────────┘
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>                              │
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>                              ▼
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>┌─────────────────────────────────────────────────────────────┐
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│                   APPLICATION LAYER                          │
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│  (Casos de uso, orquestração, DTOs)                         │
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>└─────────────────────────────────────────────────────────────┘
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>                              │
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>                              ▼
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>┌─────────────────────────────────────────────────────────────┐
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│                      DOMAIN LAYER                            │
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>│  (Entidades, Value Objects, regras de negócio)              │
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>└─────────────────────────────────────────────────────────────┘
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>                              │
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>                              ▼
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>┌─────────────────────────────────────────────────────────────┐
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>│                  INFRASTRUCTURE LAYER                        │
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>│  (Repositórios, serviços externos, implementações)          │
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>└─────────────────────────────────────────────────────────────┘
-</code></pre></div>
-<hr />
-<h3 id="1-domain-layer-nucleo">1. Domain Layer (Núcleo)<a class="headerlink" href="#1-domain-layer-nucleo" title="Permanent link">&para;</a></h3>
-<p><strong>Localização:</strong> <code>src/domain/</code></p>
-<p><strong>Responsabilidade:</strong> Conter as regras de negócio puras, sem qualquer dependência externa.</p>
-<p><strong>Componentes:</strong>
-- <strong>Entities</strong>: Objetos com identidade (Documento, Traducao)
-- <strong>Value Objects</strong>: Objetos imutáveis (TipoDocumento, NomeRusso, AnaliseTexto)
-- <strong>Interfaces (Ports)</strong>: Contratos para camadas externas (RepositorioDocumento)</p>
-<p><strong>Princípios:</strong>
-- Nenhum import de frameworks
-- Nenhuma menção a banco de dados
-- Totalmente testável com mocks</p>
-<p><strong>Exemplo:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nd">@dataclass</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">Documento</span><span class="p">:</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="nb">id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">titulo</span><span class="p">:</span> <span class="nb">str</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="n">texto</span><span class="p">:</span> <span class="nb">str</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="nd">@property</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">tamanho</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">texto</span><span class="p">)</span>  <span class="c1"># Regra de negócio pura</span>
-</code></pre></div></p>
-<hr />
-<h3 id="2-application-layer-aplicacao">2. Application Layer (Aplicação)<a class="headerlink" href="#2-application-layer-aplicacao" title="Permanent link">&para;</a></h3>
-<p><strong>Localização:</strong> <code>src/application/</code></p>
-<p><strong>Responsabilidade:</strong> Orquestrar os casos de uso do sistema.</p>
-<p><strong>Componentes:</strong>
-- <strong>Use Cases</strong>: Cada operação do sistema (ListarDocumentos, TraduzirDocumento)
-- <strong>DTOs</strong>: Objetos para transferência de dados (DocumentoDTO)
-- <strong>Serviços de aplicação</strong>: Coordenação entre repositórios e serviços</p>
-<p><strong>Princípios:</strong>
-- Depende apenas de interfaces do domínio
-- Não conhece implementações concretas
-- Contém a lógica de aplicação (não confundir com regras de negócio)</p>
-<p><strong>Exemplo:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">ListarDocumentos</span><span class="p">:</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repo</span><span class="p">:</span> <span class="n">RepositorioDocumento</span><span class="p">):</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">repo</span> <span class="o">=</span> <span class="n">repo</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">executar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pagina</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">DocumentoDTO</span><span class="p">]:</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>        <span class="n">offset</span> <span class="o">=</span> <span class="p">(</span><span class="n">pagina</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">15</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>        <span class="n">documentos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo</span><span class="o">.</span><span class="n">listar</span><span class="p">(</span><span class="n">offset</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>        <span class="k">return</span> <span class="p">[</span><span class="n">DocumentoDTO</span><span class="o">.</span><span class="n">from_domain</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">documentos</span><span class="p">]</span>
-</code></pre></div></p>
-<hr />
-<h3 id="3-interface-layer-adaptadores">3. Interface Layer (Adaptadores)<a class="headerlink" href="#3-interface-layer-adaptadores" title="Permanent link">&para;</a></h3>
-<p><strong>Localização:</strong> <code>src/interface/</code></p>
-<p><strong>Responsabilidade:</strong> Traduzir entre o mundo externo e a aplicação.</p>
-<p><strong>Componentes:</strong>
-- <strong>CLI</strong>: Interface de linha de comando com Rich
-- <strong>Web</strong>: API FastAPI e templates HTML
-- <strong>Presenters</strong>: Formatadores de saída
-- <strong>Comandos</strong>: Ações do usuário</p>
-<p><strong>Princípios:</strong>
-- Não contém lógica de negócio
-- Depende de casos de uso e DTOs
-- Pode ter múltiplas implementações (CLI e Web)</p>
-<p><strong>Exemplo:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">ComandoListar</span><span class="p">:</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">listar_use_case</span><span class="p">:</span> <span class="n">ListarDocumentos</span><span class="p">):</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">use_case</span> <span class="o">=</span> <span class="n">listar_use_case</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">executar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>        <span class="n">resultados</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_case</span><span class="o">.</span><span class="n">executar</span><span class="p">(</span><span class="n">pagina</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">mostrar_tabela</span><span class="p">(</span><span class="n">resultados</span><span class="p">)</span>  <span class="c1"># Formatação específica da CLI</span>
-</code></pre></div></p>
-<hr />
-<h3 id="4-infrastructure-layer-infraestrutura">4. Infrastructure Layer (Infraestrutura)<a class="headerlink" href="#4-infrastructure-layer-infraestrutura" title="Permanent link">&para;</a></h3>
-<p><strong>Localização:</strong> <code>src/infrastructure/</code></p>
-<p><strong>Responsabilidade:</strong> Implementar as interfaces definidas nas camadas internas.</p>
-<p><strong>Componentes:</strong>
-- <strong>Repositórios</strong>: Implementações SQLite
-- <strong>Serviços externos</strong>: Google Translate, SpaCy
-- <strong>Configurações</strong>: Settings, variáveis de ambiente
-- <strong>Service Registry</strong>: Gerenciamento de serviços</p>
-<p><strong>Princípios:</strong>
-- Contém detalhes técnicos (SQL, HTTP)
-- Implementa as interfaces do domínio
-- Pode ser substituída sem afetar as camadas internas</p>
-<p><strong>Exemplo:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">SQLiteDocumentoRepository</span><span class="p">(</span><span class="n">RepositorioDocumento</span><span class="p">):</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">listar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">limite</span><span class="p">):</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_conexao</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>            <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM documentos LIMIT ? OFFSET ?&quot;</span><span class="p">,</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>                         <span class="p">(</span><span class="n">limite</span><span class="p">,</span> <span class="n">offset</span><span class="p">))</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>            <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_row_para_entidade</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cursor</span><span class="p">]</span>
-</code></pre></div></p>
-<hr />
-<h2 id="fluxo-de-dados">🔄 <strong>Fluxo de Dados</strong><a class="headerlink" href="#fluxo-de-dados" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>[Usuário] → [Interface] → [Caso de Uso] → [Repositório (interface)]
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    ↑          ↓              ↓                    ↓
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    └──── [Presenter] ← [DTO] ← [Entidade] ← [Implementação concreta]
-</code></pre></div>
-<p><strong>Exemplo com Listar Documentos:</strong></p>
-<ol>
-<li>Usuário digita '1' no menu CLI</li>
-<li><code>ComandoListar</code> chama <code>listar_use_case.executar()</code></li>
-<li>Caso de uso calcula offset e chama <code>repo.listar()</code></li>
-<li>Repositório SQLite busca dados no banco</li>
-<li>Dados são convertidos para entidades do domínio</li>
-<li>Caso de uso converte entidades para DTOs</li>
-<li>Presenter formata DTOs em tabela colorida</li>
-<li>Usuário vê o resultado</li>
-</ol>
-<hr />
-<h2 id="service-registry-e-injecao-de-dependencia">📦 <strong>Service Registry e Injeção de Dependência</strong><a class="headerlink" href="#service-registry-e-injecao-de-dependencia" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>[ServiceRegistry] ← [Config YAML]
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>        ↓
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    [Factories]
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>        ↓
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    [Serviços]
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>        ↓
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    [Casos de Uso]
-</code></pre></div>
-<p><strong>Vantagens:</strong>
-- Lazy loading: serviços só carregam quando usados
-- Configurável via YAML
-- Estatísticas de uso
-- Fácil adicionar novos serviços</p>
-<hr />
-<h2 id="estrategia-de-testes">🧪 <strong>Estratégia de Testes</strong><a class="headerlink" href="#estrategia-de-testes" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>┌─────────────────┐
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>│   Unit Tests    │ → Domain (18 testes)
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>│   (isolados)    │ → Application (10 testes)
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>└─────────────────┘
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>        ↓
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>┌─────────────────┐
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>│ Integration     │ → Infrastructure (20 testes)
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>│ Tests           │ → Repositórios, APIs
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>└─────────────────┘
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>        ↓
-<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>┌─────────────────┐
-<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>│   Manual Tests  │ → CLI (36 cenários)
-<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>│   (end-to-end)  │ → Web (36 cenários)
-<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>└─────────────────┘
-</code></pre></div>
-<p><strong>Total:</strong> 48 testes automatizados + validação manual</p>
-<hr />
-<h2 id="diagrama-de-camadas-com-componentes">📊 <strong>Diagrama de Camadas com Componentes</strong><a class="headerlink" href="#diagrama-de-camadas-com-componentes" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>┌─────────────────────────────────────────────────────────────────┐
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>│                        INTERFACE LAYER                           │
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐          │
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>│  │     CLI      │  │   Web App    │  │     API      │          │
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>│  │   (Rich)     │  │  (FastAPI)   │  │   (REST)     │          │
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>│  └──────────────┘  └──────────────┘  └──────────────┘          │
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐          │
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>│  │  Presenters  │  │   Commands   │  │   Templates   │          │
-<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>│  └──────────────┘  └──────────────┘  └──────────────┘          │
-<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>└─────────────────────────────────────────────────────────────────┘
-<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>                              │
-<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>                              ▼
-<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>┌─────────────────────────────────────────────────────────────────┐
-<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>│                      APPLICATION LAYER                           │
-<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐          │
-<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>│  │ ListarDocs   │  │ TraduzirDoc  │  │ AnalisarDoc  │          │
-<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>│  ├──────────────┤  ├──────────────┤  ├──────────────┤          │
-<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>│  │ ExportarDoc  │  │ GerarRelat   │  │ ObterStats   │          │
-<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>│  └──────────────┘  └──────────────┘  └──────────────┘          │
-<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a>│  ┌─────────────────────────────────────────────────────┐        │
-<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a>│  │                     DTOs                             │        │
-<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a>│  │  (DocumentoDTO, TraducaoDTO, EstatisticasDTO)       │        │
-<a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a>│  └─────────────────────────────────────────────────────┘        │
-<a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a>└─────────────────────────────────────────────────────────────────┘
-<a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a>                              │
-<a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a>                              ▼
-<a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a>┌─────────────────────────────────────────────────────────────────┐
-<a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a>│                         DOMAIN LAYER                              │
-<a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a>│  ┌──────────────┐  ┌──────────────────┐  ┌──────────────┐      │
-<a id="__codelineno-8-30" name="__codelineno-8-30" href="#__codelineno-8-30"></a>│  │   Entidades  │  │   Value Objects  │  │  Interfaces  │      │
-<a id="__codelineno-8-31" name="__codelineno-8-31" href="#__codelineno-8-31"></a>│  │  • Documento │  │  • TipoDocumento │  │ • RepoDoc    │      │
-<a id="__codelineno-8-32" name="__codelineno-8-32" href="#__codelineno-8-32"></a>│  │  • Traducao  │  │  • NomeRusso     │  │ • RepoTrad   │      │
-<a id="__codelineno-8-33" name="__codelineno-8-33" href="#__codelineno-8-33"></a>│  │              │  │  • AnaliseTexto  │  │              │      │
-<a id="__codelineno-8-34" name="__codelineno-8-34" href="#__codelineno-8-34"></a>│  └──────────────┘  └──────────────────┘  └──────────────┘      │
-<a id="__codelineno-8-35" name="__codelineno-8-35" href="#__codelineno-8-35"></a>└─────────────────────────────────────────────────────────────────┘
-<a id="__codelineno-8-36" name="__codelineno-8-36" href="#__codelineno-8-36"></a>                              │
-<a id="__codelineno-8-37" name="__codelineno-8-37" href="#__codelineno-8-37"></a>                              ▼
-<a id="__codelineno-8-38" name="__codelineno-8-38" href="#__codelineno-8-38"></a>┌─────────────────────────────────────────────────────────────────┐
-<a id="__codelineno-8-39" name="__codelineno-8-39" href="#__codelineno-8-39"></a>│                     INFRASTRUCTURE LAYER                          │
-<a id="__codelineno-8-40" name="__codelineno-8-40" href="#__codelineno-8-40"></a>│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐          │
-<a id="__codelineno-8-41" name="__codelineno-8-41" href="#__codelineno-8-41"></a>│  │   SQLite     │  │   Google     │  │    SpaCy     │          │
-<a id="__codelineno-8-42" name="__codelineno-8-42" href="#__codelineno-8-42"></a>│  │  Repositórios│  │  Translate   │  │   Analyzer   │          │
-<a id="__codelineno-8-43" name="__codelineno-8-43" href="#__codelineno-8-43"></a>│  └──────────────┘  └──────────────┘  └──────────────┘          │
-<a id="__codelineno-8-44" name="__codelineno-8-44" href="#__codelineno-8-44"></a>│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐          │
-<a id="__codelineno-8-45" name="__codelineno-8-45" href="#__codelineno-8-45"></a>│  │   WordCloud  │  │   Service    │  │  Configuração│          │
-<a id="__codelineno-8-46" name="__codelineno-8-46" href="#__codelineno-8-46"></a>│  │   Generator  │  │   Registry   │  │    (YAML)    │          │
-<a id="__codelineno-8-47" name="__codelineno-8-47" href="#__codelineno-8-47"></a>│  └──────────────┘  └──────────────┘  └──────────────┘          │
-<a id="__codelineno-8-48" name="__codelineno-8-48" href="#__codelineno-8-48"></a>└─────────────────────────────────────────────────────────────────┘
-</code></pre></div>
-<hr />
-<h2 id="metricas-da-arquitetura">📈 <strong>Métricas da Arquitetura</strong><a class="headerlink" href="#metricas-da-arquitetura" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Camada</th>
-<th>Arquivos</th>
-<th>Testes</th>
-<th>Dependências Externas</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Domain</strong></td>
-<td>8</td>
-<td>18</td>
-<td>Nenhuma</td>
-</tr>
-<tr>
-<td><strong>Application</strong></td>
-<td>12</td>
-<td>10</td>
-<td>Domain apenas</td>
-</tr>
-<tr>
-<td><strong>Interface</strong></td>
-<td>25+</td>
-<td>Manual</td>
-<td>Application</td>
-</tr>
-<tr>
-<td><strong>Infrastructure</strong></td>
-<td>15</td>
-<td>20</td>
-<td>Application + externas</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Total:</strong> 60+ arquivos, 48 testes automatizados</p>
-<hr />
-<h2 id="beneficios-da-arquitetura">🎯 <strong>Benefícios da Arquitetura</strong><a class="headerlink" href="#beneficios-da-arquitetura" title="Permanent link">&para;</a></h2>
-<ol>
-<li><strong>Manutenibilidade</strong>: Mudanças em uma camada não afetam as outras</li>
-<li><strong>Testabilidade</strong>: Cada camada pode ser testada isoladamente</li>
-<li><strong>Flexibilidade</strong>: Trocar banco de dados não afeta o domínio</li>
-<li><strong>Clareza</strong>: Responsabilidades bem definidas</li>
-<li><strong>Evolução</strong>: Novas funcionalidades são casos de uso adicionais</li>
-</ol>
-<hr />
-<h2 id="referencias">📚 <strong>Referências</strong><a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
+<p>Ele nao deve ser lido como o direcionamento arquitetural mais forte da evolucao futura da engine.</p>
+<h2 id="visao-geral">Visao Geral<a class="headerlink" href="#visao-geral" title="Permanent link">&para;</a></h2>
+<p>O sistema atual foi estruturado com separacao entre interface, aplicacao, dominio e infraestrutura.</p>
+<p>Essa organizacao sustenta:</p>
 <ul>
-<li>Martin, R. C. (2017). <em>Clean Architecture: A Craftsman's Guide to Software Structure and Design</em></li>
-<li>Martin, R. C. (2003). <em>Agile Software Development: Principles, Patterns, and Practices</em></li>
+<li>casos de uso documentais</li>
+<li>persistencia em SQLite</li>
+<li>traducao e analise textual</li>
+<li>interface CLI e interface web</li>
 </ul>
-<hr />
-<h2 id="autor">👤 <strong>Autor</strong><a class="headerlink" href="#autor" title="Permanent link">&para;</a></h2>
-<p><strong>Thiago Ribeiro</strong> - Projeto de TCC</p>
-<hr />
-<div align="center">
-  <sub>Documento de Arquitetura - Versão 1.0</sub>
-  <br>
-  <sub>Fevereiro de 2026</sub>
-</div>
-<p>```</p>
-<hr />
+<h2 id="camadas-principais">Camadas Principais<a class="headerlink" href="#camadas-principais" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>INTERFACE -&gt; APPLICATION -&gt; DOMAIN -&gt; INFRASTRUCTURE
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>┌─────────────────────────────────────────────────────────────┐
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>│                    INTERFACE LAYER                         │
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>│  CLI, Web e adaptadores para interacao externa            │
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>└─────────────────────────────────────────────────────────────┘
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>                              │
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>                              ▼
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>┌─────────────────────────────────────────────────────────────┐
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│                   APPLICATION LAYER                        │
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>│  Casos de uso, orquestracao e DTOs                        │
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>└─────────────────────────────────────────────────────────────┘
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>                              │
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>                              ▼
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>┌─────────────────────────────────────────────────────────────┐
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>│                      DOMAIN LAYER                          │
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>│  Entidades, value objects e interfaces                    │
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>└─────────────────────────────────────────────────────────────┘
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>                              │
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>                              ▼
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>┌─────────────────────────────────────────────────────────────┐
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>│                  INFRASTRUCTURE LAYER                      │
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>│  Repositorios, servicos externos e configuracao           │
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>└─────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<h3 id="domain">Domain<a class="headerlink" href="#domain" title="Permanent link">&para;</a></h3>
+<p>Em <code>src/domain/</code>, ficam:</p>
+<ul>
+<li>entidades como <code>Documento</code> e <code>Traducao</code></li>
+<li>value objects como <code>TipoDocumento</code>, <code>NomeRusso</code> e <code>AnaliseTexto</code></li>
+<li>contratos que desacoplam o nucleo de implementacoes concretas</li>
+</ul>
+<h3 id="application">Application<a class="headerlink" href="#application" title="Permanent link">&para;</a></h3>
+<p>Em <code>src/application/</code>, ficam:</p>
+<ul>
+<li>casos de uso</li>
+<li>DTOs</li>
+<li>orquestracao do fluxo entre repositorios, servicos e regras do sistema</li>
+</ul>
+<h3 id="interface">Interface<a class="headerlink" href="#interface" title="Permanent link">&para;</a></h3>
+<p>Em <code>src/interface/</code>, ficam:</p>
+<ul>
+<li>CLI</li>
+<li>Web</li>
+<li>adaptadores de entrada e saida</li>
+</ul>
+<h3 id="infrastructure">Infrastructure<a class="headerlink" href="#infrastructure" title="Permanent link">&para;</a></h3>
+<p>Em <code>src/infrastructure/</code>, ficam:</p>
+<ul>
+<li>repositorios SQLite</li>
+<li>integracao com traducao</li>
+<li>componentes de NLP</li>
+<li>configuracao e <code>ServiceRegistry</code></li>
+</ul>
+<h2 id="fluxo-geral-de-dados">Fluxo Geral de Dados<a class="headerlink" href="#fluxo-geral-de-dados" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Usuario -&gt; Interface -&gt; Caso de Uso -&gt; Interface de Repositorio
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>                                     -&gt; Servico/Infraestrutura
+</code></pre></div>
+<p>Leitura resumida do sistema atual:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Banco -&gt; Documento -&gt; Mutacao -&gt; Banco
+</code></pre></div>
+<p>Essa leitura ajuda a entender por que o sistema atual e documento-centrico e orientado a persistencia, mesmo antes da transicao para a engine de pipeline.</p>
+<h2 id="service-registry-e-dependencias">Service Registry e Dependencias<a class="headerlink" href="#service-registry-e-dependencias" title="Permanent link">&para;</a></h2>
+<p>O sistema utiliza <code>ServiceRegistry</code> para organizar servicos e reduzir acoplamento direto entre pontos de entrada e componentes concretos.</p>
+<p>Leitura sintetica:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Configuracao -&gt; Factories -&gt; ServiceRegistry -&gt; Casos de Uso e Interfaces
+</code></pre></div>
+<p>Esse arranjo ajuda no crescimento incremental do sistema atual, embora nao deva ser confundido com a futura arquitetura da engine.</p>
+<h2 id="estado-atual-e-evolucao">Estado Atual e Evolucao<a class="headerlink" href="#estado-atual-e-evolucao" title="Permanent link">&para;</a></h2>
+<p>Este documento descreve a arquitetura do sistema atual.</p>
+<p>Para a evolucao futura, a leitura mais forte hoje deve ser feita em:</p>
+<ul>
+<li><a href="../projeto/direcionamento_arquitetural_engine_mvp/">Direcionamento Arquitetural do MVP da Engine</a></li>
+<li><a href="../projeto/analise_arquitetural/">Analise Arquitetural da Transicao para a Engine</a></li>
+<li><a href="../projeto/visao_do_projeto/">Visao Ampla do Projeto</a></li>
+<li><a href="../modelagem/revisao/49_conferencia_de_aderencia_ao_projeto_real/">Conferencia de Aderencia ao Projeto Real</a></li>
+</ul>
+<p>Esses documentos distinguem com mais rigor:</p>
+<ul>
+<li>o que ja existe no sistema atual</li>
+<li>o que e direcionamento arquitetural vivo</li>
+<li>o que permanece como horizonte amplo ou hipotese de transicao</li>
+</ul>
+<h2 id="documentos-relacionados">Documentos Relacionados<a class="headerlink" href="#documentos-relacionados" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../overview/">Visao Geral</a></li>
+<li><a href="/home/thiago/coleta_showtrials/README.md">README do repositorio</a></li>
+<li><a href="../projeto/direcionamento_arquitetural_engine_mvp/">Direcionamento Arquitetural do MVP da Engine</a></li>
+<li><a href="../projeto/analise_arquitetural/">Analise Arquitetural da Transicao para a Engine</a></li>
+<li><a href="../projeto/visao_do_projeto/">Visao Ampla do Projeto</a></li>
+</ul>
 
 
 

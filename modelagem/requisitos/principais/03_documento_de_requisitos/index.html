@@ -1,0 +1,3852 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Sistema de Gestão de Documentos Históricos">
+      
+      
+        <meta name="author" content="Thiago Ribeiro">
+      
+      
+      
+        <link rel="prev" href="../../../revisao/49_conferencia_de_aderencia_ao_projeto_real/">
+      
+      
+        <link rel="next" href="../../../../metricas/cobertura/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Documento de Requisitos - ShowTrials</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#documento-de-requisitos-documento-integrador" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../../../.." title="ShowTrials" class="md-header__button md-logo" aria-label="ShowTrials" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ShowTrials
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Documento de Requisitos
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Mudar para modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Mudar para modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rib-thiago/showtrials-tcc" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    showtrials-tcc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Início
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../overview/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Visão Geral
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../ARCHITECTURE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Arquitetura
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../historico/fases/FASE01_FUNDACAO_DA_CAMADA_DE_DOMINIO/" class="md-tabs__link">
+          
+  
+  
+  Historico de Fases
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../politicas/politica_de_governanca/" class="md-tabs__link">
+          
+  
+  
+  Politicas
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../protocolos/protocolo_de_git/" class="md-tabs__link">
+          
+  
+  
+  Protocolos
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../guias/automacao_operacional_com_taskipy/" class="md-tabs__link">
+          
+  
+  
+  Guias
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../projeto/visao_do_projeto/" class="md-tabs__link">
+          
+  
+  
+  Documentos do Projeto
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../revisao/47_indice_geral_da_frente_de_modelagem/" class="md-tabs__link">
+          
+  
+  
+  Modelagem
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../metricas/cobertura/" class="md-tabs__link">
+          
+  
+  
+  Metricas e Diagnosticos
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../historico/planejamento/plano_issues_documentacao/" class="md-tabs__link">
+          
+  
+  
+  Historico de Planejamento
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../planejamento/inventario_inicial_documentacao_legacy/" class="md-tabs__link">
+          
+  
+  
+  Planejamento
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../contributing/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Como Contribuir
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../changelog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="ShowTrials" class="md-nav__button md-logo" aria-label="ShowTrials" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ShowTrials
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rib-thiago/showtrials-tcc" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    showtrials-tcc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visão Geral
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitetura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Historico de Fases
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Historico de Fases
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../historico/fases/FASE01_FUNDACAO_DA_CAMADA_DE_DOMINIO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 01 - Dominio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../historico/fases/FASE02_FUNDACAO_DA_CAMADA_DE_APLICACAO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 02 - Aplicacao
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../historico/fases/FASE03_FUNDACAO_DA_CAMADA_DE_INFRAESTRUTURA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 03 - Infraestrutura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../historico/fases/FASE04_FUNDACAO_DA_INTERFACE_CLI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 04 - Interface CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../historico/fases/FASE05_INTRODUCAO_DO_SUBSISTEMA_DE_TRADUCAO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 05 - Traducao
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../historico/fases/FASE06_INTRODUCAO_DO_SUBSISTEMA_DE_EXPORTACAO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 06 - Exportacao
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../historico/fases/FASE07_INTRODUCAO_DO_SUBSISTEMA_DE_RELATORIOS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 07 - Relatorios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../historico/fases/FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 08 - Analise de Texto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../historico/fases/FASE09_INTRODUCAO_DA_INTERFACE_WEB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 09 - Interface Web
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../historico/fases/FASE10_INTRODUCAO_DO_SERVICE_REGISTRY_E_DO_LAZY_LOADING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 10 - Service Registry
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../historico/fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 11 - CI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../historico/fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 12 - Telemetria em TipoDocumento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../historico/fases/FASE13_LIMPEZA_E_ORGANIZACAO_DO_REPOSITORIO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 13 - Limpeza do Repositorio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../historico/fases/FASE14_TELEMETRIA_E_TESTES_EM_EXPORTAR_DOCUMENTO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 14 - ExportarDocumento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../historico/fases/FASE15_TELEMETRIA_E_TESTES_EM_GERAR_RELATORIO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 15 - GerarRelatorio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../historico/fases/FASE16_TELEMETRIA_E_EXPANSAO_DE_TESTES_EM_LISTAR_DOCUMENTOS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 16 - ListarDocumentos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../historico/fases/FASE17_PRIMEIRA_REORGANIZACAO_DOCUMENTAL_AMPLA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 17 - Reorganizacao Documental
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../historico/fases/FASE18_CONSOLIDACAO_DA_GOVERNANCA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 18 - Governanca
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../historico/fases/FASE19_CONSOLIDACAO_DO_FLUXO_DE_QUALIDADE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FASE 19 - Fluxo de Qualidade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Politicas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Politicas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../politicas/politica_de_governanca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governanca
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocolos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Protocolos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../protocolos/protocolo_de_git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../protocolos/protocolo_de_qualidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qualidade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guias
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guias
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../guias/automacao_operacional_com_taskipy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automacao com Taskipy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../guias/guia_de_atualizacao_do_changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atualizacao do Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../guias/guia_de_auto_revisao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-Revisao
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../guias/guia_de_correcao_urgente/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Correcao Urgente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../guias/guia_de_debug/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Debug
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../guias/guia_de_dependencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dependencias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../guias/guia_de_documentacao_do_projeto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentacao do Projeto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../guias/guia_de_manutencao_do_site_documental/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manutencao do Site Documental
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../guias/guia_de_refatoracao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Refatoracao
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../guias/guia_de_telemetria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Telemetria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../guias/guia_github_projects_cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GitHub Projects CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentos do Projeto
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Documentos do Projeto
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../projeto/visao_do_projeto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visão do Projeto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../projeto/analise_arquitetural/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Análise Arquitetural
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../projeto/roadmap_arquitetural/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap Arquitetural
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../projeto/manual_gestao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manual de Gestão
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modelagem
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Modelagem
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../revisao/47_indice_geral_da_frente_de_modelagem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Indice Geral da Frente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../revisao/46_sintese_executiva_da_frente/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sintese Executiva da Frente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../revisao/49_conferencia_de_aderencia_ao_projeto_real/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conferencia de Aderencia ao Projeto Real
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documento de Requisitos
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documento de Requisitos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introducao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introdução
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-objetivo-do-documento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Objetivo do documento
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-escopo-e-recorte-da-frente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Escopo e recorte da frente
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Escopo e recorte da frente">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-sistema-atual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Sistema atual
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-transicao-arquitetural" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Transição arquitetural
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-sistema-alvo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Sistema-alvo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-base-de-evidencia-e-documentos-de-apoio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Base de evidência e documentos de apoio
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-nomenclatura-e-glossario-inicial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Nomenclatura e glossário inicial
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Nomenclatura e glossário inicial">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-observacao-sobre-nomenclatura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Observação sobre nomenclatura
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-glossario-inicial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Glossário inicial
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-stakeholders-e-atores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Stakeholders e atores
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Stakeholders e atores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-stakeholders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Stakeholders
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-perfis-de-ator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Perfis de ator
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.2 Perfis de ator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#621-categoria-geral" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2.1 Categoria geral
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#622-ator-mais-aderente-ao-sistema-atual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2.2 Ator mais aderente ao sistema atual
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#623-ator-mais-aderente-ao-sistema-futuro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2.3 Ator mais aderente ao sistema futuro
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-problema-e-motivacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Problema e motivação
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Problema e motivação">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-problema-resolvido-pelo-sistema-atual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Problema resolvido pelo sistema atual
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-motivacao-da-evolucao-arquitetural" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Motivacao da evolucao arquitetural
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-sistema-atual-showtrials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Sistema atual: ShowTrials
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-limitacoes-do-sistema-atual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Limitações do sistema atual
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-transicao-arquitetural" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Transição arquitetural
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-sistema-alvo-engine-futura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Sistema-alvo: engine futura
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-requisitos-funcionais-integrados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Requisitos funcionais integrados
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Requisitos funcionais integrados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-aquisicao-documental" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 Aquisicao documental
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-persistencia-e-organizacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 Persistencia e organizacao
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123-consulta-e-uso-do-acervo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.3 Consulta e uso do acervo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#124-traducao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.4 Traducao
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#125-analise-e-enriquecimento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.5 Analise e enriquecimento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#126-configuracao-de-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.6 Configuracao de pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#127-execucao-de-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.7 Execucao de pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#128-persistencia-e-saida-no-sistema-alvo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.8 Persistencia e saida no sistema-alvo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#129-operacao-e-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.9 Operacao e interfaces
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-requisitos-nao-funcionais-integrados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Requisitos não funcionais integrados
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Requisitos não funcionais integrados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-usabilidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 Usabilidade
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-desempenho-e-consumo-de-recursos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 Desempenho e consumo de recursos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-modularidade-e-extensibilidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3 Modularidade e extensibilidade
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#134-manutenibilidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4 Manutenibilidade
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#135-configurabilidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.5 Configurabilidade
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#136-compatibilidade-evolutiva" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.6 Compatibilidade evolutiva
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#137-documentacao-e-rastreabilidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.7 Documentacao e rastreabilidade
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#138-tecnologia-e-plataforma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.8 Tecnologia e plataforma
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-requisitos-de-transicao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Requisitos de transição
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-restricoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Restrições
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-fora-de-escopo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Fora de escopo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-priorizacao-inicial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Priorização inicial
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="17. Priorização inicial">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#171-essencial-para-o-sistema-atual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.1 Essencial para o sistema atual
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#172-essencial-para-a-transicao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.2 Essencial para a transicao
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#173-essencial-para-o-mvp-da-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.3 Essencial para o MVP da engine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#174-desejavel-depois" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.4 Desejavel depois
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#175-fora-do-escopo-atual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.5 Fora do escopo atual
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-relacao-preliminar-com-casos-de-uso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. Relação preliminar com casos de uso
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-relacao-preliminar-com-arquitetura-futura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19. Relação preliminar com arquitetura futura
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20-questoes-em-aberto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        20. Questões em aberto
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#21-proximos-passos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        21. Próximos passos
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metricas e Diagnosticos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Metricas e Diagnosticos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../metricas/cobertura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cobertura de Testes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../historico/diagnosticos/diagnostico_ci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagnóstico CI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../historico/diagnosticos/diagnostico_fase12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagnóstico Telemetria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Historico de Planejamento
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Historico de Planejamento
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../historico/planejamento/plano_issues_documentacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plano de Issues da Documentacao
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../historico/planejamento/questionario_levantamento_requisitos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Questionario de Levantamento de Requisitos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../historico/planejamento/plano_issue2_revisao_documentacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plano da Issue 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Planejamento
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Planejamento
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../planejamento/inventario_inicial_documentacao_legacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inventario Inicial da Documentacao Legacy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../planejamento/plano_frente_saneamento_documentacao_legacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plano da Frente de Saneamento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../planejamento/plano_operacional_da_reorganizacao_semantica_dos_diretorios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plano operacional da reorganizacao semantica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../planejamento/captura/00_como_usar_a_captura_continua/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Captura Continua
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Como Contribuir
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="documento-de-requisitos-documento-integrador">Documento de Requisitos — Documento Integrador<a class="headerlink" href="#documento-de-requisitos-documento-integrador" title="Permanent link">&para;</a></h1>
+<h2 id="1-introducao">1. Introdução<a class="headerlink" href="#1-introducao" title="Permanent link">&para;</a></h2>
+<p>Este documento consolida a frente de elicitação e análise de requisitos da nova trilha de <strong>Modelagem, Análise e Padrões de Projeto</strong> do projeto historicamente conhecido como <strong>ShowTrials</strong>.</p>
+<p>Seu papel não é substituir os insumos já produzidos sobre o sistema atual e sobre a evolução para engine. Seu papel é integrar, organizar e priorizar esses insumos para sustentar os próximos artefatos da frente, especialmente:</p>
+<ul>
+<li>casos de uso</li>
+<li>visão arquitetural 4+1</li>
+<li>modelo C4</li>
+<li>UML complementar</li>
+<li>rastreabilidade futura com backlog e issues</li>
+</ul>
+<h2 id="2-objetivo-do-documento">2. Objetivo do documento<a class="headerlink" href="#2-objetivo-do-documento" title="Permanent link">&para;</a></h2>
+<p>Este documento tem como objetivos:</p>
+<ul>
+<li>consolidar a base atual de requisitos da frente</li>
+<li>separar explicitamente sistema atual, transição e sistema-alvo</li>
+<li>registrar stakeholders, atores, problemas, restrições e prioridades</li>
+<li>integrar os requisitos já identificados no sistema atual e na evolução para engine</li>
+<li>preparar a derivação posterior de casos de uso e artefatos arquiteturais</li>
+</ul>
+<h2 id="3-escopo-e-recorte-da-frente">3. Escopo e recorte da frente<a class="headerlink" href="#3-escopo-e-recorte-da-frente" title="Permanent link">&para;</a></h2>
+<p>O recorte adotado neste documento é composto por três planos complementares:</p>
+<h3 id="31-sistema-atual">3.1 Sistema atual<a class="headerlink" href="#31-sistema-atual" title="Permanent link">&para;</a></h3>
+<p>O sistema atual corresponde ao projeto historicamente conhecido como <strong>ShowTrials</strong>, concebido inicialmente como ferramenta para coletar, armazenar, traduzir, consultar e analisar documentos digitalizados.</p>
+<h3 id="32-transicao-arquitetural">3.2 Transição arquitetural<a class="headerlink" href="#32-transicao-arquitetural" title="Permanent link">&para;</a></h3>
+<p>A transição corresponde à evolução incremental dessa aplicação documento-cêntrica para uma arquitetura mais configurável, modular e orientada a pipelines, sem reescrever o projeto do zero.</p>
+<h3 id="33-sistema-alvo">3.3 Sistema-alvo<a class="headerlink" href="#33-sistema-alvo" title="Permanent link">&para;</a></h3>
+<p>O sistema-alvo corresponde a uma engine ou plataforma configurável de processamento documental, capaz de combinar fontes, processadores e sinks em fluxos de trabalho ajustados ao objetivo do usuário.</p>
+<h2 id="4-base-de-evidencia-e-documentos-de-apoio">4. Base de evidência e documentos de apoio<a class="headerlink" href="#4-base-de-evidencia-e-documentos-de-apoio" title="Permanent link">&para;</a></h2>
+<p>Este documento se apoia explicitamente nos seguintes insumos principais:</p>
+<ul>
+<li><a href="/home/thiago/coleta_showtrials/docs/modelagem/requisitos/apoio/01_documento_de_requisitos_showtrials_atual.md">01_documento_de_requisitos_showtrials_atual.md</a></li>
+<li><a href="/home/thiago/coleta_showtrials/docs/modelagem/requisitos/apoio/02_documento_de_requisitos_evolucao_engine.md">02_documento_de_requisitos_evolucao_engine.md</a></li>
+</ul>
+<p>Também utiliza como base complementar:</p>
+<ul>
+<li>documentos de contexto em <code>docs/ai/</code></li>
+<li>documentos de fase do projeto</li>
+<li>código central do sistema</li>
+<li>histórico Git consolidado</li>
+<li>issues da trilha de evolução para engine</li>
+</ul>
+<p>Função metodológica deste documento:</p>
+<ul>
+<li>o documento do ShowTrials atual consolida a leitura retrospectiva do sistema implementado</li>
+<li>o documento da evolução para engine consolida a leitura prospectiva do sistema-alvo</li>
+<li>este documento integra, compara, organiza e prioriza esses dois planos</li>
+</ul>
+<h2 id="5-nomenclatura-e-glossario-inicial">5. Nomenclatura e glossário inicial<a class="headerlink" href="#5-nomenclatura-e-glossario-inicial" title="Permanent link">&para;</a></h2>
+<h3 id="51-observacao-sobre-nomenclatura">5.1 Observação sobre nomenclatura<a class="headerlink" href="#51-observacao-sobre-nomenclatura" title="Permanent link">&para;</a></h3>
+<p>O nome do sistema ainda não está definitivamente consolidado para esta nova frente.</p>
+<p>Situação atual:</p>
+<ul>
+<li><code>ShowTrials</code> é o nome histórico e mais fortemente ligado ao sistema implementado</li>
+<li>a nomenclatura futura permanece em aberto</li>
+<li>os candidatos atuais para a nomenclatura futura são <code>DocFlow</code>, <code>FluxDoc</code> e <code>Archivum</code></li>
+</ul>
+<p>Para fins deste documento:</p>
+<ul>
+<li><code>ShowTrials</code> será usado como nome do sistema atual</li>
+<li><code>engine futura</code> será usada como designação provisória da arquitetura-alvo</li>
+</ul>
+<h3 id="52-glossario-inicial">5.2 Glossário inicial<a class="headerlink" href="#52-glossario-inicial" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>ShowTrials</code>: nome histórico do sistema atual implementado</li>
+<li><code>engine futura</code>: arquitetura-alvo configurável de processamento documental</li>
+<li><code>pipeline</code>: fluxo configurável de execução composto por etapas ordenadas</li>
+<li><code>step</code>: etapa individual de um pipeline</li>
+<li><code>source</code>: componente responsável por obtenção ou entrada de dados documentais</li>
+<li><code>processor</code>: componente responsável por transformação ou análise de dados</li>
+<li><code>sink</code>: componente responsável por persistência, exportação ou saída dos resultados</li>
+<li><code>acervo</code>: conjunto persistido de documentos e produtos derivados</li>
+<li><code>colecao tematica</code>: agrupamento documental definido por critério temático ou analítico</li>
+<li><code>usuario</code>: categoria geral de ator humano do sistema</li>
+<li><code>usuario operador</code>: ator mais aderente ao sistema atual, orientado ao trabalho direto com documentos e resultados</li>
+<li><code>usuario configurador</code>: ator mais aderente ao sistema futuro, orientado à composição e ajuste de fluxos</li>
+<li><code>documento</code>: unidade documental central do sistema atual e principal portador de conteúdo, metadados e vínculos persistidos no legado</li>
+<li><code>contexto de pipeline</code>: estrutura de execução que transporta documentos, artefatos e estado ao longo do pipeline</li>
+<li><code>produto derivado</code>: resultado adicional gerado pelo processamento de documentos ou coleções, como tradução, análise ou visualização</li>
+</ul>
+<h2 id="6-stakeholders-e-atores">6. Stakeholders e atores<a class="headerlink" href="#6-stakeholders-e-atores" title="Permanent link">&para;</a></h2>
+<h3 id="61-stakeholders">6.1 Stakeholders<a class="headerlink" href="#61-stakeholders" title="Permanent link">&para;</a></h3>
+<p>Os stakeholders iniciais identificados são:</p>
+<ul>
+<li>autor/desenvolvedor do projeto</li>
+<li>usuario geral que trabalha com documentos digitalizados</li>
+<li>mantenedor futuro do sistema</li>
+<li>banca/professor, como stakeholder academico indireto</li>
+</ul>
+<h3 id="62-perfis-de-ator">6.2 Perfis de ator<a class="headerlink" href="#62-perfis-de-ator" title="Permanent link">&para;</a></h3>
+<h4 id="621-categoria-geral">6.2.1 Categoria geral<a class="headerlink" href="#621-categoria-geral" title="Permanent link">&para;</a></h4>
+<p>A categoria geral de ator humano adotada nesta frente é:</p>
+<ul>
+<li><code>usuario</code></li>
+</ul>
+<h4 id="622-ator-mais-aderente-ao-sistema-atual">6.2.2 Ator mais aderente ao sistema atual<a class="headerlink" href="#622-ator-mais-aderente-ao-sistema-atual" title="Permanent link">&para;</a></h4>
+<p>No sistema atual, o ator mais aderente é o <strong>usuario operador</strong>, que utiliza o sistema para coletar, armazenar, consultar, traduzir e analisar documentos.</p>
+<p>Equivalência histórica importante:</p>
+<ul>
+<li>a formulação <code>usuario pesquisador/historiador</code> representa, nesta frente, a leitura histórica mais próxima do que passou a ser tratado como <code>usuario operador</code></li>
+</ul>
+<h4 id="623-ator-mais-aderente-ao-sistema-futuro">6.2.3 Ator mais aderente ao sistema futuro<a class="headerlink" href="#623-ator-mais-aderente-ao-sistema-futuro" title="Permanent link">&para;</a></h4>
+<p>No sistema futuro, o ator mais aderente tende a ser o <strong>usuario configurador</strong>, responsavel por ajustar ferramentas, fluxos e pipelines conforme o objetivo da tarefa.</p>
+<p>Essa mudanca nao elimina o ator anterior. Em vez disso, indica uma evolucao do perfil de uso:</p>
+<ul>
+<li>o usuario do sistema passa a precisar tambem de capacidade de configuracao e composicao de fluxos</li>
+</ul>
+<h2 id="7-problema-e-motivacao">7. Problema e motivação<a class="headerlink" href="#7-problema-e-motivacao" title="Permanent link">&para;</a></h2>
+<h3 id="71-problema-resolvido-pelo-sistema-atual">7.1 Problema resolvido pelo sistema atual<a class="headerlink" href="#71-problema-resolvido-pelo-sistema-atual" title="Permanent link">&para;</a></h3>
+<p>O sistema atual surgiu para apoiar o estudo de documentos digitalizados, em especial documentos em russo, fornecendo ferramentas para:</p>
+<ul>
+<li>coleta de textos a partir de fontes digitais</li>
+<li>persistencia dos conteudos para uso posterior</li>
+<li>traducao</li>
+<li>consulta ao acervo</li>
+<li>analises basicas sobre os documentos</li>
+</ul>
+<p>O problema central do ShowTrials atual e a necessidade de <strong>ler, manipular, extrair e analisar informacoes de documentos digitalizados</strong> com menos trabalho manual e mais apoio computacional.</p>
+<h3 id="72-motivacao-da-evolucao-arquitetural">7.2 Motivacao da evolucao arquitetural<a class="headerlink" href="#72-motivacao-da-evolucao-arquitetural" title="Permanent link">&para;</a></h3>
+<p>A evolucao para engine nao nasce apenas de insuficiencias tecnicas tradicionais, mas sobretudo de:</p>
+<ul>
+<li>necessidade de maior ergonomia dos fluxos de trabalho</li>
+<li>necessidade de compor ferramentas diferentes conforme o objetivo do usuario</li>
+<li>necessidade de suportar novas fontes e novos processos</li>
+<li>necessidade de carregar apenas os recursos necessarios</li>
+<li>necessidade de reduzir custo de inicializacao e consumo de memoria</li>
+<li>necessidade de tornar a arquitetura mais configuravel e reutilizavel</li>
+</ul>
+<p>A introducao de <code>ServiceRegistry</code> com lazy loading foi um passo concreto nessa direcao e reforcou a percepcao de que o projeto pode evoluir para uma arquitetura mais flexivel.</p>
+<h2 id="8-sistema-atual-showtrials">8. Sistema atual: ShowTrials<a class="headerlink" href="#8-sistema-atual-showtrials" title="Permanent link">&para;</a></h2>
+<p>As capacidades atuais mais relevantes identificadas ate aqui sao:</p>
+<ul>
+<li>coleta de texto de sites</li>
+<li>extracao de texto a partir de documentos txt</li>
+<li>traducao de documentos com API do Google</li>
+<li>persistencia em banco de dados</li>
+<li>suporte a NLP</li>
+<li>consultas ao acervo</li>
+<li>interface CLI</li>
+<li>interface Web com FastAPI</li>
+</ul>
+<p>O sistema atual deve ser entendido como uma base funcional e util, mas com maturidade desigual entre suas capacidades. A traducao aparece como area mais satisfatoria, enquanto coleta, extracao, consultas mais amplas, Web e generalizacao arquitetural ainda conservam carater de MVP ou prova de conceito.</p>
+<h2 id="9-limitacoes-do-sistema-atual">9. Limitações do sistema atual<a class="headerlink" href="#9-limitacoes-do-sistema-atual" title="Permanent link">&para;</a></h2>
+<p>As principais limitacoes estruturais observadas sao:</p>
+<ul>
+<li>arquitetura dominante ainda documento-centrica e orientada a persistencia</li>
+<li>pouca generalidade para multiplas fontes e processos</li>
+<li>forte orquestracao imperativa em casos de uso</li>
+<li>dificuldade de compor fluxos diferentes sem reuso ad hoc</li>
+<li>maturidade desigual entre CLI e Web</li>
+<li>ausencia de modelo dominante de pipeline configuravel</li>
+</ul>
+<p>Essas limitacoes nao anulam o valor do sistema atual. Elas explicam por que a evolucao para engine se tornou desejavel.</p>
+<h2 id="10-transicao-arquitetural">10. Transição arquitetural<a class="headerlink" href="#10-transicao-arquitetural" title="Permanent link">&para;</a></h2>
+<p>A transicao arquitetural deve:</p>
+<ul>
+<li>ocorrer de forma incremental, sem reescrita total</li>
+<li>preservar continuidade com a base atual do projeto</li>
+<li>manter CLI e Web como interfaces relevantes</li>
+<li>introduzir separacao mais clara entre transformacao e persistencia</li>
+<li>permitir migracao gradual de fluxos reais do ShowTrials para a nova arquitetura</li>
+<li>usar a base atual como origem de migracao, e nao como descartavel</li>
+</ul>
+<p>Essa transicao e um plano proprio dentro da frente de requisitos. Ela nao se reduz ao sistema atual nem coincide integralmente com o sistema-alvo.</p>
+<h2 id="11-sistema-alvo-engine-futura">11. Sistema-alvo: engine futura<a class="headerlink" href="#11-sistema-alvo-engine-futura" title="Permanent link">&para;</a></h2>
+<p>A engine futura deve ser capaz de apoiar diferentes tarefas documentais por meio de recursos configuraveis.</p>
+<p>Capacidades desejadas mencionadas ate aqui:</p>
+<ul>
+<li>compatibilidade com multiplos bancos de dados</li>
+<li>OCR</li>
+<li>raspagem de sites</li>
+<li>extracao de texto de PDF</li>
+<li>manipulacao de PDF</li>
+<li>tratamento de imagens para apoiar OCR</li>
+<li>traducao robusta com fallbacks</li>
+<li>analises NLP e estatisticas</li>
+<li>criacao de colecoes tematicas</li>
+<li>arvores de relacionamento</li>
+<li>visualizacoes e graficos</li>
+<li>carregamento configuravel e sob demanda</li>
+<li>execucao nao bloqueante</li>
+<li>processos e filas em segundo plano</li>
+<li>distribuicao em versoes distintas, como Web-only ou completa com CLI</li>
+</ul>
+<p>No nivel arquitetural, o sistema-alvo ja possui direcao suficientemente clara para modelagem:</p>
+<ul>
+<li>configuracao externa de pipelines</li>
+<li>uso de contexto explicito de execucao</li>
+<li>separacao entre sources, processors e sinks</li>
+<li>deslocamento da persistencia para sinks</li>
+<li>pipeline linear minimo no MVP</li>
+<li>suporte futuro a <code>Iterable</code> e evolucoes mais amplas</li>
+</ul>
+<h2 id="12-requisitos-funcionais-integrados">12. Requisitos funcionais integrados<a class="headerlink" href="#12-requisitos-funcionais-integrados" title="Permanent link">&para;</a></h2>
+<p>Os requisitos funcionais abaixo estao organizados por blocos para integrar sistema atual, transicao e sistema-alvo.</p>
+<h3 id="121-aquisicao-documental">12.1 Aquisicao documental<a class="headerlink" href="#121-aquisicao-documental" title="Permanent link">&para;</a></h3>
+<ul>
+<li>o sistema deve permitir coletar ou obter conteudo textual a partir de fontes documentais digitais</li>
+<li>o sistema deve permitir obter conteudo a partir de paginas web, arquivos textuais, PDFs e imagens, conforme o grau de maturidade da arquitetura</li>
+<li>o sistema futuro deve suportar OCR e novas formas de entrada documental de maneira configuravel</li>
+</ul>
+<h3 id="122-persistencia-e-organizacao">12.2 Persistencia e organizacao<a class="headerlink" href="#122-persistencia-e-organizacao" title="Permanent link">&para;</a></h3>
+<ul>
+<li>o sistema deve permitir persistir documentos e metadados principais</li>
+<li>o sistema deve permitir persistir traducoes associadas aos documentos</li>
+<li>o sistema deve permitir persistir produtos derivados de processamento e analise</li>
+<li>o sistema deve permitir evolucao futura para persistencia de colecoes e outros agrupamentos analiticos relevantes</li>
+<li>o sistema futuro deve permitir multiplos destinos de persistencia e saida</li>
+</ul>
+<h3 id="123-consulta-e-uso-do-acervo">12.3 Consulta e uso do acervo<a class="headerlink" href="#123-consulta-e-uso-do-acervo" title="Permanent link">&para;</a></h3>
+<ul>
+<li>o sistema deve permitir consultar documentos e conteudos persistidos</li>
+<li>o sistema deve permitir listar documentos, traducoes e resultados associados</li>
+<li>o sistema deve permitir consultar resultados derivados e agrupamentos documentais relevantes, conforme a maturidade da evolucao</li>
+<li>o sistema deve permitir evolucao futura para colecoes tematicas e relacoes documentais mais ricas</li>
+</ul>
+<h3 id="124-traducao">12.4 Traducao<a class="headerlink" href="#124-traducao" title="Permanent link">&para;</a></h3>
+<ul>
+<li>o sistema deve permitir traduzir documentos</li>
+<li>o sistema deve permitir persistir traducoes</li>
+<li>o sistema futuro deve permitir traducao robusta com fallbacks</li>
+<li>o sistema futuro deve permitir evolucao para traducao segmentada e revisao de traducao</li>
+</ul>
+<h3 id="125-analise-e-enriquecimento">12.5 Analise e enriquecimento<a class="headerlink" href="#125-analise-e-enriquecimento" title="Permanent link">&para;</a></h3>
+<ul>
+<li>o sistema deve permitir aplicar ferramentas de analise textual e estatistica aos documentos</li>
+<li>o sistema deve permitir extracao de entidades e outros produtos analiticos</li>
+<li>o sistema deve permitir gerar resultados derivados distinguiveis do documento original</li>
+<li>o sistema futuro deve permitir compor etapas de NLP, estatistica, classificacao e enriquecimento no pipeline</li>
+</ul>
+<h3 id="126-configuracao-de-pipeline">12.6 Configuracao de pipeline<a class="headerlink" href="#126-configuracao-de-pipeline" title="Permanent link">&para;</a></h3>
+<ul>
+<li>o sistema futuro deve permitir configurar diferentes fluxos de trabalho documentais</li>
+<li>o sistema futuro deve permitir representar pipelines por configuracao externa</li>
+<li>o sistema futuro deve permitir salvar, recuperar e versionar configuracoes de pipeline</li>
+<li>o sistema futuro deve permitir carregar apenas os servicos necessarios para uma determinada execucao</li>
+</ul>
+<h3 id="127-execucao-de-pipeline">12.7 Execucao de pipeline<a class="headerlink" href="#127-execucao-de-pipeline" title="Permanent link">&para;</a></h3>
+<ul>
+<li>o sistema futuro deve permitir compor pipelines com ferramentas distintas conforme o objetivo do usuario</li>
+<li>o sistema futuro deve permitir combinar etapas como coleta, OCR, traducao, analise, persistencia e exportacao</li>
+<li>o sistema futuro deve possuir contexto explicito de execucao</li>
+<li>o sistema futuro deve permitir evolucao para tarefas em segundo plano, filas e execucao nao bloqueante</li>
+</ul>
+<h3 id="128-persistencia-e-saida-no-sistema-alvo">12.8 Persistencia e saida no sistema-alvo<a class="headerlink" href="#128-persistencia-e-saida-no-sistema-alvo" title="Permanent link">&para;</a></h3>
+<ul>
+<li>o sistema futuro deve permitir concentrar persistencia e exportacao em sinks</li>
+<li>o sistema futuro deve permitir persistir documentos, colecoes e produtos derivados sem acoplar essa responsabilidade aos transformadores</li>
+<li>o sistema futuro deve permitir saidas diversas, incluindo banco de dados e artefatos exportaveis</li>
+</ul>
+<h3 id="129-operacao-e-interfaces">12.9 Operacao e interfaces<a class="headerlink" href="#129-operacao-e-interfaces" title="Permanent link">&para;</a></h3>
+<ul>
+<li>o sistema deve preservar CLI como interface relevante</li>
+<li>o sistema deve preservar Web como interface relevante</li>
+<li>o sistema futuro deve permitir diferentes distribuicoes do produto, como versao Web-only e versao completa com CLI</li>
+</ul>
+<h2 id="13-requisitos-nao-funcionais-integrados">13. Requisitos não funcionais integrados<a class="headerlink" href="#13-requisitos-nao-funcionais-integrados" title="Permanent link">&para;</a></h2>
+<h3 id="131-usabilidade">13.1 Usabilidade<a class="headerlink" href="#131-usabilidade" title="Permanent link">&para;</a></h3>
+<ul>
+<li>o sistema deve buscar facilidade de uso para o trabalho documental</li>
+<li>o sistema futuro deve favorecer ergonomia na configuracao e execucao dos fluxos</li>
+<li>a combinacao de flexibilidade e facilidade de uso deve ser perseguida como diretriz de produto</li>
+</ul>
+<h3 id="132-desempenho-e-consumo-de-recursos">13.2 Desempenho e consumo de recursos<a class="headerlink" href="#132-desempenho-e-consumo-de-recursos" title="Permanent link">&para;</a></h3>
+<ul>
+<li>o sistema deve permitir uso eficiente de recursos</li>
+<li>a arquitetura futura deve evitar carregamento desnecessario de servicos pesados</li>
+<li>o carregamento sob demanda deve ser favorecido quando aplicavel</li>
+</ul>
+<h3 id="133-modularidade-e-extensibilidade">13.3 Modularidade e extensibilidade<a class="headerlink" href="#133-modularidade-e-extensibilidade" title="Permanent link">&para;</a></h3>
+<ul>
+<li>a arquitetura futura deve favorecer extensibilidade e composicao de ferramentas</li>
+<li>o sistema deve favorecer modularidade e reuso de componentes</li>
+<li>a evolucao deve apoiar incorporacao de novas fontes, processadores e sinks</li>
+</ul>
+<h3 id="134-manutenibilidade">13.4 Manutenibilidade<a class="headerlink" href="#134-manutenibilidade" title="Permanent link">&para;</a></h3>
+<ul>
+<li>o sistema deve buscar facilidade de manutencao</li>
+<li>a arquitetura deve preservar separacao de responsabilidades</li>
+<li>a evolucao deve favorecer testabilidade e clareza das responsabilidades</li>
+</ul>
+<h3 id="135-configurabilidade">13.5 Configurabilidade<a class="headerlink" href="#135-configurabilidade" title="Permanent link">&para;</a></h3>
+<ul>
+<li>o sistema futuro deve ser configuravel de forma explicita e reproduzivel</li>
+<li>as configuracoes de pipeline devem ser claras o suficiente para reutilizacao e governanca futura</li>
+</ul>
+<h3 id="136-compatibilidade-evolutiva">13.6 Compatibilidade evolutiva<a class="headerlink" href="#136-compatibilidade-evolutiva" title="Permanent link">&para;</a></h3>
+<ul>
+<li>o sistema deve manter evolucao incremental sem reescrita completa do zero</li>
+<li>o sistema deve preservar, tanto quanto possivel, continuidade com a base atual do projeto</li>
+<li>a transicao nao deve tornar imediatamente obsoletas as capacidades centrais ja existentes</li>
+</ul>
+<h3 id="137-documentacao-e-rastreabilidade">13.7 Documentacao e rastreabilidade<a class="headerlink" href="#137-documentacao-e-rastreabilidade" title="Permanent link">&para;</a></h3>
+<ul>
+<li>a documentacao do sistema deve ser forte o suficiente para apoiar desenvolvimento, manutencao e avaliacao academica</li>
+<li>a evolucao da frente deve manter rastreabilidade entre rodadas, documentos e proximos artefatos</li>
+</ul>
+<h3 id="138-tecnologia-e-plataforma">13.8 Tecnologia e plataforma<a class="headerlink" href="#138-tecnologia-e-plataforma" title="Permanent link">&para;</a></h3>
+<ul>
+<li>o sistema deve permanecer em Python</li>
+<li>CLI e Web devem continuar como partes relevantes da solucao</li>
+<li>a base atual deve ser preservada como origem de migracao para a arquitetura futura</li>
+</ul>
+<h2 id="14-requisitos-de-transicao">14. Requisitos de transição<a class="headerlink" href="#14-requisitos-de-transicao" title="Permanent link">&para;</a></h2>
+<p>Os requisitos de transicao abaixo sao centrais no projeto:</p>
+<ul>
+<li>a evolucao deve ocorrer de forma incremental</li>
+<li>a base atual do ShowTrials deve servir como origem de migracao para a nova arquitetura</li>
+<li>pelo menos um fluxo real ja existente deve poder ser migrado para a execucao orientada por pipeline</li>
+<li>CLI e Web devem permanecer validas durante a transicao</li>
+<li>a separacao entre transformacao e persistencia deve ser introduzida sem apagar de imediato os casos de uso atuais</li>
+<li>casos de uso e componentes atuais podem atuar como adaptadores durante a transicao</li>
+</ul>
+<h2 id="15-restricoes">15. Restrições<a class="headerlink" href="#15-restricoes" title="Permanent link">&para;</a></h2>
+<p>As restricoes identificadas ate aqui sao:</p>
+<ul>
+<li>esta fase e de modelagem e documentacao, nao de implementacao</li>
+<li>o projeto deve manter aderencia a governanca ja consolidada</li>
+<li>a evolucao deve ser incremental</li>
+<li>o projeto nao deve ser reescrito do zero</li>
+<li>os artefatos academicos devem ser produzidos com rigor e profundidade</li>
+<li>o prazo final do projeto e novembro de 2026</li>
+</ul>
+<h2 id="16-fora-de-escopo">16. Fora de escopo<a class="headerlink" href="#16-fora-de-escopo" title="Permanent link">&para;</a></h2>
+<p>Nesta fase especifica, ficam fora de escopo:</p>
+<ul>
+<li>implementacao imediata da engine</li>
+<li>reescrita do codigo de produto</li>
+<li>substituicao completa da base atual</li>
+<li>decisoes finais de branding ou nome do sistema</li>
+<li>refinamento tecnico detalhado de todos os diagramas antes da analise de requisitos</li>
+<li>execucao distribuida e outras capacidades avancadas antes da consolidacao do MVP estrutural</li>
+</ul>
+<h2 id="17-priorizacao-inicial">17. Priorização inicial<a class="headerlink" href="#17-priorizacao-inicial" title="Permanent link">&para;</a></h2>
+<h3 id="171-essencial-para-o-sistema-atual">17.1 Essencial para o sistema atual<a class="headerlink" href="#171-essencial-para-o-sistema-atual" title="Permanent link">&para;</a></h3>
+<ul>
+<li>persistencia documental</li>
+<li>traducao</li>
+<li>consulta ao acervo</li>
+<li>analise textual e estatistica basica</li>
+<li>preservacao de CLI e Web como interfaces relevantes</li>
+</ul>
+<h3 id="172-essencial-para-a-transicao">17.2 Essencial para a transicao<a class="headerlink" href="#172-essencial-para-a-transicao" title="Permanent link">&para;</a></h3>
+<ul>
+<li>evolucao incremental sem reescrita total</li>
+<li>preservacao da base atual como origem de migracao</li>
+<li>separacao crescente entre transformacao e persistencia</li>
+<li>introducao de contexto de execucao e composicao mais clara de fluxos</li>
+</ul>
+<h3 id="173-essencial-para-o-mvp-da-engine">17.3 Essencial para o MVP da engine<a class="headerlink" href="#173-essencial-para-o-mvp-da-engine" title="Permanent link">&para;</a></h3>
+<ul>
+<li>pipeline configuravel</li>
+<li>configuracao externa</li>
+<li>composicao de steps</li>
+<li>suporte minimo a sources, processors e sinks</li>
+<li>carregamento sob demanda de servicos</li>
+<li>migracao de pelo menos um fluxo real para a nova arquitetura</li>
+</ul>
+<h3 id="174-desejavel-depois">17.4 Desejavel depois<a class="headerlink" href="#174-desejavel-depois" title="Permanent link">&para;</a></h3>
+<ul>
+<li>multiplos bancos como capacidade mais madura</li>
+<li>visualizacoes e grafos mais ricos</li>
+<li>colecoes tematicas mais sofisticadas</li>
+<li>filas e operacao em background mais robustas</li>
+<li>distribuicoes de produto mais refinadas</li>
+</ul>
+<h3 id="175-fora-do-escopo-atual">17.5 Fora do escopo atual<a class="headerlink" href="#175-fora-do-escopo-atual" title="Permanent link">&para;</a></h3>
+<ul>
+<li>implementacao imediata de toda a engine</li>
+<li>fechamento definitivo de branding</li>
+<li>exploracao detalhada de todos os diagramas antes de consolidar requisitos</li>
+</ul>
+<h2 id="18-relacao-preliminar-com-casos-de-uso">18. Relação preliminar com casos de uso<a class="headerlink" href="#18-relacao-preliminar-com-casos-de-uso" title="Permanent link">&para;</a></h2>
+<p>Os requisitos ja permitem antecipar candidatos fortes a casos de uso:</p>
+<ul>
+<li>coletar ou acessar conteudo documental</li>
+<li>consultar acervo documental</li>
+<li>traduzir documento</li>
+<li>analisar documento</li>
+<li>analisar acervo</li>
+<li>configurar pipeline</li>
+<li>executar pipeline</li>
+<li>revisar traducao segmentada</li>
+<li>processar PDF com OCR</li>
+</ul>
+<p>Essa relacao ainda e preliminar e sera detalhada em artefato proprio posterior.</p>
+<h2 id="19-relacao-preliminar-com-arquitetura-futura">19. Relação preliminar com arquitetura futura<a class="headerlink" href="#19-relacao-preliminar-com-arquitetura-futura" title="Permanent link">&para;</a></h2>
+<p>Os requisitos levantados ja apontam drivers claros para os proximos artefatos arquiteturais:</p>
+<ul>
+<li>a necessidade de separar sistema atual, transicao e sistema-alvo dialoga com a visao 4+1</li>
+<li>a necessidade de explicitar interfaces, containers e componentes dialoga com o modelo C4</li>
+<li>a necessidade de configurar e executar pipelines aponta para modelagem mais detalhada de componentes como contexto, sources, processors e sinks</li>
+</ul>
+<p>Este documento, portanto, passa a funcionar como base de requisitos para os proximos documentos de arquitetura.</p>
+<h2 id="20-questoes-em-aberto">20. Questões em aberto<a class="headerlink" href="#20-questoes-em-aberto" title="Permanent link">&para;</a></h2>
+<p>Ainda precisam ser definidas ou refinadas:</p>
+<ul>
+<li>nome oficial do sistema ou da arquitetura-alvo</li>
+<li>ampliacao e estabilizacao do glossario formal do projeto</li>
+<li>fronteira exata do sistema em cada tipo de artefato</li>
+<li>priorizacao mais detalhada dos requisitos da engine</li>
+<li>definicao mais precisa do MVP da engine</li>
+<li>relacao futura entre requisitos, casos de uso e backlog tecnico</li>
+</ul>
+<h2 id="21-proximos-passos">21. Próximos passos<a class="headerlink" href="#21-proximos-passos" title="Permanent link">&para;</a></h2>
+<p>Os proximos passos recomendados sao:</p>
+<ul>
+<li>consolidar esta versao integradora do Documento de Requisitos</li>
+<li>usar este documento como base para abrir a frente de casos de uso</li>
+<li>derivar mapa inicial de atores e casos de uso</li>
+<li>preparar, em seguida, os artefatos de arquitetura 4+1 e C4</li>
+</ul>
+<p>Este documento nao encerra a frente de requisitos. Ele estabelece uma base mais rigorosa e mais util para a evolucao disciplinada dos proximos artefatos.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/rib-thiago/showtrials-tcc" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "search.suggest", "content.code.copy", "content.code.annotate"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

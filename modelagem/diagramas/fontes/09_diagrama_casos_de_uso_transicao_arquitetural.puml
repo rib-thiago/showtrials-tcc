@@ -1,0 +1,30 @@
+@startuml
+top to bottom direction
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam actorStyle awesome
+skinparam usecase {
+  BackgroundColor white
+  BorderColor #444444
+  ArrowColor #666666
+}
+skinparam rectangle {
+  BorderColor #444444
+}
+
+actor "usuario" as Usuario
+actor "usuario operador" as UsuarioOperador
+actor "usuario configurador" as UsuarioConfigurador
+
+UsuarioOperador -up-|> Usuario
+UsuarioConfigurador -up-|> Usuario
+
+rectangle "Transicao arquitetural" {
+  usecase "ConfigurarPipeline" as UC_ConfigurarPipeline
+  usecase "ExecutarPipeline" as UC_ExecutarPipeline
+}
+
+UsuarioConfigurador --> UC_ConfigurarPipeline
+UsuarioConfigurador --> UC_ExecutarPipeline
+
+@enduml

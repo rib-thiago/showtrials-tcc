@@ -1,0 +1,83 @@
+@startuml
+title Diagrama de Classes de Dominio
+
+hide empty members
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+
+package "Dominio Atual" {
+  class Documento {
+    +id: Optional[int]
+    +centro: str
+    +titulo: str
+    +url: str
+    +texto: str
+    +data_coleta: datetime
+    +data_original: Optional[str]
+    +tipo: Optional[str]
+    +tipo_descricao: Optional[str]
+    +pessoa_principal: Optional[str]
+    +remetente: Optional[str]
+    +destinatario: Optional[str]
+    +envolvidos: List[str]
+    +tem_anexos: bool
+  }
+
+  class Traducao {
+    +id: Optional[int]
+    +documento_id: int
+    +idioma: str
+    +texto_traduzido: str
+    +data_traducao: datetime
+    +modelo: Optional[str]
+    +custo: float
+  }
+
+  enum TipoDocumento {
+    INTERROGATORIO
+    ACAREACAO
+    ACUSACAO
+    DECLARACAO
+    CARTA
+    RELATORIO
+    DEPOIMENTO
+    LAUDO
+    DESCONHECIDO
+  }
+
+  class NomeRusso
+  class AnaliseTexto
+
+  interface RepositorioDocumento
+  interface RepositorioTraducao
+}
+
+package "Nucleo Evolutivo Futuro" {
+  class Pipeline
+  class VersaoPipeline
+  class ContextoPipeline
+  class PipelineStep
+}
+
+Traducao --> Documento : documento_id
+Documento ..> TipoDocumento : classifica
+AnaliseTexto --> Documento : documento_id
+RepositorioDocumento ..> Documento
+RepositorioTraducao ..> Traducao
+
+Pipeline "1" -- "*" VersaoPipeline
+VersaoPipeline "1" -- "*" PipelineStep
+ContextoPipeline ..> Pipeline
+ContextoPipeline ..> Documento
+
+note right of Documento
+Centro factual do dominio atual
+do legado ShowTrials
+end note
+
+note right of Pipeline
+Bloco evolutivo ainda nao
+implementado no codigo atual
+end note
+
+@enduml
