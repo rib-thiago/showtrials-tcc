@@ -6,9 +6,9 @@ Este documento registra historicamente a primeira grande reorganizacao documenta
 
 Ele nao deve ser lido como fonte normativa principal do regime documental atual. Hoje, a leitura vigente sobre documentacao, fases e rodadas deve ser feita principalmente em:
 
-- [Guia de Documentacao do Projeto](../guias/guia_de_documentacao_do_projeto.md)
-- [Guia de Manutencao do Site Documental](../guias/guia_de_manutencao_do_site_documental.md)
-- [Regime Documental de Fases e Rodadas](../projeto/regime_documental_de_fases_e_rodadas.md)
+- [Guia de Documentacao do Projeto](../../guias/guia_de_documentacao_do_projeto.md)
+- [Guia de Manutencao do Site Documental](../../guias/guia_de_manutencao_do_site_documental.md)
+- [Regime Documental de Fases e Rodadas](../../projeto/regime_documental_de_fases_e_rodadas.md)
 
 ## Objetivo da Intervencao
 
@@ -51,9 +51,9 @@ Esses movimentos tiveram peso proprio porque ajudaram a transformar a documentac
 
 Com base no lastro historico identificado, esta fase se relaciona fortemente com:
 
-- `docs/fases/FASE17_PRIMEIRA_REORGANIZACAO_DOCUMENTAL_AMPLA.md`
+- `docs/historico/fases/FASE17_PRIMEIRA_REORGANIZACAO_DOCUMENTAL_AMPLA.md`
 - `mkdocs.yml`
-- `docs/planejamento/plano_issue2_revisao_documentacao.md`
+- `docs/historico/planejamento/plano_issue2_revisao_documentacao.md`
 - `docs/index.md`
 - `docs/metricas/cobertura.md`
 
@@ -102,15 +102,15 @@ Esta fase nao deve ser lida hoje como:
 
 Ela deve ser lida como historico de uma reorganizacao importante, cuja interpretacao atual precisa ser complementada por:
 
-- [Guia de Documentacao do Projeto](../guias/guia_de_documentacao_do_projeto.md)
-- [Guia de Manutencao do Site Documental](../guias/guia_de_manutencao_do_site_documental.md)
-- [Regime Documental de Fases e Rodadas](../projeto/regime_documental_de_fases_e_rodadas.md)
-- [plano_issues_documentacao.md](../projeto/plano_issues_documentacao.md), hoje reclassificado como plano historico
+- [Guia de Documentacao do Projeto](../../guias/guia_de_documentacao_do_projeto.md)
+- [Guia de Manutencao do Site Documental](../../guias/guia_de_manutencao_do_site_documental.md)
+- [Regime Documental de Fases e Rodadas](../../projeto/regime_documental_de_fases_e_rodadas.md)
+- [plano_issues_documentacao.md](../planejamento/plano_issues_documentacao.md), hoje reclassificado como plano historico
 
 ## Documentos Relacionados
 
 - [plano_issue2_revisao_documentacao.md](../planejamento/plano_issue2_revisao_documentacao.md)
-- [plano_issues_documentacao.md](../projeto/plano_issues_documentacao.md)
-- [Guia de Documentacao do Projeto](../guias/guia_de_documentacao_do_projeto.md)
-- [Guia de Manutencao do Site Documental](../guias/guia_de_manutencao_do_site_documental.md)
-- [Regime Documental de Fases e Rodadas](../projeto/regime_documental_de_fases_e_rodadas.md)
+- [plano_issues_documentacao.md](../planejamento/plano_issues_documentacao.md)
+- [Guia de Documentacao do Projeto](../../guias/guia_de_documentacao_do_projeto.md)
+- [Guia de Manutencao do Site Documental](../../guias/guia_de_manutencao_do_site_documental.md)
+- [Regime Documental de Fases e Rodadas](../../projeto/regime_documental_de_fases_e_rodadas.md)

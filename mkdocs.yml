@@ -104,16 +104,19 @@ nav:
     - Análise Arquitetural: projeto/analise_arquitetural.md
     - Roadmap Arquitetural: projeto/roadmap_arquitetural.md
     - Manual de Gestão: projeto/manual_gestao.md
-    - Plano de Issues: projeto/plano_issues_documentacao.md
-    - Questionário: projeto/questionario_levantamento_requisitos.md
 
   - Metricas e Diagnosticos:
     - Cobertura de Testes: metricas/cobertura.md
     - Diagnóstico CI: historico/diagnosticos/diagnostico_ci.md
     - Diagnóstico Telemetria: historico/diagnosticos/diagnostico_fase12.md
 
+  - Historico de Planejamento:
+    - Plano de Issues da Documentacao: historico/planejamento/plano_issues_documentacao.md
+    - Questionario de Levantamento de Requisitos: historico/planejamento/questionario_levantamento_requisitos.md
+    - Plano da Issue 2: historico/planejamento/plano_issue2_revisao_documentacao.md
+
   - Planejamento:
-    - Plano da Issue 2: planejamento/plano_issue2_revisao_documentacao.md
+    - Plano operacional da reorganizacao semantica: planejamento/plano_operacional_da_reorganizacao_semantica_dos_diretorios.md
 
   - Como Contribuir: contributing.md
   - Changelog: changelog.md

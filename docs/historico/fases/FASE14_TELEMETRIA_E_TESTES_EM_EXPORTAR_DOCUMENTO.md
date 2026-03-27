@@ -6,10 +6,10 @@ Este documento registra historicamente a intervencao que adicionou telemetria e 
 
 Ele nao deve ser lido como guia operacional vigente de implementacao, testes, branch, merge ou cobertura. Esses assuntos hoje devem ser consultados principalmente em:
 
-- [Guia de Telemetria do Projeto](../guias/guia_de_telemetria.md)
-- [Protocolo de Qualidade](../protocolos/protocolo_de_qualidade.md)
-- [Protocolo de Git](../protocolos/protocolo_de_git.md)
-- [Guia de Auto-Revisao](../guias/guia_de_auto_revisao.md)
+- [Guia de Telemetria do Projeto](../../guias/guia_de_telemetria.md)
+- [Protocolo de Qualidade](../../protocolos/protocolo_de_qualidade.md)
+- [Protocolo de Git](../../protocolos/protocolo_de_git.md)
+- [Guia de Auto-Revisao](../../guias/guia_de_auto_revisao.md)
 
 ## Objetivo da Intervencao
 
@@ -94,6 +94,6 @@ Por isso, nesta fase saneada:
 
 - [FASE 12 - Padronizacao da Telemetria em TipoDocumento](FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md)
 - [FASE 15 - Telemetria e Testes em GerarRelatorio](FASE15_TELEMETRIA_E_TESTES_EM_GERAR_RELATORIO.md)
-- [Guia de Telemetria do Projeto](../guias/guia_de_telemetria.md)
-- [Protocolo de Qualidade](../protocolos/protocolo_de_qualidade.md)
-- [Guia de Auto-Revisao](../guias/guia_de_auto_revisao.md)
+- [Guia de Telemetria do Projeto](../../guias/guia_de_telemetria.md)
+- [Protocolo de Qualidade](../../protocolos/protocolo_de_qualidade.md)
+- [Guia de Auto-Revisao](../../guias/guia_de_auto_revisao.md)

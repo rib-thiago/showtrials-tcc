@@ -6,9 +6,9 @@ Este documento registra historicamente a intervencao que estabilizou o pipeline 
 
 Ele nao deve ser lido como definicao vigente e definitiva do tratamento de dependencias NLP. O estado atual dessa questao deve ser consultado principalmente em:
 
-- [Dependencias NLP: Estado Atual e Transicao](../projeto/dependencias_nlp_estado_e_transicao.md)
-- [Guia de Dependencias do Projeto](../guias/guia_de_dependencias.md)
-- [Guia de Contribuicao](../contributing.md)
+- [Dependencias NLP: Estado Atual e Transicao](../../projeto/dependencias_nlp_estado_e_transicao.md)
+- [Guia de Dependencias do Projeto](../../guias/guia_de_dependencias.md)
+- [Guia de Contribuicao](../../contributing.md)
 
 ## Objetivo da Intervencao
 
@@ -56,7 +56,7 @@ Com lastro direto no commit principal identificado:
 Artefatos historicamente relacionados:
 
 - [diagnostico_ci.md](../diagnosticos/diagnostico_ci.md)
-- [Dependencias NLP: Estado Atual e Transicao](../projeto/dependencias_nlp_estado_e_transicao.md)
+- [Dependencias NLP: Estado Atual e Transicao](../../projeto/dependencias_nlp_estado_e_transicao.md)
 
 ## Rastreabilidade Git e GitHub
 
@@ -100,12 +100,12 @@ Hoje, a leitura correta desta fase e:
 - ela nao resolve definitivamente o gerenciamento do bloco NLP
 - ela explica por que a issue [#1 - Migrar dependencias NLP para Poetry](https://github.com/rib-thiago/showtrials-tcc/issues/1) continua relevante
 
-O documento vivo mais forte para essa questao hoje e [Dependencias NLP: Estado Atual e Transicao](../projeto/dependencias_nlp_estado_e_transicao.md).
+O documento vivo mais forte para essa questao hoje e [Dependencias NLP: Estado Atual e Transicao](../../projeto/dependencias_nlp_estado_e_transicao.md).
 
 ## Documentos Relacionados
 
 - [FASE 8 - Analise de Texto](FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO.md)
-- [Dependencias NLP: Estado Atual e Transicao](../projeto/dependencias_nlp_estado_e_transicao.md)
-- [Guia de Dependencias do Projeto](../guias/guia_de_dependencias.md)
+- [Dependencias NLP: Estado Atual e Transicao](../../projeto/dependencias_nlp_estado_e_transicao.md)
+- [Guia de Dependencias do Projeto](../../guias/guia_de_dependencias.md)
 - [diagnostico_ci.md](../diagnosticos/diagnostico_ci.md)
-- [Guia de Contribuicao](../contributing.md)
+- [Guia de Contribuicao](../../contributing.md)

@@ -75,7 +75,7 @@ documental, especialmente:
 
 Este plano se relaciona diretamente com:
 
-- [FASE17_PRIMEIRA_REORGANIZACAO_DOCUMENTAL_AMPLA.md](/home/thiago/coleta_showtrials/docs/fases/FASE17_PRIMEIRA_REORGANIZACAO_DOCUMENTAL_AMPLA.md)
+- [FASE17_PRIMEIRA_REORGANIZACAO_DOCUMENTAL_AMPLA.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE17_PRIMEIRA_REORGANIZACAO_DOCUMENTAL_AMPLA.md)
 
 A `FASE17` registra historicamente a primeira reorganizacao documental ampla do
 projeto, e este plano ajuda a explicar a forma operacional como essa
@@ -95,7 +95,7 @@ frente atual.
 
 ## Documentos Relacionados
 
-- [FASE17_PRIMEIRA_REORGANIZACAO_DOCUMENTAL_AMPLA.md](/home/thiago/coleta_showtrials/docs/fases/FASE17_PRIMEIRA_REORGANIZACAO_DOCUMENTAL_AMPLA.md)
+- [FASE17_PRIMEIRA_REORGANIZACAO_DOCUMENTAL_AMPLA.md](/home/thiago/coleta_showtrials/docs/historico/fases/FASE17_PRIMEIRA_REORGANIZACAO_DOCUMENTAL_AMPLA.md)
 - [plano_frente_saneamento_documentacao_legacy.md](/home/thiago/coleta_showtrials/docs/planejamento/plano_frente_saneamento_documentacao_legacy.md)
 - [inventario_inicial_documentacao_legacy.md](/home/thiago/coleta_showtrials/docs/planejamento/inventario_inicial_documentacao_legacy.md)
 - [proposta_arquitetura_documental_alvo.md](/home/thiago/coleta_showtrials/docs/planejamento/proposta_arquitetura_documental_alvo.md)
