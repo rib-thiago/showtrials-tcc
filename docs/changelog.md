@@ -9,7 +9,8 @@ Ele complementa, mas nao substitui, o historico detalhado distribuido entre Git,
 ### Documentacao
 
 - consolidacao do saneamento dos blocos `docs/flows/` e `docs/projeto/`;
-- preparacao para revisao dos documentos publicos de entrada e das fases historicas antigas.
+- conclusao do saneamento dos principais documentos publicos de entrada;
+- preparacao para revisao das fases historicas antigas.
 
 ## 2026-03-27 - Saneamento documental legado e consolidacao semantica
 
