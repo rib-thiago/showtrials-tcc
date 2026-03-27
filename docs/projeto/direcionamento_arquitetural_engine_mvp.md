@@ -1,68 +1,65 @@
-## Direcionamento Arquitetural para MVP da Engine de Pipeline
+# Direcionamento Arquitetural do MVP da Engine
 
----
+## Objetivo
 
-# 1. Diagnóstico Consolidado do Estado Atual
+Este documento consolida o direcionamento arquitetural do MVP da engine de pipeline.
 
-## 1.1 Natureza do sistema atual
+Seu papel e:
 
-O sistema atual é:
+- sintetizar o diagnostico do sistema atual;
+- registrar a decisao arquitetural central do MVP;
+- delimitar o escopo minimo da primeira evolucao estrutural da engine;
+- orientar backlog e modelagem com um nucleo tecnico mais forte do que a visao ampla e o roadmap geral.
 
-* Documento-cêntrico
-* Orientado a persistência
-* Baseado em casos de uso imperativos
-* Estruturado em busca → mutação → salvar
+## Diagnostico do Sistema Atual
 
-Fluxo real:
+O sistema atual pode ser lido como:
 
-```
-Banco → Documento → Mutação → Banco
-```
+- documento-centrico;
+- orientado a persistencia;
+- baseado em casos de uso imperativos;
+- estruturado em busca, mutacao e persistencia.
 
-Características:
+Esquema sintetico:
 
-* `Documento` é entidade rica e mutável
-* Use cases dependem de `RepositorioDocumento`
-* Processamento e persistência estão acoplados
-* Não existe modelo de execução de fluxo
-
-Conclusão:
-
-O sistema atual é uma aplicação CRUD enriquecida, não uma engine de processamento.
-
----
-
-# 2. Objetivo Arquitetural
-
-Evoluir para:
-
-> Plataforma modular de processamento configurável via YAML/JSON.
-
-Características desejadas:
-
-* Múltiplas fontes (scrape, OCR, PDF, etc.)
-* Múltiplos processadores (classificação, NLP, tradução)
-* Múltiplos destinos (SQLite, Mongo, relatórios, grafos)
-* Execução declarativa
-* Persistência opcional
-* Análises globais
-* Reprodutibilidade e versionamento
-
-Isso caracteriza uma engine de pipeline.
-
----
-
-# 3. Decisão Arquitetural Final
-
-## Modelo escolhido: Pipeline baseado em Contexto de Execução
-
-### Estrutura conceitual
-
-```
-Source → Contexto → Processor → Contexto → Sink
+```text
+Banco -> Documento -> Mutacao -> Banco
 ```
 
-### Estrutura refinada do ContextoPipeline
+Isso implica:
+
+- `Documento` como entidade rica e mutavel;
+- forte dependencia de repositorios documentais;
+- acoplamento entre processamento e persistencia;
+- ausencia de um modelo explicito de execucao de fluxo.
+
+Em termos arquiteturais, isso caracteriza uma aplicacao CRUD enriquecida, e nao ainda uma engine de pipeline.
+
+## Objetivo Arquitetural do MVP
+
+O objetivo do MVP e abrir uma transicao controlada para uma engine de processamento configuravel, com:
+
+- configuracao externa declarativa;
+- multiplas fontes, processadores e destinos;
+- execucao orientada por fluxo;
+- separacao mais clara entre transformacao e persistencia;
+- reprodutibilidade e versionamento simples.
+
+Essa formulacao ainda nao descreve a plataforma completa, mas o nucleo estrutural minimo da engine.
+
+## Decisao Arquitetural Central
+
+A decisao central consolidada para o MVP e:
+
+- adotar um pipeline baseado em contexto de execucao.
+
+Esquema conceitual:
+
+```text
+Source -> Contexto -> Processor -> Contexto -> Sink
+```
+
+Estrutura refinada de referencia:
 
 ```python
 class ContextoPipeline:
@@ -72,61 +69,65 @@ class ContextoPipeline:
     estado_execucao: Dict[str, Any]
 ```
 
-Decisões importantes:
+Consequencias principais dessa decisao:
 
-* `Iterable[Documento]` em vez de `List` (suporte futuro a streaming)
-* Configuração não pertence ao contexto
-* Persistência é responsabilidade exclusiva de sinks
-* Contexto representa estado de execução, não intenção
+- `Iterable[Documento]` e preferivel a `List` para manter abertura futura a streaming;
+- configuracao nao pertence ao contexto;
+- persistencia deve ser responsabilidade de `Sink`;
+- o contexto representa estado de execucao, e nao intencao de configuracao.
 
----
+## Separacoes Fundamentais
 
-# 4. Separação Fundamental Necessária
+### Transformacao e persistencia
 
-## 4.1 Transformadores Puros
+Transformacao e persistencia devem ser separadas.
 
-Devem existir funções ou classes que façam apenas:
+Isso significa que funcoes ou classes de transformacao devem operar como:
 
-```
-Documento → Documento
-ou
-Contexto → Contexto
+```text
+Documento -> Documento
+Contexto -> Contexto
 ```
 
 Sem:
 
-* Acesso a repositório
-* ID obrigatório
-* Persistência
-* Efeitos colaterais
+- acesso direto a repositorio;
+- persistencia embutida;
+- dependencia desnecessaria de identificadores de armazenamento;
+- efeitos colaterais que confundam processamento com salvamento.
 
-## 4.2 Orquestração Externa
+### Configuracao e execucao
 
-Use cases atuais passam a ser adaptadores:
+Configuracao de pipeline e execucao de pipeline devem permanecer como responsabilidades distintas.
 
-```
-buscar → transformar → salvar
+Essa separacao evita colapsar:
+
+- catalogo e definicao de pipeline;
+- estado de execucao;
+- armazenamento de configuracao;
+- orquestracao operacional.
+
+### Adaptacao incremental dos casos de uso atuais
+
+Os casos de uso atuais devem ser tratados como base de migracao incremental.
+
+Formula resumida:
+
+```text
+buscar -> transformar -> salvar
 ```
 
 Isso permite:
 
-* Compatibilidade retroativa
-* Reuso no pipeline
-* Migração incremental
+- compatibilidade retroativa;
+- reuso de transformadores mais puros;
+- migracao gradual para o modelo de pipeline.
 
----
+## Versionamento de Pipeline no MVP
 
-# 5. Versionamento de Pipeline (Pré-MVP Estrutural)
+Se pipelines puderem ser criados, salvos e reexecutados, o MVP precisa de versionamento simples.
 
-Se pipelines serão:
-
-* Criados
-* Salvos
-* Reexecutados
-
-Então precisamos de:
-
-## Entidade Pipeline
+Estrutura de referencia:
 
 ```python
 class Pipeline:
@@ -137,95 +138,81 @@ class Pipeline:
     criado_em: datetime
 ```
 
-## Estratégia MVP
+Estrategia adotada para o MVP:
 
-* Versionamento numérico incremental
-* Configuração imutável por versão
-* Reexecução determinística
+- versionamento numerico incremental;
+- configuracao imutavel por versao;
+- reexecucao deterministica;
+- sem necessidade de modelo git-like neste primeiro momento.
 
-Modelo git-like não é necessário no MVP.
-
----
-
-# 6. Escopo Definido do MVP
+## Escopo do MVP
 
 O MVP deve conter:
 
-1. Estrutura básica de `ContextoPipeline`
-2. Executor linear de pipeline
-3. Sistema mínimo de plugins:
+1. estrutura basica de `ContextoPipeline`
+2. executor linear de pipeline
+3. sistema minimo de `Source`, `Processor` e `Sink`
+4. carregamento por YAML
+5. separacao clara entre transformacao e persistencia
+6. versionamento simples de pipeline
 
-   * Source
-   * Processor
-   * Sink
-4. YAML loader
-5. Separação clara entre transformação e persistência
-6. Versionamento simples de pipelines
+O MVP nao deve conter ainda:
 
-Não deve conter ainda:
+- discovery automatico mais complexo;
+- execucao distribuida;
+- execucao paralela;
+- engine assincrona;
+- versionamento git-like.
 
-* Sistema complexo de discovery automático
-* Execução distribuída
-* Execução paralela
-* Engine assíncrona
-* Versionamento git-like
+## Desdobramentos Arquiteturais Imediatos
 
----
+Os desdobramentos mais imediatos deste direcionamento sao:
 
-# 7. Próximos Passos Programados
+### Consolidacao estrutural
 
-## Fase 1 — Consolidação Estrutural
+- definir estrutura de pacotes da engine;
+- definir contratos formais do nucleo de pipeline;
+- definir o executor minimo.
 
-* Definir estrutura de pacotes da engine
-* Definir contrato formal de Plugin
-* Definir executor mínimo
+### Refatoracao de base
 
-## Fase 2 — Refatoração de Base
+- extrair ao menos um transformador mais puro a partir de um caso atual;
+- adaptar um caso de uso existente para usar essa separacao;
+- validar a viabilidade da migracao incremental.
 
-* Extrair 1 processador puro (ex: classificador)
-* Adaptar caso de uso atual para usar transformador puro
-* Validar execução manual
+### Primeiro motor de pipeline
 
-## Fase 3 — Motor de Pipeline
+- implementar executor linear;
+- implementar leitura de configuracao YAML;
+- criar um primeiro pipeline real e controlado.
 
-* Implementar executor linear
-* Implementar carregamento YAML
-* Criar primeiro pipeline real
+### Versionamento minimo
 
-## Fase 4 — Versionamento
+- criar a entidade `Pipeline`;
+- definir repositorio de pipelines;
+- salvar configuracao com versao incremental.
 
-* Criar entidade `Pipeline`
-* Criar repositório de pipelines
-* Salvar configuração com versão incremental
+## Limites do Documento
 
----
+Este documento deve ser lido como direcionamento arquitetural vivo do MVP.
 
-# 8. Situação Arquitetural Atual
+Ele nao deve ser lido como:
 
-Estamos em:
+- plataforma completa ja definida em todos os detalhes;
+- prova de implementacao material desses componentes;
+- substituto do backlog tecnico ativo;
+- roteiro exaustivo de todas as evolucoes futuras possiveis.
 
-> Fase de definição estrutural pré-implementação do MVP.
+Para leitura complementar:
 
-Decisões já consolidadas:
+- [roadmap_arquitetural.md](/home/thiago/coleta_showtrials/docs/projeto/roadmap_arquitetural.md) preserva o horizonte mais amplo;
+- [visao_do_projeto.md](/home/thiago/coleta_showtrials/docs/projeto/visao_do_projeto.md) preserva a formulacao ampla do projeto;
+- [49_conferencia_de_aderencia_ao_projeto_real.md](/home/thiago/coleta_showtrials/docs/modelagem/revisao/49_conferencia_de_aderencia_ao_projeto_real.md) ajuda a distinguir o que ja esta sustentado, o que esta backlogizado e o que ainda e hipotese.
 
-* Pipeline baseado em Contexto
-* Streaming futuro suportado
-* Persistência via sink
-* YAML declarativo
-* Versionamento numérico
-* Separação entre execução e configuração
+## Documentos Relacionados
 
-Arquitetura está coerente.
-
----
-
-# 9. Próximo Movimento
-
-Agora podemos:
-
-1. Discutir formalmente seu fluxo de trabalho.
-2. Formalizar um modelo de colaboração estruturado.
-3. Em seguida, analisar milestones e issues do repositório.
-4. Ajustar roadmap para alinhar com o MVP da engine.
-
-Pode me mostrar seus documentos de fluxo de trabalho.
+- [analise_arquitetural.md](/home/thiago/coleta_showtrials/docs/projeto/analise_arquitetural.md)
+- [roadmap_arquitetural.md](/home/thiago/coleta_showtrials/docs/projeto/roadmap_arquitetural.md)
+- [visao_do_projeto.md](/home/thiago/coleta_showtrials/docs/projeto/visao_do_projeto.md)
+- [20_decisoes_arquiteturais_iniciais.md](/home/thiago/coleta_showtrials/docs/modelagem/arquitetura/ponte/20_decisoes_arquiteturais_iniciais.md)
+- [49_conferencia_de_aderencia_ao_projeto_real.md](/home/thiago/coleta_showtrials/docs/modelagem/revisao/49_conferencia_de_aderencia_ao_projeto_real.md)
