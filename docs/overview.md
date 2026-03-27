@@ -1,75 +1,72 @@
-# Visão Geral do Projeto
+# Visao Geral do Projeto
 
-ShowTrials é um sistema para coleta, armazenamento, tradução e análise de documentos históricos dos processos de Moscou e Leningrado (1934-1935).
+## Objetivo
 
-## 🎯 Objetivo
+ShowTrials apoia pesquisa historica documental por meio de coleta, armazenamento, traducao, analise textual e visualizacao de documentos do acervo ShowTrials.
 
-Fornecer uma ferramenta para pesquisadores e historiadores acessarem, analisarem e traduzirem documentos históricos de forma eficiente.
+## O que o sistema faz hoje
 
-## 🏗️ Arquitetura
+O sistema atual oferece:
 
-O projeto segue os princípios da Clean Architecture, com camadas bem definidas:
+- coleta e persistencia de documentos historicos
+- classificacao por tipo e organizacao de metadados
+- traducao com integracao ao Google Cloud Translation
+- analise textual, incluindo entidades, sentimentos e wordclouds
+- interface CLI e interface web
+- exportacao e geracao de relatorios
 
-- **Domain Layer**: Regras de negócio e entidades
-- **Application Layer**: Casos de uso e orquestração
-- **Infrastructure Layer**: Repositórios e serviços externos
-- **Interface Layer**: CLI e Web
+## Estrutura em alto nivel
 
-## 📊 Estatísticas
+O nucleo atual do projeto segue uma separacao em camadas:
 
-- 519 documentos
-- 16 traduções
-- 48 testes automatizados
-- 45% de cobertura
-
-## 🛠️ Tecnologias
-
-- Python 3.12
-- Poetry
-- SQLite
-- FastAPI
-- Rich (CLI)
-- spaCy (NLP)
-- Google Cloud Translation API
-
-## 📁 Estrutura do Projeto
-
-```
-.
-├── src/                          # Código fonte
-│   ├── domain/                   # Camada de domínio
-│   ├── application/              # Camada de aplicação
-│   ├── infrastructure/           # Camada de infraestrutura
-│   └── interface/                # Interfaces (CLI/Web)
-├── tests/                        # Testes
-├── docs/                         # Documentação
-├── data/                         # Banco de dados
-├── exportados/                   # Arquivos exportados
-├── relatorios/                   # Relatórios
-├── analises/                      # Nuvens de palavras
-└── legacy/                        # Código legado
+```text
+Interface -> Application -> Domain -> Infrastructure
 ```
 
-## 🔄 Fluxo de Desenvolvimento
+Essa estrutura sustenta o sistema funcional atual e tambem serve como base para a evolucao arquitetural documentada no bloco `docs/projeto/`.
 
-1. Feature branch a partir da `main`
-2. Commits com mensagens padronizadas
-3. Pre-commit hooks rodam localmente
-4. CI roda testes no GitHub
-5. Review e merge
+## Estado atual e evolucao
 
-## 📈 Qualidade
+O projeto nao deve ser lido apenas como aplicacao pronta e fechada. Hoje ele combina:
 
-- ✅ 48 testes automatizados
-- ✅ 45% de cobertura
-- ✅ Linting com Ruff
-- ✅ Type checking com MyPy (parcial)
-- ✅ Formatação com Black/isort
-- ✅ CI/CD com GitHub Actions
+- um sistema funcional documentado e validado por testes
+- uma frente arquitetural voltada a evolucao para uma engine mais configuravel
+- uma trilha historica consistente entre fases, rodadas, changelog e modelagem
 
-## 👤 Autor
+Para a leitura mais forte do horizonte tecnico atual, consulte:
 
-**Thiago Ribeiro** - Projeto de TCC
+- [Direcionamento Arquitetural do MVP da Engine](projeto/direcionamento_arquitetural_engine_mvp.md)
+- [Visao Ampla do Projeto](projeto/visao_do_projeto.md)
+- [Roadmap Arquitetural Amplo](projeto/roadmap_arquitetural.md)
 
-- GitHub: [@rib-thiago](https://github.com/rib-thiago)
-- Email: mackandalls@gmail.com
+## Principais conjuntos documentais
+
+### Entrada publica
+
+- [README do repositorio](/home/thiago/coleta_showtrials/README.md)
+- [Pagina inicial da documentacao](index.md)
+- [Changelog](changelog.md)
+
+### Contribuicao e operacao
+
+- [Guia de Contribuicao](contributing.md)
+- [Guia de Documentacao do Projeto](flows/guia_de_documentacao_do_projeto.md)
+- [Guia de Atualizacao do Changelog](flows/guia_de_atualizacao_do_changelog.md)
+
+### Projeto e arquitetura
+
+- [docs/projeto](projeto/)
+- [docs/modelagem](modelagem/)
+
+### Historico
+
+- [docs/fases](fases/)
+- [docs/planejamento/rodadas](planejamento/rodadas/)
+
+## Como contribuir e acompanhar a evolucao
+
+Para contribuir:
+
+- comece por [Guia de Contribuicao](contributing.md)
+- consulte o [README do repositorio](/home/thiago/coleta_showtrials/README.md) para instalacao e comandos atuais
+- acompanhe mudancas publicas relevantes no [Changelog](changelog.md)
