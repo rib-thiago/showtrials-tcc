@@ -1,108 +1,95 @@
-# Diagnóstico: Falhas no Pipeline de CI (FASE 11)
+# Diagnostico Historico da Crise Inicial de CI por Dependencias NLP
 
-<div align="center">
+## Natureza do Documento
 
-**Análise detalhada das falhas no GitHub Actions que motivaram a FASE 11**
+Este documento registra historicamente o diagnostico da crise inicial do
+pipeline de CI provocada pela ausencia de dependencias de NLP no ambiente do
+GitHub Actions.
 
-</div>
+Ele deve ser lido como diagnostico historico de uma falha concreta de epoca, e
+nao como descricao completa do estado atual das dependencias NLP ou do
+tratamento vigente do problema.
 
-## 📅 **Informações do Diagnóstico**
+## Problema Diagnosticado
 
-| Item | Descrição |
-|------|-----------|
-| **Data** | 19/02/2026 |
-| **Autor** | Thiago Ribeiro |
-| **Fase relacionada** | [FASE 11](../fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI.md) |
-| **Commit do diagnóstico** | [`c87fc9e`](https://github.com/rib-thiago/showtrials-tcc/commit/c87fc9eac947b9748c53beaed12de293d173203a) |
+O pipeline de integracao continua passou a falhar com erro de importacao no
+bloco NLP:
 
----
-
-## 🎯 **Problema Identificado**
-
-Todos os merges das branches `type/*` estavam falhando no GitHub Actions com o erro:
-
-```
+```text
 ModuleNotFoundError: No module named 'spacy'
 ```
 
----
+Esse erro afetava testes ligados ao subsistema de analise de texto e bloqueava
+o funcionamento regular do pipeline no periodo.
 
-## 📊 **Dados Coletados**
+## Evidencias Principais
 
-### Histórico de Falhas
-```
-STATUS  TITLE                                  BRANCH    ID
-X       Merge branch 'type/analisar-texto'     main      22207771569
-X       Merge branch 'type/analisar-acervo'    main      22206622629
-X       Merge branch 'type/traduzir-documento' main      22205046693
-X       Merge branch 'type/factories'          main      22204553138
-```
+### Cadeia de Importacao
 
-**Último commit com sucesso:** `b8b3242` (18/02/2026)
-
----
-
-## 🔍 **Análise da Causa Raiz**
-
-### Cadeia de Importação
-```
+```text
 test_analisar_acervo.py
-  → from src.application.use_cases.analisar_acervo import AnalisarAcervo
-    → from src.infrastructure.analysis.spacy_analyzer import SpacyAnalyzer
-      → import spacy  ← ERRO!
+  -> src.application.use_cases.analisar_acervo
+    -> src.infrastructure.analysis.spacy_analyzer
+      -> import spacy
 ```
 
-### Comparação de Ambientes
+### Assimetria entre Ambientes
 
-| Componente | Local | CI | Status |
-|------------|-------|-----|--------|
-| spacy | ✅ (pip) | ❌ | 🔴 PROBLEMA |
-| numpy | ✅ (1.26.0) | ❌ | 🔴 PROBLEMA |
-| textblob | ✅ | ❌ | 🔴 PROBLEMA |
-| Modelos spaCy | ✅ | ❌ | 🔴 PROBLEMA |
-| Demais dependências | ✅ (Poetry) | ✅ | 🟢 OK |
+O diagnostico historico mostrou uma diferenca relevante entre:
 
----
+- ambiente local, onde o bloco NLP estava sendo completado por instalacao
+  complementar fora do `poetry install`;
+- ambiente de CI, que executava apenas o fluxo padrao do Poetry.
 
-## 📋 **Causa Raiz**
+Essa assimetria explicava por que funcionalidades de NLP podiam funcionar
+localmente e falhar no GitHub Actions.
 
-Durante a **FASE 8**, as dependências NLP foram instaladas manualmente via pip devido a conflitos com Poetry. O CI, porém, executava apenas `poetry install`, não replicando essas dependências.
+## Causa Raiz Identificada
 
----
+A causa raiz identificada naquele momento foi:
 
-## 📊 **Opções Consideradas**
+- o subsistema de NLP introduzido anteriormente dependia de bibliotecas e
+  modelos nao plenamente representados no fluxo padrao de instalacao;
+- o CI reproduzia apenas `poetry install`;
+- o GitHub Actions nao replicava o workaround local usado para o bloco NLP.
 
-| Opção | Descrição | Vantagens | Desvantagens |
-|-------|-----------|-----------|--------------|
-| **A** | Poetry | Solução canônica | Já tentado e falhou |
-| **B** | pip no CI | Rápida, testada | Foge do padrão |
-| **C** | Docker | Reprodutível | Complexo |
+## Solucao Historica Aplicada
 
-**Decisão:** Opção B (implementada na FASE 11)
+A solucao historica adotada foi complementar o CI com instalacao via `pip` das
+dependencias NLP necessarias para destravar o pipeline.
 
----
+O lastro tecnico principal dessa solucao esta em:
 
-## 📈 **Impacto**
+- [`c87fc9e`](https://github.com/rib-thiago/showtrials-tcc/commit/c87fc9eac947b9748c53beaed12de293d173203a) - `fix: adiciona dependências NLP via pip no CI`
+- [FASE11_ESTABILIZACAO_INICIAL_DO_CI.md](/home/thiago/coleta_showtrials/docs/fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI.md)
 
-- 12 merges bloqueados consecutivamente
-- Time impedido de avançar por ~24 horas
-- Solução implementada em 30 minutos
+## Impacto Historico
 
----
+Historicamente, este diagnostico importa por tres motivos:
 
-## 🔗 **Links Relacionados**
+- mostrou com clareza a divergencia entre ambiente local e ambiente de CI;
+- justificou a solucao provisoria implementada na fase correspondente;
+- revelou que o problema de dependencias NLP era estrutural e nao uma falha
+  isolada de configuracao.
 
-- [FASE 11 - Solução implementada](../fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI.md)
-- [Issue #1 - Migrar para Poetry](https://github.com/rib-thiago/showtrials-tcc/issues/1)
-- [Commit da solução](https://github.com/rib-thiago/showtrials-tcc/commit/c87fc9eac947b9748c53beaed12de293d173203a)
+## Limites de Leitura no Estado Atual
 
----
+Este documento nao deve ser lido como fonte viva principal para:
 
-<div align="center">
-  <sub>Diagnóstico mantido para referência histórica</sub>
-  <br>
-  <sub>✅ Problema resolvido na FASE 11</sub>
-</div>
-```
+- uso atual do Poetry;
+- execucao atual dos testes;
+- manutencao atual do pipeline;
+- estado atual da transicao das dependencias NLP.
 
----
+Para isso, a leitura mais forte hoje deve ser feita em:
+
+- [dependencias_nlp_estado_e_transicao.md](/home/thiago/coleta_showtrials/docs/projeto/dependencias_nlp_estado_e_transicao.md)
+- [FASE11_ESTABILIZACAO_INICIAL_DO_CI.md](/home/thiago/coleta_showtrials/docs/fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI.md)
+- [contributing.md](/home/thiago/coleta_showtrials/docs/contributing.md)
+
+## Documentos Relacionados
+
+- [FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO.md](/home/thiago/coleta_showtrials/docs/fases/FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO.md)
+- [FASE11_ESTABILIZACAO_INICIAL_DO_CI.md](/home/thiago/coleta_showtrials/docs/fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI.md)
+- [dependencias_nlp_estado_e_transicao.md](/home/thiago/coleta_showtrials/docs/projeto/dependencias_nlp_estado_e_transicao.md)
+- [guia_de_dependencias.md](/home/thiago/coleta_showtrials/docs/flows/guia_de_dependencias.md)
