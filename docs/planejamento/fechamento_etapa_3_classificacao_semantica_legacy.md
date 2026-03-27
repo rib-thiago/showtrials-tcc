@@ -123,12 +123,12 @@ Casos especialmente sensiveis incluem:
 - `docs/projeto/analise_arquitetural.md`
 - `docs/projeto/manual_gestao.md`
 - `docs/projeto/visao_do_projeto.md`
-- `docs/fases/FASE11_CI.md`
-- `docs/fases/FASE12.md`
-- `docs/fases/FASE13.md`
-- `docs/fases/FASE14.md`
-- `docs/fases/FASE15.md`
-- `docs/fases/FASE16.md`
+- `docs/fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI.md`
+- `docs/fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md`
+- `docs/fases/FASE13_LIMPEZA_E_ORGANIZACAO_DO_REPOSITORIO.md`
+- `docs/fases/FASE14_TELEMETRIA_E_TESTES_EM_EXPORTAR_DOCUMENTO.md`
+- `docs/fases/FASE15_TELEMETRIA_E_TESTES_EM_GERAR_RELATORIO.md`
+- `docs/fases/FASE16_TELEMETRIA_E_EXPANSAO_DE_TESTES_EM_LISTAR_DOCUMENTOS.md`
 
 ## 6. O que esta etapa ainda nao fez
 

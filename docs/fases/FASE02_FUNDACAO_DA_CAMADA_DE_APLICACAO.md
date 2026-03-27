@@ -101,8 +101,8 @@ geral do sistema.
 
 ## Documentos Relacionados
 
-- [FASE1_DOMAIN.md](/home/thiago/coleta_showtrials/docs/fases/FASE1_DOMAIN.md)
-- [FASE3_INFRASTRUCTURE.md](/home/thiago/coleta_showtrials/docs/fases/FASE3_INFRASTRUCTURE.md)
+- [FASE01_FUNDACAO_DA_CAMADA_DE_DOMINIO.md](/home/thiago/coleta_showtrials/docs/fases/FASE01_FUNDACAO_DA_CAMADA_DE_DOMINIO.md)
+- [FASE03_FUNDACAO_DA_CAMADA_DE_INFRAESTRUTURA.md](/home/thiago/coleta_showtrials/docs/fases/FASE03_FUNDACAO_DA_CAMADA_DE_INFRAESTRUTURA.md)
 - [ARCHITECTURE.md](/home/thiago/coleta_showtrials/docs/ARCHITECTURE.md)
 - [analise_arquitetural.md](/home/thiago/coleta_showtrials/docs/projeto/analise_arquitetural.md)
 - [direcionamento_arquitetural_engine_mvp.md](/home/thiago/coleta_showtrials/docs/projeto/direcionamento_arquitetural_engine_mvp.md)

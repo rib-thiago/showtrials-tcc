@@ -224,11 +224,11 @@ Aplicando este padrao aos casos mais sensiveis ja identificados:
   - priorizar titulo de protocolo normativo
 - `docs/flows/quality_flow.md`:
   - priorizar titulo de protocolo normativo
-- `docs/fases/FASE11_CI.md`:
+- `docs/fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI.md`:
   - tratar como historico de intervencao
-- `docs/fases/FASE12.md`:
+- `docs/fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md`:
   - tratar como historico hibrido com reducao de tutorializacao
-- `docs/fases/FASE13.md` a `docs/fases/FASE16.md`:
+- `docs/fases/FASE13_LIMPEZA_E_ORGANIZACAO_DO_REPOSITORIO.md` a `docs/fases/FASE16_TELEMETRIA_E_EXPANSAO_DE_TESTES_EM_LISTAR_DOCUMENTOS.md`:
   - remover residuos explicitos de geracao assistida
   - adotar titulo historico direto
 - `docs/projeto/visao_do_projeto.md`:

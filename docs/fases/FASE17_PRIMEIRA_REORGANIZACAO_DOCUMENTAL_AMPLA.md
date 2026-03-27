@@ -51,7 +51,7 @@ Esses movimentos tiveram peso proprio porque ajudaram a transformar a documentac
 
 Com base no lastro historico identificado, esta fase se relaciona fortemente com:
 
-- `docs/fases/FASE17.md`
+- `docs/fases/FASE17_PRIMEIRA_REORGANIZACAO_DOCUMENTAL_AMPLA.md`
 - `mkdocs.yml`
 - `docs/planejamento/plano_issue2_revisao_documentacao.md`
 - `docs/index.md`

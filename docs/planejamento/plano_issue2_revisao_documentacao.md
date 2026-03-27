@@ -170,8 +170,8 @@ nav:
   - Arquitetura: ARCHITECTURE.md
 
   - Fases do Projeto:
-    - FASE 1 - Domain: fases/FASE1_DOMAIN.md
-    - FASE 2 - Application: fases/FASE2_APPLICATION.md
+    - FASE 1 - Domain: fases/FASE01_FUNDACAO_DA_CAMADA_DE_DOMINIO.md
+    - FASE 2 - Application: fases/FASE02_FUNDACAO_DA_CAMADA_DE_APLICACAO.md
     # ... todas as fases
     - FASE 16 - ListarDocumentos: fases/FASE16_LISTAR_DOCUMENTOS.md
 

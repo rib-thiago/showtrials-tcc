@@ -55,9 +55,9 @@ docs/
 
   historico/
     fases/
-      FASE1_DOMAIN.md
+      FASE01_FUNDACAO_DA_CAMADA_DE_DOMINIO.md
       ...
-      FASE17.md
+      FASE17_PRIMEIRA_REORGANIZACAO_DOCUMENTAL_AMPLA.md
     planejamento/
       plano_issues_documentacao.md
       roadmap_arquitetural.md

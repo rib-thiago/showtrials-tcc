@@ -92,8 +92,8 @@ Por isso, nesta fase saneada:
 
 ## Documentos Relacionados
 
-- [FASE 12 - Padronizacao da Telemetria em TipoDocumento](FASE12.md)
-- [FASE 15 - Telemetria e Testes em GerarRelatorio](FASE15.md)
+- [FASE 12 - Padronizacao da Telemetria em TipoDocumento](FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md)
+- [FASE 15 - Telemetria e Testes em GerarRelatorio](FASE15_TELEMETRIA_E_TESTES_EM_GERAR_RELATORIO.md)
 - [Guia de Telemetria do Projeto](../flows/guia_de_telemetria.md)
 - [Protocolo de Qualidade](../flows/protocolo_de_qualidade.md)
 - [Guia de Auto-Revisao](../flows/guia_de_auto_revisao.md)

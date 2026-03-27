@@ -104,7 +104,7 @@ O documento vivo mais forte para essa questao hoje e [Dependencias NLP: Estado A
 
 ## Documentos Relacionados
 
-- [FASE 8 - Analise de Texto](FASE8_ANALISE_TEXTO.md)
+- [FASE 8 - Analise de Texto](FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO.md)
 - [Dependencias NLP: Estado Atual e Transicao](../projeto/dependencias_nlp_estado_e_transicao.md)
 - [Guia de Dependencias do Projeto](../flows/guia_de_dependencias.md)
 - [diagnostico_ci.md](../metricas/diagnostico_ci.md)

@@ -6,14 +6,14 @@ Este documento registra a classificacao semantica preliminar do quinto bloco da 
 
 Este subbloco cobre:
 
-- `docs/fases/FASE10_SERVICE_REGISTRY.md`
-- `docs/fases/FASE11_CI.md`
-- `docs/fases/FASE12.md`
-- `docs/fases/FASE13.md`
-- `docs/fases/FASE14.md`
-- `docs/fases/FASE15.md`
-- `docs/fases/FASE16.md`
-- `docs/fases/FASE17.md`
+- `docs/fases/FASE10_INTRODUCAO_DO_SERVICE_REGISTRY_E_DO_LAZY_LOADING.md`
+- `docs/fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI.md`
+- `docs/fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md`
+- `docs/fases/FASE13_LIMPEZA_E_ORGANIZACAO_DO_REPOSITORIO.md`
+- `docs/fases/FASE14_TELEMETRIA_E_TESTES_EM_EXPORTAR_DOCUMENTO.md`
+- `docs/fases/FASE15_TELEMETRIA_E_TESTES_EM_GERAR_RELATORIO.md`
+- `docs/fases/FASE16_TELEMETRIA_E_EXPANSAO_DE_TESTES_EM_LISTAR_DOCUMENTOS.md`
+- `docs/fases/FASE17_PRIMEIRA_REORGANIZACAO_DOCUMENTAL_AMPLA.md`
 
 Seu objetivo e:
 
@@ -26,20 +26,20 @@ Seu objetivo e:
 
 Arquivos cobertos neste subbloco:
 
-- `docs/fases/FASE10_SERVICE_REGISTRY.md`
-- `docs/fases/FASE11_CI.md`
-- `docs/fases/FASE12.md`
-- `docs/fases/FASE13.md`
-- `docs/fases/FASE14.md`
-- `docs/fases/FASE15.md`
-- `docs/fases/FASE16.md`
-- `docs/fases/FASE17.md`
+- `docs/fases/FASE10_INTRODUCAO_DO_SERVICE_REGISTRY_E_DO_LAZY_LOADING.md`
+- `docs/fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI.md`
+- `docs/fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md`
+- `docs/fases/FASE13_LIMPEZA_E_ORGANIZACAO_DO_REPOSITORIO.md`
+- `docs/fases/FASE14_TELEMETRIA_E_TESTES_EM_EXPORTAR_DOCUMENTO.md`
+- `docs/fases/FASE15_TELEMETRIA_E_TESTES_EM_GERAR_RELATORIO.md`
+- `docs/fases/FASE16_TELEMETRIA_E_EXPANSAO_DE_TESTES_EM_LISTAR_DOCUMENTOS.md`
+- `docs/fases/FASE17_PRIMEIRA_REORGANIZACAO_DOCUMENTAL_AMPLA.md`
 
 Todos os arquivos do subbloco receberam classificacao semantica preliminar nesta etapa.
 
 ## 3. Classificacao por arquivo
 
-### 3.1 `docs/fases/FASE10_SERVICE_REGISTRY.md`
+### 3.1 `docs/fases/FASE10_INTRODUCAO_DO_SERVICE_REGISTRY_E_DO_LAZY_LOADING.md`
 
 **Estatuto preliminar**
 
@@ -56,7 +56,7 @@ Todos os arquivos do subbloco receberam classificacao semantica preliminar nesta
 - tratar como historico de intervencao
 - candidato a saneamento semantico e factual pontual
 
-### 3.2 `docs/fases/FASE11_CI.md`
+### 3.2 `docs/fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI.md`
 
 **Estatuto preliminar**
 
@@ -74,7 +74,7 @@ Todos os arquivos do subbloco receberam classificacao semantica preliminar nesta
 - tratar como historico de intervencao tecnica
 - candidato forte a correcao obrigatoria
 
-### 3.3 `docs/fases/FASE12.md`
+### 3.3 `docs/fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md`
 
 **Estatuto preliminar**
 
@@ -93,7 +93,7 @@ Todos os arquivos do subbloco receberam classificacao semantica preliminar nesta
 - reclassificar como historico hibrido de intervencao, nao como simples fase consolidada
 - candidato forte a correcao obrigatoria
 
-### 3.4 `docs/fases/FASE13.md`
+### 3.4 `docs/fases/FASE13_LIMPEZA_E_ORGANIZACAO_DO_REPOSITORIO.md`
 
 **Estatuto preliminar**
 
@@ -111,7 +111,7 @@ Todos os arquivos do subbloco receberam classificacao semantica preliminar nesta
 - tratar como historico hibrido severamente contaminado por residuos de geracao assistida
 - candidato fortissimo a correcao obrigatoria
 
-### 3.5 `docs/fases/FASE14.md`
+### 3.5 `docs/fases/FASE14_TELEMETRIA_E_TESTES_EM_EXPORTAR_DOCUMENTO.md`
 
 **Estatuto preliminar**
 
@@ -120,7 +120,7 @@ Todos os arquivos do subbloco receberam classificacao semantica preliminar nesta
 **Problemas identificados**
 
 - repete o mesmo molde artificial de `FASE13`
-- wrapper `## 📄 **FASE14.md ...` e bloco ```markdown`
+- wrapper `## 📄 **FASE14_TELEMETRIA_E_TESTES_EM_EXPORTAR_DOCUMENTO.md ...` e bloco ```markdown`
 - excesso de detalhamento tutorializado e sinais claros de texto assistido
 
 **Encaminhamento inicial**
@@ -129,7 +129,7 @@ Todos os arquivos do subbloco receberam classificacao semantica preliminar nesta
 - tratar como historico hibrido severamente contaminado por residuos de geracao assistida
 - candidato fortissimo a correcao obrigatoria
 
-### 3.6 `docs/fases/FASE15.md`
+### 3.6 `docs/fases/FASE15_TELEMETRIA_E_TESTES_EM_GERAR_RELATORIO.md`
 
 **Estatuto preliminar**
 
@@ -147,7 +147,7 @@ Todos os arquivos do subbloco receberam classificacao semantica preliminar nesta
 - tratar como historico hibrido severamente contaminado por residuos de geracao assistida
 - candidato fortissimo a correcao obrigatoria
 
-### 3.7 `docs/fases/FASE16.md`
+### 3.7 `docs/fases/FASE16_TELEMETRIA_E_EXPANSAO_DE_TESTES_EM_LISTAR_DOCUMENTOS.md`
 
 **Estatuto preliminar**
 
@@ -165,7 +165,7 @@ Todos os arquivos do subbloco receberam classificacao semantica preliminar nesta
 - tratar como historico hibrido severamente contaminado por residuos de geracao assistida
 - candidato fortissimo a correcao obrigatoria
 
-### 3.8 `docs/fases/FASE17.md`
+### 3.8 `docs/fases/FASE17_PRIMEIRA_REORGANIZACAO_DOCUMENTAL_AMPLA.md`
 
 **Estatuto preliminar**
 
@@ -208,17 +208,17 @@ O subbloco e menos homogeneo do que `FASE1` a `FASE9`.
 
 Entram como candidatos mais fortes a `corrigir agora`:
 
-- `docs/fases/FASE11_CI.md`
-- `docs/fases/FASE12.md`
-- `docs/fases/FASE13.md`
-- `docs/fases/FASE14.md`
-- `docs/fases/FASE15.md`
-- `docs/fases/FASE16.md`
-- `docs/fases/FASE17.md`
+- `docs/fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI.md`
+- `docs/fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md`
+- `docs/fases/FASE13_LIMPEZA_E_ORGANIZACAO_DO_REPOSITORIO.md`
+- `docs/fases/FASE14_TELEMETRIA_E_TESTES_EM_EXPORTAR_DOCUMENTO.md`
+- `docs/fases/FASE15_TELEMETRIA_E_TESTES_EM_GERAR_RELATORIO.md`
+- `docs/fases/FASE16_TELEMETRIA_E_EXPANSAO_DE_TESTES_EM_LISTAR_DOCUMENTOS.md`
+- `docs/fases/FASE17_PRIMEIRA_REORGANIZACAO_DOCUMENTAL_AMPLA.md`
 
 Tambem permanece como candidato a saneamento pontual:
 
-- `docs/fases/FASE10_SERVICE_REGISTRY.md`
+- `docs/fases/FASE10_INTRODUCAO_DO_SERVICE_REGISTRY_E_DO_LAZY_LOADING.md`
 
 O motivo principal, neste subbloco, e:
 

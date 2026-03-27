@@ -73,7 +73,7 @@ Pelo historico Git, o nucleo principal da documentacao legada foi produzido nest
   - criacao de `TEMPLATE_FASE.md`
   - separacao de diagnosticos em `metricas/`
 - `2026-02-22`:
-  - abertura de `FASE17.md`
+  - abertura de `FASE17_PRIMEIRA_REORGANIZACAO_DOCUMENTAL_AMPLA.md`
   - consolidacao adicional de governanca e fluxos
 
 Conclusao preliminar:
@@ -109,7 +109,7 @@ Arquivos principais observados:
 
 Arquivos observados:
 
-- `FASE1_DOMAIN.md` a `FASE17.md`
+- `FASE01_FUNDACAO_DA_CAMADA_DE_DOMINIO.md` a `FASE17_PRIMEIRA_REORGANIZACAO_DOCUMENTAL_AMPLA.md`
 
 **Estatuto preliminar**
 
@@ -213,7 +213,7 @@ Os itens abaixo ja podem ser classificados, desde esta etapa, como candidatos fo
 - sinais de rascunho/prospectividade nao suficientemente enquadrados em `docs/projeto/visao_do_projeto.md`
 - possivel tensao normativa entre `docs/projeto/manual_gestao.md` e `docs/flows/GOVERNANCA.md`
 - fences e fechamento formal problematico em:
-  - `docs/fases/FASE11_CI.md`
+  - `docs/fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI.md`
   - `docs/metricas/diagnostico_ci.md`
   - `docs/metricas/cobertura.md`
 - possivel desatualizacao factual em documentos-raiz como `docs/index.md` e `docs/overview.md`

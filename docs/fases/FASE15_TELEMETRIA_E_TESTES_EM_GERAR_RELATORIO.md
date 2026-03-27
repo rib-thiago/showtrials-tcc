@@ -31,9 +31,9 @@ Esta fase pertence ao mesmo subciclo historico que endureceu tecnicamente casos 
 
 Ela se conecta diretamente ao encadeamento entre:
 
-- [FASE12.md](FASE12.md)
-- [FASE14.md](FASE14.md)
-- [FASE16.md](FASE16.md)
+- [FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md](FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md)
+- [FASE14_TELEMETRIA_E_TESTES_EM_EXPORTAR_DOCUMENTO.md](FASE14_TELEMETRIA_E_TESTES_EM_EXPORTAR_DOCUMENTO.md)
+- [FASE16_TELEMETRIA_E_EXPANSAO_DE_TESTES_EM_LISTAR_DOCUMENTOS.md](FASE16_TELEMETRIA_E_EXPANSAO_DE_TESTES_EM_LISTAR_DOCUMENTOS.md)
 
 ## Intervencao Aplicada
 
@@ -87,9 +87,9 @@ O commit principal associado registra como resultado:
 
 ## Documentos Relacionados
 
-- [FASE12.md](FASE12.md)
-- [FASE14.md](FASE14.md)
-- [FASE16.md](FASE16.md)
+- [FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md](FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md)
+- [FASE14_TELEMETRIA_E_TESTES_EM_EXPORTAR_DOCUMENTO.md](FASE14_TELEMETRIA_E_TESTES_EM_EXPORTAR_DOCUMENTO.md)
+- [FASE16_TELEMETRIA_E_EXPANSAO_DE_TESTES_EM_LISTAR_DOCUMENTOS.md](FASE16_TELEMETRIA_E_EXPANSAO_DE_TESTES_EM_LISTAR_DOCUMENTOS.md)
 - [Guia de Telemetria do Projeto](../flows/guia_de_telemetria.md)
 - [Protocolo de Qualidade](../flows/protocolo_de_qualidade.md)
 - [Guia de Auto-Revisao](../flows/guia_de_auto_revisao.md)

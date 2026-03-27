@@ -12,7 +12,7 @@
 |------|-----------|
 | **Data** | 19/02/2026 |
 | **Autor** | Thiago Ribeiro |
-| **Fase relacionada** | [FASE 12](../fases/FASE12.md) |
+| **Fase relacionada** | [FASE 12](../fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md) |
 | **Issue principal** | [#3](https://github.com/rib-thiago/showtrials-tcc/issues/3) |
 | **Arquivo afetado** | `src/domain/value_objects/tipo_documento.py` |
 | **Testes falhando** | 4 (test_tipo_documento_telemetry.py) |
@@ -96,7 +96,7 @@ O arquivo `tipo_documento.py` nunca foi atualizado para seguir o padrão de tele
 
 ## ✅ **Solução Aplicada**
 
-A correção foi implementada na [FASE 12](../fases/FASE12.md), substituindo o padrão antigo pelo consolidado:
+A correção foi implementada na [FASE 12](../fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md), substituindo o padrão antigo pelo consolidado:
 
 1. Removido decorator `@monitor`
 2. Adicionada variável global `_telemetry`
@@ -116,7 +116,7 @@ Após a correção:
 
 ## 🔗 **Links Relacionados**
 
-- [FASE 12 - Implementação da correção](../fases/FASE12.md)
+- [FASE 12 - Implementação da correção](../fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md)
 - [Commit da correção](https://github.com/rib-thiago/showtrials-tcc/commit/1b91b23) (exemplo - ajustar hash real)
 - [Issue #3 - FASE 17](https://github.com/rib-thiago/showtrials-tcc/issues/3)
 

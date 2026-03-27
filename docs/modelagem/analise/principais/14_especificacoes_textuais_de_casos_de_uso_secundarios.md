@@ -92,9 +92,9 @@ O usuário solicita a listagem de documentos.
 
 ### Base de evidência
 
-- [FASE2_APPLICATION.md](/home/thiago/coleta_showtrials/docs/fases/FASE2_APPLICATION.md)
-- [FASE4_CLI.md](/home/thiago/coleta_showtrials/docs/fases/FASE4_CLI.md)
-- [FASE9_WEB_INTERFACE.md](/home/thiago/coleta_showtrials/docs/fases/FASE9_WEB_INTERFACE.md)
+- [FASE02_FUNDACAO_DA_CAMADA_DE_APLICACAO.md](/home/thiago/coleta_showtrials/docs/fases/FASE02_FUNDACAO_DA_CAMADA_DE_APLICACAO.md)
+- [FASE04_FUNDACAO_DA_INTERFACE_CLI.md](/home/thiago/coleta_showtrials/docs/fases/FASE04_FUNDACAO_DA_INTERFACE_CLI.md)
+- [FASE09_INTRODUCAO_DA_INTERFACE_WEB.md](/home/thiago/coleta_showtrials/docs/fases/FASE09_INTRODUCAO_DA_INTERFACE_WEB.md)
 
 ## 5.2 `ClassificarDocumento`
 
@@ -140,7 +140,7 @@ O usuário solicita a classificação de um documento específico ou de um conju
 
 ### Base de evidência
 
-- [FASE2_APPLICATION.md](/home/thiago/coleta_showtrials/docs/fases/FASE2_APPLICATION.md)
+- [FASE02_FUNDACAO_DA_CAMADA_DE_APLICACAO.md](/home/thiago/coleta_showtrials/docs/fases/FASE02_FUNDACAO_DA_CAMADA_DE_APLICACAO.md)
 
 ## 5.3 `ListarTraducoes`
 
@@ -183,7 +183,7 @@ O usuário deseja verificar traduções associadas a um documento.
 
 ### Base de evidência
 
-- [FASE5_TRADUCAO.md](/home/thiago/coleta_showtrials/docs/fases/FASE5_TRADUCAO.md)
+- [FASE05_INTRODUCAO_DO_SUBSISTEMA_DE_TRADUCAO.md](/home/thiago/coleta_showtrials/docs/fases/FASE05_INTRODUCAO_DO_SUBSISTEMA_DE_TRADUCAO.md)
 
 ## 5.4 `ObterEstatisticas`
 
@@ -227,7 +227,7 @@ O usuário solicita estatísticas globais do acervo.
 
 ### Base de evidência
 
-- [FASE2_APPLICATION.md](/home/thiago/coleta_showtrials/docs/fases/FASE2_APPLICATION.md)
+- [FASE02_FUNDACAO_DA_CAMADA_DE_APLICACAO.md](/home/thiago/coleta_showtrials/docs/fases/FASE02_FUNDACAO_DA_CAMADA_DE_APLICACAO.md)
 
 ## 5.5 `AnalisarAcervo`
 
@@ -275,7 +275,7 @@ O usuário solicita análise global do acervo.
 
 ### Base de evidência
 
-- [FASE8_ANALISE_TEXTO.md](/home/thiago/coleta_showtrials/docs/fases/FASE8_ANALISE_TEXTO.md)
+- [FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO.md](/home/thiago/coleta_showtrials/docs/fases/FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO.md)
 
 ## 5.6 `ExportarDocumento`
 
@@ -322,8 +322,8 @@ O usuário solicita a exportação de um documento.
 
 ### Base de evidência
 
-- [FASE6_EXPORTACAO.md](/home/thiago/coleta_showtrials/docs/fases/FASE6_EXPORTACAO.md)
-- [FASE14.md](/home/thiago/coleta_showtrials/docs/fases/FASE14.md)
+- [FASE06_INTRODUCAO_DO_SUBSISTEMA_DE_EXPORTACAO.md](/home/thiago/coleta_showtrials/docs/fases/FASE06_INTRODUCAO_DO_SUBSISTEMA_DE_EXPORTACAO.md)
+- [FASE14_TELEMETRIA_E_TESTES_EM_EXPORTAR_DOCUMENTO.md](/home/thiago/coleta_showtrials/docs/fases/FASE14_TELEMETRIA_E_TESTES_EM_EXPORTAR_DOCUMENTO.md)
 
 ## 5.7 `GerarRelatorio`
 
@@ -368,8 +368,8 @@ O usuário solicita a geração de um relatório.
 
 ### Base de evidência
 
-- [FASE7_RELATORIOS.md](/home/thiago/coleta_showtrials/docs/fases/FASE7_RELATORIOS.md)
-- [FASE15.md](/home/thiago/coleta_showtrials/docs/fases/FASE15.md)
+- [FASE07_INTRODUCAO_DO_SUBSISTEMA_DE_RELATORIOS.md](/home/thiago/coleta_showtrials/docs/fases/FASE07_INTRODUCAO_DO_SUBSISTEMA_DE_RELATORIOS.md)
+- [FASE15_TELEMETRIA_E_TESTES_EM_GERAR_RELATORIO.md](/home/thiago/coleta_showtrials/docs/fases/FASE15_TELEMETRIA_E_TESTES_EM_GERAR_RELATORIO.md)
 
 ## 6. Casos de uso secundários da transição e do sistema-alvo
 

@@ -65,7 +65,7 @@
   - Expandidos testes de lógica (12)
   - Criados testes de telemetria (6)
   - Corrigidos 3 erros de MyPy
-🔗 [FASE16.md](fases/FASE16.md)
+🔗 [FASE16_TELEMETRIA_E_EXPANSAO_DE_TESTES_EM_LISTAR_DOCUMENTOS.md](fases/FASE16_TELEMETRIA_E_EXPANSAO_DE_TESTES_EM_LISTAR_DOCUMENTOS.md)
 ```
 
 ### **FASE 15 - GerarRelatorio (20/02/2026)**
@@ -77,7 +77,7 @@
   - Criados 12 testes de lógica
   - Criados 6 testes de telemetria
   - Corrigidos 7 erros de MyPy
-🔗 [FASE15.md](fases/FASE15.md)
+🔗 [FASE15_TELEMETRIA_E_TESTES_EM_GERAR_RELATORIO.md](fases/FASE15_TELEMETRIA_E_TESTES_EM_GERAR_RELATORIO.md)
 ```
 
 ### **FASE 14 - ExportarDocumento (20/02/2026)**
@@ -88,7 +88,7 @@
   - Adicionada telemetria
   - Criados 12 testes de lógica
   - Criados 8 testes de telemetria
-🔗 [FASE14.md](fases/FASE14.md)
+🔗 [FASE14_TELEMETRIA_E_TESTES_EM_EXPORTAR_DOCUMENTO.md](fases/FASE14_TELEMETRIA_E_TESTES_EM_EXPORTAR_DOCUMENTO.md)
 ```
 
 ### **FASE 12-13 - Fundação (19/02/2026)**
@@ -98,7 +98,7 @@
   - Padronização de telemetria em tipo_documento.py
   - Limpeza de arquivos .bak e diagnóstico
   - Organização do repositório
-🔗 [FASE12.md](fases/FASE12.md) | [FASE13.md](fases/FASE13.md)
+🔗 [FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md](fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md) | [FASE13_LIMPEZA_E_ORGANIZACAO_DO_REPOSITORIO.md](fases/FASE13_LIMPEZA_E_ORGANIZACAO_DO_REPOSITORIO.md)
 ```
 
 ---

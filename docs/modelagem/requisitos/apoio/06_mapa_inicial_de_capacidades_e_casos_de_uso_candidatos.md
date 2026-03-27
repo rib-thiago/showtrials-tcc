@@ -14,11 +14,11 @@ Seu foco não é ainda formalizar um documento completo de casos de uso nem deta
 
 Este insumo foi construído com base em:
 
-- `docs/fases/FASE2_APPLICATION.md`
-- `docs/fases/FASE5_TRADUCAO.md`
-- `docs/fases/FASE6_EXPORTACAO.md`
-- `docs/fases/FASE7_RELATORIOS.md`
-- `docs/fases/FASE8_ANALISE_TEXTO.md`
+- `docs/fases/FASE02_FUNDACAO_DA_CAMADA_DE_APLICACAO.md`
+- `docs/fases/FASE05_INTRODUCAO_DO_SUBSISTEMA_DE_TRADUCAO.md`
+- `docs/fases/FASE06_INTRODUCAO_DO_SUBSISTEMA_DE_EXPORTACAO.md`
+- `docs/fases/FASE07_INTRODUCAO_DO_SUBSISTEMA_DE_RELATORIOS.md`
+- `docs/fases/FASE08_INTRODUCAO_DO_SUBSISTEMA_DE_ANALISE_DE_TEXTO.md`
 - `docs/modelagem/03_documento_de_requisitos.md`
 - `docs/modelagem/requisitos/apoio/03_glossario_de_atores_e_termos.md`
 - `docs/modelagem/requisitos/apoio/04_mapa_de_stakeholders_atores_e_objetivos.md`

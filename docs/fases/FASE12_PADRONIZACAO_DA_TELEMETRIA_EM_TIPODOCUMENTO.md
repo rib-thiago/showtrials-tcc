@@ -27,7 +27,7 @@ O contexto mais imediato incluia:
 
 Hoje esse contexto deve ser lido em conjunto com:
 
-- [FASE 11 - CI: Estabilizacao do Pipeline de Integracao Continua](FASE11_CI.md)
+- [FASE 11 - CI: Estabilizacao do Pipeline de Integracao Continua](FASE11_ESTABILIZACAO_INICIAL_DO_CI.md)
 - [Guia de Telemetria do Projeto](../flows/guia_de_telemetria.md)
 
 ## Problema Enfrentado
@@ -60,7 +60,7 @@ Com lastro direto no commit principal identificado:
 Artefatos historicamente relacionados:
 
 - [diagnostico_fase12.md](../metricas/diagnostico_fase12.md)
-- [FASE11_CI.md](FASE11_CI.md)
+- [FASE11_ESTABILIZACAO_INICIAL_DO_CI.md](FASE11_ESTABILIZACAO_INICIAL_DO_CI.md)
 
 ## Rastreabilidade Git e GitHub
 
@@ -100,7 +100,7 @@ Como historico, esta fase registra um momento de consolidacao tecnica em que:
 
 ## Documentos Relacionados
 
-- [FASE 11 - CI: Estabilizacao do Pipeline de Integracao Continua](FASE11_CI.md)
+- [FASE 11 - CI: Estabilizacao do Pipeline de Integracao Continua](FASE11_ESTABILIZACAO_INICIAL_DO_CI.md)
 - [Guia de Telemetria do Projeto](../flows/guia_de_telemetria.md)
 - [Protocolo de Qualidade](../flows/protocolo_de_qualidade.md)
 - [Protocolo de Git](../flows/protocolo_de_git.md)

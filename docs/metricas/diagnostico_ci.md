@@ -12,7 +12,7 @@
 |------|-----------|
 | **Data** | 19/02/2026 |
 | **Autor** | Thiago Ribeiro |
-| **Fase relacionada** | [FASE 11](../fases/FASE11_CI.md) |
+| **Fase relacionada** | [FASE 11](../fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI.md) |
 | **Commit do diagnóstico** | [`c87fc9e`](https://github.com/rib-thiago/showtrials-tcc/commit/c87fc9eac947b9748c53beaed12de293d173203a) |
 
 ---
@@ -92,7 +92,7 @@ Durante a **FASE 8**, as dependências NLP foram instaladas manualmente via pip 
 
 ## 🔗 **Links Relacionados**
 
-- [FASE 11 - Solução implementada](../fases/FASE11_CI.md)
+- [FASE 11 - Solução implementada](../fases/FASE11_ESTABILIZACAO_INICIAL_DO_CI.md)
 - [Issue #1 - Migrar para Poetry](https://github.com/rib-thiago/showtrials-tcc/issues/1)
 - [Commit da solução](https://github.com/rib-thiago/showtrials-tcc/commit/c87fc9eac947b9748c53beaed12de293d173203a)
 
