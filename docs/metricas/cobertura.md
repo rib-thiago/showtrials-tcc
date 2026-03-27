@@ -1,148 +1,81 @@
-## 📊 **COBERTURA DE TESTES - SHOWTRIALS**
+# Cobertura de Testes
 
-<div align="center">
+## Objetivo
 
-**Métricas atualizadas em 21/02/2026 • [Histórico de evolução](#histórico-de-evolução)**
+Este documento registra, de forma resumida, o estado atual validado da
+cobertura de testes do projeto e uma sintese curta da sua evolucao historica.
 
-</div>
+Ele deve ser lido como snapshot vivo de acompanhamento, e nao como backlog
+completo de qualidade, lista definitiva de prioridades ou substituto do
+historico detalhado em Git, fases e rodadas.
 
----
+## Estado Atual Validado
 
-## 📈 **MÉTRICAS ATUAIS**
+Validacao mais recente com lastro operacional confirmado:
 
-| Métrica | Valor |
-|---------|-------|
-| **Cobertura global** | **75%** 🚀 |
-| **Testes totais** | ~250 |
-| **Meta inicial** | 45% (✅ ultrapassada) |
-| **Arquivos monitorados** | 40+ |
-
----
-
-## 📊 **EVOLUÇÃO DA COBERTURA**
-
-| Data | Cobertura | Δ | Principais Contribuições |
-|------|-----------|-----|-------------------------|
-| **21/02/2026** | **75%** | +12% | FASE 14-16 (exportar, gerar, listar) |
-| 19/02/2026 | 63% | +8% | FASE 12-13 (telemetria + limpeza) |
-| 19/02/2026 | 55% | - | Diagnóstico inicial |
-
-*Detalhes das contribuições estão documentados em cada [FASE*.md](fases/)*
-
----
-
-## 🎯 **TOP PRIORIDADES ATUAIS**
-
-| # | Arquivo | Cobertura | Impacto | Issue | Fase |
-|---|---------|-----------|---------|-------|------|
-| 1 | `estatisticas.py` | 15% | 🔴 Alto | [#5](https://github.com/rib-thiago/showtrials-tcc/issues/5) | FASE 19 |
-| 2 | `classificar_documento.py` | 65% | 🟡 Médio | [#3](https://github.com/rib-thiago/showtrials-tcc/issues/3) | FASE 17 |
-| 3 | `obter_documento.py` | 57% | 🟡 Médio | [#4](https://github.com/rib-thiago/showtrials-tcc/issues/4) | FASE 18 |
-| 4 | `spacy_analyzer.py` | 23% | 🔴 Alto | - | - |
-| 5 | `google_translator.py` | 24% | 🔴 Alto | - | - |
-
----
-
-## 📊 **COBERTURA POR CAMADA**
-
-| Camada | Cobertura | Status |
-|--------|-----------|--------|
-| **Domain** | 92% | ✅ Excelente |
-| **Application** | 40% | ⚠️ Em progresso |
-| **Infrastructure** | 57% | 🟡 Melhorando |
-| **Interface** | - | Testes manuais |
-
----
-
-## 📜 **HISTÓRICO DETALHADO DE MUDANÇAS**
-
-### **FASE 16 - ListarDocumentos (20/02/2026)**
-```bash
-📁 src/application/use_cases/listar_documentos.py
-📈 55% → 80%
-✨ Melhorias:
-  - Adicionada telemetria
-  - Expandidos testes de lógica (12)
-  - Criados testes de telemetria (6)
-  - Corrigidos 3 erros de MyPy
-🔗 [FASE16_TELEMETRIA_E_EXPANSAO_DE_TESTES_EM_LISTAR_DOCUMENTOS.md](fases/FASE16_TELEMETRIA_E_EXPANSAO_DE_TESTES_EM_LISTAR_DOCUMENTOS.md)
-```
-
-### **FASE 15 - GerarRelatorio (20/02/2026)**
-```bash
-📁 src/application/use_cases/gerar_relatorio.py
-📈 0% → 86%
-✨ Melhorias:
-  - Adicionada telemetria completa
-  - Criados 12 testes de lógica
-  - Criados 6 testes de telemetria
-  - Corrigidos 7 erros de MyPy
-🔗 [FASE15_TELEMETRIA_E_TESTES_EM_GERAR_RELATORIO.md](fases/FASE15_TELEMETRIA_E_TESTES_EM_GERAR_RELATORIO.md)
-```
-
-### **FASE 14 - ExportarDocumento (20/02/2026)**
-```bash
-📁 src/application/use_cases/exportar_documento.py
-📈 0% → 81%
-✨ Melhorias:
-  - Adicionada telemetria
-  - Criados 12 testes de lógica
-  - Criados 8 testes de telemetria
-🔗 [FASE14_TELEMETRIA_E_TESTES_EM_EXPORTAR_DOCUMENTO.md](fases/FASE14_TELEMETRIA_E_TESTES_EM_EXPORTAR_DOCUMENTO.md)
-```
-
-### **FASE 12-13 - Fundação (19/02/2026)**
-```bash
-📈 55% → 63%
-✨ Melhorias:
-  - Padronização de telemetria em tipo_documento.py
-  - Limpeza de arquivos .bak e diagnóstico
-  - Organização do repositório
-🔗 [FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md](fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md) | [FASE13_LIMPEZA_E_ORGANIZACAO_DO_REPOSITORIO.md](fases/FASE13_LIMPEZA_E_ORGANIZACAO_DO_REPOSITORIO.md)
-```
-
----
-
-## 🔍 **COMO INTERPRETAR ESTE DOCUMENTO**
-
-| Seção | Para que serve |
-|-------|----------------|
-| **Métricas atuais** | Snapshot do momento |
-| **Evolução** | Visão histórica do progresso |
-| **Top prioridades** | Guia para próximas ações |
-| **Cobertura por camada** | Visão arquitetural |
-| **Histórico detalhado** | Rastreabilidade das melhorias |
-
----
-
-## 🔗 **LINKS RÁPIDOS**
-
-- [Issues abertas relacionadas](https://github.com/rib-thiago/showtrials-tcc/issues?q=is%3Aopen+is%3Aissue+label%3Atipo%2Ftestes)
-- [Milestone: Qualidade](https://github.com/rib-thiago/showtrials-tcc/milestone/2)
-- [Documentação das fases](fases/)
-- [Como contribuir com testes](../contributing.md#testes)
-
----
-
-## 📊 **COMANDO PARA ATUALIZAR ESTE DOCUMENTO**
+- cobertura total: `75.51%`
+- total de testes executados com sucesso: `235`
+- comando validado:
 
 ```bash
-# Para gerar métricas atualizadas
-poetry run pytest --cov=src --cov-report=term-missing | grep -E "^src/|^TOTAL" | cat
-
-# Após executar, atualize manualmente as seções:
-# - Métricas atuais
-# - Top prioridades (se mudou)
-# - Adicione nova entrada no histórico se houve melhoria
+poetry run task test-cov
 ```
 
----
+O resultado operacional que sustentou esse snapshot foi registrado em
+[RODADA_20260327_53.md](/home/thiago/coleta_showtrials/docs/planejamento/rodadas/RODADA_20260327_53.md).
 
-<div align="center">
-  <sub>Documento mantido vivo - última atualização: 21/02/2026</sub>
-  <br>
-  <sub>✅ Histórico completo • ✅ Métricas atuais • ✅ Próximos passos</sub>
-</div>
+## Como Atualizar a Medicao
+
+Fluxo recomendado:
+
+```bash
+poetry run task test-cov
 ```
 
----
+Depois da execucao:
+
+- atualizar a cobertura total, se o numero tiver mudado;
+- atualizar o total de testes executados com sucesso, se necessario;
+- registrar, quando houver mudanca relevante, o marco correspondente na secao
+  historica abaixo;
+- evitar transformar este documento em dump de saida do `pytest`.
+
+## Evolucao Historica Resumida
+
+Marcos historicos principais da evolucao registrada neste bloco:
+
+- `19/02/2026`: diagnostico inicial em torno de `55%`
+- `19/02/2026`: avancos para `63%`, associados ao ciclo de telemetria e
+  limpeza estrutural
+- `20/02/2026` a `21/02/2026`: ampliacao importante da cobertura em casos de
+  uso da aplicacao
+- `27/03/2026`: validacao recente consolidada em `75.51%`
+
+Fases historicas mais diretamente relacionadas a essa evolucao:
+
+- [FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md](/home/thiago/coleta_showtrials/docs/fases/FASE12_PADRONIZACAO_DA_TELEMETRIA_EM_TIPODOCUMENTO.md)
+- [FASE13_LIMPEZA_E_ORGANIZACAO_DO_REPOSITORIO.md](/home/thiago/coleta_showtrials/docs/fases/FASE13_LIMPEZA_E_ORGANIZACAO_DO_REPOSITORIO.md)
+- [FASE14_TELEMETRIA_E_TESTES_EM_EXPORTAR_DOCUMENTO.md](/home/thiago/coleta_showtrials/docs/fases/FASE14_TELEMETRIA_E_TESTES_EM_EXPORTAR_DOCUMENTO.md)
+- [FASE15_TELEMETRIA_E_TESTES_EM_GERAR_RELATORIO.md](/home/thiago/coleta_showtrials/docs/fases/FASE15_TELEMETRIA_E_TESTES_EM_GERAR_RELATORIO.md)
+- [FASE16_TELEMETRIA_E_EXPANSAO_DE_TESTES_EM_LISTAR_DOCUMENTOS.md](/home/thiago/coleta_showtrials/docs/fases/FASE16_TELEMETRIA_E_EXPANSAO_DE_TESTES_EM_LISTAR_DOCUMENTOS.md)
+
+## Limites de Leitura
+
+Este documento nao substitui:
+
+- o historico fino de mudancas em Git;
+- os historicos tecnicos de cada fase;
+- os diagnosticos pontuais de CI e telemetria;
+- o protocolo de qualidade vigente.
+
+Ele tambem nao deve ser lido como ranking definitivo de prioridades de teste,
+porque esse tipo de decisao depende do estado atual do codigo, do backlog e das
+frentes tecnicas ativas.
+
+## Documentos Relacionados
+
+- [contributing.md](/home/thiago/coleta_showtrials/docs/contributing.md)
+- [protocolo_de_qualidade.md](/home/thiago/coleta_showtrials/docs/flows/protocolo_de_qualidade.md)
+- [diagnostico_ci.md](/home/thiago/coleta_showtrials/docs/metricas/diagnostico_ci.md)
+- [diagnostico_fase12.md](/home/thiago/coleta_showtrials/docs/metricas/diagnostico_fase12.md)
+- [RODADA_20260327_53.md](/home/thiago/coleta_showtrials/docs/planejamento/rodadas/RODADA_20260327_53.md)
