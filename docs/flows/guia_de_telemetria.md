@@ -21,7 +21,7 @@ Ela aparece em modulos de dominio, casos de uso, factories e repositorios, e cos
 - chamadas condicionais a `increment(...)`
 - testes especificos `test_*_telemetry.py`
 
-Este guia deve ser lido como referencia tecnica especifica, complementar ao protocolo de qualidade, ao guia de auto-revisao e ao flow de debug.
+Este guia deve ser lido como referencia tecnica especifica, complementar ao protocolo de qualidade, ao guia de auto-revisao e ao guia de debug.
 
 ## Principios da Instrumentacao
 
@@ -131,5 +131,5 @@ Os testes reais do projeto mostram que esse padrao esta efetivamente em uso.
 
 - [Protocolo de Qualidade do Projeto](protocolo_de_qualidade.md)
 - [Guia de Auto-Revisao antes de PR e Merge](guia_de_auto_revisao.md)
-- [Debug Flow](debug_flow.md)
+- [Guia de Debug do Projeto](guia_de_debug.md)
 - [Automacao Operacional com Taskipy](automacao_operacional_com_taskipy.md)

@@ -54,7 +54,7 @@ Antes de abrir pull request ou concluir merge, verificar no minimo:
 - consultar [Protocolo de Git do Projeto](protocolo_de_git.md) para branch, commit, pull request, merge e duvidas operacionais de Git
 - consultar [Protocolo de Qualidade do Projeto](protocolo_de_qualidade.md) para criterios tecnicos minimos e coerencia arquitetural
 - consultar [Automacao Operacional com Taskipy](automacao_operacional_com_taskipy.md) para a automacao atualmente disponivel
-- consultar [Telemetry Flow](telemetry_flow.md) quando a mudanca envolver contadores, instrumentacao ou testes de telemetria
+- consultar [Guia de Telemetria do Projeto](guia_de_telemetria.md) quando a mudanca envolver contadores, instrumentacao ou testes de telemetria
 - consultar [Guia de GitHub Projects com gh CLI](guia_github_projects_cli.md) para movimentacao operacional de status no Project
 
 ## Pendencias e Validacoes Necessarias
@@ -69,6 +69,6 @@ Antes de abrir pull request ou concluir merge, verificar no minimo:
 - [Protocolo de Git do Projeto](protocolo_de_git.md)
 - [Protocolo de Qualidade do Projeto](protocolo_de_qualidade.md)
 - [Automacao Operacional com Taskipy](automacao_operacional_com_taskipy.md)
-- [Telemetry Flow](telemetry_flow.md)
+- [Guia de Telemetria do Projeto](guia_de_telemetria.md)
 - [Guia de GitHub Projects com gh CLI](guia_github_projects_cli.md)
 - [Conventional Commits](https://www.conventionalcommits.org/)
