@@ -20,6 +20,23 @@ criar um nucleo coerente para representar documentos historicos, classificar
 tipos documentais e tratar nomes russos com validacao e transliteracao, tudo
 sob uma leitura inicial de Clean Architecture.
 
+Esquema ASCII preservado da fundacao da camada:
+
+```text
+src/
+├── domain/
+│   ├── entities/
+│   │   └── documento.py
+│   ├── value_objects/
+│   │   ├── tipo_documento.py
+│   │   └── nome_russo.py
+│   └── interfaces/
+│       └── repositories.py
+└── tests/
+    ├── test_documento.py
+    └── test_tipo_documento.py
+```
+
 ## Componentes Fundadores
 
 Os componentes fundadores registrados nesta fase sao:
